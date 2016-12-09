@@ -123,6 +123,7 @@ void PictureDialog::adaptNewDialogSize(QSize newLabelSize)
     Q_UNUSED(newLabelSize)
     int newDialogHeight = ui->labPicture->pixmap()->height();
     newDialogHeight = newDialogHeight + ui->jsonFrame->height();
+    if (navienabled) newDialogHeight = newDialogHeight + layout()->menuBar()->height();
     setMinimumSize(width(), newDialogHeight);
     setMaximumSize(width(), newDialogHeight);
     resize(width(), newDialogHeight);
