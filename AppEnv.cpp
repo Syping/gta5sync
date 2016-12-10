@@ -52,7 +52,7 @@ QString AppEnv::getGameFolder(bool *ok)
     QString GTAV_defaultFolder = StandardPaths::documentsLocation() + QDir::separator() + "Rockstar Games" + QDir::separator() + "GTA V";
     QString GTAV_returnFolder = GTAV_defaultFolder;
 
-    QSettings SyncSettings("Syping", "gta5sync");
+    QSettings SyncSettings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
     SyncSettings.beginGroup("dir");
     bool forceDir = SyncSettings.value("force", false).toBool();
     GTAV_returnFolder = SyncSettings.value("dir", GTAV_defaultFolder).toString();
@@ -118,7 +118,7 @@ QString AppEnv::getPluginsFolder()
 
 QByteArray AppEnv::getUserAgent()
 {
-    return QString("Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0 gta5sync/1.0").toUtf8();
+    return QString("Mozilla/5.0 (X11; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0 %1/%2").arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER).toUtf8();
 }
 
 QUrl AppEnv::getCrewFetchingUrl(QString crewID)
