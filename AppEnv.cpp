@@ -37,7 +37,7 @@ AppEnv::AppEnv()
 QString AppEnv::getGameFolder(bool *ok)
 {
     QDir dir;
-    QString GTAV_FOLDER(qgetenv("GTAV_FOLDER"));
+    QString GTAV_FOLDER = QString::fromUtf8(qgetenv("GTAV_FOLDER"));
     if (GTAV_FOLDER != "")
     {
         dir.setPath(GTAV_FOLDER);
@@ -55,18 +55,18 @@ QString AppEnv::getGameFolder(bool *ok)
     QSettings SyncSettings("Syping", "gta5sync");
     SyncSettings.beginGroup("dir");
     bool forceDir = SyncSettings.value("force", false).toBool();
-    if (forceDir)
-    {
-        GTAV_returnFolder = SyncSettings.value("dir", GTAV_defaultFolder).toString();
-    }
+    GTAV_returnFolder = SyncSettings.value("dir", GTAV_defaultFolder).toString();
     SyncSettings.endGroup();
 
-    dir.setPath(GTAV_returnFolder);
-    if (dir.exists())
+    if (forceDir)
     {
-        if (ok != 0) *ok = true;
-        qputenv("GTAV_FOLDER", dir.absolutePath().toUtf8());
-        return dir.absolutePath();
+        dir.setPath(GTAV_returnFolder);
+        if (dir.exists())
+        {
+            if (ok != 0) *ok = true;
+            qputenv("GTAV_FOLDER", dir.absolutePath().toUtf8());
+            return dir.absolutePath();
+        }
     }
 
     dir.setPath(GTAV_defaultFolder);
@@ -75,6 +75,17 @@ QString AppEnv::getGameFolder(bool *ok)
         if (ok != 0) *ok = true;
         qputenv("GTAV_FOLDER", dir.absolutePath().toUtf8());
         return dir.absolutePath();
+    }
+
+    if (!forceDir)
+    {
+        dir.setPath(GTAV_returnFolder);
+        if (dir.exists())
+        {
+            if (ok != 0) *ok = true;
+            qputenv("GTAV_FOLDER", dir.absolutePath().toUtf8());
+            return dir.absolutePath();
+        }
     }
 
     if (ok != 0) *ok = false;
