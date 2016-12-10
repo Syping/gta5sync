@@ -475,6 +475,7 @@ void SnapmaticPicture::parseJsonContent()
 {
     QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonStr.toUtf8());
     QJsonObject jsonObject = jsonDocument.object();
+    QVariantMap jsonMap = jsonObject.toVariantMap(); // backward compatibility
 
     if (jsonObject.contains("loc"))
     {
@@ -494,13 +495,13 @@ void SnapmaticPicture::parseJsonContent()
     if (jsonObject.contains("creat"))
     {
         QDateTime createdTimestamp;
-        localSpJson.createdTimestamp = jsonObject["creat"].toVariant().toUInt();
+        localSpJson.createdTimestamp = jsonMap["creat"].toUInt();
         createdTimestamp.setTime_t(localSpJson.createdTimestamp);
         localSpJson.createdDateTime = createdTimestamp;
     }
     if (jsonObject.contains("plyrs"))
     {
-        localSpJson.playersList = jsonObject["plyrs"].toVariant().toStringList();
+        localSpJson.playersList = jsonMap["plyrs"].toStringList();
     }
     if (jsonObject.contains("meme"))
     {

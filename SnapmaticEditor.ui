@@ -126,7 +126,7 @@
      <item>
       <widget class="QPushButton" name="cmdApply">
        <property name="text">
-        <string>Apply</string>
+        <string>&amp;Apply</string>
        </property>
        <property name="icon">
         <iconset theme="dialog-apply"/>
@@ -136,7 +136,7 @@
      <item>
       <widget class="QPushButton" name="cmdCancel">
        <property name="text">
-        <string>Cancel</string>
+        <string>&amp;Cancel</string>
        </property>
        <property name="icon">
         <iconset theme="dialog-cancel"/>
