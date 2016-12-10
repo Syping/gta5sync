@@ -298,6 +298,7 @@ bool SnapmaticPicture::setPicture(const QImage &picture)
         if (snapmaticStream.seek(jpegStreamEditorBegin))
         {
             bool saveSuccess;
+            Q_UNUSED(saveSuccess)
             QByteArray picByteArray1;
             QBuffer picStream1(&picByteArray1);
             picStream1.open(QIODevice::WriteOnly);
@@ -400,7 +401,7 @@ QImage SnapmaticPicture::getPicture()
     }
     else if (writeEnabled)
     {
-        bool returnOk;
+        bool returnOk = 0;
         QImage returnPicture;
 
         QBuffer snapmaticStream(&rawPicContent);
@@ -419,7 +420,7 @@ QImage SnapmaticPicture::getPicture()
     }
     else
     {
-        bool returnOk;
+        bool returnOk = 0;
         QImage returnPicture;
         QIODevice *picStream;
 
