@@ -1382,7 +1382,7 @@ Exportieren als:</translation>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="220"/>
         <source>&amp;Edit Properties</source>
-        <translation>Bearbeite &amp;Eigenschaften</translation>
+        <translation>&amp;Eigenschaften bearbeiten</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="222"/>
