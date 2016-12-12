@@ -1043,7 +1043,7 @@ gta5sync est distribué sous license &lt;a href=&quot;https://www.gnu.org/licens
     </message>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="220"/>
-        <source>&amp;Edit Properties</source>
+        <source>&amp;Edit Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

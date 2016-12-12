@@ -1380,9 +1380,13 @@ Exportieren als:</translation>
         <translation>&amp;Im Spiel ausblenden</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="220"/>
         <source>&amp;Edit Properties</source>
-        <translation>&amp;Eigenschaften bearbeiten</translation>
+        <translation type="vanished">&amp;Eigenschaften bearbeiten</translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticWidget.cpp" line="220"/>
+        <source>&amp;Edit Properties...</source>
+        <translation>&amp;Eigenschaften bearbeiten...</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="222"/>
