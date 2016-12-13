@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de_DE">
+<TS version="2.0" language="de_DE">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -44,7 +44,7 @@ Compiled with Qt %2&lt;br/&gt;
 Running with Qt %3&lt;br/&gt;
 &lt;br/&gt;
 Copyright &amp;copy; &lt;a href=&quot;https://github.com/Syping/&quot;&gt;Syping&lt;/a&gt; 2016&lt;br/&gt;gta5sync is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
-        <translation type="vanished">&lt;span style=&quot; font-weight:600;&quot;&gt;gta5sync&lt;/span&gt;&lt;br/&gt;
+        <translation>&lt;span style=&quot; font-weight:600;&quot;&gt;gta5sync&lt;/span&gt;&lt;br/&gt;
 &lt;br/&gt;
 Ein Projekt zum ansehen und synchronisieren von Grand Theft Auto 5 Snapmatic Bilder und Spielständen&lt;br/&gt;
 &lt;br/&gt;
@@ -160,11 +160,11 @@ Copyright &amp;copy; &lt;a href=&quot;https://github.com/Syping/&quot;&gt;Syping
     </message>
     <message>
         <source>gta5sync - Settings</source>
-        <translation type="vanished">gta5sync - Einstellungen</translation>
+        <translation>gta5sync - Einstellungen</translation>
     </message>
     <message>
         <source>Profile</source>
-        <translation type="vanished">Profil</translation>
+        <translation>Profil</translation>
     </message>
     <message>
         <location filename="../OptionsDialog.ui" line="33"/>
@@ -368,7 +368,7 @@ Copyright &amp;copy; &lt;a href=&quot;https://github.com/Syping/&quot;&gt;Syping
     </message>
     <message>
         <source>The new Custom Folder initialize after you restart %1.</source>
-        <translation type="vanished">Der eigene Ordner initialisiert sobald du %1 neugestartet hast.</translation>
+        <translation>Der eigene Ordner initialisiert sobald du %1 neugestartet hast.</translation>
     </message>
     <message>
         <location filename="../OptionsDialog.cpp" line="275"/>
@@ -1002,17 +1002,17 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>The Third Way (100%) - 00/00/00 00:00:00</source>
-        <translation type="vanished">The Third Way (100%) - 00/00/00 00:00:00</translation>
+        <translation>The Third Way (100%) - 00/00/00 00:00:00</translation>
     </message>
     <message>
         <source>Savegame %1
 %2</source>
-        <translation type="vanished">Spielstand %1
+        <translation>Spielstand %1
 %2</translation>
     </message>
     <message>
         <source>SAVE - %1&lt;br&gt;%2</source>
-        <translation type="vanished">SPIELSTAND - %1&lt;br&gt;%2</translation>
+        <translation>SPIELSTAND - %1&lt;br&gt;%2</translation>
     </message>
     <message>
         <location filename="../SavegameWidget.ui" line="86"/>
@@ -1058,7 +1058,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>AUTO</source>
-        <translation type="vanished">AUTO</translation>
+        <translation>AUTO</translation>
     </message>
     <message>
         <location filename="../SavegameWidget.cpp" line="57"/>
@@ -1257,7 +1257,7 @@ Exportieren als:</translation>
     <message>
         <location filename="../SnapmaticEditor.ui" line="40"/>
         <source>Regular</source>
-        <translation type="unfinished"></translation>
+        <translation>Typisch</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="47"/>
@@ -1267,7 +1267,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation type="vanished">Eigenes</translation>
+        <translation>Eigenes</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="77"/>
@@ -1282,17 +1282,17 @@ Exportieren als:</translation>
     <message>
         <location filename="../SnapmaticEditor.ui" line="101"/>
         <source>Extras</source>
-        <translation type="unfinished"></translation>
+        <translation>Extras</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="107"/>
         <source>Qualify as Avatar automatically at apply</source>
-        <translation type="unfinished"></translation>
+        <translation>Beim Übernehmen als Avatar qualifizieren  </translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="114"/>
         <source>Qualify as Avatar allows you to use this Snapmatic as a Social Club profile picture</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Qualifizieren als Avatar erlaubt dir dieses Snapmatic als Social Club Profilbild zu nutzen</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="155"/>
@@ -1306,11 +1306,11 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>Apply</source>
-        <translation type="vanished">Übernehmen</translation>
+        <translation>Übernehmen</translation>
     </message>
     <message>
         <source>Cancel</source>
-        <translation type="vanished">Cancel</translation>
+        <translation>Cancel</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.cpp" line="206"/>
@@ -1369,11 +1369,11 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>Enable &amp;In-game</source>
-        <translation type="vanished">&amp;Im Spiel aktivieren</translation>
+        <translation>&amp;Im Spiel aktivieren</translation>
     </message>
     <message>
         <source>Disable &amp;In-game</source>
-        <translation type="vanished">&amp;Im Spiel deaktivieren</translation>
+        <translation>&amp;Im Spiel deaktivieren</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="221"/>
@@ -1400,7 +1400,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>&amp;Edit Properties</source>
-        <translation type="vanished">&amp;Eigenschaften bearbeiten</translation>
+        <translation>&amp;Eigenschaften bearbeiten</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="220"/>
@@ -1638,7 +1638,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>Selection visibility</source>
-        <translation type="vanished">Auswahl Sichtbarkeit</translation>
+        <translation>Auswahl Sichtbarkeit</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="223"/>
@@ -1688,11 +1688,11 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>Hid&amp;e In-game</source>
-        <translation type="vanished">Im Spiel ausblen&amp;den</translation>
+        <translation>Im Spiel ausblen&amp;den</translation>
     </message>
     <message>
         <source>&amp;Enable In-game</source>
-        <translation type="vanished">Im Spiel aktivier&amp;en</translation>
+        <translation>Im Spiel aktivier&amp;en</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="328"/>
@@ -1701,7 +1701,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>&amp;Disable In-game</source>
-        <translation type="vanished">Im Spiel &amp;deaktivieren</translation>
+        <translation>Im Spiel &amp;deaktivieren</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="336"/>
@@ -1785,7 +1785,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <source>Select GTA V &amp;Folder...</source>
-        <translation type="vanished">Wähle GTA V &amp;Ordner...</translation>
+        <translation>Wähle GTA V &amp;Ordner...</translation>
     </message>
     <message>
         <location filename="../UserInterface.cpp" line="305"/>
