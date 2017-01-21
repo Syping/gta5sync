@@ -65,6 +65,7 @@ private slots:
     void exportCustomContextMenuRequestedPrivate(const QPoint &pos, bool fullscreen);
     void nextPictureRequestedSlot();
     void previousPictureRequestedSlot();
+    void renderPicture();
 
 signals:
     void nextPictureRequested();
@@ -102,6 +103,7 @@ private:
     QString locZ;
     bool rqfullscreen;
     bool navienabled;
+    bool previewmode;
     bool indexed;
     int index;
     int avatarLocX;

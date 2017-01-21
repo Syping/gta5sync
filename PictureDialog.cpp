@@ -68,6 +68,7 @@ PictureDialog::PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, Q
     plyrsList = QStringList();
     fullscreenWidget = 0;
     rqfullscreen = 0;
+    previewmode = 0;
     navienabled = 0;
     indexed = 0;
     picArea = "";
@@ -209,6 +210,18 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                 ui->cmdExport->click();
                 returnValue = true;
                 break;
+            case Qt::Key_A:
+                if (previewmode)
+                {
+                    previewmode = false;
+                    renderPicture();
+                }
+                else
+                {
+                    previewmode = true;
+                    renderPicture();
+                }
+                break;
 #if QT_VERSION >= 0x050300
             case Qt::Key_Exit:
                 ui->cmdClose->click();
@@ -281,7 +294,7 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
         snapPainter.drawStaticText(3, 3, tr("Avatar Preview"));
         avatarPreviewImage = finalPixmap.toImage();
 
-        ui->labPicture->setPixmap(QPixmap::fromImage(snapmaticPicture));
+        renderPicture();
         ui->cmdExport->setEnabled(true);
     }
     if (picture->isJsonOk())
@@ -365,6 +378,18 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, int index)
 void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture)
 {
     setSnapmaticPicture(picture, true);
+}
+
+void PictureDialog::renderPicture()
+{
+    if (!previewmode)
+    {
+        ui->labPicture->setPixmap(QPixmap::fromImage(snapmaticPicture));
+    }
+    else
+    {
+        ui->labPicture->setPixmap(QPixmap::fromImage(avatarPreviewImage));
+    }
 }
 
 void PictureDialog::playerNameUpdated()
