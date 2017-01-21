@@ -360,41 +360,46 @@ Copyright &amp;copy; &lt;a href=&quot;https://github.com/Syping/&quot;&gt;Syping
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="82"/>
+        <location filename="../PictureDialog.cpp" line="93"/>
         <source>Export as &amp;JPG picture...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="83"/>
+        <location filename="../PictureDialog.cpp" line="94"/>
         <source>Export as &amp;GTA Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="258"/>
-        <location filename="../PictureDialog.cpp" line="315"/>
+        <location filename="../PictureDialog.cpp" line="281"/>
+        <location filename="../PictureDialog.cpp" line="348"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Просмотрщик фотографий Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="258"/>
-        <location filename="../PictureDialog.cpp" line="315"/>
+        <location filename="../PictureDialog.cpp" line="281"/>
+        <location filename="../PictureDialog.cpp" line="348"/>
         <source>Failed at %1</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="304"/>
-        <location filename="../PictureDialog.cpp" line="314"/>
+        <location filename="../PictureDialog.cpp" line="294"/>
+        <source>Avatar Preview Mode&lt;br&gt;Press A for Default View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="337"/>
+        <location filename="../PictureDialog.cpp" line="347"/>
         <source>No player</source>
         <translation>Игроков нет</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="307"/>
-        <location filename="../PictureDialog.cpp" line="314"/>
+        <location filename="../PictureDialog.cpp" line="340"/>
+        <location filename="../PictureDialog.cpp" line="347"/>
         <source>No crew</source>
         <translation>Без группы</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="314"/>
+        <location filename="../PictureDialog.cpp" line="347"/>
         <source>Unknown Location</source>
         <translation type="unfinished"></translation>
     </message>

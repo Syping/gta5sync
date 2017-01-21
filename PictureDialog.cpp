@@ -290,8 +290,8 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
         QPainter snapPainter(&finalPixmap);
         snapPainter.drawImage(0, 0, snapmaticPicture);
         snapPainter.drawImage(0, 0, avatarAreaPicture);
-        snapPainter.setPen(QColor::fromRgb(255, 255, 255, 200));
-        snapPainter.drawStaticText(3, 3, tr("Avatar Preview"));
+        snapPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
+        snapPainter.drawStaticText(3, 3, tr("Avatar Preview Mode<br>Press A for Default View"));
         avatarPreviewImage = finalPixmap.toImage();
 
         renderPicture();

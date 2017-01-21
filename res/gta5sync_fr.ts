@@ -393,41 +393,46 @@ gta5sync est distribué sous license &lt;a href=&quot;https://www.gnu.org/licens
         <translation>Fichier invalide</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="82"/>
+        <location filename="../PictureDialog.cpp" line="93"/>
         <source>Export as &amp;JPG picture...</source>
         <translation>Exporter comme image &amp;JPG...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="83"/>
+        <location filename="../PictureDialog.cpp" line="94"/>
         <source>Export as &amp;GTA Snapmatic...</source>
         <translation>Exporter comme &amp;GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="258"/>
-        <location filename="../PictureDialog.cpp" line="315"/>
+        <location filename="../PictureDialog.cpp" line="281"/>
+        <location filename="../PictureDialog.cpp" line="348"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Visionneuse de photo Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="258"/>
-        <location filename="../PictureDialog.cpp" line="315"/>
+        <location filename="../PictureDialog.cpp" line="281"/>
+        <location filename="../PictureDialog.cpp" line="348"/>
         <source>Failed at %1</source>
         <translation>Echec de %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="304"/>
-        <location filename="../PictureDialog.cpp" line="314"/>
+        <location filename="../PictureDialog.cpp" line="294"/>
+        <source>Avatar Preview Mode&lt;br&gt;Press A for Default View</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="337"/>
+        <location filename="../PictureDialog.cpp" line="347"/>
         <source>No player</source>
         <translation>Aucun joueur</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="307"/>
-        <location filename="../PictureDialog.cpp" line="314"/>
+        <location filename="../PictureDialog.cpp" line="340"/>
+        <location filename="../PictureDialog.cpp" line="347"/>
         <source>No crew</source>
         <translation>Aucun crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="314"/>
+        <location filename="../PictureDialog.cpp" line="347"/>
         <source>Unknown Location</source>
         <translation>Emplacement inconnu</translation>
     </message>
