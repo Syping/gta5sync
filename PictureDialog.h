@@ -85,6 +85,8 @@ private:
     QWidget *fullscreenWidget;
     QAction *jpegExportAction;
     QAction *pgtaExportAction;
+    QImage avatarPreviewImage;
+    QImage avatarAreaPicture;
     QImage snapmaticPicture;
     QString jsonDrawString;
     QString windowTitleStr;
@@ -102,6 +104,9 @@ private:
     bool navienabled;
     bool indexed;
     int index;
+    int avatarLocX;
+    int avatarLocY;
+    int avatarSize;
     QMenu *exportMenu;
 };
 

@@ -37,6 +37,7 @@
 #include <QDesktopWidget>
 #include <QJsonDocument>
 #include <QApplication>
+#include <QStaticText>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QJsonObject>
@@ -45,7 +46,9 @@
 #include <QKeyEvent>
 #include <QMimeData>
 #include <QToolBar>
+#include <QPainter>
 #include <QPicture>
+#include <QBitmap>
 #include <QBuffer>
 #include <QDebug>
 #include <QList>
@@ -76,6 +79,13 @@ PictureDialog::PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, Q
     locY = "";
     locZ = "";
     smpic = 0;
+
+    // Avatar area
+    avatarPreviewImage = QImage();
+    avatarAreaPicture = QImage(":/img/avatararea.png");
+    avatarLocX = 145;
+    avatarLocY = 66;
+    avatarSize = 470;
 
     // Export menu
     exportMenu = new QMenu(this);
@@ -261,7 +271,17 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
     if (picture->isPicOk())
     {
         snapmaticPicture = picture->getPicture();
-        ui->labPicture->setPixmap(QPixmap::fromImage(snapmaticPicture, Qt::AutoColor));
+
+        // Generating Avatar Preview
+        QPixmap finalPixmap(960, 536);
+        QPainter snapPainter(&finalPixmap);
+        snapPainter.drawImage(0, 0, snapmaticPicture);
+        snapPainter.drawImage(0, 0, avatarAreaPicture);
+        snapPainter.setPen(QColor::fromRgb(255, 255, 255, 200));
+        snapPainter.drawStaticText(3, 3, tr("Avatar Preview"));
+        avatarPreviewImage = finalPixmap.toImage();
+
+        ui->labPicture->setPixmap(QPixmap::fromImage(snapmaticPicture));
         ui->cmdExport->setEnabled(true);
     }
     if (picture->isJsonOk())
