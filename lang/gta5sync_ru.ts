@@ -4,27 +4,30 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../AboutDialog.ui" line="14"/>
         <source>About gta5sync</source>
-        <translation>О программе gta5sync</translation>
+        <translation type="vanished">О программе gta5sync</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="29"/>
-        <source>&lt;span style=&quot; font-weight:600;&quot;&gt;gta5sync&lt;/span&gt;&lt;br/&gt;
-&lt;br/&gt;
-A project for viewing and sync Grand Theft Auto V Snapmatic&lt;br/&gt;
-Pictures and Savegames&lt;br/&gt;
-&lt;br/&gt;
-Project version: %1&lt;br/&gt;
-Project build: %4, %5&lt;br/&gt;
-Compiled with Qt %2&lt;br/&gt;
-Running with Qt %3&lt;br/&gt;
-&lt;br/&gt;
-Copyright &amp;copy; &lt;a href=&quot;https://github.com/Syping/&quot;&gt;Syping&lt;/a&gt; 2016&lt;br/&gt;gta5sync is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
+        <location filename="../AboutDialog.ui" line="14"/>
+        <source>About %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="76"/>
+        <location filename="../AboutDialog.ui" line="29"/>
+        <source>&lt;span style=&quot; font-weight:600;&quot;&gt;%8&lt;/span&gt;&lt;br/&gt;
+&lt;br/&gt;
+%9&lt;br/&gt;
+&lt;br/&gt;
+Project version: %1&lt;br/&gt;
+Project build: %4&lt;br/&gt;
+Compiled with Qt %2&lt;br/&gt;
+Running with Qt %3&lt;br/&gt;
+&lt;br/&gt;
+Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;%8 is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AboutDialog.ui" line="75"/>
         <source>&amp;Close</source>
         <translation type="unfinished"></translation>
     </message>
@@ -35,6 +38,12 @@ Copyright &amp;copy; &lt;a href=&quot;https://github.com/Syping/&quot;&gt;Syping
     <message>
         <source>Close</source>
         <translation type="obsolete">Закрыть</translation>
+    </message>
+    <message>
+        <location filename="../AboutDialog.cpp" line="36"/>
+        <source>A project for viewing and sync Grand Theft Auto V Snapmatic&lt;br/&gt;
+Pictures and Savegames</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
