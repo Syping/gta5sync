@@ -131,6 +131,12 @@
          </item>
          <item>
           <widget class="QLabel" name="labQualify">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
             <string>Qualify as Avatar allows you to use this Snapmatic as a Social Club profile picture</string>
            </property>
