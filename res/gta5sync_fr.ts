@@ -35,7 +35,7 @@ gta5sync est distribué sous license &lt;a href=&quot;https://www.gnu.org/licens
     <message>
         <location filename="../AboutDialog.ui" line="14"/>
         <source>About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>À propos de %1</translation>
     </message>
     <message>
         <location filename="../AboutDialog.ui" line="29"/>
@@ -49,7 +49,17 @@ Compiled with Qt %2&lt;br/&gt;
 Running with Qt %3&lt;br/&gt;
 &lt;br/&gt;
 Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;%8 is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;span style=&quot; font-weight:600;&quot;&gt;%8&lt;/span&gt;&lt;br/&gt;
+&lt;br/&gt;
+%9&lt;br/&gt;
+&lt;br/&gt;
+%8 v%1&lt;br/&gt;
+Build %4&lt;br/&gt;
+Compilé avec Qt %2&lt;br/&gt;
+Fonctionne avec Qt %3&lt;br/&gt;
+&lt;br/&gt;
+Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;
+%8 est distribué sous license &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../AboutDialog.ui" line="75"/>
@@ -60,7 +70,8 @@ Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;%8 i
         <location filename="../AboutDialog.cpp" line="36"/>
         <source>A project for viewing and sync Grand Theft Auto V Snapmatic&lt;br/&gt;
 Pictures and Savegames</source>
-        <translation type="unfinished"></translation>
+        <translation>Un outil pour gérer et synchroniser les photos Snapmatic&lt;br/&gt;
+et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
 </context>
 <context>
@@ -1345,7 +1356,7 @@ Pictures and Savegames</source>
         <location filename="../UserInterface.ui" line="223"/>
         <location filename="../UserInterface.cpp" line="58"/>
         <source>&amp;About %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;À propos de %1</translation>
     </message>
     <message>
         <location filename="../UserInterface.cpp" line="61"/>
