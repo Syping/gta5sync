@@ -24,7 +24,7 @@ BEGIN
             VALUE   "FileDescription",  "gta5sync\0"
             VALUE   "FileVersion",      "1.0.0.0\0"
             VALUE   "InternalName",     "gta5sync\0"
-            VALUE   "LegalCopyright",   "Copyright © 2015-2016 Syping\0"
+            VALUE   "LegalCopyright",   "Copyright © 2015-2017 Syping\0"
             VALUE   "OriginalFilename", "gta5sync.exe\0"
             VALUE   "ProductName",      "gta5sync\0"
             VALUE   "ProductVersion",   "1.0.0.0\0"
