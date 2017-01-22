@@ -40,7 +40,13 @@ Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;%8 i
         <translation type="obsolete">Закрыть</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="36"/>
+        <location filename="../AboutDialog.cpp" line="39"/>
+        <source>A project for viewing Grand Theft Auto V Snapmatic&lt;br/&gt;
+Pictures and Savegames</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../AboutDialog.cpp" line="43"/>
         <source>A project for viewing and sync Grand Theft Auto V Snapmatic&lt;br/&gt;
 Pictures and Savegames</source>
         <translation type="unfinished"></translation>

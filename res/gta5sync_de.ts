@@ -103,7 +103,14 @@ Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;%8 i
         <translation type="obsolete">&lt;span style=&quot; font-weight:600;&quot;&gt;gta5sync&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;Ein Projekt zum ansehen und synchronisieren von Grand Theft Auto 5 Snapmatic Bilder und Spielständen&lt;br/&gt;&lt;br/&gt;Projektversion: %1&lt;br/&gt;Gebaut mit Qt %2&lt;br/&gt;Läuft auf Qt %3&lt;br/&gt;&lt;br/&gt;Copyright &amp;copy; &lt;a href=&quot;https://github.com/Syping/&quot;&gt;Syping&lt;/a&gt; 2016&lt;br/&gt;gta5sync is lizenziert unter &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="36"/>
+        <location filename="../AboutDialog.cpp" line="39"/>
+        <source>A project for viewing Grand Theft Auto V Snapmatic&lt;br/&gt;
+Pictures and Savegames</source>
+        <translation>Ein Projekt zum ansehen von Grand Theft Auto V&lt;br/&gt;
+Snapmatic Bilder und Spielständen</translation>
+    </message>
+    <message>
+        <location filename="../AboutDialog.cpp" line="43"/>
         <source>A project for viewing and sync Grand Theft Auto V Snapmatic&lt;br/&gt;
 Pictures and Savegames</source>
         <translation>Ein Projekt zum ansehen und synchronisieren von&lt;br/&gt;

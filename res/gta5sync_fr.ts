@@ -67,7 +67,14 @@ Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;
         <translation>&amp;Fermer</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.cpp" line="36"/>
+        <location filename="../AboutDialog.cpp" line="39"/>
+        <source>A project for viewing Grand Theft Auto V Snapmatic&lt;br/&gt;
+Pictures and Savegames</source>
+        <translation>Un outil pour gérer les photos Snapmatic&lt;br/&gt;
+et les fichiers de sauvegarde de Grand Theft Auto V</translation>
+    </message>
+    <message>
+        <location filename="../AboutDialog.cpp" line="43"/>
         <source>A project for viewing and sync Grand Theft Auto V Snapmatic&lt;br/&gt;
 Pictures and Savegames</source>
         <translation>Un outil pour gérer et synchroniser les photos Snapmatic&lt;br/&gt;
