@@ -227,9 +227,9 @@ void ProfileInterface::dialogNextPictureRequested(QWidget *dialog)
         {
             QString newWidgetKey = pictureKeyList.at(picIndex);
             SnapmaticWidget *picWidget = (SnapmaticWidget*)widgets.key(newWidgetKey);
-            picDialog->setMaximumSize(picDialog->width(), QWIDGETSIZE_MAX);
+            //picDialog->setMaximumHeight(QWIDGETSIZE_MAX);
             picDialog->setSnapmaticPicture(picWidget->getPicture(), picIndex);
-            //picDialog->adaptNewDialogSize();
+            //picDialog->setMaximumHeight(picDialog->height());
         }
     }
 }
@@ -262,8 +262,9 @@ void ProfileInterface::dialogPreviousPictureRequested(QWidget *dialog)
             picIndex--;
             QString newWidgetKey = pictureKeyList.at(picIndex );
             SnapmaticWidget *picWidget = (SnapmaticWidget*)widgets.key(newWidgetKey);
+            //picDialog->setMaximumHeight(QWIDGETSIZE_MAX);
             picDialog->setSnapmaticPicture(picWidget->getPicture(), picIndex);
-            //picDialog->adaptNewDialogSize();
+            //picDialog->setMaximumHeight(picDialog->height());
         }
     }
 }
