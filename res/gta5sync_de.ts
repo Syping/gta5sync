@@ -747,25 +747,25 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="365"/>
-        <location filename="../UserInterface.cpp" line="308"/>
+        <location filename="../UserInterface.cpp" line="309"/>
         <source>All profile files (SGTA* PGTA*)</source>
         <translation>Alle Profildateien (SGTA* PGTA*)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="366"/>
-        <location filename="../UserInterface.cpp" line="309"/>
+        <location filename="../UserInterface.cpp" line="310"/>
         <source>Savegames files (SGTA*)</source>
         <translation>Spielstanddateien (SGTA*)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="367"/>
-        <location filename="../UserInterface.cpp" line="310"/>
+        <location filename="../UserInterface.cpp" line="311"/>
         <source>Snapmatic pictures (PGTA*)</source>
         <translation>Snapmatic Bilder (PGTA*)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="368"/>
-        <location filename="../UserInterface.cpp" line="311"/>
+        <location filename="../UserInterface.cpp" line="312"/>
         <source>All files (**)</source>
         <translation>Alle Dateien (**)</translation>
     </message>
@@ -780,13 +780,13 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="435"/>
-        <location filename="../UserInterface.cpp" line="351"/>
+        <location filename="../UserInterface.cpp" line="352"/>
         <source>Failed to read Snapmatic picture</source>
         <translation>Fehler beim Lesen vom Snapmatic Bild</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="452"/>
-        <location filename="../UserInterface.cpp" line="367"/>
+        <location filename="../UserInterface.cpp" line="368"/>
         <source>Failed to read Savegame file</source>
         <translation>Fehler beim Lesen von Spielstanddatei</translation>
     </message>
@@ -808,7 +808,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     <message>
         <location filename="../ProfileInterface.cpp" line="408"/>
         <location filename="../ProfileInterface.cpp" line="487"/>
-        <location filename="../UserInterface.cpp" line="399"/>
+        <location filename="../UserInterface.cpp" line="400"/>
         <source>No valid file is selected</source>
         <translation>Keine gültige Datei wurde ausgewählt</translation>
     </message>
@@ -1547,9 +1547,8 @@ Exportieren als:</translation>
         <translation type="obsolete">GTA V Sync</translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="20"/>
         <source>gta5sync - %1</source>
-        <translation>gta5sync - %1</translation>
+        <translation type="vanished">gta5sync - %1</translation>
     </message>
     <message>
         <source>File</source>
@@ -1635,6 +1634,10 @@ Exportieren als:</translation>
         <translation>Auswahl &amp;Sichtbarkeit</translation>
     </message>
     <message>
+        <source>&amp;About Product</source>
+        <translation type="vanished">&amp;Über Produkt</translation>
+    </message>
+    <message>
         <location filename="../UserInterface.ui" line="235"/>
         <source>&amp;Exit</source>
         <translation>B&amp;eenden</translation>
@@ -1679,9 +1682,8 @@ Exportieren als:</translation>
         <translation type="vanished">Auswahl Sichtbarkeit</translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="223"/>
         <source>&amp;About gta5sync</source>
-        <translation>&amp;Über gta5sync</translation>
+        <translation type="vanished">&amp;Über gta5sync</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="246"/>
@@ -1705,7 +1707,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="314"/>
-        <location filename="../UserInterface.cpp" line="125"/>
+        <location filename="../UserInterface.cpp" line="126"/>
         <source>Select &amp;GTA V Folder...</source>
         <translation>Wähle &amp;GTA V Ordner...</translation>
     </message>
@@ -1808,16 +1810,16 @@ Exportieren als:</translation>
         <translation type="obsolete">GTA V Ordner nicht gefunden!</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="60"/>
-        <location filename="../UserInterface.cpp" line="195"/>
+        <location filename="../UserInterface.cpp" line="61"/>
+        <location filename="../UserInterface.cpp" line="196"/>
         <source>Select Profile</source>
         <translation>Profil auswählen</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="317"/>
         <location filename="../OptionsDialog.cpp" line="431"/>
-        <location filename="../UserInterface.cpp" line="74"/>
-        <location filename="../UserInterface.cpp" line="448"/>
+        <location filename="../UserInterface.cpp" line="75"/>
+        <location filename="../UserInterface.cpp" line="449"/>
         <source>Select GTA V Folder...</source>
         <translation>Wähle GTA V Ordner...</translation>
     </message>
@@ -1826,7 +1828,7 @@ Exportieren als:</translation>
         <translation type="vanished">Wähle GTA V &amp;Ordner...</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="305"/>
+        <location filename="../UserInterface.cpp" line="306"/>
         <source>Open File...</source>
         <translation>Datei öffnen...</translation>
     </message>
@@ -1835,20 +1837,27 @@ Exportieren als:</translation>
         <translation type="obsolete">Importieren</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="58"/>
+        <location filename="../UserInterface.ui" line="20"/>
+        <location filename="../UserInterface.cpp" line="59"/>
         <source>%2 - %1</source>
         <translation>%2 - %1</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="351"/>
-        <location filename="../UserInterface.cpp" line="367"/>
-        <location filename="../UserInterface.cpp" line="394"/>
-        <location filename="../UserInterface.cpp" line="399"/>
+        <location filename="../UserInterface.ui" line="223"/>
+        <location filename="../UserInterface.cpp" line="58"/>
+        <source>&amp;About %1</source>
+        <translation>&amp;Über %1</translation>
+    </message>
+    <message>
+        <location filename="../UserInterface.cpp" line="352"/>
+        <location filename="../UserInterface.cpp" line="368"/>
+        <location filename="../UserInterface.cpp" line="395"/>
+        <location filename="../UserInterface.cpp" line="400"/>
         <source>Open File</source>
         <translation>Datei öffnen</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="394"/>
+        <location filename="../UserInterface.cpp" line="395"/>
         <source>Can&apos;t open %1 because of not valid file format</source>
         <translation>Kann nicht %1 öffnen weil Dateiformat nicht gültig ist</translation>
     </message>
