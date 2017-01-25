@@ -65,6 +65,10 @@ OptionsDialog::OptionsDialog(ProfileDatabase *profileDB, QWidget *parent) :
     setupCustomGTAFolder();
     setupSnapmaticPictureViewer();
 
+#ifdef GTA5SYNC_DISABLED
+    ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabSync));
+#endif
+
     this->setWindowTitle(windowTitle().arg(GTA5SYNC_APPSTR));
 }
 
