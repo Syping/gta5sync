@@ -82,15 +82,14 @@ PictureDialog::PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, Q
     smpic = 0;
 
     // Avatar area
-    avatarPreviewImage = QImage();
     avatarAreaPicture = QImage(":/img/avatararea.png");
     avatarLocX = 145;
     avatarLocY = 66;
     avatarSize = 470;
 
     // Overlay area
-    overlayAreaImage = QImage();
     renderOverlayPicture();
+    overlayenabled = 1;
 
     // Export menu
     exportMenu = new QMenu(this);
@@ -294,7 +293,11 @@ void PictureDialog::renderOverlayPicture()
     {
         hOverlay = Qt::AlignVCenter;
         preferedRect.setHeight(71);
-        overlaySpace.setHeight(74);
+        overlaySpace.setHeight(80);
+    }
+    else
+    {
+        overlaySpace.setHeight(overlaySpace.height() + 6);
     }
 
     overlayPixmap = overlayPixmap.scaled(overlaySpace.size());
@@ -304,12 +307,22 @@ void PictureDialog::renderOverlayPicture()
     overlayPainter.drawText(preferedRect, Qt::AlignLeft | hOverlay | Qt::TextDontClip | Qt::TextWordWrap, overlayText);
     overlayPainter.end();
 
-    if (overlaySpace.width() < 194) overlaySpace.setWidth(194);
+    if (overlaySpace.width() < 194)
+    {
+        overlaySpace.setWidth(200);
+    }
+    else
+    {
+        overlaySpace.setWidth(overlaySpace.width() + 6);
+    }
+
+    QPixmap overlayBorderImage(overlaySpace.width(), overlaySpace.height());
+    overlayBorderImage.fill(QColor(15, 15, 15, 162));
 
     QPixmap overlayTempPixmap(960, 536);
     overlayTempPixmap.fill(Qt::transparent);
     QPainter overlayTempPainter(&overlayTempPixmap);
-    overlayTempPainter.drawImage(3, 3, QImage(":/img/textoverlay.png").scaled(overlaySpace.width() + 6, overlaySpace.height() + 6, Qt::IgnoreAspectRatio, Qt::FastTransformation));
+    overlayTempPainter.drawPixmap(3, 3, overlayBorderImage);
     overlayTempPainter.drawPixmap(6, 6, overlayPixmap);
     overlayTempPainter.end();
     overlayTempImage = overlayTempPixmap.toImage();
@@ -331,26 +344,26 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
     {
         snapmaticPicture = picture->getPicture();
 
-        // Generating Avatar Preview
-        QPixmap avatarPixmap(960, 536);
-        QPainter snapPainter(&avatarPixmap);
-        QFont snapPainterFont;
-        snapPainterFont.setPixelSize(12);
-        snapPainter.drawImage(0, 0, snapmaticPicture);
-        snapPainter.drawImage(0, 0, avatarAreaPicture);
-        snapPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
-        snapPainter.setFont(snapPainterFont);
-        snapPainter.drawText(QRect(3, 3, 140, 60), Qt::AlignLeft | Qt::TextWordWrap, tr("Avatar Preview Mode\nPress 1 for Default View"));
-        snapPainter.end();
-        avatarPreviewImage = avatarPixmap.toImage();
+        //        // Generating Avatar Preview
+        //        QPixmap avatarPixmap(960, 536);
+        //        QPainter snapPainter(&avatarPixmap);
+        //        QFont snapPainterFont;
+        //        snapPainterFont.setPixelSize(12);
+        //        snapPainter.drawImage(0, 0, snapmaticPicture);
+        //        snapPainter.drawImage(0, 0, avatarAreaPicture);
+        //        snapPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
+        //        snapPainter.setFont(snapPainterFont);
+        //        snapPainter.drawText(QRect(3, 3, 140, 60), Qt::AlignLeft | Qt::TextWordWrap, tr("Avatar Preview Mode\nPress 1 for Default View"));
+        //        snapPainter.end();
+        //        avatarPreviewImage = avatarPixmap.toImage();
 
-        QPixmap overlayAreaPixmap(960, 536);
-        overlayAreaPixmap.fill(Qt::transparent);
-        QPainter overlayAreaPainter(&overlayAreaPixmap);
-        overlayAreaPainter.drawImage(0, 0, snapmaticPicture);
-        overlayAreaPainter.drawImage(0, 0, overlayTempImage);
-        overlayAreaPainter.end();
-        overlayAreaImage = overlayAreaPixmap.toImage();
+        //        QPixmap overlayAreaPixmap(960, 536);
+        //        overlayAreaPixmap.fill(Qt::transparent);
+        //        QPainter overlayAreaPainter(&overlayAreaPixmap);
+        //        overlayAreaPainter.drawImage(0, 0, snapmaticPicture);
+        //        overlayAreaPainter.drawImage(0, 0, overlayTempImage);
+        //        overlayAreaPainter.end();
+        //        overlayAreaImage = overlayAreaPixmap.toImage();
 
         renderPicture();
         ui->cmdExport->setEnabled(true);
@@ -442,12 +455,35 @@ void PictureDialog::renderPicture()
 {
     if (!previewmode)
     {
-        ui->labPicture->setPixmap(QPixmap::fromImage(overlayAreaImage));
-
+        if (overlayenabled)
+        {
+            QPixmap overlayAreaPixmap(960, 536);
+            overlayAreaPixmap.fill(Qt::transparent);
+            QPainter overlayAreaPainter(&overlayAreaPixmap);
+            overlayAreaPainter.drawImage(0, 0, snapmaticPicture);
+            overlayAreaPainter.drawImage(0, 0, overlayTempImage);
+            overlayAreaPainter.end();
+            ui->labPicture->setPixmap(overlayAreaPixmap);
+        }
+        else
+        {
+            ui->labPicture->setPixmap(QPixmap::fromImage(snapmaticPicture));
+        }
     }
     else
     {
-        ui->labPicture->setPixmap(QPixmap::fromImage(avatarPreviewImage));
+        // Generating Avatar Preview
+        QPixmap avatarPixmap(960, 536);
+        QPainter snapPainter(&avatarPixmap);
+        QFont snapPainterFont;
+        snapPainterFont.setPixelSize(12);
+        snapPainter.drawImage(0, 0, snapmaticPicture);
+        snapPainter.drawImage(0, 0, avatarAreaPicture);
+        snapPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
+        snapPainter.setFont(snapPainterFont);
+        snapPainter.drawText(QRect(3, 3, 140, 60), Qt::AlignLeft | Qt::TextWordWrap, tr("Avatar Preview Mode\nPress 1 for Default View"));
+        snapPainter.end();
+        ui->labPicture->setPixmap(avatarPixmap);
     }
 }
 
