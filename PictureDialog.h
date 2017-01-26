@@ -65,6 +65,7 @@ private slots:
     void exportCustomContextMenuRequestedPrivate(const QPoint &pos, bool fullscreen);
     void nextPictureRequestedSlot();
     void previousPictureRequestedSlot();
+    void renderOverlayPicture();
     void renderPicture();
 
 signals:
@@ -89,6 +90,8 @@ private:
     QImage avatarPreviewImage;
     QImage avatarAreaPicture;
     QImage snapmaticPicture;
+    QImage overlayTempImage;
+    QImage overlayAreaImage;
     QString jsonDrawString;
     QString windowTitleStr;
     QStringList plyrsList;

@@ -88,6 +88,10 @@ PictureDialog::PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, Q
     avatarLocY = 66;
     avatarSize = 470;
 
+    // Overlay area
+    overlayAreaImage = QImage();
+    renderOverlayPicture();
+
     // Export menu
     exportMenu = new QMenu(this);
     jpegExportAction = exportMenu->addAction(tr("Export as &JPG picture..."), this, SLOT(exportSnapmaticPicture()));
@@ -211,7 +215,7 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                 ui->cmdExport->click();
                 returnValue = true;
                 break;
-            case Qt::Key_A:
+            case Qt::Key_1:
                 if (previewmode)
                 {
                     previewmode = false;
@@ -270,6 +274,47 @@ void PictureDialog::dialogPreviousPictureRequested()
     emit previousPictureRequested();
 }
 
+void PictureDialog::renderOverlayPicture()
+{
+    // Generating Overlay Preview
+    QRect preferedRect = QRect(0, 0, 200, 160);
+    QString overlayText = tr("1 - Avatar Preview Mode\n2 - Toggle Overlay\nArrow Keys - Navigate");
+    QPixmap overlayPixmap(1, 1);
+    overlayPixmap.fill(Qt::transparent);
+
+    QPainter overlayPainter(&overlayPixmap);
+    QFont overlayPainterFont;
+    overlayPainterFont.setPixelSize(12);
+    overlayPainter.setFont(overlayPainterFont);
+    QRect overlaySpace = overlayPainter.boundingRect(preferedRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap, overlayText);
+    overlayPainter.end();
+
+    int hOverlay = Qt::AlignTop;
+    if (overlaySpace.height() < 74)
+    {
+        hOverlay = Qt::AlignVCenter;
+        preferedRect.setHeight(71);
+        overlaySpace.setHeight(74);
+    }
+
+    overlayPixmap = overlayPixmap.scaled(overlaySpace.size());
+    overlayPainter.begin(&overlayPixmap);
+    overlayPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
+    overlayPainter.setFont(overlayPainterFont);
+    overlayPainter.drawText(preferedRect, Qt::AlignLeft | hOverlay | Qt::TextDontClip | Qt::TextWordWrap, overlayText);
+    overlayPainter.end();
+
+    if (overlaySpace.width() < 194) overlaySpace.setWidth(194);
+
+    QPixmap overlayTempPixmap(960, 536);
+    overlayTempPixmap.fill(Qt::transparent);
+    QPainter overlayTempPainter(&overlayTempPixmap);
+    overlayTempPainter.drawImage(3, 3, QImage(":/img/textoverlay.png").scaled(overlaySpace.width() + 6, overlaySpace.height() + 6, Qt::IgnoreAspectRatio, Qt::FastTransformation));
+    overlayTempPainter.drawPixmap(6, 6, overlayPixmap);
+    overlayTempPainter.end();
+    overlayTempImage = overlayTempPixmap.toImage();
+}
+
 void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString picturePath, bool readOk, bool _indexed, int _index)
 {
     snapmaticPicture = QImage();
@@ -287,13 +332,25 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
         snapmaticPicture = picture->getPicture();
 
         // Generating Avatar Preview
-        QPixmap finalPixmap(960, 536);
-        QPainter snapPainter(&finalPixmap);
+        QPixmap avatarPixmap(960, 536);
+        QPainter snapPainter(&avatarPixmap);
+        QFont snapPainterFont;
+        snapPainterFont.setPixelSize(12);
         snapPainter.drawImage(0, 0, snapmaticPicture);
         snapPainter.drawImage(0, 0, avatarAreaPicture);
         snapPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
-        snapPainter.drawStaticText(3, 3, tr("Avatar Preview Mode<br>Press A for Default View"));
-        avatarPreviewImage = finalPixmap.toImage();
+        snapPainter.setFont(snapPainterFont);
+        snapPainter.drawText(QRect(3, 3, 140, 60), Qt::AlignLeft | Qt::TextWordWrap, tr("Avatar Preview Mode\nPress 1 for Default View"));
+        snapPainter.end();
+        avatarPreviewImage = avatarPixmap.toImage();
+
+        QPixmap overlayAreaPixmap(960, 536);
+        overlayAreaPixmap.fill(Qt::transparent);
+        QPainter overlayAreaPainter(&overlayAreaPixmap);
+        overlayAreaPainter.drawImage(0, 0, snapmaticPicture);
+        overlayAreaPainter.drawImage(0, 0, overlayTempImage);
+        overlayAreaPainter.end();
+        overlayAreaImage = overlayAreaPixmap.toImage();
 
         renderPicture();
         ui->cmdExport->setEnabled(true);
@@ -385,7 +442,8 @@ void PictureDialog::renderPicture()
 {
     if (!previewmode)
     {
-        ui->labPicture->setPixmap(QPixmap::fromImage(snapmaticPicture));
+        ui->labPicture->setPixmap(QPixmap::fromImage(overlayAreaImage));
+
     }
     else
     {
