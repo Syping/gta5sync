@@ -385,45 +385,44 @@ Pictures and Savegames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="285"/>
-        <location filename="../PictureDialog.cpp" line="368"/>
+        <location filename="../PictureDialog.cpp" line="280"/>
+        <source>Key 1 - Avatar Preview Mode
+Key 2 - Toggle Overlay
+Arrow Keys - Navigate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="340"/>
+        <location filename="../PictureDialog.cpp" line="419"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Просмотрщик фотографий Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="285"/>
-        <location filename="../PictureDialog.cpp" line="368"/>
+        <location filename="../PictureDialog.cpp" line="340"/>
+        <location filename="../PictureDialog.cpp" line="419"/>
         <source>Failed at %1</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="301"/>
+        <location filename="../PictureDialog.cpp" line="484"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="313"/>
-        <source>1 - Avatar Preview Mode
-2 - Toggle Overlay
-Arrow Keys - Navigate</source>
-        <comment>// L is for Left and R is for Right, Left Arrow Right Arrow</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../PictureDialog.cpp" line="357"/>
-        <location filename="../PictureDialog.cpp" line="367"/>
+        <location filename="../PictureDialog.cpp" line="408"/>
+        <location filename="../PictureDialog.cpp" line="418"/>
         <source>No player</source>
         <translation>Игроков нет</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="360"/>
-        <location filename="../PictureDialog.cpp" line="367"/>
+        <location filename="../PictureDialog.cpp" line="411"/>
+        <location filename="../PictureDialog.cpp" line="418"/>
         <source>No crew</source>
         <translation>Без группы</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="367"/>
+        <location filename="../PictureDialog.cpp" line="418"/>
         <source>Unknown Location</source>
         <translation type="unfinished"></translation>
     </message>

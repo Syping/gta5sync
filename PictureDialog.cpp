@@ -277,7 +277,7 @@ void PictureDialog::renderOverlayPicture()
 {
     // Generating Overlay Preview
     QRect preferedRect = QRect(0, 0, 200, 160);
-    QString overlayText = tr("1 - Avatar Preview Mode\n2 - Toggle Overlay\nArrow Keys - Navigate");
+    QString overlayText = tr("Key 1 - Avatar Preview Mode\nKey 2 - Toggle Overlay\nArrow Keys - Navigate");
     QPixmap overlayPixmap(1, 1);
     overlayPixmap.fill(Qt::transparent);
 
@@ -319,11 +319,11 @@ void PictureDialog::renderOverlayPicture()
     QPixmap overlayBorderImage(overlaySpace.width(), overlaySpace.height());
     overlayBorderImage.fill(QColor(15, 15, 15, 162));
 
-    QPixmap overlayTempPixmap(960, 536);
+    QPixmap overlayTempPixmap(overlaySpace.size());
     overlayTempPixmap.fill(Qt::transparent);
     QPainter overlayTempPainter(&overlayTempPixmap);
-    overlayTempPainter.drawPixmap(3, 3, overlayBorderImage);
-    overlayTempPainter.drawPixmap(6, 6, overlayPixmap);
+    overlayTempPainter.drawPixmap(0, 0, overlayBorderImage);
+    overlayTempPainter.drawPixmap(3, 3, overlayPixmap);
     overlayTempPainter.end();
     overlayTempImage = overlayTempPixmap.toImage();
 }
@@ -461,7 +461,7 @@ void PictureDialog::renderPicture()
             overlayAreaPixmap.fill(Qt::transparent);
             QPainter overlayAreaPainter(&overlayAreaPixmap);
             overlayAreaPainter.drawImage(0, 0, snapmaticPicture);
-            overlayAreaPainter.drawImage(0, 0, overlayTempImage);
+            overlayAreaPainter.drawImage(3, 3, overlayTempImage);
             overlayAreaPainter.end();
             ui->labPicture->setPixmap(overlayAreaPixmap);
         }

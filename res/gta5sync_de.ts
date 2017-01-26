@@ -531,31 +531,39 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation>Exportiere als &amp;GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="285"/>
-        <location filename="../PictureDialog.cpp" line="368"/>
+        <location filename="../PictureDialog.cpp" line="280"/>
+        <source>Key 1 - Avatar Preview Mode
+Key 2 - Toggle Overlay
+Arrow Keys - Navigate</source>
+        <translation>Taste 1 - Avatar Vorschaumodus
+Taste 2 - Overlay umschalten
+Pfeiltasten - Navigieren</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="340"/>
+        <location filename="../PictureDialog.cpp" line="419"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Snapmatic Bildansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="285"/>
-        <location filename="../PictureDialog.cpp" line="368"/>
+        <location filename="../PictureDialog.cpp" line="340"/>
+        <location filename="../PictureDialog.cpp" line="419"/>
         <source>Failed at %1</source>
         <translation>Fehlgeschlagen bei %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="301"/>
+        <location filename="../PictureDialog.cpp" line="484"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Avatar Vorschaumodus
 Drücke 1 für Standardmodus</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="313"/>
         <source>1 - Avatar Preview Mode
 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
         <comment>// L is for Left and R is for Right, Left Arrow Right Arrow</comment>
-        <translation>1 - Avatar Vorschaumodus
+        <translation type="vanished">1 - Avatar Vorschaumodus
 2 - Overlay umschalten
 Pfeiltasten - Navigieren</translation>
     </message>
@@ -581,19 +589,19 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Avatar Vorschaumodus&lt;br&gt;Drücke A für Standardansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="357"/>
-        <location filename="../PictureDialog.cpp" line="367"/>
+        <location filename="../PictureDialog.cpp" line="408"/>
+        <location filename="../PictureDialog.cpp" line="418"/>
         <source>No player</source>
         <translation>Keine Spieler</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="360"/>
-        <location filename="../PictureDialog.cpp" line="367"/>
+        <location filename="../PictureDialog.cpp" line="411"/>
+        <location filename="../PictureDialog.cpp" line="418"/>
         <source>No crew</source>
         <translation>Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="367"/>
+        <location filename="../PictureDialog.cpp" line="418"/>
         <source>Unknown Location</source>
         <translation>Unbekannter Standort</translation>
     </message>
