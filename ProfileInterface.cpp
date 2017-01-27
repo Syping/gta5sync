@@ -363,7 +363,8 @@ fileDialogPreOpen:
     fileDialog.setLabelText(QFileDialog::Accept, tr("Import"));
 
     QStringList filters;
-    filters << tr("All profile files (SGTA* PGTA*)");
+    filters << tr("All profile files (*.g5e SGTA* PGTA*)");
+    filters << tr("GTA V Export (*.g5e)");
     filters << tr("Savegames files (SGTA*)");
     filters << tr("Snapmatic pictures (PGTA*)");
     filters << tr("All files (**)");
@@ -422,7 +423,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
     QString selectedFileName = QFileInfo(selectedFile).fileName();
     if (QFile::exists(selectedFile))
     {
-        if (selectedFileName.left(4) == "PGTA")
+        if (selectedFileName.left(4) == "PGTA" || selectedFileName.right(4) == ".g5e")
         {
             SnapmaticPicture *picture = new SnapmaticPicture(selectedFile);
             if (picture->readingPicture())
@@ -493,7 +494,13 @@ bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, QString
 {
     QFileInfo picFileInfo(picPath);
     QString picFileName = picFileInfo.fileName();
+    qDebug() << picFileName;
     QString adjustedFileName = picFileName;
+    if (adjustedFileName.right(4) == ".g5e")
+    {
+        adjustedFileName = picture->getPictureFileName();
+        qDebug() << adjustedFileName;
+    }
     if (adjustedFileName.right(7) == ".hidden") // for the hidden file system
     {
         adjustedFileName.remove(adjustedFileName.length() - 7, 7);
@@ -502,9 +509,9 @@ bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, QString
     {
         adjustedFileName.remove(adjustedFileName.length() - 4, 4);
     }
-    if (picFileName.left(4) != "PGTA")
+    if (picFileName.left(4) != "PGTA" && picFileName.right(4) != ".g5e")
     {
-        if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to import the Snapmatic picture, file not begin with PGTA"));
+        if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to import the Snapmatic picture, file not begin with PGTA or end with .g5e"));
         return false;
     }
     else if (QFile::exists(profileFolder + QDir::separator() + adjustedFileName) || QFile::exists(profileFolder + QDir::separator() + adjustedFileName + ".hidden"))
@@ -512,7 +519,7 @@ bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, QString
         if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to import the Snapmatic picture, the picture is already in the game"));
         return false;
     }
-    else if (QFile::copy(picPath, profileFolder + QDir::separator() + adjustedFileName))
+    else if (picture->exportPicture(profileFolder + QDir::separator() + adjustedFileName, false))
     {
         picture->setPicFileName(profileFolder + QDir::separator() + adjustedFileName);
         pictureLoaded_f(picture, profileFolder + QDir::separator() + adjustedFileName, true);

@@ -114,7 +114,7 @@ fileDialogPreSave:
                 {
                     selectedFile.remove(".rem");
                 }
-                bool isCopied = QFile::copy(picPath, selectedFile);
+                bool isCopied = picture->exportPicture(selectedFile, false);
                 if (!isCopied)
                 {
                     QMessageBox::warning(parent, PictureDialog::tr("Export as GTA Snapmatic"), PictureDialog::tr("Failed to export current Snapmatic picture"));

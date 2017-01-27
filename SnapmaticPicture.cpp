@@ -86,9 +86,72 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
         delete picFile;
         return false;
     }
-    rawPicContent = picFile->read(snapmaticFileMaxSize);
-    picFile->close();
-    delete picFile;
+
+    if (picFileName.right(4) != ".g5e")
+    {
+        rawPicContent = picFile->read(snapmaticFileMaxSize);
+        picFile->close();
+        delete picFile;
+    }
+    else
+    {
+        QByteArray g5eContent = picFile->read(snapmaticFileMaxSize + 1024);
+        picFile->close();
+        delete picFile;
+
+        // Reading g5e Content
+        g5eContent.remove(0, 1);
+        if (g5eContent.left(3) == "G5E")
+        {
+            g5eContent.remove(0, 3);
+            if (g5eContent.left(2).toHex() == "1000")
+            {
+                g5eContent.remove(0, 2);
+                if (g5eContent.left(3) == "LEN")
+                {
+                    g5eContent.remove(0, 3);
+                    int fileNameLength = g5eContent.left(1).toHex().toInt();
+                    g5eContent.remove(0, 1);
+                    if (g5eContent.left(3) == "FIL")
+                    {
+                        g5eContent.remove(0, 3);
+                        picFileName = g5eContent.left(fileNameLength);
+                        g5eContent.remove(0, fileNameLength);
+                        if (g5eContent.left(3) == "COM")
+                        {
+                            g5eContent.remove(0, 3);
+                            rawPicContent = qUncompress(g5eContent);
+                        }
+                        else
+                        {
+                            lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",4,G5E_FORMATERROR";
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",3,G5E_FORMATERROR";
+                        return false;
+                    }
+                }
+                else
+                {
+                    lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",2,G5E_FORMATERROR";
+                    return false;
+                }
+            }
+            else
+            {
+                lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",1,G5E_NOTCOMPATIBLE";
+                return false;
+            }
+        }
+        else
+        {
+            lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",1,G5E_FORMATERROR";
+            return false;
+        }
+    }
 
     picStream = new QBuffer(&rawPicContent);
     picStream->open(QIODevice::ReadWrite);
