@@ -394,41 +394,56 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
     <message>
         <location filename="../PictureCopy.cpp" line="58"/>
+        <source>GTA V Export (*.g5e)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureCopy.cpp" line="59"/>
+        <source>GTA V Raw Export (*.auto)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureCopy.cpp" line="60"/>
         <source>Snapmatic pictures (PGTA*)</source>
         <translation>Fichiers GTA Snapmatic (PGTA*)</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="59"/>
-        <source>All files (**)</source>
-        <translation>Tous les fichiers (**)</translation>
+        <location filename="../PictureCopy.cpp" line="125"/>
+        <source>Exported Snapmatic to &quot;%1&quot; because of using the .auto extension.</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="78"/>
-        <location filename="../PictureCopy.cpp" line="82"/>
-        <location filename="../PictureCopy.cpp" line="95"/>
-        <location filename="../PictureCopy.cpp" line="101"/>
+        <source>All files (**)</source>
+        <translation type="vanished">Tous les fichiers (**)</translation>
+    </message>
+    <message>
+        <location filename="../PictureCopy.cpp" line="80"/>
+        <location filename="../PictureCopy.cpp" line="84"/>
+        <location filename="../PictureCopy.cpp" line="99"/>
+        <location filename="../PictureCopy.cpp" line="120"/>
+        <location filename="../PictureCopy.cpp" line="125"/>
+        <location filename="../PictureCopy.cpp" line="131"/>
         <source>Export as GTA Snapmatic</source>
         <translation>Exporter comme GTA Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="78"/>
+        <location filename="../PictureCopy.cpp" line="80"/>
         <location filename="../PictureExport.cpp" line="142"/>
         <source>Overwrite %1 with current Snapmatic picture?</source>
         <translation>%1 existe déjà. Vous-vous le remplacer ?</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="82"/>
+        <location filename="../PictureCopy.cpp" line="84"/>
         <location filename="../PictureExport.cpp" line="146"/>
         <source>Failed to overwrite %1 with current Snapmatic picture</source>
         <translation>Echec du remplacement de %1</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="95"/>
         <source>Failed to copy current Snapmatic picture</source>
-        <translation>Echec de la copie</translation>
+        <translation type="vanished">Echec de la copie</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="101"/>
+        <location filename="../PictureCopy.cpp" line="131"/>
         <location filename="../PictureExport.cpp" line="186"/>
         <source>No valid file is selected</source>
         <translation>Fichier invalide</translation>
@@ -444,26 +459,26 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <translation>Exporter comme &amp;GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="280"/>
+        <location filename="../PictureDialog.cpp" line="292"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="340"/>
-        <location filename="../PictureDialog.cpp" line="419"/>
+        <location filename="../PictureDialog.cpp" line="352"/>
+        <location filename="../PictureDialog.cpp" line="409"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Visionneuse de photo Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="340"/>
-        <location filename="../PictureDialog.cpp" line="419"/>
+        <location filename="../PictureDialog.cpp" line="352"/>
+        <location filename="../PictureDialog.cpp" line="409"/>
         <source>Failed at %1</source>
         <translation>Echec de %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="484"/>
+        <location filename="../PictureDialog.cpp" line="474"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation type="unfinished"></translation>
@@ -473,19 +488,19 @@ Press 1 for Default View</source>
         <translation type="vanished">Aperçu avatar&lt;br&gt;Appuyer sur A pour la vue par défaut</translation>
     </message>
     <message>
+        <location filename="../PictureDialog.cpp" line="398"/>
         <location filename="../PictureDialog.cpp" line="408"/>
-        <location filename="../PictureDialog.cpp" line="418"/>
         <source>No player</source>
         <translation>Aucun joueur</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="411"/>
-        <location filename="../PictureDialog.cpp" line="418"/>
+        <location filename="../PictureDialog.cpp" line="401"/>
+        <location filename="../PictureDialog.cpp" line="408"/>
         <source>No crew</source>
         <translation>Aucun crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="418"/>
+        <location filename="../PictureDialog.cpp" line="408"/>
         <source>Unknown Location</source>
         <translation>Emplacement inconnu</translation>
     </message>
@@ -518,6 +533,8 @@ Press 1 for Default View</source>
         <translation>Exporter comme image JPG</translation>
     </message>
     <message>
+        <location filename="../PictureCopy.cpp" line="99"/>
+        <location filename="../PictureCopy.cpp" line="120"/>
         <location filename="../PictureExport.cpp" line="180"/>
         <source>Failed to export current Snapmatic picture</source>
         <translation>Échec de l&apos;export de la photo Snapmatic</translation>

@@ -385,44 +385,44 @@ Pictures and Savegames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="280"/>
+        <location filename="../PictureDialog.cpp" line="292"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="340"/>
-        <location filename="../PictureDialog.cpp" line="419"/>
+        <location filename="../PictureDialog.cpp" line="352"/>
+        <location filename="../PictureDialog.cpp" line="409"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Просмотрщик фотографий Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="340"/>
-        <location filename="../PictureDialog.cpp" line="419"/>
+        <location filename="../PictureDialog.cpp" line="352"/>
+        <location filename="../PictureDialog.cpp" line="409"/>
         <source>Failed at %1</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="484"/>
+        <location filename="../PictureDialog.cpp" line="474"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../PictureDialog.cpp" line="398"/>
         <location filename="../PictureDialog.cpp" line="408"/>
-        <location filename="../PictureDialog.cpp" line="418"/>
         <source>No player</source>
         <translation>Игроков нет</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="411"/>
-        <location filename="../PictureDialog.cpp" line="418"/>
+        <location filename="../PictureDialog.cpp" line="401"/>
+        <location filename="../PictureDialog.cpp" line="408"/>
         <source>No crew</source>
         <translation>Без группы</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="418"/>
+        <location filename="../PictureDialog.cpp" line="408"/>
         <source>Unknown Location</source>
         <translation type="unfinished"></translation>
     </message>
@@ -450,32 +450,41 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="78"/>
+        <location filename="../PictureCopy.cpp" line="80"/>
         <location filename="../PictureExport.cpp" line="142"/>
         <source>Overwrite %1 with current Snapmatic picture?</source>
         <translation>Перезаписать %1 текущей картинкой Snapmatic?</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="78"/>
-        <location filename="../PictureCopy.cpp" line="82"/>
-        <location filename="../PictureCopy.cpp" line="95"/>
-        <location filename="../PictureCopy.cpp" line="101"/>
+        <location filename="../PictureCopy.cpp" line="80"/>
+        <location filename="../PictureCopy.cpp" line="84"/>
+        <location filename="../PictureCopy.cpp" line="99"/>
+        <location filename="../PictureCopy.cpp" line="120"/>
+        <location filename="../PictureCopy.cpp" line="125"/>
+        <location filename="../PictureCopy.cpp" line="131"/>
         <source>Export as GTA Snapmatic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="82"/>
+        <location filename="../PictureCopy.cpp" line="84"/>
         <location filename="../PictureExport.cpp" line="146"/>
         <source>Failed to overwrite %1 with current Snapmatic picture</source>
         <translation>Не удалось перезаписать %1 картинкой Snapmatic</translation>
     </message>
     <message>
+        <location filename="../PictureCopy.cpp" line="99"/>
+        <location filename="../PictureCopy.cpp" line="120"/>
         <location filename="../PictureExport.cpp" line="180"/>
         <source>Failed to export current Snapmatic picture</source>
         <translation>Не удалось экспортировать текущую картинку Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="101"/>
+        <location filename="../PictureCopy.cpp" line="125"/>
+        <source>Exported Snapmatic to &quot;%1&quot; because of using the .auto extension.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureCopy.cpp" line="131"/>
         <location filename="../PictureExport.cpp" line="186"/>
         <source>No valid file is selected</source>
         <translation>Выбранный файл неверен</translation>
@@ -491,18 +500,26 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../PictureCopy.cpp" line="58"/>
+        <source>GTA V Export (*.g5e)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureCopy.cpp" line="59"/>
+        <source>GTA V Raw Export (*.auto)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureCopy.cpp" line="60"/>
         <source>Snapmatic pictures (PGTA*)</source>
         <translation>Картинки Snapmatic (PGTA*)</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="59"/>
         <source>All files (**)</source>
-        <translation>Все файлы (**)</translation>
+        <translation type="vanished">Все файлы (**)</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="95"/>
         <source>Failed to copy current Snapmatic picture</source>
-        <translation>Не удалось скопировать текущую картинку Snapmatic</translation>
+        <translation type="vanished">Не удалось скопировать текущую картинку Snapmatic</translation>
     </message>
 </context>
 <context>

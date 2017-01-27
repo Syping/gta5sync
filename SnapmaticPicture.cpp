@@ -23,6 +23,7 @@
 #include <QStringList>
 #include <QVariantMap>
 #include <QJsonArray>
+#include <QFileInfo>
 #include <QString>
 #include <QBuffer>
 #include <QDebug>
@@ -270,7 +271,7 @@ void SnapmaticPicture::parseSnapmaticExportAndSortString()
             cmpPicTitl.replace("?", "");
             cmpPicTitl.replace(".", "");
             sortStr = yearStr + monthStr + dayStr + timeStr;
-            picExportFileName = sortStr + "_" + cmpPicTitl +  ".jpg";
+            picExportFileName = sortStr + "_" + cmpPicTitl;
         }
     }
 }
@@ -342,14 +343,44 @@ bool SnapmaticPicture::setPicture(const QImage &picture)
     return false;
 }
 
-bool SnapmaticPicture::exportPicture(const QString &fileName)
+bool SnapmaticPicture::exportPicture(const QString &fileName, bool customFormat)
 {
     QFile *picFile = new QFile(fileName);
     if (picFile->open(QIODevice::WriteOnly))
     {
-        picFile->write(rawPicContent);
-        picFile->close();
-        picFile->deleteLater();
+        if (!customFormat)
+        {
+            // Classic straight export
+            picFile->write(rawPicContent);
+            picFile->close();
+            picFile->deleteLater();
+        }
+        else
+        {
+            // Modern compressed export
+            QString stockFileName = QFileInfo(picFileName).fileName();
+            QByteArray stockFileNameUTF8 = stockFileName.toUtf8();
+            QByteArray numberLength = QByteArray::number(stockFileNameUTF8.length());
+            if (numberLength.length() == 1)
+            {
+                numberLength.insert(0, "0");
+            }
+            else if (numberLength.length() != 2)
+            {
+                numberLength == "00";
+            }
+            picFile->write(QByteArray::fromHex("00")); // First Null Byte
+            picFile->write("G5E"); // GTA 5 Export
+            picFile->write(QByteArray::fromHex("1000")); // 2 byte GTA 5 Export Version
+            picFile->write("LEN"); // Before Length
+            picFile->write(QByteArray::fromHex(numberLength)); // Length in HEX before Compressed
+            picFile->write("FIL"); // Before File Name
+            picFile->write(stockFileNameUTF8); // File Name
+            picFile->write("COM"); // Before Compressed
+            picFile->write(qCompress(rawPicContent, 9)); // Compressed Snapmatic
+            picFile->close();
+            picFile->deleteLater();
+        }
         return true;
     }
     else
