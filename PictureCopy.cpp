@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
+#include "config.h"
 #include "PictureCopy.h"
 #include "PictureDialog.h"
 #include "StandardPaths.h"
@@ -31,7 +32,7 @@ PictureCopy::PictureCopy()
 
 void PictureCopy::copyPicture(QWidget *parent, QString picPath, SnapmaticPicture *picture)
 {
-    QSettings settings("Syping", "gta5sync");
+    QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
     settings.beginGroup("FileDialogs");
     settings.beginGroup("PictureCopy");
 
