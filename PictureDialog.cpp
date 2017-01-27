@@ -226,6 +226,18 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                     renderPicture();
                 }
                 break;
+            case Qt::Key_2:
+                if (overlayenabled)
+                {
+                    overlayenabled = false;
+                    if (!previewmode) renderPicture();
+                }
+                else
+                {
+                    overlayenabled = true;
+                    if (!previewmode) renderPicture();
+                }
+                break;
 #if QT_VERSION >= 0x050300
             case Qt::Key_Exit:
                 ui->cmdClose->click();
@@ -343,28 +355,6 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
     if (picture->isPicOk())
     {
         snapmaticPicture = picture->getPicture();
-
-        //        // Generating Avatar Preview
-        //        QPixmap avatarPixmap(960, 536);
-        //        QPainter snapPainter(&avatarPixmap);
-        //        QFont snapPainterFont;
-        //        snapPainterFont.setPixelSize(12);
-        //        snapPainter.drawImage(0, 0, snapmaticPicture);
-        //        snapPainter.drawImage(0, 0, avatarAreaPicture);
-        //        snapPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
-        //        snapPainter.setFont(snapPainterFont);
-        //        snapPainter.drawText(QRect(3, 3, 140, 60), Qt::AlignLeft | Qt::TextWordWrap, tr("Avatar Preview Mode\nPress 1 for Default View"));
-        //        snapPainter.end();
-        //        avatarPreviewImage = avatarPixmap.toImage();
-
-        //        QPixmap overlayAreaPixmap(960, 536);
-        //        overlayAreaPixmap.fill(Qt::transparent);
-        //        QPainter overlayAreaPainter(&overlayAreaPixmap);
-        //        overlayAreaPainter.drawImage(0, 0, snapmaticPicture);
-        //        overlayAreaPainter.drawImage(0, 0, overlayTempImage);
-        //        overlayAreaPainter.end();
-        //        overlayAreaImage = overlayAreaPixmap.toImage();
-
         renderPicture();
         ui->cmdExport->setEnabled(true);
     }
