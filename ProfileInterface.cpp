@@ -494,12 +494,10 @@ bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, QString
 {
     QFileInfo picFileInfo(picPath);
     QString picFileName = picFileInfo.fileName();
-    qDebug() << picFileName;
     QString adjustedFileName = picFileName;
     if (adjustedFileName.right(4) == ".g5e")
     {
         adjustedFileName = picture->getPictureFileName();
-        qDebug() << adjustedFileName;
     }
     if (adjustedFileName.right(7) == ".hidden") // for the hidden file system
     {
