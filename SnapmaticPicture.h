@@ -95,6 +95,7 @@ private:
     bool picOk;
     bool writeEnabled;
     bool cacheEnabled;
+    int jpegRawContentSize;
 
     // PARSE INT
     int snapmaticHeaderLength;

@@ -50,6 +50,7 @@ SnapmaticPicture::SnapmaticPicture(const QString &fileName, QObject *parent) : Q
 
     // INIT PIC
     cachePicture = QImage(0, 0, QImage::Format_RGB32);
+    jpegRawContentSize = 0;
     picExportFileName = "";
     pictureStr = "";
     lastStep = "";
@@ -200,6 +201,11 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
         return false;
     }
     QByteArray jpegRawContent = picStream->read(jpegPicStreamLength);
+    if (jpegRawContent.contains(QByteArray::fromHex("FFD9")))
+    {
+        jpegRawContentSize = jpegRawContent.indexOf(QByteArray::fromHex("FFD9")) + 2;
+        jpegRawContent = jpegRawContent.left(jpegRawContentSize);
+    }
     if (cacheEnabled) picOk = cachePicture.loadFromData(jpegRawContent, "JPEG");
     if (!cacheEnabled)
     {
