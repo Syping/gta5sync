@@ -203,8 +203,14 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     QByteArray jpegRawContent = picStream->read(jpegPicStreamLength);
     if (jpegRawContent.contains(QByteArray::fromHex("FFD9")))
     {
-        jpegRawContentSize = jpegRawContent.indexOf(QByteArray::fromHex("FFD9")) + 2;
+        int jpegRawContentSizeT = jpegRawContent.indexOf(QByteArray::fromHex("FFD9")) + 2;
+        jpegRawContentSize = jpegRawContentSizeT;
+        if (jpegRawContent.contains(QString("LvlEoi").toUtf8()))
+        {
+            jpegRawContentSizeT = jpegRawContent.indexOf(QString("LvlEoi").toUtf8());
+        }
         jpegRawContent = jpegRawContent.left(jpegRawContentSize);
+        jpegRawContentSize = jpegRawContentSizeT;
     }
     if (cacheEnabled) picOk = cachePicture.loadFromData(jpegRawContent, "JPEG");
     if (!cacheEnabled)
@@ -358,52 +364,68 @@ bool SnapmaticPicture::readingPictureFromFile(const QString &fileName, bool writ
     }
 }
 
-bool SnapmaticPicture::setPicture(const QImage &picture)
+bool SnapmaticPicture::setPicture(const QImage &picture) // dirty method
 {
     if (writeEnabled)
     {
         QByteArray picByteArray;
+        int comLvl = 100;
+        bool saveSuccess = false;
+        while (comLvl != 0 && !saveSuccess)
+        {
+            QByteArray picByteArrayT;
+            QBuffer picStreamT(&picByteArrayT);
+            picStreamT.open(QIODevice::WriteOnly);
+            saveSuccess = picture.save(&picStreamT, "JPEG", comLvl);
+            picStreamT.close();
+            if (saveSuccess)
+            {
+                if (picByteArrayT.length() > jpegRawContentSize)
+                {
+                    comLvl--;
+                    saveSuccess = false;
+                }
+                else
+                {
+                    picByteArray = picByteArrayT;
+                }
+            }
+        }
+        if (saveSuccess) return setPicture(picByteArray);
+    }
+    return false;
+}
+
+bool SnapmaticPicture::setPicture(const QByteArray &picByteArray_) // clean method
+{
+    if (writeEnabled)
+    {
+        bool lvlEoi = false;
+        QByteArray picByteArray = picByteArray_;
         QBuffer snapmaticStream(&rawPicContent);
         snapmaticStream.open(QIODevice::ReadWrite);
-        if (snapmaticStream.seek(jpegStreamEditorBegin))
+        if (!snapmaticStream.seek(jpegStreamEditorBegin)) return false;
+        if (picByteArray.length() > jpegPicStreamLength) return false;
+        if (picByteArray.length() < jpegRawContentSize && jpegRawContentSize + 6 < jpegPicStreamLength)
         {
-            bool saveSuccess;
-            Q_UNUSED(saveSuccess)
-            QByteArray picByteArray1;
-            QBuffer picStream1(&picByteArray1);
-            picStream1.open(QIODevice::WriteOnly);
-            saveSuccess = picture.save(&picStream1, "JPEG", 95);
-            picStream1.close();
-
-            if (picByteArray1.length() > jpegPicStreamLength)
-            {
-                QByteArray picByteArray2;
-                QBuffer picStream2(&picByteArray2);
-                picStream2.open(QIODevice::WriteOnly);
-                saveSuccess = picture.save(&picStream2, "JPEG", 80);
-                picStream2.close();
-                if (picByteArray2.length() > jpegPicStreamLength)
-                {
-                    snapmaticStream.close();
-                    return false;
-                }
-                picByteArray = picByteArray2;
-            }
-            else
-            {
-                picByteArray = picByteArray1;
-            }
+            lvlEoi = true;
         }
         while (picByteArray.length() != jpegPicStreamLength)
         {
             picByteArray.append((char)0x00);
+        }
+        if (lvlEoi)
+        {
+            picByteArray.replace(jpegRawContentSize, 6, QString("LvlEoi").toUtf8());
         }
         int result = snapmaticStream.write(picByteArray);
         if (result != 0)
         {
             if (cacheEnabled)
             {
-                cachePicture = picture;
+                QImage replacedPicture;
+                replacedPicture.loadFromData(picByteArray);
+                cachePicture = replacedPicture;
             }
             return true;
         }
