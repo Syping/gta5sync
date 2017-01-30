@@ -205,9 +205,9 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     {
         int jpegRawContentSizeT = jpegRawContent.indexOf(QByteArray::fromHex("FFD9")) + 2;
         jpegRawContentSize = jpegRawContentSizeT;
-        if (jpegRawContent.contains(QString("LvlEoi").toUtf8()))
+        if (jpegRawContent.contains(QByteArray::fromHex("FF454F49")))
         {
-            jpegRawContentSizeT = jpegRawContent.indexOf(QString("LvlEoi").toUtf8());
+            jpegRawContentSizeT = jpegRawContent.indexOf(QByteArray::fromHex("FF454F49"));
         }
         jpegRawContent = jpegRawContent.left(jpegRawContentSize);
         jpegRawContentSize = jpegRawContentSizeT;
@@ -406,7 +406,7 @@ bool SnapmaticPicture::setPicture(const QByteArray &picByteArray_) // clean meth
         snapmaticStream.open(QIODevice::ReadWrite);
         if (!snapmaticStream.seek(jpegStreamEditorBegin)) return false;
         if (picByteArray.length() > jpegPicStreamLength) return false;
-        if (picByteArray.length() < jpegRawContentSize && jpegRawContentSize + 6 < jpegPicStreamLength)
+        if (picByteArray.length() < jpegRawContentSize && jpegRawContentSize + 4 < jpegPicStreamLength)
         {
             lvlEoi = true;
         }
@@ -416,7 +416,7 @@ bool SnapmaticPicture::setPicture(const QByteArray &picByteArray_) // clean meth
         }
         if (lvlEoi)
         {
-            picByteArray.replace(jpegRawContentSize, 6, QString("LvlEoi").toUtf8());
+            picByteArray.replace(jpegRawContentSize, 4, QByteArray::fromHex("FF454F49"));
         }
         int result = snapmaticStream.write(picByteArray);
         if (result != 0)
