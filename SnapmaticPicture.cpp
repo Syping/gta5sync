@@ -576,6 +576,11 @@ QImage SnapmaticPicture::getPicture()
     return QImage(0, 0, QImage::Format_RGB32);
 }
 
+int SnapmaticPicture::getContentMaxLength()
+{
+    return jpegRawContentSize;
+}
+
 bool SnapmaticPicture::isPicOk()
 {
     return picOk;
@@ -606,6 +611,10 @@ void SnapmaticPicture::parseJsonContent()
         if (locObject.contains("x")) { localSpJson.location.x = locObject["x"].toDouble(); }
         if (locObject.contains("y")) { localSpJson.location.y = locObject["y"].toDouble(); }
         if (locObject.contains("z")) { localSpJson.location.z = locObject["z"].toDouble(); }
+    }
+    if (jsonObject.contains("uid"))
+    {
+        localSpJson.uid = jsonObject["uid"].toInt();
     }
     if (jsonObject.contains("area"))
     {
@@ -676,6 +685,7 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
     locObject["z"] = newSpJson.location.z;
 
     jsonObject["loc"] = locObject;
+    jsonObject["uid"] = newSpJson.uid;
     jsonObject["area"] = newSpJson.area;
     jsonObject["crewid"] = newSpJson.crewID;
     jsonObject["creat"] = QJsonValue::fromVariant(newSpJson.createdTimestamp);

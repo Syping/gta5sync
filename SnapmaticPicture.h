@@ -32,6 +32,7 @@ struct SnapmaticProperties {
         double y;
         double z;
     };
+    int uid;
     int crewID;
     QString area;
     QStringList playersList;
@@ -63,7 +64,7 @@ public:
     QString getPictureSortStr();
     QString getPictureFileName();
     QString getExportPictureFileName();
-    QDateTime getCreatedDateTime();
+    int getContentMaxLength();
     bool setPicture(const QImage &picture);
     bool setPicture(const QByteArray &picByteArray);
     bool exportPicture(const QString &fileName, bool customFormat = false);

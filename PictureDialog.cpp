@@ -537,9 +537,9 @@ void PictureDialog::on_labPicture_mouseDoubleClicked(Qt::MouseButton button)
         PictureWidget *pictureWidget = new PictureWidget(this);
         pictureWidget->setObjectName("PictureWidget");
 #if QT_VERSION >= 0x050600
-        pictureWidget->setWindowFlags(pictureWidget->windowFlags()^Qt::FramelessWindowHint^Qt::MaximizeUsingFullscreenGeometryHint);
+        pictureWidget->setWindowFlags(pictureWidget->windowFlags()^Qt::FramelessWindowHint^Qt::WindowStaysOnTopHint^Qt::MaximizeUsingFullscreenGeometryHint);
 #else
-        pictureWidget->setWindowFlags(pictureWidget->windowFlags()^Qt::FramelessWindowHint);
+        pictureWidget->setWindowFlags(pictureWidget->windowFlags()^Qt::FramelessWindowHint^Qt::WindowStaysOnTopHint);
 #endif
         pictureWidget->setWindowTitle(this->windowTitle());
         pictureWidget->setStyleSheet("QLabel#pictureLabel{background-color: black;}");
