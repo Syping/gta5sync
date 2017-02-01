@@ -69,6 +69,7 @@ void PictureExport::exportPicture(QWidget *parent, SnapmaticPicture *picture)
     }
     QString sizeMode = settings.value("ExportSizeMode", "Default").toString();
     Qt::AspectRatioMode aspectRatio = (Qt::AspectRatioMode)settings.value("AspectRatio", Qt::KeepAspectRatio).toInt();
+    QString defaultExportFormat = settings.value("DefaultExportFormat", ".jpg").toString();
     settings.endGroup();
     // End Picture Settings
 
@@ -98,7 +99,7 @@ fileDialogPreSave:
     fileDialog.setDirectory(settings.value("Directory", StandardPaths::picturesLocation()).toString());
     fileDialog.restoreGeometry(settings.value(parent->objectName() + "+Geomtery", "").toByteArray());
 
-    QString newPictureFileName = getPictureFileName(picture);
+    QString newPictureFileName = getPictureFileName(picture) + defaultExportFormat;
     fileDialog.selectFile(newPictureFileName);
 
     if (fileDialog.exec())

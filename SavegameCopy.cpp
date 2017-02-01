@@ -45,7 +45,7 @@ fileDialogPreSave:
     fileDialog.setDefaultSuffix("");
     fileDialog.setWindowFlags(fileDialog.windowFlags()^Qt::WindowContextHelpButtonHint);
     fileDialog.setWindowTitle(SavegameWidget::tr(("Export Savegame...")));
-    fileDialog.setLabelText(QFileDialog::Accept, SavegameWidget::tr("&Export"));
+    fileDialog.setLabelText(QFileDialog::Accept, SavegameWidget::tr("Export"));
 
     QStringList filters;
     filters << SavegameWidget::tr("Savegame files (SGTA*)");

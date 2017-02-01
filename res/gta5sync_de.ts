@@ -473,7 +473,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="167"/>
-        <location filename="../PictureCopy.cpp" line="55"/>
+        <location filename="../PictureCopy.cpp" line="56"/>
         <source>&amp;Export</source>
         <translation>&amp;Exportieren</translation>
     </message>
@@ -507,7 +507,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
 &lt;span style=&quot; font-weight:600;&quot;&gt;Crew ID: &lt;/span&gt;%5</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="88"/>
+        <location filename="../PictureExport.cpp" line="89"/>
         <source>Export</source>
         <translation>Exportieren</translation>
     </message>
@@ -610,59 +610,59 @@ Drücke A für Standardansicht</translation>
         <translation type="obsolete">Exportiere Bild...</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="87"/>
+        <location filename="../PictureExport.cpp" line="88"/>
         <source>Export as JPG picture...</source>
         <translation>Exportiere als JPG Bild...</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="91"/>
+        <location filename="../PictureExport.cpp" line="92"/>
         <source>JPEG picture (*.jpg)</source>
         <translation>JPEG Bild (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="92"/>
+        <location filename="../PictureExport.cpp" line="93"/>
         <source>Portable Network Graphics (*.png)</source>
         <translation>Portable Network Graphics (*.png)</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="142"/>
-        <location filename="../PictureExport.cpp" line="146"/>
-        <location filename="../PictureExport.cpp" line="180"/>
-        <location filename="../PictureExport.cpp" line="186"/>
+        <location filename="../PictureExport.cpp" line="143"/>
+        <location filename="../PictureExport.cpp" line="147"/>
+        <location filename="../PictureExport.cpp" line="181"/>
+        <location filename="../PictureExport.cpp" line="187"/>
         <source>Export as JPG picture</source>
         <translation>Exportiere als JPG Bild</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="80"/>
-        <location filename="../PictureExport.cpp" line="142"/>
+        <location filename="../PictureCopy.cpp" line="81"/>
+        <location filename="../PictureExport.cpp" line="143"/>
         <source>Overwrite %1 with current Snapmatic picture?</source>
         <translation>Überschreibe %1 mit aktuellen Snapmatic Bild?</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="80"/>
-        <location filename="../PictureCopy.cpp" line="84"/>
-        <location filename="../PictureCopy.cpp" line="99"/>
-        <location filename="../PictureCopy.cpp" line="120"/>
-        <location filename="../PictureCopy.cpp" line="125"/>
-        <location filename="../PictureCopy.cpp" line="131"/>
+        <location filename="../PictureCopy.cpp" line="81"/>
+        <location filename="../PictureCopy.cpp" line="85"/>
+        <location filename="../PictureCopy.cpp" line="100"/>
+        <location filename="../PictureCopy.cpp" line="121"/>
+        <location filename="../PictureCopy.cpp" line="126"/>
+        <location filename="../PictureCopy.cpp" line="132"/>
         <source>Export as GTA Snapmatic</source>
         <translation>Exportiere als GTA Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="84"/>
-        <location filename="../PictureExport.cpp" line="146"/>
+        <location filename="../PictureCopy.cpp" line="85"/>
+        <location filename="../PictureExport.cpp" line="147"/>
         <source>Failed to overwrite %1 with current Snapmatic picture</source>
         <translation>Fehlgeschlagen beim Überschreiben von %1 mit aktuellen Snapmatic Bild</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="99"/>
-        <location filename="../PictureCopy.cpp" line="120"/>
-        <location filename="../PictureExport.cpp" line="180"/>
+        <location filename="../PictureCopy.cpp" line="100"/>
+        <location filename="../PictureCopy.cpp" line="121"/>
+        <location filename="../PictureExport.cpp" line="181"/>
         <source>Failed to export current Snapmatic picture</source>
         <translation>Fehlgeschlagen beim Exportieren vom aktuellen Snapmatic Bild</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="125"/>
+        <location filename="../PictureCopy.cpp" line="126"/>
         <source>Exported Snapmatic to &quot;%1&quot; because of using the .auto extension.</source>
         <translation>Snapmatic wurde wegen Benutzung der .auto Erweiterung zu &quot;%1&quot; exportiert.</translation>
     </message>
@@ -679,22 +679,22 @@ Drücke A für Standardansicht</translation>
         <translation type="obsolete">Exporti</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="54"/>
+        <location filename="../PictureCopy.cpp" line="55"/>
         <source>Export as GTA Snapmatic...</source>
         <translation>Exportiere als GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="58"/>
+        <location filename="../PictureCopy.cpp" line="59"/>
         <source>GTA V Export (*.g5e)</source>
         <translation>GTA V Export (*.g5e)</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="59"/>
+        <location filename="../PictureCopy.cpp" line="60"/>
         <source>GTA V Raw Export (*.auto)</source>
         <translation>GTA V Roher Export (*.auto)</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="60"/>
+        <location filename="../PictureCopy.cpp" line="61"/>
         <source>Snapmatic pictures (PGTA*)</source>
         <translation>Snapmatic Bilder (PGTA*)</translation>
     </message>
@@ -728,8 +728,8 @@ Drücke A für Standardansicht</translation>
         <translation type="obsolete">Beim Speichern des Bildes ist ein Fehler aufgetreten</translation>
     </message>
     <message>
-        <location filename="../PictureCopy.cpp" line="131"/>
-        <location filename="../PictureExport.cpp" line="186"/>
+        <location filename="../PictureCopy.cpp" line="132"/>
+        <location filename="../PictureExport.cpp" line="187"/>
         <source>No valid file is selected</source>
         <translation>Keine gültige Datei wurde ausgewählt</translation>
     </message>
@@ -806,11 +806,11 @@ Drücke A für Standardansicht</translation>
         <location filename="../ProfileInterface.cpp" line="454"/>
         <location filename="../ProfileInterface.cpp" line="484"/>
         <location filename="../ProfileInterface.cpp" line="489"/>
-        <location filename="../ProfileInterface.cpp" line="514"/>
-        <location filename="../ProfileInterface.cpp" line="519"/>
-        <location filename="../ProfileInterface.cpp" line="530"/>
-        <location filename="../ProfileInterface.cpp" line="567"/>
-        <location filename="../ProfileInterface.cpp" line="573"/>
+        <location filename="../ProfileInterface.cpp" line="512"/>
+        <location filename="../ProfileInterface.cpp" line="517"/>
+        <location filename="../ProfileInterface.cpp" line="528"/>
+        <location filename="../ProfileInterface.cpp" line="565"/>
+        <location filename="../ProfileInterface.cpp" line="571"/>
         <source>Import</source>
         <translation>Importieren</translation>
     </message>
@@ -863,17 +863,17 @@ Drücke A für Standardansicht</translation>
         <translation>Kann %1 nicht importieren weil das Dateiformat nicht gültig ist</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="514"/>
+        <location filename="../ProfileInterface.cpp" line="512"/>
         <source>Failed to import the Snapmatic picture, file not begin with PGTA or end with .g5e</source>
         <translation>Fehlgeschlagen beim Importieren vom Snapmatic Bild, Datei beginnt nicht mit PGTA oder endet mit .g5e</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="519"/>
+        <location filename="../ProfileInterface.cpp" line="517"/>
         <source>Failed to import the Snapmatic picture, the picture is already in the game</source>
         <translation>Fehlgeschlagen beim Importieren vom Snapmatic Bild, dieses Bild ist bereits im Spiel</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="674"/>
+        <location filename="../ProfileInterface.cpp" line="672"/>
         <source>%1Export Snapmatic pictures%2&lt;br&gt;&lt;br&gt;JPG pictures make it possible to open the picture with a Image Viewer&lt;br&gt;GTA Snapmatic make it possible to import the picture into the game&lt;br&gt;&lt;br&gt;Export as:</source>
         <translation>%1Exportiere Snapmatic Bilder%2&lt;br&gt;&lt;br&gt;JPG Bilder machen es möglich sie mit ein Bildansicht Programm zu öffnen&lt;br&gt;Das GTA Snapmatic Format macht es möglich sie wieder ins Game zu importieren&lt;br&gt;&lt;br&gt;Exportieren als:</translation>
     </message>
@@ -894,35 +894,35 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Fehlgeschlagen beim Importieren vom Snapmatic Bild, Datei beginnt nicht mit PGTA</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="530"/>
+        <location filename="../ProfileInterface.cpp" line="528"/>
         <source>Failed to import the Snapmatic picture, can&apos;t copy the file into profile</source>
         <translation>Fehlgeschlagen beim Importieren vom Snapmatic Bild, kann Snapmatic Bild nicht ins Profil kopieren </translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="567"/>
+        <location filename="../ProfileInterface.cpp" line="565"/>
         <source>Failed to import the Savegame, can&apos;t copy the file into profile</source>
         <translation>Fehlgeschlagen beim Importieren vom Spielstand, kann Spielstanddatei nicht ins Profil kopieren</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="573"/>
+        <location filename="../ProfileInterface.cpp" line="571"/>
         <source>Failed to import the Savegame, no Savegame slot is left</source>
         <translation>Fehlgeschlagen beim Importieren vom Spielstand, kein Spielstandslot mehr frei</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="659"/>
-        <location filename="../ProfileInterface.cpp" line="677"/>
+        <location filename="../ProfileInterface.cpp" line="657"/>
+        <location filename="../ProfileInterface.cpp" line="675"/>
         <source>JPG pictures and GTA Snapmatic</source>
         <translation>JPG Bilder und GTA Snapmatic</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="660"/>
-        <location filename="../ProfileInterface.cpp" line="682"/>
+        <location filename="../ProfileInterface.cpp" line="658"/>
+        <location filename="../ProfileInterface.cpp" line="680"/>
         <source>JPG pictures only</source>
         <translation>Nur JPG Bilder</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="661"/>
-        <location filename="../ProfileInterface.cpp" line="686"/>
+        <location filename="../ProfileInterface.cpp" line="659"/>
+        <location filename="../ProfileInterface.cpp" line="684"/>
         <source>GTA Snapmatic only</source>
         <translation>Nur GTA Snapmatic</translation>
     </message>
@@ -941,25 +941,25 @@ Das GTA Snapmatic Format macht es möglich sie wieder ins Game zu importieren
 Exportieren als:</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="773"/>
-        <location filename="../ProfileInterface.cpp" line="816"/>
+        <location filename="../ProfileInterface.cpp" line="771"/>
+        <location filename="../ProfileInterface.cpp" line="814"/>
         <source>No Snapmatic pictures or Savegames files are selected</source>
         <translation>Keine Snapmatic Bilder oder Spielstände ausgewählt</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="781"/>
-        <location filename="../ProfileInterface.cpp" line="810"/>
-        <location filename="../ProfileInterface.cpp" line="816"/>
+        <location filename="../ProfileInterface.cpp" line="779"/>
+        <location filename="../ProfileInterface.cpp" line="808"/>
+        <location filename="../ProfileInterface.cpp" line="814"/>
         <source>Remove selected</source>
         <translation>Auswahl löschen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="781"/>
+        <location filename="../ProfileInterface.cpp" line="779"/>
         <source>You really want remove the selected Snapmatic picutres and Savegame files?</source>
         <translation>Möchtest du wirklich die ausgewählten Snapmatic Bilder und Spielstanddateien löschen?</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="810"/>
+        <location filename="../ProfileInterface.cpp" line="808"/>
         <source>Failed at remove the complete selected Snapmatic pictures and/or Savegame files</source>
         <translation>Fehlgeschlagen beim kompletten entfernen der ausgewählten Snapmatic Bilder und/oder der Spielstanddateien</translation>
     </message>
@@ -980,10 +980,10 @@ Exportieren als:</translation>
         <translation type="obsolete">Fehlgeschlagenen beim Import vom Spielstand weil kein Spielstandslot mehr übrig ist</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="636"/>
-        <location filename="../ProfileInterface.cpp" line="674"/>
-        <location filename="../ProfileInterface.cpp" line="751"/>
-        <location filename="../ProfileInterface.cpp" line="773"/>
+        <location filename="../ProfileInterface.cpp" line="634"/>
+        <location filename="../ProfileInterface.cpp" line="672"/>
+        <location filename="../ProfileInterface.cpp" line="749"/>
+        <location filename="../ProfileInterface.cpp" line="771"/>
         <source>Export selected</source>
         <translation>Auswahl exportieren</translation>
     </message>
@@ -1004,12 +1004,12 @@ Exportieren als:</translation>
         <translation type="obsolete">Wie sollen wir mit den Snapmatic Bilder umgehen?</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="717"/>
+        <location filename="../ProfileInterface.cpp" line="715"/>
         <source>Export selected...</source>
         <translation>Auswahl exportieren...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="718"/>
+        <location filename="../ProfileInterface.cpp" line="716"/>
         <source>Initializing export...</source>
         <translation>Initialisiere Export...</translation>
     </message>
@@ -1018,7 +1018,7 @@ Exportieren als:</translation>
         <translation type="obsolete">Initialisierung...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="751"/>
+        <location filename="../ProfileInterface.cpp" line="749"/>
         <source>Export failed with...
 
 %1</source>
@@ -1041,9 +1041,9 @@ Exportieren als:</translation>
         <translation type="obsolete">Aktueller Exportiervorgang: %1</translation>
     </message>
     <message>
-        <location filename="../ExportThread.cpp" line="90"/>
-        <location filename="../ExportThread.cpp" line="132"/>
-        <location filename="../ExportThread.cpp" line="153"/>
+        <location filename="../ExportThread.cpp" line="95"/>
+        <location filename="../ExportThread.cpp" line="134"/>
+        <location filename="../ExportThread.cpp" line="155"/>
         <source>Export file %1 of %2 files</source>
         <translation>Exportiere Datei %1 von %2 Dateien</translation>
     </message>
@@ -1142,6 +1142,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../SavegameWidget.ui" line="102"/>
+        <location filename="../SavegameCopy.cpp" line="48"/>
         <source>Export</source>
         <translation>Exportieren</translation>
     </message>
@@ -1277,7 +1278,6 @@ Exportieren als:</translation>
         <translation>Spielstand kopieren</translation>
     </message>
     <message>
-        <location filename="../SavegameCopy.cpp" line="48"/>
         <location filename="../SavegameWidget.cpp" line="210"/>
         <source>&amp;Export</source>
         <translation>&amp;Exportieren</translation>
