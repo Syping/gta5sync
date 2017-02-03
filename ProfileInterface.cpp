@@ -464,7 +464,9 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
             if (picture->readingPicture(true, false))
             {
                 QImage snapmaticImage;
+                QString customImageTitle;
                 QPixmap snapmaticPixmap(960, 536);
+                snapmaticPixmap.fill(Qt::black);
                 QPainter snapmaticPainter(&snapmaticPixmap);
                 if (!snapmaticImage.load(selectedFile))
                 {
@@ -472,8 +474,19 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
                     delete picture;
                     return false;
                 }
-                snapmaticImage = snapmaticImage.scaled(960, 536, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-                snapmaticPainter.drawImage(0, 0, snapmaticImage);
+                if (snapmaticImage.height() == snapmaticImage.width())
+                {
+                    // Avatar mode
+                    snapmaticImage = snapmaticImage.scaled(470, 470, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+                    snapmaticPainter.drawImage(145, 66, snapmaticImage);
+                    customImageTitle = "Custom Avatar";
+                }
+                else
+                {
+                    snapmaticImage = snapmaticImage.scaled(960, 536, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+                    snapmaticPainter.drawImage(0, 0, snapmaticImage);
+                    customImageTitle = "Custom Picture";
+                }
                 snapmaticPainter.end();
                 if (!picture->setImage(snapmaticPixmap.toImage()))
                 {
@@ -487,7 +500,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
                 spJson.createdTimestamp = spJson.createdDateTime.toTime_t();
                 picture->setSnapmaticProperties(spJson);
                 picture->setPicFileName(QString("PGTA5%1").arg(QString::number(spJson.uid)));
-                picture->setPictureTitle(QString("Custom Created"));
+                picture->setPictureTitle(customImageTitle);
                 picture->updateStrings();
                 bool success = importSnapmaticPicture(picture, warn);
                 if (!success) delete picture;
