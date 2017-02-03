@@ -364,10 +364,11 @@ fileDialogPreOpen:
     fileDialog.setLabelText(QFileDialog::Accept, tr("Import"));
 
     QStringList filters;
-    filters << tr("All profile files (*.g5e SGTA* PGTA*)");
+    filters << tr("Importable files (*.g5e *.jpg *.png SGTA* PGTA*)");
     filters << tr("GTA V Export (*.g5e)");
     filters << tr("Savegames files (SGTA*)");
     filters << tr("Snapmatic pictures (PGTA*)");
+    filters << tr("All image files (*.jpg *.png)");
     filters << tr("All files (**)");
     fileDialog.setNameFilters(filters);
 
