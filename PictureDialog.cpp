@@ -354,7 +354,7 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
     }
     if (picture->isPicOk())
     {
-        snapmaticPicture = picture->getPicture();
+        snapmaticPicture = picture->getImage();
         renderPicture();
         ui->cmdExport->setEnabled(true);
     }
@@ -367,7 +367,7 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
         created = picture->getSnapmaticProperties().createdDateTime.toString(Qt::DefaultLocaleShortDate);
         plyrsList = picture->getSnapmaticProperties().playersList;
         picTitl = picture->getPictureTitl();
-        picArea = picture->getSnapmaticProperties().area;
+        picArea = picture->getSnapmaticProperties().location.area;
         if (globalMap.contains(picArea))
         {
             picAreaStr = globalMap[picArea];

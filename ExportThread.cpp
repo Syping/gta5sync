@@ -96,7 +96,7 @@ void ExportThread::run()
                     emit exportProgressUpdate(intExportProgress);
 
                     // Scale Picture
-                    QImage exportPicture = picture->getPicture();
+                    QImage exportPicture = picture->getImage();
                     if (sizeMode == "Desktop")
                     {
                         QRect desktopResolution = QApplication::desktop()->screenGeometry();

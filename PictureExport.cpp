@@ -155,7 +155,7 @@ fileDialogPreSave:
             }
 
             // Scale Picture
-            QImage exportPicture = picture->getPicture();
+            QImage exportPicture = picture->getImage();
             if (sizeMode == "Desktop")
             {
                 QRect desktopResolution = QApplication::desktop()->screenGeometry();

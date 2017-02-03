@@ -347,7 +347,7 @@ bool SnapmaticPicture::readingPictureFromFile(const QString &fileName, bool writ
     }
 }
 
-bool SnapmaticPicture::setPicture(const QImage &picture) // dirty method
+bool SnapmaticPicture::setImage(const QImage &picture) // dirty method
 {
     if (writeEnabled)
     {
@@ -374,12 +374,12 @@ bool SnapmaticPicture::setPicture(const QImage &picture) // dirty method
                 }
             }
         }
-        if (saveSuccess) return setPicture(picByteArray);
+        if (saveSuccess) return setPictureStream(picByteArray);
     }
     return false;
 }
 
-bool SnapmaticPicture::setPicture(const QByteArray &picByteArray_) // clean method
+bool SnapmaticPicture::setPictureStream(const QByteArray &picByteArray_) // clean method
 {
     if (writeEnabled)
     {
@@ -417,18 +417,19 @@ bool SnapmaticPicture::setPicture(const QByteArray &picByteArray_) // clean meth
     return false;
 }
 
-bool SnapmaticPicture::setPictureTitl(const QString &newTitle)
+bool SnapmaticPicture::setPictureTitl(const QString &newTitle_)
 {
     if (writeEnabled)
     {
-        QByteArray newTitleArray = newTitle.toUtf8();
+        QString newTitle = newTitle_;
         QBuffer snapmaticStream(&rawPicContent);
         snapmaticStream.open(QIODevice::ReadWrite);
         if (!snapmaticStream.seek(titlStreamEditorBegin)) return false;
-        if (newTitleArray.length() > titlStreamCharacterMax)
+        if (newTitle.length() > titlStreamCharacterMax)
         {
-            newTitleArray = newTitleArray.left(titlStreamCharacterMax);
+            newTitle = newTitle.left(titlStreamCharacterMax);
         }
+        QByteArray newTitleArray = newTitle.toUtf8();
         while (newTitleArray.length() != titlStreamEditorLength)
         {
             newTitleArray.append((char)0x00);
@@ -436,6 +437,7 @@ bool SnapmaticPicture::setPictureTitl(const QString &newTitle)
         int result = snapmaticStream.write(newTitleArray);
         if (result != 0)
         {
+            titlStr = newTitle;
             return true;
         }
         return false;
@@ -529,7 +531,7 @@ QString SnapmaticPicture::getLastStep()
     return lastStep;
 }
 
-QImage SnapmaticPicture::getPicture()
+QImage SnapmaticPicture::getImage()
 {
     if (cacheEnabled)
     {
@@ -632,7 +634,7 @@ void SnapmaticPicture::parseJsonContent()
     }
     if (jsonObject.contains("area"))
     {
-        localSpJson.area = jsonObject["area"].toString();
+        localSpJson.location.area = jsonObject["area"].toString();
     }
     if (jsonObject.contains("crewid"))
     {
@@ -700,7 +702,7 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
 
     jsonObject["loc"] = locObject;
     jsonObject["uid"] = newSpJson.uid;
-    jsonObject["area"] = newSpJson.area;
+    jsonObject["area"] = newSpJson.location.area;
     jsonObject["crewid"] = newSpJson.crewID;
     jsonObject["creat"] = QJsonValue::fromVariant(newSpJson.createdTimestamp);
     jsonObject["plyrs"] = QJsonValue::fromVariant(newSpJson.playersList);

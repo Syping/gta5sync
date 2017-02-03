@@ -28,13 +28,13 @@
 
 struct SnapmaticProperties {
     struct SnapmaticLocation {
+        QString area;
         double x;
         double y;
         double z;
     };
     int uid;
     int crewID;
-    QString area;
     QStringList playersList;
     uint createdTimestamp;
     QDateTime createdDateTime;
@@ -52,11 +52,11 @@ class SnapmaticPicture : public QObject
 public:
     explicit SnapmaticPicture(const QString &fileName = "", QObject *parent = 0);
     ~SnapmaticPicture();
-    bool readingPictureFromFile(const QString &fileName, bool writeEnabled = true, bool cacheEnabled = true);
+    bool readingPictureFromFile(const QString &fileName, bool writeEnabled = true, bool cacheEnabled = false);
     bool readingPicture(bool writeEnabled = true, bool cacheEnabled = true);
     bool isPicOk();
     void clearCache();
-    QImage getPicture();
+    QImage getImage();
     QString getLastStep();
     QString getPictureStr();
     QString getPictureHead();
@@ -66,11 +66,17 @@ public:
     QString getPictureFileName();
     QString getExportPictureFileName();
     int getContentMaxLength();
-    bool setPicture(const QImage &picture);
-    bool setPicture(const QByteArray &picByteArray);
+    bool setImage(const QImage &picture);
     bool setPictureTitl(const QString &newTitle);
+    bool setPictureStream(const QByteArray &picByteArray);
     bool exportPicture(const QString &fileName, bool customFormat = false);
     void setPicFileName(QString picFileName_);
+
+    // ALTERNATIVES
+    QString getPictureTitle() { return getPictureTitl(); }
+    QString getPictureString() { return getPictureStr(); }
+    QString getPictureDescription() { return getPictureDesc(); }
+    bool setPictureTitle(const QString &newTitle) { return setPictureTitl(newTitle); }
 
     // JSON
     bool isJsonOk();
