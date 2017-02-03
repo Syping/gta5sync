@@ -40,7 +40,7 @@ private:
     ProfileLoader *profileLoader;
 
 signals:
-    void pictureLoaded(SnapmaticPicture *picture, QString picturePath);
+    void pictureLoaded(SnapmaticPicture *picture);
     void savegameLoaded(SavegameData *savegame, QString savegamePath);
     void loadingProgress(int value, int maximum);
 };

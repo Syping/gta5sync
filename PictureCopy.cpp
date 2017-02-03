@@ -30,13 +30,13 @@ PictureCopy::PictureCopy()
 
 }
 
-void PictureCopy::copyPicture(QWidget *parent, QString picPath, SnapmaticPicture *picture)
+void PictureCopy::copyPicture(QWidget *parent, SnapmaticPicture *picture)
 {
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
     settings.beginGroup("FileDialogs");
     settings.beginGroup("PictureCopy");
 
-    QString adjustedPicPath = picPath;
+    QString adjustedPicPath = picture->getPictureFileName();
     if (adjustedPicPath.right(7) == ".hidden") // for the hidden file system
     {
         adjustedPicPath.remove(adjustedPicPath.length() - 7, 7);

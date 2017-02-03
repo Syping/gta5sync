@@ -80,10 +80,10 @@ bool SnapmaticWidget::eventFilter(QObject *obj, QEvent *ev)
     return false;
 }
 
-void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture, QString picturePath)
+void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
 {
     smpic = picture;
-    picPath = picturePath;
+    picPath = picture->getPictureFilePath();
     picTitl = picture->getPictureTitl();
     picStr = picture->getPictureStr();
 
@@ -96,11 +96,6 @@ void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture, QString pic
     adjustTextColor();
 }
 
-void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
-{
-    setSnapmaticPicture(picture, picture->getPictureFileName());
-}
-
 void SnapmaticWidget::on_cmdView_clicked()
 {
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
@@ -110,7 +105,7 @@ void SnapmaticWidget::on_cmdView_clicked()
 
     PictureDialog *picDialog = new PictureDialog(profileDB, crewDB, this);
     picDialog->setWindowFlags(picDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
-    picDialog->setSnapmaticPicture(smpic, picPath, true);
+    picDialog->setSnapmaticPicture(smpic, true);
     picDialog->setModal(true);
 
     // be ready for playerName updated
@@ -133,12 +128,12 @@ void SnapmaticWidget::on_cmdView_clicked()
 
 void SnapmaticWidget::on_cmdCopy_clicked()
 {
-    PictureCopy::copyPicture(this, picPath, smpic);
+    PictureCopy::copyPicture(this, smpic);
 }
 
 void SnapmaticWidget::on_cmdExport_clicked()
 {
-    PictureExport::exportPicture(this, smpic);
+    PictureExport::exportAsPicture(this, smpic);
 }
 
 void SnapmaticWidget::on_cmdDelete_clicked()
@@ -285,7 +280,7 @@ bool SnapmaticWidget::makePictureHidden()
     SnapmaticPicture *picture = (SnapmaticPicture*)smpic;
     if (picture->setPictureHidden())
     {
-        picPath = picture->getPictureFileName();
+        picPath = picture->getPictureFilePath();
         adjustTextColor();
         return true;
     }
@@ -297,7 +292,7 @@ bool SnapmaticWidget::makePictureVisible()
     SnapmaticPicture *picture = (SnapmaticPicture*)smpic;
     if (picture->setPictureVisible())
     {
-        picPath = picture->getPictureFileName();
+        picPath = picture->getPictureFilePath();
         adjustTextColor();
         return true;
     }

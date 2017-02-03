@@ -30,7 +30,7 @@
 #include <QImage>
 #include <QFile>
 
-SnapmaticPicture::SnapmaticPicture(const QString &fileName, QObject *parent) : QObject(parent), picFileName(fileName)
+SnapmaticPicture::SnapmaticPicture(const QString &fileName, QObject *parent) : QObject(parent), picFilePath(fileName)
 {
     // PARSE INT INIT - DO NOT CHANGE THIS VALUES
     snapmaticHeaderLength = 278;
@@ -51,10 +51,23 @@ SnapmaticPicture::SnapmaticPicture(const QString &fileName, QObject *parent) : Q
     titlStreamCharacterMax = 39;
     rawPicContent = "";
 
+    reset();
+}
+
+SnapmaticPicture::~SnapmaticPicture()
+{
+}
+
+void SnapmaticPicture::reset()
+{
+    // PARSE EDITOR INIT
+    rawPicContent = "";
+
     // INIT PIC
     cachePicture = QImage(0, 0, QImage::Format_RGB32);
     jpegRawContentSize = 0;
     picExportFileName = "";
+    isCustomFormat = 0;
     pictureHead = "";
     pictureStr = "";
     lastStep = "";
@@ -68,10 +81,6 @@ SnapmaticPicture::SnapmaticPicture(const QString &fileName, QObject *parent) : Q
     jsonStr = "";
 }
 
-SnapmaticPicture::~SnapmaticPicture()
-{
-}
-
 bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
 {
     // Start opening file
@@ -81,28 +90,36 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     writeEnabled = writeEnabled_;
     cacheEnabled = cacheEnabled_;
 
-    QFile *picFile = new QFile(picFileName);
+    QFile *picFile = new QFile(picFilePath);
+    picFileName = QFileInfo(picFilePath).fileName();
+
     QIODevice *picStream;
 
     if (!picFile->open(QFile::ReadOnly))
     {
-        lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFileName);
+        lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFilePath);
         picFile->deleteLater();
         delete picFile;
         return false;
     }
 
-    if (picFileName.right(4) != ".g5e")
+    if (picFilePath.right(4) != ".g5e")
     {
         rawPicContent = picFile->read(snapmaticFileMaxSize);
         picFile->close();
         delete picFile;
+
+        // Set Custom Format
+        isCustomFormat = false;
     }
     else
     {
         QByteArray g5eContent = picFile->read(snapmaticFileMaxSize + 1024);
         picFile->close();
         delete picFile;
+
+        // Set Custom Format
+        isCustomFormat = true;
 
         // Reading g5e Content
         g5eContent.remove(0, 1);
@@ -129,31 +146,31 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
                         }
                         else
                         {
-                            lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",4,G5E_FORMATERROR";
+                            lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",4,G5E_FORMATERROR";
                             return false;
                         }
                     }
                     else
                     {
-                        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",3,G5E_FORMATERROR";
+                        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",3,G5E_FORMATERROR";
                         return false;
                     }
                 }
                 else
                 {
-                    lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",2,G5E_FORMATERROR";
+                    lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,G5E_FORMATERROR";
                     return false;
                 }
             }
             else
             {
-                lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",1,G5E_NOTCOMPATIBLE";
+                lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",1,G5E_NOTCOMPATIBLE";
                 return false;
             }
         }
         else
         {
-            lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",1,G5E_FORMATERROR";
+            lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",1,G5E_FORMATERROR";
             return false;
         }
     }
@@ -164,7 +181,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     // Reading Snapmatic Header
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",1,NOHEADER";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",1,NOHEADER";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -176,7 +193,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     // Reading JPEG Header Line
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",2,NOHEADER";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOHEADER";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -188,7 +205,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     jpegHeaderLine.remove(0, jpegHeaderLineDifStr);
     if (jpegHeaderLine.left(4) != "JPEG")
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",2,NOJPEG";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOJPEG";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -198,7 +215,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     // Read JPEG Stream
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",2,NOPIC";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOPIC";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -226,7 +243,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     // Read JSON Stream
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",3,NOJSON";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",3,NOJSON";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -234,7 +251,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     }
     else if (picStream->read(4) != "JSON")
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",3,CTJSON";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",3,CTJSON";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -246,7 +263,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
 
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",4,NOTITL";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",4,NOTITL";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -254,7 +271,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     }
     else if (picStream->read(4) != "TITL")
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",4,CTTITL";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",4,CTTITL";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -265,7 +282,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
 
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",5,NODESC";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",5,NODESC";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -273,7 +290,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     }
     else if (picStream->read(4) != "DESC")
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFileName) + ",5,CTDESC";
+        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",5,CTDESC";
         picStream->close();
         picStream->deleteLater();
         delete picStream;
@@ -282,7 +299,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     QByteArray descRawContent = picStream->read(tideStreamLength);
     descStr = getSnapmaticTIDEString(descRawContent);
 
-    runPostParseActions();
+    updateStrings();
 
     picStream->close();
     picStream->deleteLater();
@@ -316,7 +333,7 @@ QString SnapmaticPicture::getSnapmaticTIDEString(const QByteArray &tideBytes)
     return QString::fromUtf8(tideUsefulBytesList.at(0)).trimmed();
 }
 
-void SnapmaticPicture::runPostParseActions()
+void SnapmaticPicture::updateStrings()
 {
     QString cmpPicTitl = titlStr;
     cmpPicTitl.replace("\"", "''");
@@ -338,7 +355,7 @@ bool SnapmaticPicture::readingPictureFromFile(const QString &fileName, bool writ
 {
     if (fileName != "")
     {
-        picFileName = fileName;
+        picFilePath = fileName;
         return readingPicture(writeEnabled_, cacheEnabled_);
     }
     else
@@ -460,8 +477,7 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, bool customFormat)
         else
         {
             // Modern compressed export
-            QString stockFileName = QFileInfo(picFileName).fileName();
-            QByteArray stockFileNameUTF8 = stockFileName.toUtf8();
+            QByteArray stockFileNameUTF8 = picFileName.toUtf8();
             QByteArray numberLength = QByteArray::number(stockFileNameUTF8.length());
             if (numberLength.length() == 1)
             {
@@ -499,6 +515,11 @@ QString SnapmaticPicture::getExportPictureFileName()
 QString SnapmaticPicture::getPictureFileName()
 {
     return picFileName;
+}
+
+QString SnapmaticPicture::getPictureFilePath()
+{
+    return picFilePath;
 }
 
 QString SnapmaticPicture::getPictureSortStr()
@@ -562,10 +583,10 @@ QImage SnapmaticPicture::getImage()
         QImage returnPicture;
         QIODevice *picStream;
 
-        QFile *picFile = new QFile(picFileName);
+        QFile *picFile = new QFile(picFilePath);
         if (!picFile->open(QFile::ReadOnly))
         {
-            lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFileName);
+            lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFilePath);
             picFile->deleteLater();
             delete picFile;
             return QImage(0, 0, QImage::Format_RGB32);
@@ -602,9 +623,9 @@ bool SnapmaticPicture::isPicOk()
     return picOk;
 }
 
-void SnapmaticPicture::setPicFileName(QString picFileName_)
+void SnapmaticPicture::setPicFilePath(QString picFilePath_)
 {
-    picFileName = picFileName_;
+    picFilePath = picFilePath_;
 }
 
 void SnapmaticPicture::clearCache()
@@ -757,7 +778,7 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
 
 bool SnapmaticPicture::isHidden()
 {
-    if (picFileName.right(7) == ".hidden")
+    if (picFilePath.right(7) == ".hidden")
     {
         return true;
     }
@@ -766,12 +787,16 @@ bool SnapmaticPicture::isHidden()
 
 bool SnapmaticPicture::setPictureHidden()
 {
+    if (isCustomFormat)
+    {
+        return false;
+    }
     if (!isHidden())
     {
-        QString newPicFileName = QString(picFileName + ".hidden");
-        if (QFile::rename(picFileName, newPicFileName))
+        QString newPicFilePath = QString(picFilePath + ".hidden");
+        if (QFile::rename(picFilePath, newPicFilePath))
         {
-            picFileName = newPicFileName;
+            picFilePath = newPicFilePath;
             return true;
         }
         return false;
@@ -781,12 +806,16 @@ bool SnapmaticPicture::setPictureHidden()
 
 bool SnapmaticPicture::setPictureVisible()
 {
+    if (isCustomFormat)
+    {
+        return false;
+    }
     if (isHidden())
     {
-        QString newPicFileName = QString(picFileName).remove(picFileName.length() - 7, 7);
-        if (QFile::rename(picFileName, newPicFileName))
+        QString newPicFilePath = QString(picFilePath).remove(picFilePath.length() - 7, 7);
+        if (QFile::rename(picFilePath, newPicFilePath))
         {
-            picFileName = newPicFileName;
+            picFilePath = newPicFilePath;
             return true;
         }
         return false;

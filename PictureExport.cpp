@@ -33,7 +33,7 @@ PictureExport::PictureExport()
 
 }
 
-void PictureExport::exportPicture(QWidget *parent, SnapmaticPicture *picture)
+void PictureExport::exportAsPicture(QWidget *parent, SnapmaticPicture *picture)
 {
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
 

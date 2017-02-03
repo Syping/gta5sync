@@ -103,19 +103,19 @@ void ProfileInterface::setupProfileInterface()
 {
     ui->labProfileLoading->setText(tr("Loading..."));
     profileLoader = new ProfileLoader(profileFolder, crewDB);
-    QObject::connect(profileLoader, SIGNAL(savegameLoaded(SavegameData*, QString)), this, SLOT(savegameLoaded(SavegameData*, QString)));
-    QObject::connect(profileLoader, SIGNAL(pictureLoaded(SnapmaticPicture*, QString)), this, SLOT(pictureLoaded(SnapmaticPicture*, QString)));
+    QObject::connect(profileLoader, SIGNAL(savegameLoaded(SavegameData*, QString)), this, SLOT(savegameLoaded_event(SavegameData*, QString)));
+    QObject::connect(profileLoader, SIGNAL(pictureLoaded(SnapmaticPicture*)), this, SLOT(pictureLoaded_event(SnapmaticPicture*)));
     QObject::connect(profileLoader, SIGNAL(loadingProgress(int,int)), this, SLOT(loadingProgress(int,int)));
     QObject::connect(profileLoader, SIGNAL(finished()), this, SLOT(profileLoaded_p()));
     profileLoader->start();
 }
 
-void ProfileInterface::savegameLoaded(SavegameData *savegame, QString savegamePath)
+void ProfileInterface::savegameLoaded_event(SavegameData *savegame, QString savegamePath)
 {
-    savegameLoaded_f(savegame, savegamePath, false);
+    savegameLoaded(savegame, savegamePath, false);
 }
 
-void ProfileInterface::savegameLoaded_f(SavegameData *savegame, QString savegamePath, bool inserted)
+void ProfileInterface::savegameLoaded(SavegameData *savegame, QString savegamePath, bool inserted)
 {
     SavegameWidget *sgdWidget = new SavegameWidget(this);
     sgdWidget->setSavegameData(savegame, savegamePath);
@@ -123,7 +123,7 @@ void ProfileInterface::savegameLoaded_f(SavegameData *savegame, QString savegame
     widgets[sgdWidget] = "SGD" + QFileInfo(savegamePath).fileName();
     savegames.append(savegame);
     if (selectedWidgts != 0 || contentMode == 2) { sgdWidget->setSelectionMode(true); }
-    QObject::connect(sgdWidget, SIGNAL(savegameDeleted()), this, SLOT(savegameDeleted()));
+    QObject::connect(sgdWidget, SIGNAL(savegameDeleted()), this, SLOT(savegameDeleted_event()));
     QObject::connect(sgdWidget, SIGNAL(widgetSelected()), this, SLOT(profileWidgetSelected()));
     QObject::connect(sgdWidget, SIGNAL(widgetDeselected()), this, SLOT(profileWidgetDeselected()));
     QObject::connect(sgdWidget, SIGNAL(allWidgetsSelected()), this, SLOT(selectAllWidgets()));
@@ -131,20 +131,20 @@ void ProfileInterface::savegameLoaded_f(SavegameData *savegame, QString savegame
     if (inserted) { insertSavegameIPI(sgdWidget); }
 }
 
-void ProfileInterface::pictureLoaded(SnapmaticPicture *picture, QString picturePath)
+void ProfileInterface::pictureLoaded_event(SnapmaticPicture *picture)
 {
-    pictureLoaded_f(picture, picturePath, false);
+    pictureLoaded(picture, false);
 }
 
-void ProfileInterface::pictureLoaded_f(SnapmaticPicture *picture, QString picturePath, bool inserted)
+void ProfileInterface::pictureLoaded(SnapmaticPicture *picture, bool inserted)
 {
     SnapmaticWidget *picWidget = new SnapmaticWidget(profileDB, crewDB, threadDB, this);
-    picWidget->setSnapmaticPicture(picture, picturePath);
+    picWidget->setSnapmaticPicture(picture);
     picWidget->setContentMode(contentMode);
     widgets[picWidget] = "PIC" + picture->getPictureSortStr();
     pictures.append(picture);
     if (selectedWidgts != 0 || contentMode == 2) { picWidget->setSelectionMode(true); }
-    QObject::connect(picWidget, SIGNAL(pictureDeleted()), this, SLOT(pictureDeleted()));
+    QObject::connect(picWidget, SIGNAL(pictureDeleted()), this, SLOT(pictureDeleted_event()));
     QObject::connect(picWidget, SIGNAL(widgetSelected()), this, SLOT(profileWidgetSelected()));
     QObject::connect(picWidget, SIGNAL(widgetDeselected()), this, SLOT(profileWidgetDeselected()));
     QObject::connect(picWidget, SIGNAL(allWidgetsSelected()), this, SLOT(selectAllWidgets()));
@@ -307,12 +307,12 @@ void ProfileInterface::profileLoaded_p()
     emit profileLoaded();
 }
 
-void ProfileInterface::savegameDeleted()
+void ProfileInterface::savegameDeleted_event()
 {
-    savegameDeleted_f((SavegameWidget*)sender());
+    savegameDeleted((SavegameWidget*)sender());
 }
 
-void ProfileInterface::savegameDeleted_f(QWidget *sgdWidget_)
+void ProfileInterface::savegameDeleted(QWidget *sgdWidget_)
 {
     SavegameWidget *sgdWidget = (SavegameWidget*)sgdWidget_;
     SavegameData *savegame = sgdWidget->getSavegame();
@@ -324,12 +324,12 @@ void ProfileInterface::savegameDeleted_f(QWidget *sgdWidget_)
     delete savegame;
 }
 
-void ProfileInterface::pictureDeleted()
+void ProfileInterface::pictureDeleted_event()
 {
-    pictureDeleted_f((SnapmaticWidget*)sender());
+    pictureDeleted((SnapmaticWidget*)sender());
 }
 
-void ProfileInterface::pictureDeleted_f(QWidget *picWidget_)
+void ProfileInterface::pictureDeleted(QWidget *picWidget_)
 {
     SnapmaticWidget *picWidget = (SnapmaticWidget*)picWidget_;
     SnapmaticPicture *picture = picWidget->getPicture();
@@ -383,6 +383,7 @@ fileDialogPreOpen:
         {
             QString selectedFile = selectedFiles.at(0);
             if (!importFile(selectedFile, true)) goto fileDialogPreOpen;
+            ui->
         }
         else if (selectedFiles.length() > 1)
         {
@@ -428,7 +429,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
             SnapmaticPicture *picture = new SnapmaticPicture(selectedFile);
             if (picture->readingPicture())
             {
-                bool success = importSnapmaticPicture(picture, selectedFile, warn);
+                bool success = importSnapmaticPicture(picture, warn);
                 if (!success) delete picture;
                 return success;
             }
@@ -463,7 +464,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
             SavegameData *savegame = new SavegameData(selectedFile);
             if (picture->readingPicture())
             {
-                bool success = importSnapmaticPicture(picture, selectedFile, warn);
+                bool success = importSnapmaticPicture(picture, warn);
                 delete savegame;
                 if (!success) delete picture;
                 return success;
@@ -490,15 +491,10 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
     return false;
 }
 
-bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, QString picPath, bool warn)
+bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, bool warn)
 {
-    QFileInfo picFileInfo(picPath);
-    QString picFileName = picFileInfo.fileName();
+    QString picFileName = picture->getPictureFileName();
     QString adjustedFileName = picFileName;
-    if (adjustedFileName.right(4) == ".g5e")
-    {
-        adjustedFileName = picture->getPictureFileName();
-    }
     if (adjustedFileName.right(7) == ".hidden") // for the hidden file system
     {
         adjustedFileName.remove(adjustedFileName.length() - 7, 7);
@@ -507,7 +503,7 @@ bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, QString
     {
         adjustedFileName.remove(adjustedFileName.length() - 4, 4);
     }
-    if (picFileName.left(4) != "PGTA" && picFileName.right(4) != ".g5e")
+    if (picFileName.left(4) != "PGTA")
     {
         if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to import the Snapmatic picture, file not begin with PGTA or end with .g5e"));
         return false;
@@ -519,8 +515,8 @@ bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, QString
     }
     else if (picture->exportPicture(profileFolder + QDir::separator() + adjustedFileName, false))
     {
-        picture->setPicFileName(profileFolder + QDir::separator() + adjustedFileName);
-        pictureLoaded_f(picture, profileFolder + QDir::separator() + adjustedFileName, true);
+        picture->setPicFilePath(profileFolder + QDir::separator() + adjustedFileName);
+        pictureLoaded(picture, true);
         return true;
     }
     else
@@ -557,7 +553,7 @@ bool ProfileInterface::importSavegameData(SavegameData *savegame, QString sgdPat
         if (QFile::copy(sgdPath, profileFolder + QDir::separator() + sgdFileName))
         {
             savegame->setSavegameFileName(profileFolder + QDir::separator() + sgdFileName);
-            savegameLoaded_f(savegame, profileFolder + QDir::separator() + sgdFileName, true);
+            savegameLoaded(savegame, profileFolder + QDir::separator() + sgdFileName, true);
             return true;
         }
         else
@@ -788,7 +784,7 @@ void ProfileInterface::deleteSelected()
                         QString fileName = picWidget->getPicturePath();
                         if (!QFile::exists(fileName) || QFile::remove(fileName))
                         {
-                            pictureDeleted_f(picWidget);
+                            pictureDeleted(picWidget);
                         }
                     }
                     else if (widget->getWidgetType() == "SavegameWidget")
@@ -798,7 +794,7 @@ void ProfileInterface::deleteSelected()
                         QString fileName = savegame->getSavegameFileName();
                         if (!QFile::exists(fileName) || QFile::remove(fileName))
                         {
-                            savegameDeleted_f(sgdWidget);
+                            savegameDeleted(sgdWidget);
                         }
                     }
                 }

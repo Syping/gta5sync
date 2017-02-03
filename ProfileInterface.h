@@ -62,11 +62,11 @@ public slots:
 private slots:
     void on_cmdCloseProfile_clicked();
     void on_cmdImport_clicked();
-    void pictureLoaded(SnapmaticPicture *picture, QString picturePath);
-    void savegameLoaded(SavegameData *savegame, QString savegamePath);
+    void pictureLoaded_event(SnapmaticPicture *picture);
+    void savegameLoaded_event(SavegameData *savegame, QString savegamePath);
     void loadingProgress(int value, int maximum);
-    void pictureDeleted();
-    void savegameDeleted();
+    void pictureDeleted_event();
+    void savegameDeleted_event();
     void profileLoaded_p();
     void profileWidgetSelected();
     void profileWidgetDeselected();
@@ -92,12 +92,12 @@ private:
     int contentMode;
 
     bool importFile(QString selectedFile, bool warn);
-    bool importSnapmaticPicture(SnapmaticPicture *picture, QString picPath, bool warn = true);
+    bool importSnapmaticPicture(SnapmaticPicture *picture, bool warn = true);
     bool importSavegameData(SavegameData *savegame, QString sgdPath, bool warn = true);
-    void pictureLoaded_f(SnapmaticPicture *picture, QString picturePath, bool inserted);
-    void savegameLoaded_f(SavegameData *savegame, QString savegamePath, bool inserted);
-    void savegameDeleted_f(QWidget *sgdWidget);
-    void pictureDeleted_f(QWidget *picWidget);
+    void pictureLoaded(SnapmaticPicture *picture, bool inserted);
+    void savegameLoaded(SavegameData *savegame, QString savegamePath, bool inserted);
+    void savegameDeleted(QWidget *sgdWidget);
+    void pictureDeleted(QWidget *picWidget);
     void insertSnapmaticIPI(QWidget *widget);
     void insertSavegameIPI(QWidget *widget);
     void sortingProfileInterface();

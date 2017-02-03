@@ -189,7 +189,7 @@ void SnapmaticEditor::on_cmdApply_clicked()
     localSpJson.isMeme = ui->cbMeme->isChecked();
     if (smpic)
     {
-        QString originalFileName = smpic->getPictureFileName();
+        QString originalFileName = smpic->getPictureFilePath();
         QString adjustedFileName = originalFileName;
         if (adjustedFileName.right(7) == ".hidden") // for the hidden file system
         {

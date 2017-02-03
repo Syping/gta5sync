@@ -40,7 +40,6 @@ class SnapmaticWidget : public ProfileWidget
 
 public:
     SnapmaticWidget(ProfileDatabase *profileDB, CrewDatabase *crewDB, DatabaseThread *threadDB, QWidget *parent = 0);
-    void setSnapmaticPicture(SnapmaticPicture *picture, QString picturePath);
     void setSnapmaticPicture(SnapmaticPicture *picture);
     void setSelectionMode(bool selectionMode);
     void setSelected(bool isSelected);

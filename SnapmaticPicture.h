@@ -52,6 +52,7 @@ class SnapmaticPicture : public QObject
 public:
     explicit SnapmaticPicture(const QString &fileName = "", QObject *parent = 0);
     ~SnapmaticPicture();
+    void reset();
     bool readingPictureFromFile(const QString &fileName, bool writeEnabled = true, bool cacheEnabled = false);
     bool readingPicture(bool writeEnabled = true, bool cacheEnabled = true);
     bool isPicOk();
@@ -64,13 +65,15 @@ public:
     QString getPictureDesc();
     QString getPictureSortStr();
     QString getPictureFileName();
+    QString getPictureFilePath();
     QString getExportPictureFileName();
     int getContentMaxLength();
     bool setImage(const QImage &picture);
     bool setPictureTitl(const QString &newTitle);
     bool setPictureStream(const QByteArray &picByteArray);
     bool exportPicture(const QString &fileName, bool customFormat = false);
-    void setPicFileName(QString picFileName_);
+    void setPicFilePath(QString picFilePath_);
+    void updateStrings();
 
     // ALTERNATIVES
     QString getPictureTitle() { return getPictureTitl(); }
@@ -93,10 +96,10 @@ private:
     QString getSnapmaticHeaderString(const QByteArray &snapmaticHeader);
     QString getSnapmaticJSONString(const QByteArray &jsonBytes);
     QString getSnapmaticTIDEString(const QByteArray &tideBytes);
-    void runPostParseActions();
     QImage cachePicture;
     QString picExportFileName;
     QString picFileName;
+    QString picFilePath;
     QString pictureHead;
     QString pictureStr;
     QString lastStep;
@@ -106,6 +109,7 @@ private:
     bool picOk;
     bool writeEnabled;
     bool cacheEnabled;
+    bool isCustomFormat;
     int jpegRawContentSize;
 
     // PARSE INT

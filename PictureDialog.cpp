@@ -340,12 +340,12 @@ void PictureDialog::renderOverlayPicture()
     overlayTempImage = overlayTempPixmap.toImage();
 }
 
-void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString picturePath, bool readOk, bool _indexed, int _index)
+void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, bool _indexed, int _index)
 {
     snapmaticPicture = QImage();
     indexed = _indexed;
     index = _index;
-    picPath = picturePath;
+    picPath = picture->getPictureFilePath();
     smpic = picture;
     if (!readOk)
     {
@@ -411,24 +411,14 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString pictu
     emit newPictureCommited(snapmaticPicture);
 }
 
-void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString picPath, bool readOk)
-{
-    setSnapmaticPicture(picture, picPath, readOk, false, 0);
-}
-
-void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, QString picPath)
-{
-    setSnapmaticPicture(picture, picPath, true);
-}
-
 void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, int index)
 {
-    setSnapmaticPicture(picture, picture->getPictureFileName(), readOk, true, index);
+    setSnapmaticPicture(picture, readOk, true, index);
 }
 
 void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk)
 {
-    setSnapmaticPicture(picture, picture->getPictureFileName(), readOk);
+    setSnapmaticPicture(picture, readOk, false, 0);
 }
 
 void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, int index)
@@ -509,11 +499,11 @@ void PictureDialog::exportSnapmaticPicture()
 {
     if (rqfullscreen && fullscreenWidget)
     {
-        PictureExport::exportPicture(fullscreenWidget, smpic);
+        PictureExport::exportAsPicture(fullscreenWidget, smpic);
     }
     else
     {
-        PictureExport::exportPicture(this, smpic);
+        PictureExport::exportAsPicture(this, smpic);
     }
 }
 
@@ -521,11 +511,11 @@ void PictureDialog::copySnapmaticPicture()
 {
     if (rqfullscreen && fullscreenWidget)
     {
-        PictureCopy::copyPicture(fullscreenWidget, picPath, smpic);
+        PictureCopy::copyPicture(fullscreenWidget, smpic);
     }
     else
     {
-        PictureCopy::copyPicture(this, picPath, smpic);
+        PictureCopy::copyPicture(this, smpic);
     }
 }
 
