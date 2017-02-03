@@ -46,6 +46,9 @@ SnapmaticPicture::SnapmaticPicture(const QString &fileName, QObject *parent) : Q
     jpegStreamEditorBegin = 292;
     jsonStreamEditorBegin = 524588;
     jsonStreamEditorLength = 3072;
+    titlStreamEditorBegin = 527668;
+    titlStreamEditorLength = 256;
+    titlStreamCharacterMax = 39;
     rawPicContent = "";
 
     // INIT PIC
@@ -407,6 +410,32 @@ bool SnapmaticPicture::setPicture(const QByteArray &picByteArray_) // clean meth
                 replacedPicture.loadFromData(picByteArray);
                 cachePicture = replacedPicture;
             }
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+bool SnapmaticPicture::setPictureTitl(const QString &newTitle)
+{
+    if (writeEnabled)
+    {
+        QByteArray newTitleArray = newTitle.toUtf8();
+        QBuffer snapmaticStream(&rawPicContent);
+        snapmaticStream.open(QIODevice::ReadWrite);
+        if (!snapmaticStream.seek(titlStreamEditorBegin)) return false;
+        if (newTitleArray.length() > titlStreamCharacterMax)
+        {
+            newTitleArray = newTitleArray.left(titlStreamCharacterMax);
+        }
+        while (newTitleArray.length() != titlStreamEditorLength)
+        {
+            newTitleArray.append((char)0x00);
+        }
+        int result = snapmaticStream.write(newTitleArray);
+        if (result != 0)
+        {
             return true;
         }
         return false;

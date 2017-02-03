@@ -68,6 +68,7 @@ public:
     int getContentMaxLength();
     bool setPicture(const QImage &picture);
     bool setPicture(const QByteArray &picByteArray);
+    bool setPictureTitl(const QString &newTitle);
     bool exportPicture(const QString &fileName, bool customFormat = false);
     void setPicFileName(QString picFileName_);
 
@@ -115,6 +116,9 @@ private:
     int jpegStreamEditorBegin;
     int jsonStreamEditorBegin;
     int jsonStreamEditorLength;
+    int titlStreamEditorBegin;
+    int titlStreamEditorLength;
+    int titlStreamCharacterMax;
     QByteArray rawPicContent;
 
     // JSON
