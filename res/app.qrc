@@ -32,4 +32,7 @@
         <file>global.zh.ini</file>
         <file>global.es.ini</file>
     </qresource>
+    <qresource prefix="/template">
+        <file>template.g5e</file>
+    </qresource>
 </RCC>
