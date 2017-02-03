@@ -72,7 +72,8 @@ public:
     bool setPictureTitl(const QString &newTitle);
     bool setPictureStream(const QByteArray &picByteArray);
     bool exportPicture(const QString &fileName, bool customFormat = false);
-    void setPicFilePath(QString picFilePath_);
+    void setPicFileName(QString picFileName);
+    void setPicFilePath(QString picFilePath);
     void updateStrings();
 
     // ALTERNATIVES

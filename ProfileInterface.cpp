@@ -39,6 +39,7 @@
 #include <QScrollBar>
 #include <QFileInfo>
 #include <QPalette>
+#include <QPainter>
 #include <QRegExp>
 #include <QDebug>
 #include <QColor>
@@ -454,6 +455,48 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
                 if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to read Savegame file"));
                 savegame->deleteLater();
                 delete savegame;
+                return false;
+            }
+        }
+        else if(selectedFileName.right(4) == ".jpg" || selectedFileName.right(4) == ".png")
+        {
+            SnapmaticPicture *picture = new SnapmaticPicture(":/template/template.g5e");
+            if (picture->readingPicture(true, false))
+            {
+                QImage snapmaticImage;
+                QPixmap snapmaticPixmap(960, 536);
+                QPainter snapmaticPainter(&snapmaticPixmap);
+                if (!snapmaticImage.load(selectedFile))
+                {
+                    picture->deleteLater();
+                    delete picture;
+                    return false;
+                }
+                snapmaticImage = snapmaticImage.scaled(960, 536, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+                snapmaticPainter.drawImage(0, 0, snapmaticImage);
+                snapmaticPainter.end();
+                if (!picture->setImage(snapmaticPixmap.toImage()))
+                {
+                    picture->deleteLater();
+                    delete picture;
+                    return false;
+                }
+                SnapmaticProperties spJson = picture->getSnapmaticProperties();
+                spJson.uid = QString("%1%2").arg(QDateTime::currentDateTime().toString("HHmmss"), QString::number(QDate::currentDate().dayOfYear())).toInt();
+                spJson.createdDateTime = QDateTime::currentDateTime();
+                spJson.createdTimestamp = spJson.createdDateTime.toTime_t();
+                picture->setSnapmaticProperties(spJson);
+                picture->setPicFileName(QString("PGTA5%1").arg(QString::number(spJson.uid)));
+                picture->setPictureTitle(QString("Custom Created"));
+                picture->updateStrings();
+                bool success = importSnapmaticPicture(picture, warn);
+                if (!success) delete picture;
+                return success;
+            }
+            else
+            {
+                picture->deleteLater();
+                delete picture;
                 return false;
             }
         }

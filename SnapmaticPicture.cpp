@@ -623,6 +623,11 @@ bool SnapmaticPicture::isPicOk()
     return picOk;
 }
 
+void SnapmaticPicture::setPicFileName(QString picFileName_)
+{
+    picFileName = picFileName_;
+}
+
 void SnapmaticPicture::setPicFilePath(QString picFilePath_)
 {
     picFilePath = picFilePath_;
