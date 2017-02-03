@@ -59,6 +59,7 @@ public:
     QImage getPicture();
     QString getLastStep();
     QString getPictureStr();
+    QString getPictureHead();
     QString getPictureTitl();
     QString getPictureDesc();
     QString getPictureSortStr();
@@ -82,13 +83,14 @@ public:
     bool setPictureVisible();
 
 private:
-    QString getSnapmaticPictureString(const QByteArray &snapmaticHeader);
+    QString getSnapmaticHeaderString(const QByteArray &snapmaticHeader);
     QString getSnapmaticJSONString(const QByteArray &jsonBytes);
     QString getSnapmaticTIDEString(const QByteArray &tideBytes);
-    void parseSnapmaticExportAndSortString();
+    void runPostParseActions();
     QImage cachePicture;
     QString picExportFileName;
     QString picFileName;
+    QString pictureHead;
     QString pictureStr;
     QString lastStep;
     QString sortStr;

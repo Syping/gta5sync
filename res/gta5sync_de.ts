@@ -1440,6 +1440,14 @@ Exportieren als:</translation>
     </message>
 </context>
 <context>
+    <name>SnapmaticPicture</name>
+    <message>
+        <location filename="../SnapmaticPicture.cpp" line="329"/>
+        <source>PHOTO - %1</source>
+        <translation>FOTO - %1</translation>
+    </message>
+</context>
+<context>
     <name>SnapmaticWidget</name>
     <message>
         <location filename="../SnapmaticWidget.ui" line="14"/>
@@ -1522,6 +1530,10 @@ Exportieren als:</translation>
     <message>
         <source>&amp;Edit Properties</source>
         <translation type="vanished">&amp;Eigenschaften bearbeiten</translation>
+    </message>
+    <message>
+        <source>PHOTO - %1</source>
+        <translation type="vanished">FOTO - %1</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="220"/>

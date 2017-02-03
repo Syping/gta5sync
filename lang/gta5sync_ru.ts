@@ -1091,6 +1091,14 @@ Press 1 for Default View</source>
     </message>
 </context>
 <context>
+    <name>SnapmaticPicture</name>
+    <message>
+        <location filename="../SnapmaticPicture.cpp" line="329"/>
+        <source>PHOTO - %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SnapmaticWidget</name>
     <message>
         <location filename="../SnapmaticWidget.ui" line="14"/>
