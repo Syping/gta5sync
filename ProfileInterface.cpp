@@ -383,7 +383,6 @@ fileDialogPreOpen:
         {
             QString selectedFile = selectedFiles.at(0);
             if (!importFile(selectedFile, true)) goto fileDialogPreOpen;
-            ui->
         }
         else if (selectedFiles.length() > 1)
         {
