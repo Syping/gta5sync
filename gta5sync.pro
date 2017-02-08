@@ -35,7 +35,6 @@ SOURCES += main.cpp \
     GlobalString.cpp \
     IconLoader.cpp \
     OptionsDialog.cpp \
-    PictureCopy.cpp \
     PictureDialog.cpp \
     PictureExport.cpp \
     PictureWidget.cpp \
@@ -67,7 +66,6 @@ HEADERS  += \
     GlobalString.h \
     IconLoader.h \
     OptionsDialog.h \
-    PictureCopy.h \
     PictureDialog.h \
     PictureExport.h \
     PictureWidget.h \

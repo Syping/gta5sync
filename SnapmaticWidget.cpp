@@ -23,7 +23,6 @@
 #include "DatabaseThread.h"
 #include "PictureDialog.h"
 #include "PictureExport.h"
-#include "PictureCopy.h"
 #include "config.h"
 #include <QMessageBox>
 #include <QPixmap>
@@ -128,7 +127,7 @@ void SnapmaticWidget::on_cmdView_clicked()
 
 void SnapmaticWidget::on_cmdCopy_clicked()
 {
-    PictureCopy::copyPicture(this, smpic);
+    PictureExport::exportAsSnapmatic(this, smpic);
 }
 
 void SnapmaticWidget::on_cmdExport_clicked()

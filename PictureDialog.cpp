@@ -24,7 +24,6 @@
 #include "StandardPaths.h"
 #include "PictureExport.h"
 #include "GlobalString.h"
-#include "PictureCopy.h"
 #include "UiModLabel.h"
 
 #ifdef GTA5SYNC_WIN
@@ -517,11 +516,11 @@ void PictureDialog::copySnapmaticPicture()
 {
     if (rqfullscreen && fullscreenWidget)
     {
-        PictureCopy::copyPicture(fullscreenWidget, smpic);
+        PictureExport::exportAsSnapmatic(fullscreenWidget, smpic);
     }
     else
     {
-        PictureCopy::copyPicture(this, smpic);
+        PictureExport::exportAsSnapmatic(this, smpic);
     }
 }
 

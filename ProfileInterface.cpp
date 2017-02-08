@@ -389,18 +389,20 @@ fileDialogPreOpen:
         if (selectedFiles.length() == 1)
         {
             QString selectedFile = selectedFiles.at(0);
-            if (!importFile(selectedFile, true)) goto fileDialogPreOpen;
+            if (!importFile(selectedFile, true, 0)) goto fileDialogPreOpen;
         }
         else if (selectedFiles.length() > 1)
         {
+            int currentId = 0;
             QString errorStr;
             QStringList failedFiles;
             foreach(const QString &selectedFile, selectedFiles)
             {
-                if (!importFile(selectedFile, false))
+                if (!importFile(selectedFile, false, currentId))
                 {
                     failedFiles << QFileInfo(selectedFile).fileName();
                 }
+                currentId++;
             }
             foreach (const QString &curErrorStr, failedFiles)
             {
@@ -425,7 +427,7 @@ fileDialogPreOpen:
     settings.endGroup();
 }
 
-bool ProfileInterface::importFile(QString selectedFile, bool warn)
+bool ProfileInterface::importFile(QString selectedFile, bool multiple, int currentId)
 {
     QString selectedFileName = QFileInfo(selectedFile).fileName();
     if (QFile::exists(selectedFile))
@@ -435,13 +437,13 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
             SnapmaticPicture *picture = new SnapmaticPicture(selectedFile);
             if (picture->readingPicture())
             {
-                bool success = importSnapmaticPicture(picture, warn);
+                bool success = importSnapmaticPicture(picture, multiple);
                 if (!success) delete picture;
                 return success;
             }
             else
             {
-                if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to read Snapmatic picture"));
+                if (multiple) QMessageBox::warning(this, tr("Import"), tr("Failed to read Snapmatic picture"));
                 picture->deleteLater();
                 delete picture;
                 return false;
@@ -452,13 +454,13 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
             SavegameData *savegame = new SavegameData(selectedFile);
             if (savegame->readingSavegame())
             {
-                bool success = importSavegameData(savegame, selectedFile, warn);
+                bool success = importSavegameData(savegame, selectedFile, multiple);
                 if (!success) delete savegame;
                 return success;
             }
             else
             {
-                if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to read Savegame file"));
+                if (multiple) QMessageBox::warning(this, tr("Import"), tr("Failed to read Savegame file"));
                 savegame->deleteLater();
                 delete savegame;
                 return false;
@@ -501,14 +503,16 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
                     return false;
                 }
                 SnapmaticProperties spJson = picture->getSnapmaticProperties();
-                spJson.uid = QString("%1%2").arg(QDateTime::currentDateTime().toString("HHmmss"), QString::number(QDate::currentDate().dayOfYear())).toInt();
+                spJson.uid = QString(QTime::currentTime().toString("HHmmss") +
+                                     QString::number(currentId) +
+                                     QString::number(QDate::currentDate().dayOfYear())).toInt();
                 spJson.createdDateTime = QDateTime::currentDateTime();
                 spJson.createdTimestamp = spJson.createdDateTime.toTime_t();
                 picture->setSnapmaticProperties(spJson);
                 picture->setPicFileName(QString("PGTA5%1").arg(QString::number(spJson.uid)));
                 picture->setPictureTitle(customImageTitle);
                 picture->updateStrings();
-                bool success = importSnapmaticPicture(picture, warn);
+                bool success = importSnapmaticPicture(picture, multiple);
                 if (!success) delete picture;
                 return success;
             }
@@ -525,14 +529,14 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
             SavegameData *savegame = new SavegameData(selectedFile);
             if (picture->readingPicture())
             {
-                bool success = importSnapmaticPicture(picture, warn);
+                bool success = importSnapmaticPicture(picture, multiple);
                 delete savegame;
                 if (!success) delete picture;
                 return success;
             }
             else if (savegame->readingSavegame())
             {
-                bool success = importSavegameData(savegame, selectedFile, warn);
+                bool success = importSavegameData(savegame, selectedFile, multiple);
                 delete picture;
                 if (!success) delete savegame;
                 return success;
@@ -543,12 +547,12 @@ bool ProfileInterface::importFile(QString selectedFile, bool warn)
                 picture->deleteLater();
                 delete savegame;
                 delete picture;
-                if (warn) QMessageBox::warning(this, tr("Import"), tr("Can't import %1 because of not valid file format").arg("\""+selectedFileName+"\""));
+                if (multiple) QMessageBox::warning(this, tr("Import"), tr("Can't import %1 because of not valid file format").arg("\""+selectedFileName+"\""));
                 return false;
             }
         }
     }
-    if (warn) QMessageBox::warning(this, tr("Import"), tr("No valid file is selected"));
+    if (multiple) QMessageBox::warning(this, tr("Import"), tr("No valid file is selected"));
     return false;
 }
 
