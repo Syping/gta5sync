@@ -16,25 +16,22 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#include "IconLoader.h"
-#include <QIcon>
+#include "ImportDialog.h"
+#include "ui_ImportDialog.h"
 
-IconLoader::IconLoader()
+ImportDialog::ImportDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::ImportDialog)
 {
+    ui->setupUi(this);
 
+    if (QIcon::hasThemeIcon("dialog-ok"))
+    {
+        ui->cmdOK->setIcon(QIcon::fromTheme("dialog-ok"));
+    }
 }
 
-QIcon IconLoader::loadingAppIcon()
+ImportDialog::~ImportDialog()
 {
-    QIcon appIcon;
-    appIcon.addFile(":/img/5sync-16.png", QSize(16, 16));
-    appIcon.addFile(":/img/5sync-24.png", QSize(24, 24));
-    appIcon.addFile(":/img/5sync-32.png", QSize(32, 32));
-    appIcon.addFile(":/img/5sync-40.png", QSize(40, 40));
-    appIcon.addFile(":/img/5sync-48.png", QSize(48, 48));
-    appIcon.addFile(":/img/5sync-64.png", QSize(64, 64));
-    appIcon.addFile(":/img/5sync-96.png", QSize(96, 96));
-    appIcon.addFile(":/img/5sync-128.png", QSize(128, 128));
-    appIcon.addFile(":/img/5sync-256.png", QSize(256, 256));
-    return appIcon;
+    delete ui;
 }

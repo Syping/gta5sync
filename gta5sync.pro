@@ -34,6 +34,7 @@ SOURCES += main.cpp \
     ExportThread.cpp \
     GlobalString.cpp \
     IconLoader.cpp \
+    ImportDialog.cpp \
     OptionsDialog.cpp \
     PictureDialog.cpp \
     PictureExport.cpp \
@@ -65,6 +66,7 @@ HEADERS  += \
     ExportThread.h \
     GlobalString.h \
     IconLoader.h \
+    ImportDialog.h \
     OptionsDialog.h \
     PictureDialog.h \
     PictureExport.h \
@@ -89,6 +91,7 @@ HEADERS  += \
 FORMS    += \
     AboutDialog.ui \
     ExportDialog.ui \
+    ImportDialog.ui \
     OptionsDialog.ui \
     PictureDialog.ui \
     ProfileInterface.ui \

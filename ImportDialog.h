@@ -16,25 +16,25 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#include "IconLoader.h"
-#include <QIcon>
+#ifndef IMPORTDIALOG_H
+#define IMPORTDIALOG_H
 
-IconLoader::IconLoader()
-{
+#include <QDialog>
 
+namespace Ui {
+class ImportDialog;
 }
 
-QIcon IconLoader::loadingAppIcon()
+class ImportDialog : public QDialog
 {
-    QIcon appIcon;
-    appIcon.addFile(":/img/5sync-16.png", QSize(16, 16));
-    appIcon.addFile(":/img/5sync-24.png", QSize(24, 24));
-    appIcon.addFile(":/img/5sync-32.png", QSize(32, 32));
-    appIcon.addFile(":/img/5sync-40.png", QSize(40, 40));
-    appIcon.addFile(":/img/5sync-48.png", QSize(48, 48));
-    appIcon.addFile(":/img/5sync-64.png", QSize(64, 64));
-    appIcon.addFile(":/img/5sync-96.png", QSize(96, 96));
-    appIcon.addFile(":/img/5sync-128.png", QSize(128, 128));
-    appIcon.addFile(":/img/5sync-256.png", QSize(256, 256));
-    return appIcon;
-}
+    Q_OBJECT
+
+public:
+    explicit ImportDialog(QWidget *parent = 0);
+    ~ImportDialog();
+
+private:
+    Ui::ImportDialog *ui;
+};
+
+#endif // IMPORTDIALOG_H
