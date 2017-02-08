@@ -207,9 +207,6 @@
            <property name="text">
             <string>&amp;Close</string>
            </property>
-           <property name="icon">
-            <iconset theme="dialog-close"/>
-           </property>
           </widget>
          </item>
         </layout>

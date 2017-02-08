@@ -103,6 +103,12 @@ PictureDialog::PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, Q
     // Event connects
     connect(ui->labJSON, SIGNAL(resized(QSize)), this, SLOT(adaptNewDialogSize(QSize)));
 
+    // Dialog buttons
+    if (QIcon::hasThemeIcon("dialog-close"))
+    {
+        ui->cmdClose->setIcon(QIcon::fromTheme("dialog-close"));
+    }
+
     installEventFilter(this);
     installEventFilter(ui->labPicture);
     ui->labPicture->setFocusPolicy(Qt::StrongFocus);

@@ -40,6 +40,11 @@ AboutDialog::AboutDialog(QWidget *parent) :
 #endif
     ui->labAbout->setText(aboutStr.arg(appVersion % " (" % buildType % ")", buildStr, qVersion(), projectBuild, GTA5SYNC_APPVENDORLINK, GTA5SYNC_APPVENDOR, GTA5SYNC_COPYRIGHT, GTA5SYNC_APPSTR, projectDes));
     this->setWindowTitle(titleStr.arg(GTA5SYNC_APPSTR));
+
+    if (QIcon::hasThemeIcon("dialog-close"))
+    {
+        ui->cmdClose->setIcon(QIcon::fromTheme("dialog-close"));
+    }
 }
 
 AboutDialog::~AboutDialog()

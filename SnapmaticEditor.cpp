@@ -32,6 +32,16 @@ SnapmaticEditor::SnapmaticEditor(QWidget *parent) :
     ui->cbMugshot->setVisible(false);
     ui->cbEditor->setVisible(false);
     ui->cmdApply->setDefault(true);
+
+    if (QIcon::hasThemeIcon("dialog-apply"))
+    {
+        ui->cmdApply->setIcon(QIcon::fromTheme("dialog-apply"));
+    }
+    if (QIcon::hasThemeIcon("dialog-cancel"))
+    {
+        ui->cmdCancel->setIcon(QIcon::fromTheme("dialog-cancel"));
+    }
+
     smpic = 0;
 }
 

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>375</width>
-    <height>305</height>
+    <height>319</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -190,9 +190,6 @@
        <property name="text">
         <string>&amp;Apply</string>
        </property>
-       <property name="icon">
-        <iconset theme="dialog-apply"/>
-       </property>
       </widget>
      </item>
      <item>
@@ -205,9 +202,6 @@
        </property>
        <property name="text">
         <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset theme="dialog-cancel"/>
        </property>
       </widget>
      </item>
