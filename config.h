@@ -90,4 +90,12 @@
 #endif
 #endif
 
+#ifndef GTA5SYNC_BUILDDATETIME
+#define GTA5SYNC_BUILDDATETIME QString("%1, %2").arg(__DATE__, __TIME__);
+#endif
+
+#ifndef GTA5SYNC_BUILDSTRING
+#define GTA5SYNC_BUILDSTRING QString("%1, %2").arg(QT_VERSION_STR, GTA5SYNC_COMPILER);
+#endif
+
 #endif // CONFIG_H

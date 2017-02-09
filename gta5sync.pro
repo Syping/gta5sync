@@ -59,7 +59,6 @@ SOURCES += main.cpp \
 HEADERS  += \
     AboutDialog.h \
     AppEnv.h \
-    config.h \
     CrewDatabase.h \
     DatabaseThread.h \
     ExportDialog.h \
@@ -87,6 +86,8 @@ HEADERS  += \
     StringParser.h \
     UserInterface.h \
     uimod/UiModLabel.h
+
+PRECOMPILED_HEADER += config.h
 
 FORMS    += \
     AboutDialog.ui \
