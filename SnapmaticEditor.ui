@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Snapmatic Properties</string>
   </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="vlEditor">
    <item>
     <widget class="QWidget" name="frameWidget" native="true">

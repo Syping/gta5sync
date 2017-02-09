@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016-2017 Syping
+* Copyright (C) 2017 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -32,9 +32,26 @@ class ImportDialog : public QDialog
 public:
     explicit ImportDialog(QWidget *parent = 0);
     ~ImportDialog();
+    QImage image();
+    QString getImageTitle();
+    void setImage(const QImage &image);
+    bool isDoImport();
+
+private slots:
+    void processImage();
+    void on_rbIgnore_clicked();
+    void on_rbKeep_clicked();
+    void on_cbAvatar_clicked();
+    void on_cmdCancel_clicked();
+    void on_cmdOK_clicked();
 
 private:
     Ui::ImportDialog *ui;
+    QImage avatarAreaImage;
+    QString imageTitle;
+    QImage workImage;
+    QImage newImage;
+    bool doImport;
 };
 
 #endif // IMPORTDIALOG_H

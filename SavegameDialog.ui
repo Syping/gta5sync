@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Savegame Viewer</string>
   </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
   <layout class="QVBoxLayout" name="vlSavegameDialog">
    <item>
     <widget class="QLabel" name="labSavegameText">
