@@ -149,12 +149,12 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     <message>
         <location filename="../ImportDialog.ui" line="26"/>
         <source>Import...</source>
-        <translation type="unfinished">Importer...</translation>
+        <translation>Importer...</translation>
     </message>
     <message>
         <location filename="../ImportDialog.ui" line="87"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Paramètres</translation>
     </message>
     <message>
         <location filename="../ImportDialog.ui" line="93"/>
@@ -169,17 +169,17 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     <message>
         <location filename="../ImportDialog.ui" line="107"/>
         <source>&amp;Avatar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Avatar</translation>
     </message>
     <message>
         <location filename="../ImportDialog.ui" line="145"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;OK</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../ImportDialog.ui" line="152"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Annuler</translation>
     </message>
 </context>
 <context>
