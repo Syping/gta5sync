@@ -347,7 +347,7 @@ void SnapmaticPicture::updateStrings()
     cmpPicTitl.replace("?", "");
     cmpPicTitl.replace(".", "");
     pictureStr = tr("PHOTO - %1").arg(localSpJson.createdDateTime.toString("MM/dd/yy HH:mm:ss"));
-    sortStr = localSpJson.createdDateTime.toString("yyMMddHHmmss");
+    sortStr = localSpJson.createdDateTime.toString("yyMMddHHmmss") + QString::number(localSpJson.uid);
     picExportFileName = sortStr + "_" + cmpPicTitl;
 }
 

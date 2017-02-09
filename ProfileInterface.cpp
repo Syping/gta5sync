@@ -394,17 +394,62 @@ fileDialogPreOpen:
         }
         else if (selectedFiles.length() > 1)
         {
+            int maximumId = selectedFiles.length();
+            int overallId = 1;
             int currentId = 0;
             QString errorStr;
             QStringList failedFiles;
+
+            // Progress dialog
+            QProgressDialog pbDialog(this);
+            pbDialog.setWindowFlags(pbDialog.windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowCloseButtonHint);
+            pbDialog.setWindowTitle(tr("Import..."));
+            pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(overallId), QString::number(maximumId)));
+            pbDialog.setRange(1, maximumId);
+            pbDialog.setValue(1);
+            pbDialog.setModal(true);
+            QList<QPushButton*> pbBtn = pbDialog.findChildren<QPushButton*>();
+            pbBtn.at(0)->setDisabled(true);
+            QList<QProgressBar*> pbBar = pbDialog.findChildren<QProgressBar*>();
+            pbBar.at(0)->setTextVisible(false);
+            pbDialog.show();
+
+            QTime t;
+            t.start();
             foreach(const QString &selectedFile, selectedFiles)
             {
+                pbDialog.setValue(overallId);
+                pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(overallId), QString::number(maximumId)));
+                if (currentId == 10)
+                {
+                    // Break until two seconds are over (this prevent import failures)
+                    int elapsedTime = t.elapsed();
+                    if (elapsedTime > 2000)
+                    {
+                    }
+                    else if (elapsedTime < 0)
+                    {
+                        QEventLoop loop;
+                        QTimer::singleShot(2000, &loop, SLOT(quit()));
+                        loop.exec();
+                    }
+                    else
+                    {
+                        QEventLoop loop;
+                        QTimer::singleShot(2000 - elapsedTime, &loop, SLOT(quit()));
+                        loop.exec();
+                    }
+                    currentId = 0;
+                    t.restart();
+                }
                 if (!importFile(selectedFile, false, currentId))
                 {
                     failedFiles << QFileInfo(selectedFile).fileName();
                 }
+                overallId++;
                 currentId++;
             }
+            pbDialog.close();
             foreach (const QString &curErrorStr, failedFiles)
             {
                 errorStr.append(", " + curErrorStr);
@@ -485,8 +530,8 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple, int cu
                     if (snapmaticImage.height() == snapmaticImage.width())
                     {
                         // Avatar mode
-                        int diffWidth;
-                        int diffHeight;
+                        int diffWidth = 0;
+                        int diffHeight = 0;
                         snapmaticImage = snapmaticImage.scaled(470, 470, Qt::KeepAspectRatio, Qt::SmoothTransformation);
                         if (snapmaticImage.width() > snapmaticImage.height())
                         {
@@ -504,8 +549,8 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple, int cu
                     else
                     {
                         // Picture mode
-                        int diffWidth;
-                        int diffHeight;
+                        int diffWidth = 0;
+                        int diffHeight = 0;
                         snapmaticImage = snapmaticImage.scaled(960, 536, Qt::KeepAspectRatio, Qt::SmoothTransformation);
                         if (snapmaticImage.width() != 960)
                         {
