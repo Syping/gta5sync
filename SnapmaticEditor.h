@@ -46,7 +46,6 @@ private slots:
     void on_rbCustom_toggled(bool checked);
     void on_cmdCancel_clicked();
     void on_cmdApply_clicked();
-
     void on_cbQualify_toggled(bool checked);
 
 private:
