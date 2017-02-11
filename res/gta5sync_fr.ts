@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fr_FR">
+<TS version="2.0" language="fr_FR">
 <context>
     <name>AboutDialog</name>
     <message>
         <source>About gta5sync</source>
-        <translation type="vanished">À propos de gta5sync</translation>
+        <translation>À propos de gta5sync</translation>
     </message>
     <message>
         <source>&lt;span style=&quot; font-weight:600;&quot;&gt;gta5sync&lt;/span&gt;&lt;br/&gt;
@@ -19,7 +19,7 @@ Compiled with Qt %2&lt;br/&gt;
 Running with Qt %3&lt;br/&gt;
 &lt;br/&gt;
 Copyright &amp;copy; &lt;a href=&quot;https://github.com/Syping/&quot;&gt;Syping&lt;/a&gt; 2016&lt;br/&gt;gta5sync is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
-        <translation type="vanished">&lt;span style=&quot; font-weight:600;&quot;&gt;gta5sync&lt;/span&gt;&lt;br/&gt;
+        <translation>&lt;span style=&quot; font-weight:600;&quot;&gt;gta5sync&lt;/span&gt;&lt;br/&gt;
 &lt;br/&gt;
 Un outil pour gérer et synchroniser les photos Snapmatic&lt;br/&gt;
 et les fichiers de sauvegarde de Grand Theft Auto V&lt;br/&gt;
@@ -159,12 +159,12 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     <message>
         <location filename="../ImportDialog.ui" line="93"/>
         <source>&amp;Keep Aspect Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Conserver le rapport d&apos;aspect</translation>
     </message>
     <message>
         <location filename="../ImportDialog.ui" line="100"/>
         <source>&amp;Ignore Aspect Ratio</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ignorer le rapport d&apos;aspect</translation>
     </message>
     <message>
         <location filename="../ImportDialog.ui" line="107"/>
@@ -179,7 +179,7 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     <message>
         <location filename="../ImportDialog.ui" line="152"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Annuler</translation>
+        <translation>A&amp;nnuler</translation>
     </message>
 </context>
 <context>
@@ -452,7 +452,7 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
     <message>
         <source>All files (**)</source>
-        <translation type="vanished">Tous les fichiers (**)</translation>
+        <translation>Tous les fichiers (**)</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="246"/>
@@ -478,7 +478,7 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
     <message>
         <source>Failed to copy current Snapmatic picture</source>
-        <translation type="vanished">Echec de la copie</translation>
+        <translation>Echec de la copie</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="187"/>
@@ -526,7 +526,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <source>Avatar Preview Mode&lt;br&gt;Press A for Default View</source>
-        <translation type="vanished">Aperçu avatar&lt;br&gt;Appuyer sur A pour la vue par défaut</translation>
+        <translation>Aperçu avatar&lt;br&gt;Appuyer sur A pour la vue par défaut</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="403"/>
@@ -659,7 +659,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <source>All profile files (SGTA* PGTA*)</source>
-        <translation type="vanished">Fichiers de profil GTA (SGTA* PGTA*)</translation>
+        <translation>Fichiers de profil GTA (SGTA* PGTA*)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="375"/>
@@ -683,7 +683,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <location filename="../ProfileInterface.cpp" line="407"/>
         <location filename="../ProfileInterface.cpp" line="422"/>
         <source>Import file %1 of %2 files</source>
-        <translation type="unfinished"></translation>
+        <translation>Importation du fichier %1 sur %2</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="460"/>
@@ -720,17 +720,17 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <source>Failed to import the Snapmatic picture, file not begin with PGTA</source>
-        <translation type="vanished">Impossible d&apos;importer la photo Snapmatic,nom de fichier incorrect (PGTA*)</translation>
+        <translation>Impossible d&apos;importer la photo Snapmatic,nom de fichier incorrect (PGTA*)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="373"/>
         <source>Importable files (*.g5e *.jpg *.png SGTA* PGTA*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fichiers importables (*.g5e *.jpg *.png SGTA* PGTA*)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="377"/>
         <source>All image files (*.jpg *.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tous les fichiers image (*.jpg *.png)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="681"/>
@@ -1084,7 +1084,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation type="vanished">Personnalisé</translation>
+        <translation>Personnalisé</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="101"/>
@@ -1132,7 +1132,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     <message>
         <location filename="../SnapmaticPicture.cpp" line="349"/>
         <source>PHOTO - %1</source>
-        <translation type="unfinished"></translation>
+        <translation>PHOTO - %1</translation>
     </message>
 </context>
 <context>
@@ -1271,7 +1271,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     <name>UserInterface</name>
     <message>
         <source>gta5sync - %1</source>
-        <translation type="vanished">gta5sync - %1</translation>
+        <translation>gta5sync - %1</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="74"/>
@@ -1315,7 +1315,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <source>&amp;About gta5sync</source>
-        <translation type="vanished">&amp;À propos de gta5sync</translation>
+        <translation>&amp;À propos de gta5sync</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="223"/>
