@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016 Syping
+* Copyright (C) 2016-2017 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,6 @@
 #define SNAPMATICWIDGET_H
 
 #include "SnapmaticPicture.h"
-#include "ProfileInterface.h"
 #include "ProfileDatabase.h"
 #include "DatabaseThread.h"
 #include "ProfileWidget.h"
@@ -40,7 +39,6 @@ class SnapmaticWidget : public ProfileWidget
 
 public:
     SnapmaticWidget(ProfileDatabase *profileDB, CrewDatabase *crewDB, DatabaseThread *threadDB, QWidget *parent = 0);
-    void setSnapmaticPicture(SnapmaticPicture *picture, QString picturePath);
     void setSnapmaticPicture(SnapmaticPicture *picture);
     void setSelectionMode(bool selectionMode);
     void setSelected(bool isSelected);
@@ -98,6 +96,7 @@ signals:
     void allWidgetsDeselected();
     void nextPictureRequested(QWidget *dialog);
     void previousPictureRequested(QWidget *dialog);
+    void contextMenuTriggered(QContextMenuEvent *ev);
 };
 
 #endif // SNAPMATICWIDGET_H

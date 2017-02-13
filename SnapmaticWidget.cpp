@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016 Syping
+* Copyright (C) 2016-2017 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 #include "DatabaseThread.h"
 #include "PictureDialog.h"
 #include "PictureExport.h"
-#include "PictureCopy.h"
 #include "config.h"
 #include <QMessageBox>
 #include <QPixmap>
@@ -49,7 +48,6 @@ SnapmaticWidget::SnapmaticWidget(ProfileDatabase *profileDB, CrewDatabase *crewD
     palette.setCurrentColorGroup(QPalette::Disabled);
     highlightHiddenColor = palette.text().color();
 
-    snwgt = parent;
     picPath = "";
     picStr = "";
     smpic = 0;
@@ -80,25 +78,20 @@ bool SnapmaticWidget::eventFilter(QObject *obj, QEvent *ev)
     return false;
 }
 
-void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture, QString picturePath)
+void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
 {
     smpic = picture;
-    picPath = picturePath;
+    picPath = picture->getPictureFilePath();
     picTitl = picture->getPictureTitl();
     picStr = picture->getPictureStr();
 
-    QPixmap SnapmaticPixmap = QPixmap::fromImage(picture->getPicture().scaled(ui->labPicture->width(), ui->labPicture->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation), Qt::AutoColor);
+    QPixmap SnapmaticPixmap = QPixmap::fromImage(picture->getImage().scaled(ui->labPicture->width(), ui->labPicture->height(), Qt::KeepAspectRatio, Qt::SmoothTransformation), Qt::AutoColor);
     ui->labPicStr->setText(picStr + "\n" + picTitl + "");
     ui->labPicture->setPixmap(SnapmaticPixmap);
 
     picture->clearCache();
 
     adjustTextColor();
-}
-
-void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
-{
-    setSnapmaticPicture(picture, picture->getPictureFileName());
 }
 
 void SnapmaticWidget::on_cmdView_clicked()
@@ -110,7 +103,7 @@ void SnapmaticWidget::on_cmdView_clicked()
 
     PictureDialog *picDialog = new PictureDialog(profileDB, crewDB, this);
     picDialog->setWindowFlags(picDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
-    picDialog->setSnapmaticPicture(smpic, picPath, true);
+    picDialog->setSnapmaticPicture(smpic, true);
     picDialog->setModal(true);
 
     // be ready for playerName updated
@@ -133,12 +126,12 @@ void SnapmaticWidget::on_cmdView_clicked()
 
 void SnapmaticWidget::on_cmdCopy_clicked()
 {
-    PictureCopy::copyPicture(this, picPath, smpic);
+    PictureExport::exportAsSnapmatic(this, smpic);
 }
 
 void SnapmaticWidget::on_cmdExport_clicked()
 {
-    PictureExport::exportPicture(this, smpic);
+    PictureExport::exportAsPicture(this, smpic);
 }
 
 void SnapmaticWidget::on_cmdDelete_clicked()
@@ -207,43 +200,7 @@ void SnapmaticWidget::pictureSelected()
 
 void SnapmaticWidget::contextMenuEvent(QContextMenuEvent *ev)
 {
-    QMenu contextMenu(this);
-    QMenu editMenu(tr("Edi&t"), this);
-    if (isHidden())
-    {
-        editMenu.addAction(tr("Show &In-game"), this, SLOT(makePictureVisibleSlot()));
-    }
-    else
-    {
-        editMenu.addAction(tr("Hide &In-game"), this, SLOT(makePictureHiddenSlot()));
-    }
-    editMenu.addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
-    QMenu exportMenu(tr("&Export"), this);
-    exportMenu.addAction(tr("Export as &JPG picture..."), this, SLOT(on_cmdExport_clicked()));
-    exportMenu.addAction(tr("Export as &GTA Snapmatic..."), this, SLOT(on_cmdCopy_clicked()));
-    contextMenu.addAction(tr("&View"), this, SLOT(on_cmdView_clicked()));
-    contextMenu.addMenu(&editMenu);
-    contextMenu.addMenu(&exportMenu);
-    contextMenu.addAction(tr("&Remove"), this, SLOT(on_cmdDelete_clicked()));
-    if (ui->cbSelected->isVisible())
-    {
-        contextMenu.addSeparator();
-        if (!ui->cbSelected->isChecked()) { contextMenu.addAction(tr("&Select"), this, SLOT(pictureSelected())); }
-        if (ui->cbSelected->isChecked()) { contextMenu.addAction(tr("&Deselect"), this, SLOT(pictureSelected())); }
-        contextMenu.addAction(tr("Select &All"), this, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
-        ProfileInterface *profileInterface = (ProfileInterface*)snwgt;
-        if (profileInterface->selectedWidgets() != 0)
-        {
-            contextMenu.addAction(tr("&Deselect All"), this, SLOT(deselectAllWidgets()), QKeySequence::fromString("Ctrl+D"));
-        }
-    }
-    else
-    {
-        contextMenu.addSeparator();
-        contextMenu.addAction(tr("&Select"), this, SLOT(pictureSelected()));
-        contextMenu.addAction(tr("Select &All"), this, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
-    }
-    contextMenu.exec(ev->globalPos());
+    emit contextMenuTriggered(ev);
 }
 
 void SnapmaticWidget::dialogNextPictureRequested()
@@ -282,10 +239,9 @@ void SnapmaticWidget::adjustTextColor()
 
 bool SnapmaticWidget::makePictureHidden()
 {
-    SnapmaticPicture *picture = (SnapmaticPicture*)smpic;
-    if (picture->setPictureHidden())
+    if (smpic->setPictureHidden())
     {
-        picPath = picture->getPictureFileName();
+        picPath = smpic->getPictureFilePath();
         adjustTextColor();
         return true;
     }
@@ -294,10 +250,9 @@ bool SnapmaticWidget::makePictureHidden()
 
 bool SnapmaticWidget::makePictureVisible()
 {
-    SnapmaticPicture *picture = (SnapmaticPicture*)smpic;
-    if (picture->setPictureVisible())
+    if (smpic->setPictureVisible())
     {
-        picPath = picture->getPictureFileName();
+        picPath = smpic->getPictureFilePath();
         adjustTextColor();
         return true;
     }

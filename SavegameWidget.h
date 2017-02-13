@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016 Syping
+* Copyright (C) 2016-2017 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,6 @@
 
 #ifndef SAVEGAMEWIDGET_H
 #define SAVEGAMEWIDGET_H
-
-#include "ProfileInterface.h"
 #include "ProfileWidget.h"
 #include "SavegameData.h"
 #include <QContextMenuEvent>
@@ -78,6 +76,7 @@ signals:
     void widgetDeselected();
     void allWidgetsSelected();
     void allWidgetsDeselected();
+    void contextMenuTriggered(QContextMenuEvent *ev);
 };
 
 #endif // SAVEGAMEWIDGET_H

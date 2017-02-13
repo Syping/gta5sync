@@ -34,8 +34,8 @@ SOURCES += main.cpp \
     ExportThread.cpp \
     GlobalString.cpp \
     IconLoader.cpp \
+    ImportDialog.cpp \
     OptionsDialog.cpp \
-    PictureCopy.cpp \
     PictureDialog.cpp \
     PictureExport.cpp \
     PictureWidget.cpp \
@@ -59,15 +59,14 @@ SOURCES += main.cpp \
 HEADERS  += \
     AboutDialog.h \
     AppEnv.h \
-    config.h \
     CrewDatabase.h \
     DatabaseThread.h \
     ExportDialog.h \
     ExportThread.h \
     GlobalString.h \
     IconLoader.h \
+    ImportDialog.h \
     OptionsDialog.h \
-    PictureCopy.h \
     PictureDialog.h \
     PictureExport.h \
     PictureWidget.h \
@@ -88,9 +87,12 @@ HEADERS  += \
     UserInterface.h \
     uimod/UiModLabel.h
 
+PRECOMPILED_HEADER += config.h
+
 FORMS    += \
     AboutDialog.ui \
     ExportDialog.ui \
+    ImportDialog.ui \
     OptionsDialog.ui \
     PictureDialog.ui \
     ProfileInterface.ui \
