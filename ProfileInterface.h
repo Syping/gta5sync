@@ -53,7 +53,8 @@ public:
     ~ProfileInterface();
 
 public slots:
-    void contextMenuTriggered(QContextMenuEvent* ev);
+    void contextMenuTriggeredPIC(QContextMenuEvent* ev);
+    void contextMenuTriggeredSGD(QContextMenuEvent* ev);
     void selectAllWidgets();
     void deselectAllWidgets();
     void exportSelected();
@@ -97,7 +98,7 @@ private:
     bool importSavegameData(SavegameData *savegame, QString sgdPath, bool warn = true);
     void pictureLoaded(SnapmaticPicture *picture, bool inserted);
     void savegameLoaded(SavegameData *savegame, QString savegamePath, bool inserted);
-    void savegameDeleted(QWidget *sgdWidget);
+    void savegameDeleted(SavegameWidget *sgdWidget);
     void pictureDeleted(SnapmaticWidget *picWidget);
     void insertSnapmaticIPI(QWidget *widget);
     void insertSavegameIPI(QWidget *widget);
