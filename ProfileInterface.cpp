@@ -1060,68 +1060,68 @@ int ProfileInterface::selectedWidgets()
 
 void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
 {
-    SnapmaticWidget *smwidget = (SnapmaticWidget*)sender();
-    QMenu contextMenu(smwidget);
-    QMenu editMenu(SnapmaticWidget::tr("Edi&t"), smwidget);
+    SnapmaticWidget *picWidget = (SnapmaticWidget*)sender();
+    QMenu contextMenu(picWidget);
+    QMenu editMenu(SnapmaticWidget::tr("Edi&t"), picWidget);
     if (isHidden())
     {
-        editMenu.addAction(SnapmaticWidget::tr("Show &In-game"), smwidget, SLOT(makePictureVisibleSlot()));
+        editMenu.addAction(SnapmaticWidget::tr("Show &In-game"), picWidget, SLOT(makePictureVisibleSlot()));
     }
     else
     {
-        editMenu.addAction(SnapmaticWidget::tr("Hide &In-game"), smwidget, SLOT(makePictureHiddenSlot()));
+        editMenu.addAction(SnapmaticWidget::tr("Hide &In-game"), picWidget, SLOT(makePictureHiddenSlot()));
     }
-    editMenu.addAction(SnapmaticWidget::tr("&Edit Properties..."), smwidget, SLOT(editSnapmaticProperties()));
+    editMenu.addAction(SnapmaticWidget::tr("&Edit Properties..."), picWidget, SLOT(editSnapmaticProperties()));
     QMenu exportMenu(SnapmaticWidget::tr("&Export"), this);
-    exportMenu.addAction(SnapmaticWidget::tr("Export as &JPG picture..."), smwidget, SLOT(on_cmdExport_clicked()));
-    exportMenu.addAction(SnapmaticWidget::tr("Export as &GTA Snapmatic..."), smwidget, SLOT(on_cmdCopy_clicked()));
-    contextMenu.addAction(SnapmaticWidget::tr("&View"), smwidget, SLOT(on_cmdView_clicked()));
+    exportMenu.addAction(SnapmaticWidget::tr("Export as &JPG picture..."), picWidget, SLOT(on_cmdExport_clicked()));
+    exportMenu.addAction(SnapmaticWidget::tr("Export as &GTA Snapmatic..."), picWidget, SLOT(on_cmdCopy_clicked()));
+    contextMenu.addAction(SnapmaticWidget::tr("&View"), picWidget, SLOT(on_cmdView_clicked()));
     contextMenu.addMenu(&editMenu);
     contextMenu.addMenu(&exportMenu);
-    contextMenu.addAction(SnapmaticWidget::tr("&Remove"), smwidget, SLOT(on_cmdDelete_clicked()));
-    if (smwidget->isSelected())
+    contextMenu.addAction(SnapmaticWidget::tr("&Remove"), picWidget, SLOT(on_cmdDelete_clicked()));
+    if (picWidget->isSelected())
     {
         contextMenu.addSeparator();
-        if (!smwidget->isSelected()) { contextMenu.addAction(SnapmaticWidget::tr("&Select"), smwidget, SLOT(pictureSelected())); }
-        if (smwidget->isSelected()) { contextMenu.addAction(SnapmaticWidget::tr("&Deselect"), smwidget, SLOT(pictureSelected())); }
-        contextMenu.addAction(SnapmaticWidget::tr("Select &All"), smwidget, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
+        if (!picWidget->isSelected()) { contextMenu.addAction(SnapmaticWidget::tr("&Select"), picWidget, SLOT(pictureSelected())); }
+        if (picWidget->isSelected()) { contextMenu.addAction(SnapmaticWidget::tr("&Deselect"), picWidget, SLOT(pictureSelected())); }
+        contextMenu.addAction(SnapmaticWidget::tr("Select &All"), picWidget, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
         if (selectedWidgets() != 0)
         {
-            contextMenu.addAction(SnapmaticWidget::tr("&Deselect All"), smwidget, SLOT(deselectAllWidgets()), QKeySequence::fromString("Ctrl+D"));
+            contextMenu.addAction(SnapmaticWidget::tr("&Deselect All"), picWidget, SLOT(deselectAllWidgets()), QKeySequence::fromString("Ctrl+D"));
         }
     }
     else
     {
         contextMenu.addSeparator();
-        contextMenu.addAction(SnapmaticWidget::tr("&Select"), smwidget, SLOT(pictureSelected()));
-        contextMenu.addAction(SnapmaticWidget::tr("Select &All"), smwidget, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
+        contextMenu.addAction(SnapmaticWidget::tr("&Select"), picWidget, SLOT(pictureSelected()));
+        contextMenu.addAction(SnapmaticWidget::tr("Select &All"), picWidget, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
     }
     contextMenu.exec(ev->globalPos());
 }
 
 void ProfileInterface::contextMenuTriggeredSGD(QContextMenuEvent *ev)
 {
-    SavegameWidget *sgwidget = (SavegameWidget*)sender();
-    QMenu contextMenu(sgwidget);
-    contextMenu.addAction(SavegameWidget::tr("&View"), sgwidget, SLOT(on_cmdView_clicked()));
-    contextMenu.addAction(SavegameWidget::tr("&Export"), sgwidget, SLOT(on_cmdCopy_clicked()));
-    contextMenu.addAction(SavegameWidget::tr("&Remove"), sgwidget, SLOT(on_cmdDelete_clicked()));
-    if (sgwidget->isSelected())
+    SavegameWidget *sgdWidget = (SavegameWidget*)sender();
+    QMenu contextMenu(sgdWidget);
+    contextMenu.addAction(SavegameWidget::tr("&View"), sgdWidget, SLOT(on_cmdView_clicked()));
+    contextMenu.addAction(SavegameWidget::tr("&Export"), sgdWidget, SLOT(on_cmdCopy_clicked()));
+    contextMenu.addAction(SavegameWidget::tr("&Remove"), sgdWidget, SLOT(on_cmdDelete_clicked()));
+    if (sgdWidget->isSelected())
     {
         contextMenu.addSeparator();
-        if (!sgwidget->isSelected()) { contextMenu.addAction(SavegameWidget::tr("&Select"), this, SLOT(savegameSelected())); }
-        if (sgwidget->isSelected()) { contextMenu.addAction(SavegameWidget::tr("&Deselect"), this, SLOT(savegameSelected())); }
-        contextMenu.addAction(SavegameWidget::tr("Select &All"), sgwidget, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
+        if (!sgdWidget->isSelected()) { contextMenu.addAction(SavegameWidget::tr("&Select"), this, SLOT(savegameSelected())); }
+        if (sgdWidget->isSelected()) { contextMenu.addAction(SavegameWidget::tr("&Deselect"), this, SLOT(savegameSelected())); }
+        contextMenu.addAction(SavegameWidget::tr("Select &All"), sgdWidget, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
         if (selectedWidgets() != 0)
         {
-            contextMenu.addAction(SavegameWidget::tr("&Deselect All"), sgwidget, SLOT(deselectAllWidgets()), QKeySequence::fromString("Ctrl+D"));
+            contextMenu.addAction(SavegameWidget::tr("&Deselect All"), sgdWidget, SLOT(deselectAllWidgets()), QKeySequence::fromString("Ctrl+D"));
         }
     }
     else
     {
         contextMenu.addSeparator();
-        contextMenu.addAction(SavegameWidget::tr("&Select"), sgwidget, SLOT(savegameSelected()));
-        contextMenu.addAction(SavegameWidget::tr("Select &All"), sgwidget, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
+        contextMenu.addAction(SavegameWidget::tr("&Select"), sgdWidget, SLOT(savegameSelected()));
+        contextMenu.addAction(SavegameWidget::tr("Select &All"), sgdWidget, SLOT(selectAllWidgets()), QKeySequence::fromString("Ctrl+A"));
     }
     contextMenu.exec(ev->globalPos());
 }
