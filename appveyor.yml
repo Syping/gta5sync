@@ -16,4 +16,4 @@ deploy_script:
   - copy /Y release\gta5sync.exe deploy\gta5sync.exe
   - cd deploy
   - windeployqt --release --no-translations gta5sync.exe
-  - 7z a * gta5sync.7z
+  - 7z a gta5sync.7z *
