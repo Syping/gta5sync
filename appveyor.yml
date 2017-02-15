@@ -9,6 +9,6 @@ build_script:
   - mkdir build
   - cd build
   - qmake ../gta5sync.pro
-  - nmake
-  - nmake clean
+  - C:\Qt\Tools\QtCreator\bin\jom.exe
+  - C:\Qt\Tools\QtCreator\bin\jom.exe clean
   - windeployqt --release --no-translations release/gta5sync.exe
