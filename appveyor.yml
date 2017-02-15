@@ -12,7 +12,6 @@ build_script:
   - C:\Qt\Tools\QtCreator\bin\jom.exe
 
 deploy_script:
-  - cd build
   - mkdir deploy
   - copy /Y release\gta5sync.exe deploy\gta5sync.exe
   - windeployqt --release --no-translations deploy/gta5sync.exe
