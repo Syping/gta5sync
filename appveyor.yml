@@ -3,8 +3,7 @@ environment:
   
 install:
   - set PATH=%QTDIR%\bin;%PATH%
-  - ps: $env:VSCOMNTOOLS=(Get-Content ("env:VS" + "$env:VSVER" + "0COMNTOOLS"))
-  - call "%VSCOMNTOOLS%\..\..\VC\vcvarsall.bat" x86_amd64
+  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
   
 build_script:
   - qmake gta5sync.pro
