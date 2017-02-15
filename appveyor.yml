@@ -10,4 +10,5 @@ build_script:
   - cd build
   - qmake ../gta5sync.pro
   - nmake
-  - windeployqt --release gta5sync.exe
+  - nmake clean
+  - windeployqt --release release/gta5sync.exe
