@@ -8,7 +8,7 @@ install:
 build_script:
   - mkdir build
   - cd build
-  - qmake ../gta5sync.pro DEFINES+=GTA5SYNC_BUILDTYPE='\\\"AppVeyor_Cloud\\\"' "DEFINES+=GTA5SYNC_DAILYB=\\\\\\\"%APPVEYOR_BUILD_VERSION%\\\\\\\""
+  - qmake ../gta5sync.pro "DEFINES+=GTA5SYNC_BUILDTYPE=\\\\\\\"AppVeyor_Cloud\\\\\\\"" "DEFINES+=GTA5SYNC_DAILYB=\\\\\\\"%APPVEYOR_BUILD_VERSION%\\\\\\\""
   - C:\Qt\Tools\QtCreator\bin\jom.exe
 
 deploy_script:
