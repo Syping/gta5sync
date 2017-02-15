@@ -12,7 +12,7 @@ build_script:
   - qmake ../gta5sync.pro
   - C:\Qt\Tools\QtCreator\bin\jom.exe
 
-deploy:
+deploy_script:
   - cd build
   - mkdir deploy
   - copy /Y release\gta5sync.exe deploy\gta5sync.exe
