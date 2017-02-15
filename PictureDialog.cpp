@@ -49,6 +49,7 @@
 #include <QPicture>
 #include <QBitmap>
 #include <QBuffer>
+#include <QImage>
 #include <QDebug>
 #include <QList>
 #include <QDrag>
@@ -295,10 +296,10 @@ void PictureDialog::renderOverlayPicture()
     // Generating Overlay Preview
     QRect preferedRect = QRect(0, 0, 200, 160);
     QString overlayText = tr("Key 1 - Avatar Preview Mode\nKey 2 - Toggle Overlay\nArrow Keys - Navigate");
-    QPixmap overlayPixmap(1, 1);
-    overlayPixmap.fill(Qt::transparent);
+    QImage overlayImage(1, 1, QImage::Format_ARGB32_Premultiplied);
+    overlayImage.fill(Qt::transparent);
 
-    QPainter overlayPainter(&overlayPixmap);
+    QPainter overlayPainter(&overlayImage);
     QFont overlayPainterFont;
     overlayPainterFont.setPixelSize(12);
     overlayPainter.setFont(overlayPainterFont);
@@ -317,8 +318,8 @@ void PictureDialog::renderOverlayPicture()
         overlaySpace.setHeight(overlaySpace.height() + 6);
     }
 
-    overlayPixmap = overlayPixmap.scaled(overlaySpace.size());
-    overlayPainter.begin(&overlayPixmap);
+    overlayImage = overlayImage.scaled(overlaySpace.size());
+    overlayPainter.begin(&overlayImage);
     overlayPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
     overlayPainter.setFont(overlayPainterFont);
     overlayPainter.drawText(preferedRect, Qt::AlignLeft | hOverlay | Qt::TextDontClip | Qt::TextWordWrap, overlayText);
@@ -333,16 +334,15 @@ void PictureDialog::renderOverlayPicture()
         overlaySpace.setWidth(overlaySpace.width() + 6);
     }
 
-    QPixmap overlayBorderImage(overlaySpace.width(), overlaySpace.height());
+    QImage overlayBorderImage(overlaySpace.width(), overlaySpace.height(), QImage::Format_ARGB6666_Premultiplied);
     overlayBorderImage.fill(QColor(15, 15, 15, 162));
 
-    QPixmap overlayTempPixmap(overlaySpace.size());
-    overlayTempPixmap.fill(Qt::transparent);
-    QPainter overlayTempPainter(&overlayTempPixmap);
-    overlayTempPainter.drawPixmap(0, 0, overlayBorderImage);
-    overlayTempPainter.drawPixmap(3, 3, overlayPixmap);
+    overlayTempImage = QImage(overlaySpace.width(), overlaySpace.height(), QImage::Format_ARGB6666_Premultiplied);
+    overlayTempImage.fill(Qt::transparent);
+    QPainter overlayTempPainter(&overlayTempImage);
+    overlayTempPainter.drawImage(0, 0, overlayBorderImage);
+    overlayTempPainter.drawImage(3, 3, overlayImage);
     overlayTempPainter.end();
-    overlayTempImage = overlayTempPixmap.toImage();
 }
 
 void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, bool _indexed, int _index)
