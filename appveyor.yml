@@ -11,4 +11,4 @@ build_script:
   - qmake ../gta5sync.pro
   - nmake
   - nmake clean
-  - windeployqt --release release/gta5sync.exe
+  - windeployqt --release --no-translations release/gta5sync.exe
