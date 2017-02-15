@@ -14,4 +14,5 @@ build_script:
 deploy_script:
   - mkdir deploy
   - copy /Y release\gta5sync.exe deploy\gta5sync.exe
-  - windeployqt --release --no-translations deploy/gta5sync.exe
+  - cd deploy
+  - windeployqt --release --no-translations gta5sync.exe
