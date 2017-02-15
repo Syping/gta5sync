@@ -85,7 +85,7 @@ void SnapmaticPicture::reset()
     jsonStr = "";
 
     // SNAPMATIC PROPERTIES
-    localSpJson = {0};
+    localSpJson = {};
 }
 
 bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
