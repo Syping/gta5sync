@@ -93,6 +93,9 @@ public:
     bool setPictureHidden();
     bool setPictureVisible();
 
+    // PREDEFINED PROPERTIES
+    QSize getSnapmaticResolution();
+
 private:
     QString getSnapmaticHeaderString(const QByteArray &snapmaticHeader);
     QString getSnapmaticJSONString(const QByteArray &jsonBytes);
@@ -131,6 +134,9 @@ private:
     int titlStreamEditorLength;
     int titlStreamCharacterMax;
     QByteArray rawPicContent;
+
+    // PREDEFINED PROPERTIES
+    QSize snapmaticResolution;
 
     // JSON
     void parseJsonContent();

@@ -24,6 +24,7 @@
 #include <QVariantMap>
 #include <QJsonArray>
 #include <QFileInfo>
+#include <QPainter>
 #include <QString>
 #include <QBuffer>
 #include <QDebug>
@@ -51,6 +52,9 @@ SnapmaticPicture::SnapmaticPicture(const QString &fileName, QObject *parent) : Q
     titlStreamCharacterMax = 39;
     rawPicContent = "";
 
+    // PREDEFINED PROPERTIES
+    snapmaticResolution = QSize(960, 536);
+
     reset();
 }
 
@@ -64,7 +68,7 @@ void SnapmaticPicture::reset()
     rawPicContent = "";
 
     // INIT PIC
-    cachePicture = QImage(0, 0, QImage::Format_RGB32);
+    cachePicture = QImage(0, 0, QImage::Format_RGB888);
     jpegRawContentSize = 0;
     picExportFileName = "";
     isCustomFormat = 0;
@@ -79,6 +83,9 @@ void SnapmaticPicture::reset()
     // INIT JSON
     jsonOk = 0;
     jsonStr = "";
+
+    // SNAPMATIC PROPERTIES
+    localSpJson = {};
 }
 
 bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
@@ -238,6 +245,21 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
     {
         QImage tempPicture;
         picOk = tempPicture.loadFromData(jpegRawContent, "JPEG");
+    }
+    else
+    {
+        QImage tempPicture = QImage(snapmaticResolution, QImage::Format_RGB888);
+        QPainter tempPainter(&tempPicture);
+        if (cachePicture.size() == snapmaticResolution)
+        {
+            tempPainter.drawImage(0, 0, cachePicture);
+        }
+        else
+        {
+            tempPainter.drawImage(0, 0, cachePicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        }
+        tempPainter.end();
+        cachePicture = tempPicture;
     }
 
     // Read JSON Stream
@@ -485,7 +507,7 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, bool customFormat)
             }
             else if (numberLength.length() != 2)
             {
-                numberLength == "00";
+                numberLength = "00";
             }
             picFile->write(QByteArray::fromHex("00")); // First Null Byte
             picFile->write("G5E"); // GTA 5 Export
@@ -561,19 +583,23 @@ QImage SnapmaticPicture::getImage()
     else if (writeEnabled)
     {
         bool returnOk = 0;
-        QImage returnPicture;
+        QImage tempPicture;
+        QImage returnPicture(snapmaticResolution, QImage::Format_RGB888);
 
         QBuffer snapmaticStream(&rawPicContent);
         snapmaticStream.open(QIODevice::ReadOnly);
         if (snapmaticStream.seek(jpegStreamEditorBegin))
         {
             QByteArray jpegRawContent = snapmaticStream.read(jpegPicStreamLength);
-            returnOk = returnPicture.loadFromData(jpegRawContent, "JPEG");
+            returnOk = tempPicture.loadFromData(jpegRawContent, "JPEG");
         }
         snapmaticStream.close();
 
         if (returnOk)
         {
+            QPainter returnPainter(&returnPicture);
+            returnPainter.drawImage(0, 0, tempPicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            returnPainter.end();
             return returnPicture;
         }
     }
@@ -589,7 +615,7 @@ QImage SnapmaticPicture::getImage()
             lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFilePath);
             picFile->deleteLater();
             delete picFile;
-            return QImage(0, 0, QImage::Format_RGB32);
+            return QImage(0, 0, QImage::Format_RGB888);
         }
         rawPicContent = picFile->read(snapmaticFileMaxSize);
         picFile->close();
@@ -610,7 +636,7 @@ QImage SnapmaticPicture::getImage()
             return returnPicture;
         }
     }
-    return QImage(0, 0, QImage::Format_RGB32);
+    return QImage(0, 0, QImage::Format_RGB888);
 }
 
 int SnapmaticPicture::getContentMaxLength()
@@ -636,7 +662,7 @@ void SnapmaticPicture::setPicFilePath(QString picFilePath_)
 void SnapmaticPicture::clearCache()
 {
     cacheEnabled = false;
-    cachePicture = QImage(0, 0, QImage::Format_RGB32);
+    cachePicture = QImage(0, 0, QImage::Format_RGB888);
 }
 
 // JSON part
@@ -826,4 +852,11 @@ bool SnapmaticPicture::setPictureVisible()
         return false;
     }
     return true;
+}
+
+// PREDEFINED PROPERTIES
+
+QSize SnapmaticPicture::getSnapmaticResolution()
+{
+    return snapmaticResolution;
 }
