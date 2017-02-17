@@ -35,7 +35,9 @@ class PictureDialog : public QDialog
 {
     Q_OBJECT
 public:
-    explicit PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB,  QWidget *parent = 0);
+    explicit PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, QWidget *parent = 0);
+    explicit PictureDialog(QWidget *parent = 0);
+    void setupPictureDialog(bool withDatabase);
     void setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, bool indexed, int index);
     void setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, int index);
     void setSnapmaticPicture(SnapmaticPicture *picture, bool readOk);
@@ -101,6 +103,7 @@ private:
     QString locY;
     QString locZ;
     bool overlayenabled;
+    bool withdatabase;
     bool rqfullscreen;
     bool navienabled;
     bool previewmode;

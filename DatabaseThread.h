@@ -28,6 +28,7 @@ class DatabaseThread : public QThread
     Q_OBJECT
 public:
     explicit DatabaseThread(CrewDatabase *crewDB, QObject *parent = 0);
+    void doEndThread();
 
 private:
     CrewDatabase *crewDB;

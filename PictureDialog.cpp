@@ -61,6 +61,17 @@ PictureDialog::PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, Q
     QDialog(parent), profileDB(profileDB), crewDB(crewDB),
     ui(new Ui::PictureDialog)
 {
+    setupPictureDialog(true);
+}
+
+PictureDialog::PictureDialog(QWidget *parent) : QDialog(parent),
+    ui(new Ui::PictureDialog)
+{
+    setupPictureDialog(false);
+}
+
+void PictureDialog::setupPictureDialog(bool withDatabase_)
+{
     ui->setupUi(this);
     windowTitleStr = this->windowTitle();
     jsonDrawString = ui->labJSON->text();
@@ -80,6 +91,9 @@ PictureDialog::PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, Q
     locY = "";
     locZ = "";
     smpic = 0;
+
+    // With datebase
+    withdatabase = withDatabase_;
 
     // Avatar area
     avatarAreaPicture = QImage(":/img/avatararea.png");
@@ -368,7 +382,14 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
         locX = QString::number(picture->getSnapmaticProperties().location.x);
         locY = QString::number(picture->getSnapmaticProperties().location.y);
         locZ = QString::number(picture->getSnapmaticProperties().location.z);
-        crewID = crewDB->getCrewName(picture->getSnapmaticProperties().crewID);
+        if (withdatabase)
+        {
+            crewID = crewDB->getCrewName(picture->getSnapmaticProperties().crewID);
+        }
+        else
+        {
+            crewID = QString::number(picture->getSnapmaticProperties().crewID);
+        }
         created = picture->getSnapmaticProperties().createdDateTime.toString(Qt::DefaultLocaleShortDate);
         plyrsList = picture->getSnapmaticProperties().playersList;
         picTitl = picture->getPictureTitl();
@@ -387,7 +408,15 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
         {
             foreach (const QString &player, plyrsList)
             {
-                QString playerName = profileDB->getPlayerName(player.toInt());
+                QString playerName;
+                if (withdatabase)
+                {
+                    playerName = profileDB->getPlayerName(player.toInt());
+                }
+                else
+                {
+                    playerName = player;
+                }
                 plyrsStr.append(", <a href=\"https://socialclub.rockstargames.com/member/");
                 plyrsStr.append(playerName);
                 plyrsStr.append("/");
@@ -479,7 +508,15 @@ void PictureDialog::playerNameUpdated()
         QString plyrsStr;
         foreach (const QString &player, plyrsList)
         {
-            QString playerName = profileDB->getPlayerName(player.toInt());
+            QString playerName;
+            if (withdatabase)
+            {
+                playerName = profileDB->getPlayerName(player.toInt());
+            }
+            else
+            {
+                playerName = player;
+            }
             plyrsStr.append(", <a href=\"https://socialclub.rockstargames.com/member/");
             if (playerName != player)
             {

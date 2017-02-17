@@ -70,8 +70,11 @@ void DatabaseThread::run()
         scanCrewMembersList(crewList, crewMaxPages, 10000);
         emit playerNameUpdated();
 
-        QTimer::singleShot(300000, &threadLoop, SLOT(quit()));
-        threadLoop.exec();
+        if (threadRunning)
+        {
+            QTimer::singleShot(300000, &threadLoop, SLOT(quit()));
+            threadLoop.exec();
+        }
     }
 }
 
@@ -220,4 +223,9 @@ void DatabaseThread::scanCrewMembersList(QStringList crewList, int maxPages, int
             }
         }
     }
+}
+
+void DatabaseThread::doEndThread()
+{
+    threadRunning = false;
 }
