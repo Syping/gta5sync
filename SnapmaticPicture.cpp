@@ -88,7 +88,7 @@ void SnapmaticPicture::reset()
     localSpJson = {};
 }
 
-bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
+bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bool fastLoad)
 {
     // Start opening file
     // lastStep is like currentStep
@@ -246,7 +246,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_)
         QImage tempPicture;
         picOk = tempPicture.loadFromData(jpegRawContent, "JPEG");
     }
-    else
+    else if (!fastLoad)
     {
         QImage tempPicture = QImage(snapmaticResolution, QImage::Format_RGB888);
         QPainter tempPainter(&tempPicture);
@@ -373,12 +373,12 @@ void SnapmaticPicture::updateStrings()
     picExportFileName = sortStr + "_" + cmpPicTitl;
 }
 
-bool SnapmaticPicture::readingPictureFromFile(const QString &fileName, bool writeEnabled_, bool cacheEnabled_)
+bool SnapmaticPicture::readingPictureFromFile(const QString &fileName, bool writeEnabled_, bool cacheEnabled_, bool fastLoad)
 {
     if (fileName != "")
     {
         picFilePath = fileName;
-        return readingPicture(writeEnabled_, cacheEnabled_);
+        return readingPicture(writeEnabled_, cacheEnabled_, fastLoad);
     }
     else
     {
