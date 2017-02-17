@@ -598,7 +598,14 @@ QImage SnapmaticPicture::getImage()
         if (returnOk)
         {
             QPainter returnPainter(&returnPicture);
-            returnPainter.drawImage(0, 0, tempPicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            if (tempPicture.size() == snapmaticResolution)
+            {
+                returnPainter.drawImage(0, 0, tempPicture);
+            }
+            else
+            {
+                returnPainter.drawImage(0, 0, tempPicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            }
             returnPainter.end();
             return returnPicture;
         }
