@@ -425,12 +425,10 @@ int main(int argc, char *argv[])
 
     if (selectedAction == "showpic")
     {
-        qDebug() << "here";
-        //CrewDatabase crewDB;
-        //ProfileDatabase profileDB;
-        //DatabaseThread threadDB(&crewDB);
-        //PictureDialog picDialog(&profileDB, &crewDB);
-        PictureDialog picDialog;
+        CrewDatabase crewDB;
+        ProfileDatabase profileDB;
+        DatabaseThread threadDB(&crewDB);
+        PictureDialog picDialog(true, &profileDB, &crewDB);
         SnapmaticPicture picture;
 
         bool readOk = picture.readingPictureFromFile(arg1);
@@ -438,20 +436,22 @@ int main(int argc, char *argv[])
         picDialog.setWindowIcon(IconLoader::loadingAppIcon());
         picDialog.setSnapmaticPicture(&picture, readOk);
 
-        //int crewID = picture.getSnapmaticProperties().crewID;
-        //if (crewID != 0) { crewDB.addCrew(crewID); }
+        int crewID = picture.getSnapmaticProperties().crewID;
+        if (crewID != 0) { crewDB.addCrew(crewID); }
         if (!readOk) { return 1; }
 
-        //QObject::connect(&threadDB, SIGNAL(playerNameFound(int, QString)), &profileDB, SLOT(setPlayerName(int, QString)));
-        //QObject::connect(&threadDB, SIGNAL(playerNameUpdated()), &picDialog, SLOT(playerNameUpdated()));
-        //threadDB.start();
+        QEventLoop threadLoop;
+        QObject::connect(&threadDB, SIGNAL(playerNameFound(int, QString)), &profileDB, SLOT(setPlayerName(int, QString)));
+        QObject::connect(&threadDB, SIGNAL(playerNameUpdated()), &picDialog, SLOT(playerNameUpdated()));
+        QObject::connect(&threadDB, SIGNAL(finished()), &threadLoop, SLOT(quit()));
+        QObject::connect(&picDialog, SIGNAL(endDatabaseThread()), &threadDB, SLOT(doEndThread()));
+        threadDB.start();
 
         picDialog.show();
-        picDialog.setMinimumSize(picDialog.size());
-        picDialog.setMaximumSize(picDialog.size());
-        picDialog.setFixedSize(picDialog.size());
 
-        return a.exec();
+        threadLoop.exec();
+
+        return 0;
     }
     else if (selectedAction == "showsgd")
     {

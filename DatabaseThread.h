@@ -28,6 +28,8 @@ class DatabaseThread : public QThread
     Q_OBJECT
 public:
     explicit DatabaseThread(CrewDatabase *crewDB, QObject *parent = 0);
+
+public slots:
     void doEndThread();
 
 private:
