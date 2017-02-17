@@ -294,6 +294,10 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                 on_labPicture_mouseDoubleClicked(Qt::LeftButton);
                 returnValue = true;
                 break;
+            case Qt::Key_Escape:
+                ui->cmdClose->click();
+                returnValue = true;
+                break;
             }
         }
     }
