@@ -44,7 +44,7 @@ protected:
 signals:
     void playerNameFound(int playerID, QString playerName);
     void playerNameUpdated();
-
+    void threadEndCommited();
 };
 
 #endif // DATABASETHREAD_H

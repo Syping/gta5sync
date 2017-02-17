@@ -42,6 +42,9 @@ void DatabaseThread::run()
     QEventLoop threadLoop;
     QStringList crewList;
 
+    // Register thread loop end signal
+    QObject::connect(this, SIGNAL(threadEndCommited()), &threadLoop, SLOT(quit()));
+
     // Quick time scan
     if (crewList.length() <= 3)
     {
@@ -58,6 +61,7 @@ void DatabaseThread::run()
 
     QEventLoop *waitingLoop = new QEventLoop();
     QTimer::singleShot(10000, waitingLoop, SLOT(quit()));
+    QObject::connect(this, SIGNAL(threadEndCommited()), waitingLoop, SLOT(quit()));
     waitingLoop->exec();
     delete waitingLoop;
 
@@ -82,7 +86,7 @@ void DatabaseThread::scanCrewReference(QStringList crewList, int requestDelay)
 {
     foreach (const QString &crewID, crewList)
     {
-        if (crewID != "0")
+        if (threadRunning && crewID != "0")
         {
             QNetworkAccessManager *netManager = new QNetworkAccessManager();
 
@@ -96,6 +100,7 @@ void DatabaseThread::scanCrewReference(QStringList crewList, int requestDelay)
 
             QEventLoop *downloadLoop = new QEventLoop();
             QObject::connect(netReply, SIGNAL(finished()), downloadLoop, SLOT(quit()));
+            QObject::connect(this, SIGNAL(threadEndCommited()), downloadLoop, SLOT(quit()));
             QTimer::singleShot(30000, downloadLoop, SLOT(quit()));
             downloadLoop->exec();
             delete downloadLoop;
@@ -141,6 +146,7 @@ void DatabaseThread::scanCrewReference(QStringList crewList, int requestDelay)
 
             QEventLoop *waitingLoop = new QEventLoop();
             QTimer::singleShot(requestDelay, waitingLoop, SLOT(quit()));
+            QObject::connect(this, SIGNAL(threadEndCommited()), waitingLoop, SLOT(quit()));
             waitingLoop->exec();
             delete waitingLoop;
 
@@ -156,7 +162,7 @@ void DatabaseThread::scanCrewMembersList(QStringList crewList, int maxPages, int
 {
     foreach (const QString &crewID, crewList)
     {
-        if (crewID != "0")
+        if (threadRunning && crewID != "0")
         {
             int currentPage = 0;
             int foundPlayers = 0;
@@ -176,6 +182,7 @@ void DatabaseThread::scanCrewMembersList(QStringList crewList, int maxPages, int
 
                 QEventLoop *downloadLoop = new QEventLoop();
                 QObject::connect(netReply, SIGNAL(finished()), downloadLoop, SLOT(quit()));
+                QObject::connect(this, SIGNAL(threadEndCommited()), downloadLoop, SLOT(quit()));
                 QTimer::singleShot(30000, downloadLoop, SLOT(quit()));
                 downloadLoop->exec();
                 delete downloadLoop;
@@ -210,6 +217,7 @@ void DatabaseThread::scanCrewMembersList(QStringList crewList, int maxPages, int
 
                     QEventLoop *waitingLoop = new QEventLoop();
                     QTimer::singleShot(requestDelay, waitingLoop, SLOT(quit()));
+                    QObject::connect(this, SIGNAL(threadEndCommited()), waitingLoop, SLOT(quit()));
                     waitingLoop->exec();
                     delete waitingLoop;
 
@@ -228,4 +236,5 @@ void DatabaseThread::scanCrewMembersList(QStringList crewList, int maxPages, int
 void DatabaseThread::doEndThread()
 {
     threadRunning = false;
+    emit threadEndCommited();
 }
