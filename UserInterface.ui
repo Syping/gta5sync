@@ -247,10 +247,6 @@
    </property>
   </action>
   <action name="actionOptions">
-   <property name="icon">
-    <iconset theme="preferences-system">
-     <normaloff>.</normaloff>.</iconset>
-   </property>
    <property name="text">
     <string>&amp;Settings</string>
    </property>
