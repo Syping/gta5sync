@@ -30,6 +30,7 @@
 #include "IconLoader.h"
 #include "AppEnv.h"
 #include "config.h"
+#include <QtGlobal>
 #include <QStyleFactory>
 #include <QFileDialog>
 #include <QHBoxLayout>
@@ -67,13 +68,13 @@ UserInterface::UserInterface(ProfileDatabase *profileDB, CrewDatabase *crewDB, D
     }
     if (QIcon::hasThemeIcon("preferences-system"))
     {
-#ifndef Q_QS_MAC // Setting icon for preferences/settings/options lead to a crash in Mac OS X
+#ifndef Q_WS_MAC // Setting icon for preferences/settings/options lead to a crash in Mac OS X
         ui->actionOptions->setIcon(QIcon::fromTheme("preferences-system"));
 #endif
     }
     if (QIcon::hasThemeIcon("application-exit"))
     {
-#ifndef Q_QS_MAC // Setting icon for exit/quit lead to a crash in Mac OS X
+#ifndef Q_WS_MAC // Setting icon for exit/quit lead to a crash in Mac OS X
         ui->actionExit->setIcon(QIcon::fromTheme("application-exit"));
 #endif
     }
