@@ -32,7 +32,7 @@ deploy:
   provider: releases
   api_key:
     secure: "gNWX6TnP8hmwJLXQLi5EnCevgfCaA5MSW135rYY1EpU38eNRz/uMwVr+WV905+qRkhQzllgsuwgqDymDUlhLjbVrgNkWtw0Urt19BmFSeKm/FvwJIypFgaCHf+4wd9iiaPZjvVa95+wevbpABnmRSyDVo1PpGSjlcY5GdEQU/QsQtQdjJu52BPxb6Xbe1ycqGEizpxnwJvJERoBiaWcocVU+GdAdCzqp09u6M9B9ytq0lb9+nHwvizirnkvsPnXR8QIy9XA8fi86Xtq2Ij9hTja+r2bdqvsTJUWQRgSVbrEvRKzLIHFU8ZazjgeVopPhb1Gb9ToWeKcu7l4lW242sDsdSLLGIHvaQhKIeBIkIk3OyrhGcoZczQtHKjSyZtFDU9r7NNgnJqOEwdbvBIRHkOJa4Nqv2edzSeWrNh4w8LLC5r6CdXQpgLArU/o914qb3zGSyZQ5TO6xIP86IkG9XCSCs5LIG/bu6DkVirasKdEXdS2vFmasklkVfdLmkT21EjOTMD5bsNyzBh6NtR5qSkYmiNlWE7JUBOXLoQY6nQvcfu8ybnAuxSAWOd6xaoGHOtVZ1RAK6ZBGGPOiScKceVFHWxmc0XmRHNtkEpXN4AV4R5NPZUT189SgrIylIWZSJ++ezhkIO6IM7z0C0OLpGjZ4/9a/3RChqd/0LpGBCFE="
-  file: "package/gta5sync_$APPLICATION_VERSION-travis1_amd64.deb"
+  file: "../package/gta5sync_$APPLICATION_VERSION-travis1_amd64.deb"
   skip_cleanup: true
   on:
     tags: true
