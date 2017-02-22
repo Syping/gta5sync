@@ -886,7 +886,7 @@ bool SnapmaticPicture::verifyTitleChar(const QChar &titleChar)
     // VERIFY CHAR FOR BE A VALID SNAPMATIC CHARACTER
     if (titleChar.isLetterOrNumber() || titleChar.isPrint())
     {
-        if (titleChar == "<" || titleChar == ">" || titleChar == "\\") return false;
+        if (titleChar == '<' || titleChar == '>' || titleChar == '\\') return false;
         return true;
     }
     return false;
