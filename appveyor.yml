@@ -7,6 +7,7 @@ install:
   - git describe --tags > version.txt
   - set /p APP_VERSION=<version.txt
   - set /p APPVEYOR_BUILD_VERSION=<version.txt
+  - appveyor UpdateBuild -Version %APP_VERSION%
   
 build_script:
   - mkdir build
