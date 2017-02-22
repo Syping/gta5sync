@@ -6,6 +6,7 @@ install:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
   - git describe --tags > version.txt
   - set /p APP_VERSION=<version.txt
+  - set /p APPVEYOR_BUILD_VERSION=<version.txt
   
 build_script:
   - mkdir build
