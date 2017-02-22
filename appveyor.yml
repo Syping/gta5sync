@@ -4,11 +4,13 @@ environment:
 install:
   - set PATH=%QTDIR%\bin;C:\Program Files\7-Zip;%PATH%
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
+  - git describe --tags > version.txt
+  - set /p APP_VERSION=<version.txt
   
 build_script:
   - mkdir build
   - cd build
-  - qmake ../gta5sync.pro "DEFINES+=GTA5SYNC_BUILDTYPE=\\\\\\\"AppVeyor_Cloud\\\\\\\"" "DEFINES+=GTA5SYNC_DAILYB=\\\\\\\"%APPVEYOR_BUILD_VERSION%\\\\\\\""
+  - qmake ../gta5sync.pro "DEFINES+=GTA5SYNC_BUILDTYPE=\\\\\\\"AppVeyor_Cloud\\\\\\\"" "DEFINES+=GTA5SYNC_DAILYB=\\\\\\\"%APP_VERSION%\\\\\\\""
   - C:\Qt\Tools\QtCreator\bin\jom.exe
 
 deploy_script:
@@ -16,8 +18,8 @@ deploy_script:
   - copy /Y release\gta5sync.exe deploy\gta5sync.exe
   - cd deploy
   - windeployqt --release --no-translations gta5sync.exe
-  - 7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=64m -ms=on -bd -o./ -y gta5sync_%APPVEYOR_BUILD_VERSION%.7z *
-  - appveyor PushArtifact gta5sync_%APPVEYOR_BUILD_VERSION%.7z
+  - 7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=64m -ms=on -bd -o./ -y gta5sync_%APP_VERSION%.7z *
+  - appveyor PushArtifact gta5sync_%APP_VERSION%.7z
  
 deploy:
 - provider: GitHub
