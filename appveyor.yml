@@ -26,6 +26,7 @@ deploy_script:
 deploy:
 - provider: GitHub
   draft: false
+  artifact: gta5sync_*.7z
   auth_token:
     secure: L2q3lBljsLOz5YXwjoVEI+04O52Zc85NP4gSEtfK1OxQMWv/3GGf1vecnnkRzSPh
   on:
