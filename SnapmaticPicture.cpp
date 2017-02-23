@@ -359,6 +359,8 @@ void SnapmaticPicture::updateStrings()
     cmpPicTitl.replace(" ", "_");
     cmpPicTitl.replace(":", "-");
     cmpPicTitl.replace("\\", "");
+    cmpPicTitl.replace("{", "");
+    cmpPicTitl.replace("}", "");
     cmpPicTitl.replace("/", "");
     cmpPicTitl.replace("<", "");
     cmpPicTitl.replace(">", "");
