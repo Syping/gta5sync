@@ -22,7 +22,7 @@ after_build:
   - cd ..\deploy
   - windeployqt --release --no-translations gta5sync.exe
   - 7z a -y -ttar -o./ gta5sync_%APP_VERSION%.tar *
-  - 7z a -y -ttar -so gta5sync_%APP_VERSION%.pre * | 7za.exe a -si gta5sync_%APP_VERSION%.tgz
+  - 7z a -y -ttar -so gta5sync_%APP_VERSION%.pre * | 7z a -si gta5sync_%APP_VERSION%.tgz
   - copy /Y gta5sync_%APP_VERSION%.tar ..\Deployments\gta5sync_%APP_VERSION%.tar
   - cd ..
   - appveyor PushArtifact deploy\gta5sync_%APP_VERSION%.tgz
