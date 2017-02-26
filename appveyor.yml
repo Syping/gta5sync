@@ -21,19 +21,20 @@ after_build:
   - copy /Y release\gta5sync.exe ..\deploy\gta5sync.exe
   - cd ..\deploy
   - windeployqt --release --no-translations gta5sync.exe
-  - copy /Y * ..\Deployments\
-  - 7z a -tzip -o./ -y gta5sync_%APP_VERSION%.zip *
+  - 7z a -y -ttar -o./ gta5sync_%APP_VERSION%.tar *
+  - 7z a -y -ttar -so gta5sync_%APP_VERSION%.pre * | 7za.exe a -si gta5sync_%APP_VERSION%.tgz
+  - copy /Y gta5sync_%APP_VERSION%.tar ..\Deployments\gta5sync_%APP_VERSION%.tar
   - cd ..
-  - appveyor PushArtifact deploy\gta5sync_%APP_VERSION%.zip
+  - appveyor PushArtifact deploy\gta5sync_%APP_VERSION%.tgz
   
 artifacts: 
   - path: Deployments
-    name: gta5sync_%APP_VERSION%
+    name: gta5sync_%APP_VERSION%.tar
     
 deploy:
 - provider: GitHub
   draft: false
-  artifact: gta5sync_%APP_VERSION%
+  artifact: gta5sync_%APP_VERSION%.tar
   auth_token:
     secure: L2q3lBljsLOz5YXwjoVEI+04O52Zc85NP4gSEtfK1OxQMWv/3GGf1vecnnkRzSPh
   on:
