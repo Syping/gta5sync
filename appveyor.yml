@@ -23,7 +23,7 @@ build_script:
   - cd ..
   
 artifacts: 
-  - path: deploy/gta5sync_*.zip
+  - path: deploy\gta5sync_*.zip
     name: gta5synczip
     
 deploy:
