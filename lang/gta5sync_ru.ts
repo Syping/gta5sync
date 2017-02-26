@@ -123,32 +123,32 @@ Pictures and Savegames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="87"/>
+        <location filename="../ImportDialog.ui" line="90"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="93"/>
+        <location filename="../ImportDialog.ui" line="96"/>
         <source>&amp;Keep Aspect Ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="100"/>
+        <location filename="../ImportDialog.ui" line="103"/>
         <source>&amp;Ignore Aspect Ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="107"/>
+        <location filename="../ImportDialog.ui" line="110"/>
         <source>&amp;Avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="145"/>
+        <location filename="../ImportDialog.ui" line="154"/>
         <source>&amp;OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="152"/>
+        <location filename="../ImportDialog.ui" line="167"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -413,54 +413,54 @@ Pictures and Savegames</source>
         <translation>Закрыть</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="95"/>
+        <location filename="../PictureDialog.cpp" line="127"/>
         <source>Export as &amp;JPG picture...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="96"/>
+        <location filename="../PictureDialog.cpp" line="128"/>
         <source>Export as &amp;GTA Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="297"/>
+        <location filename="../PictureDialog.cpp" line="342"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="357"/>
-        <location filename="../PictureDialog.cpp" line="414"/>
+        <location filename="../PictureDialog.cpp" line="401"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Просмотрщик фотографий Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="357"/>
-        <location filename="../PictureDialog.cpp" line="414"/>
+        <location filename="../PictureDialog.cpp" line="401"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>Failed at %1</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="469"/>
+        <location filename="../PictureDialog.cpp" line="528"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="403"/>
-        <location filename="../PictureDialog.cpp" line="413"/>
+        <location filename="../PictureDialog.cpp" line="462"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
         <source>No player</source>
         <translation>Игроков нет</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="406"/>
-        <location filename="../PictureDialog.cpp" line="413"/>
+        <location filename="../PictureDialog.cpp" line="465"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
         <source>No crew</source>
         <translation>Без группы</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="413"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
         <source>Unknown Location</source>
         <translation type="unfinished"></translation>
     </message>
@@ -638,19 +638,19 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="375"/>
-        <location filename="../UserInterface.cpp" line="316"/>
+        <location filename="../UserInterface.cpp" line="335"/>
         <source>Savegames files (SGTA*)</source>
         <translation>Файлы сохранения (SGTA*)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="376"/>
-        <location filename="../UserInterface.cpp" line="317"/>
+        <location filename="../UserInterface.cpp" line="336"/>
         <source>Snapmatic pictures (PGTA*)</source>
         <translation>Картинка Snapmatic (PGTA*)</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="378"/>
-        <location filename="../UserInterface.cpp" line="318"/>
+        <location filename="../UserInterface.cpp" line="337"/>
         <source>All files (**)</source>
         <translation>Все файлы (**)</translation>
     </message>
@@ -669,13 +669,13 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="492"/>
-        <location filename="../UserInterface.cpp" line="358"/>
+        <location filename="../UserInterface.cpp" line="377"/>
         <source>Failed to read Snapmatic picture</source>
         <translation>Не удалось загрузить картинку Snapmatic</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="508"/>
-        <location filename="../UserInterface.cpp" line="374"/>
+        <location filename="../UserInterface.cpp" line="393"/>
         <source>Failed to read Savegame file</source>
         <translation>Не удалось загрузить файл сохранения</translation>
     </message>
@@ -687,7 +687,7 @@ Press 1 for Default View</source>
     <message>
         <location filename="../ProfileInterface.cpp" line="465"/>
         <location filename="../ProfileInterface.cpp" line="663"/>
-        <location filename="../UserInterface.cpp" line="406"/>
+        <location filename="../UserInterface.cpp" line="425"/>
         <source>No valid file is selected</source>
         <translation>Выбранный файл неверен</translation>
     </message>
@@ -819,20 +819,20 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ExportThread.cpp" line="95"/>
-        <location filename="../ExportThread.cpp" line="134"/>
-        <location filename="../ExportThread.cpp" line="155"/>
+        <location filename="../ExportThread.cpp" line="96"/>
+        <location filename="../ExportThread.cpp" line="135"/>
+        <location filename="../ExportThread.cpp" line="156"/>
         <source>Export file %1 of %2 files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="314"/>
+        <location filename="../UserInterface.cpp" line="333"/>
         <source>All profile files (*.g5e SGTA* PGTA*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="374"/>
-        <location filename="../UserInterface.cpp" line="315"/>
+        <location filename="../UserInterface.cpp" line="334"/>
         <source>GTA V Export (*.g5e)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -925,13 +925,13 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../SavegameWidget.ui" line="118"/>
-        <location filename="../SavegameWidget.cpp" line="132"/>
-        <location filename="../SavegameWidget.cpp" line="145"/>
+        <location filename="../SavegameWidget.cpp" line="131"/>
+        <location filename="../SavegameWidget.cpp" line="144"/>
         <source>Delete savegame</source>
         <translation>Удалить сохранение</translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="50"/>
+        <location filename="../SavegameWidget.cpp" line="49"/>
         <source>Export Savegame...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -941,67 +941,67 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../SavegameWidget.cpp" line="93"/>
         <location filename="../SavegameWidget.cpp" line="94"/>
-        <location filename="../SavegameWidget.cpp" line="95"/>
         <source>WRONG FORMAT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="57"/>
+        <location filename="../SavegameWidget.cpp" line="56"/>
         <source>AUTOSAVE - %1
 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="58"/>
+        <location filename="../SavegameWidget.cpp" line="57"/>
         <source>SAVE %3 - %1
 %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="118"/>
+        <location filename="../SavegameWidget.cpp" line="117"/>
         <source>UNKNOWN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="132"/>
+        <location filename="../SavegameWidget.cpp" line="131"/>
         <source>Are you sure to delete %1 from your savegames?</source>
         <translation>Вы уверены, что хотите удалить сохранение %1?</translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="145"/>
+        <location filename="../SavegameWidget.cpp" line="144"/>
         <source>Failed at deleting %1 from your savegames</source>
         <translation>Не удалось удалить сохранение %1</translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="209"/>
+        <location filename="../ProfileInterface.cpp" line="1106"/>
         <source>&amp;View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="211"/>
+        <location filename="../ProfileInterface.cpp" line="1108"/>
         <source>&amp;Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="215"/>
-        <location filename="../SavegameWidget.cpp" line="227"/>
+        <location filename="../ProfileInterface.cpp" line="1112"/>
+        <location filename="../ProfileInterface.cpp" line="1123"/>
         <source>&amp;Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="216"/>
+        <location filename="../ProfileInterface.cpp" line="1113"/>
         <source>&amp;Deselect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="217"/>
-        <location filename="../SavegameWidget.cpp" line="228"/>
+        <location filename="../ProfileInterface.cpp" line="1114"/>
+        <location filename="../ProfileInterface.cpp" line="1124"/>
         <source>Select &amp;All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="221"/>
+        <location filename="../ProfileInterface.cpp" line="1117"/>
         <source>&amp;Deselect All</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1011,7 +1011,7 @@ Press 1 for Default View</source>
         <translation>Копировать сохранение</translation>
     </message>
     <message>
-        <location filename="../SavegameWidget.cpp" line="210"/>
+        <location filename="../ProfileInterface.cpp" line="1107"/>
         <source>&amp;Export</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1071,7 +1071,7 @@ Press 1 for Default View</source>
     <message>
         <location filename="../SnapmaticEditor.ui" line="14"/>
         <location filename="../SnapmaticEditor.ui" line="81"/>
-        <location filename="../SnapmaticEditor.cpp" line="216"/>
+        <location filename="../SnapmaticEditor.cpp" line="250"/>
         <source>Snapmatic Properties</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1115,39 +1115,79 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="125"/>
+        <location filename="../SnapmaticEditor.cpp" line="300"/>
+        <source>Snapmatic Title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.ui" line="136"/>
+        <source>Title: %1 (%2)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.ui" line="148"/>
+        <location filename="../SnapmaticEditor.cpp" line="207"/>
+        <location filename="../SnapmaticEditor.cpp" line="211"/>
+        <source>Appropriate: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.ui" line="161"/>
         <source>Extras</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="131"/>
+        <location filename="../SnapmaticEditor.ui" line="167"/>
         <source>Qualify as Avatar automatically at apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="144"/>
+        <location filename="../SnapmaticEditor.ui" line="180"/>
         <source>Qualify as Avatar allows you to use this Snapmatic as a Social Club profile picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="194"/>
+        <location filename="../SnapmaticEditor.ui" line="230"/>
         <source>&amp;Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="207"/>
+        <location filename="../SnapmaticEditor.ui" line="243"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="216"/>
+        <location filename="../SnapmaticEditor.cpp" line="198"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.cpp" line="207"/>
+        <source>Yes</source>
+        <comment>Yes, should work fine</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.cpp" line="211"/>
+        <source>No</source>
+        <comment>No, could lead to issues</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.cpp" line="250"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.cpp" line="300"/>
+        <source>New Snapmatic title:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>SnapmaticPicture</name>
     <message>
-        <location filename="../SnapmaticPicture.cpp" line="349"/>
+        <location filename="../SnapmaticPicture.cpp" line="370"/>
         <source>PHOTO - %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1191,85 +1231,85 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../SnapmaticWidget.ui" line="149"/>
-        <location filename="../SnapmaticWidget.cpp" line="140"/>
-        <location filename="../SnapmaticWidget.cpp" line="153"/>
+        <location filename="../SnapmaticWidget.cpp" line="149"/>
+        <location filename="../SnapmaticWidget.cpp" line="162"/>
         <source>Delete picture</source>
         <translation>Удалить картинку</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="140"/>
+        <location filename="../SnapmaticWidget.cpp" line="149"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
         <translation>Уверены, что хотите удалить %1 из коллекции картинок Snapmatic?</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="153"/>
+        <location filename="../SnapmaticWidget.cpp" line="162"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation>Не удалось удалить %1 из колелкции картинок Snapmatic </translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="205"/>
+        <location filename="../ProfileInterface.cpp" line="1065"/>
         <source>Edi&amp;t</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="208"/>
+        <location filename="../ProfileInterface.cpp" line="1068"/>
         <source>Show &amp;In-game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="212"/>
+        <location filename="../ProfileInterface.cpp" line="1072"/>
         <source>Hide &amp;In-game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="214"/>
+        <location filename="../ProfileInterface.cpp" line="1074"/>
         <source>&amp;Edit Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="215"/>
+        <location filename="../ProfileInterface.cpp" line="1075"/>
         <source>&amp;Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="216"/>
+        <location filename="../ProfileInterface.cpp" line="1076"/>
         <source>Export as &amp;JPG picture...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="217"/>
+        <location filename="../ProfileInterface.cpp" line="1077"/>
         <source>Export as &amp;GTA Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="218"/>
+        <location filename="../ProfileInterface.cpp" line="1078"/>
         <source>&amp;View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="221"/>
+        <location filename="../ProfileInterface.cpp" line="1081"/>
         <source>&amp;Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="225"/>
-        <location filename="../SnapmaticWidget.cpp" line="237"/>
+        <location filename="../ProfileInterface.cpp" line="1085"/>
+        <location filename="../ProfileInterface.cpp" line="1096"/>
         <source>&amp;Select</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="226"/>
+        <location filename="../ProfileInterface.cpp" line="1086"/>
         <source>&amp;Deselect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="227"/>
-        <location filename="../SnapmaticWidget.cpp" line="238"/>
+        <location filename="../ProfileInterface.cpp" line="1087"/>
+        <location filename="../ProfileInterface.cpp" line="1097"/>
         <source>Select &amp;All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="231"/>
+        <location filename="../ProfileInterface.cpp" line="1090"/>
         <source>&amp;Deselect All</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1321,73 +1361,73 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="232"/>
+        <location filename="../UserInterface.ui" line="228"/>
         <source>&amp;Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="235"/>
+        <location filename="../UserInterface.ui" line="231"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="243"/>
+        <location filename="../UserInterface.ui" line="239"/>
         <source>Close &amp;Profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="246"/>
+        <location filename="../UserInterface.ui" line="242"/>
         <source>Ctrl+End</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="255"/>
+        <location filename="../UserInterface.ui" line="247"/>
         <source>&amp;Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="290"/>
+        <location filename="../UserInterface.ui" line="282"/>
         <source>Ctrl+Del</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="295"/>
+        <location filename="../UserInterface.ui" line="287"/>
         <source>&amp;Import files...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="298"/>
+        <location filename="../UserInterface.ui" line="290"/>
         <source>Ctrl+I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="311"/>
-        <location filename="../UserInterface.cpp" line="131"/>
+        <location filename="../UserInterface.ui" line="303"/>
+        <location filename="../UserInterface.cpp" line="144"/>
         <source>Select &amp;GTA V Folder...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="317"/>
+        <location filename="../UserInterface.ui" line="309"/>
         <source>Ctrl+G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="322"/>
+        <location filename="../UserInterface.ui" line="314"/>
         <source>Show In-gam&amp;e</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="325"/>
+        <location filename="../UserInterface.ui" line="317"/>
         <source>Shift+E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="330"/>
+        <location filename="../UserInterface.ui" line="322"/>
         <source>Hi&amp;de In-game</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="333"/>
+        <location filename="../UserInterface.ui" line="325"/>
         <source>Shift+D</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1402,22 +1442,22 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="263"/>
+        <location filename="../UserInterface.ui" line="255"/>
         <source>Select &amp;All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="271"/>
+        <location filename="../UserInterface.ui" line="263"/>
         <source>&amp;Deselect All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="279"/>
+        <location filename="../UserInterface.ui" line="271"/>
         <source>&amp;Export selected...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="287"/>
+        <location filename="../UserInterface.ui" line="279"/>
         <source>&amp;Remove selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1434,7 +1474,7 @@ Press 1 for Default View</source>
         <translation type="obsolete">О программе gta5sync</translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="266"/>
+        <location filename="../UserInterface.ui" line="258"/>
         <source>Ctrl+A</source>
         <translation>Ctrl+A</translation>
     </message>
@@ -1443,7 +1483,7 @@ Press 1 for Default View</source>
         <translation type="obsolete">Закрыть</translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="238"/>
+        <location filename="../UserInterface.ui" line="234"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
@@ -1453,71 +1493,71 @@ Press 1 for Default View</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="303"/>
+        <location filename="../UserInterface.ui" line="295"/>
         <source>&amp;Open File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="306"/>
+        <location filename="../UserInterface.ui" line="298"/>
         <source>Ctrl+O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="258"/>
+        <location filename="../UserInterface.ui" line="250"/>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="282"/>
+        <location filename="../UserInterface.ui" line="274"/>
         <source>Ctrl+E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="274"/>
+        <location filename="../UserInterface.ui" line="266"/>
         <source>Ctrl+D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="61"/>
-        <location filename="../UserInterface.cpp" line="201"/>
+        <location filename="../UserInterface.cpp" line="62"/>
+        <location filename="../UserInterface.cpp" line="214"/>
         <source>Select Profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.ui" line="314"/>
+        <location filename="../UserInterface.ui" line="306"/>
         <location filename="../OptionsDialog.cpp" line="444"/>
-        <location filename="../UserInterface.cpp" line="80"/>
-        <location filename="../UserInterface.cpp" line="455"/>
+        <location filename="../UserInterface.cpp" line="93"/>
+        <location filename="../UserInterface.cpp" line="474"/>
         <source>Select GTA V Folder...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="20"/>
-        <location filename="../UserInterface.cpp" line="59"/>
+        <location filename="../UserInterface.cpp" line="60"/>
         <source>%2 - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="220"/>
-        <location filename="../UserInterface.cpp" line="58"/>
+        <location filename="../UserInterface.cpp" line="59"/>
         <source>&amp;About %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="311"/>
+        <location filename="../UserInterface.cpp" line="330"/>
         <source>Open File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="358"/>
-        <location filename="../UserInterface.cpp" line="374"/>
-        <location filename="../UserInterface.cpp" line="401"/>
-        <location filename="../UserInterface.cpp" line="406"/>
+        <location filename="../UserInterface.cpp" line="377"/>
+        <location filename="../UserInterface.cpp" line="393"/>
+        <location filename="../UserInterface.cpp" line="420"/>
+        <location filename="../UserInterface.cpp" line="425"/>
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="401"/>
+        <location filename="../UserInterface.cpp" line="420"/>
         <source>Can&apos;t open %1 because of not valid file format</source>
         <translation type="unfinished"></translation>
     </message>

@@ -671,6 +671,11 @@ void SnapmaticPicture::clearCache()
     cachePicture = QImage(0, 0, QImage::Format_RGB888);
 }
 
+void SnapmaticPicture::emitUpdate()
+{
+    emit updated();
+}
+
 // JSON part
 
 void SnapmaticPicture::parseJsonContent()

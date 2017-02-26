@@ -75,6 +75,7 @@ public:
     void setPicFileName(QString picFileName);
     void setPicFilePath(QString picFilePath);
     void updateStrings();
+    void emitUpdate();
 
     // ALTERNATIVES
     QString getPictureTitle() { return getPictureTitl(); }
@@ -135,6 +136,7 @@ private:
     static bool verifyTitleChar(const QChar &titleChar);
 
 signals:
+    void updated();
 
 public slots:
 };
