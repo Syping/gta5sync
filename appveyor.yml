@@ -20,11 +20,16 @@ build_script:
   - windeployqt --release --no-translations gta5sync.exe
   - 7z a -tzip -o./ -y gta5sync_%APP_VERSION%.zip *
   - appveyor PushArtifact gta5sync_%APP_VERSION%.zip
- 
+  - cd ..
+  
+artifacts: 
+  - path: deploy/gta5sync_*.zip
+    name: gta5synczip
+    
 deploy:
 - provider: GitHub
   draft: false
-  artifact: gta5sync_*.zip
+  artifact: gta5synczip
   auth_token:
     secure: L2q3lBljsLOz5YXwjoVEI+04O52Zc85NP4gSEtfK1OxQMWv/3GGf1vecnnkRzSPh
   on:
