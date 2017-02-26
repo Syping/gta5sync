@@ -21,8 +21,8 @@ after_build:
   - copy /Y release\gta5sync.exe ..\deploy\gta5sync.exe
   - cd ..\deploy
   - windeployqt --release --no-translations gta5sync.exe
+  - copy /Y * ..\Deployments\
   - 7z a -tzip -o./ -y gta5sync_%APP_VERSION%.zip *
-  - copy /Y gta5sync_%APP_VERSION%.zip ..\Deployments\gta5sync_%APP_VERSION%.zip
   - cd ..
   - appveyor PushArtifact deploy\gta5sync_%APP_VERSION%.zip
   
