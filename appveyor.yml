@@ -15,7 +15,7 @@ build_script:
   - qmake ../gta5sync.pro "DEFINES+=GTA5SYNC_BUILDTYPE=\\\\\\\"AppVeyor_Cloud\\\\\\\"" "DEFINES+=GTA5SYNC_DAILYB=\\\\\\\"%APP_VERSION%\\\\\\\""
   - C:\Qt\Tools\QtCreator\bin\jom.exe
   
-on_success:
+after_build:
   - mkdir ..\deploy
   - mkdir ..\Deployments
   - copy /Y release\gta5sync.exe ..\deploy\gta5sync.exe
