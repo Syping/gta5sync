@@ -17,18 +17,17 @@ build_script:
   
 on_success:
   - mkdir ..\deploy
+  - mkdir ..\Deployments
   - copy /Y release\gta5sync.exe ..\deploy\gta5sync.exe
   - cd ..\deploy
   - windeployqt --release --no-translations gta5sync.exe
   - 7z a -tzip -o./ -y gta5sync_%APP_VERSION%.zip *
+  - copy /Y gta5sync_%APP_VERSION%.zip ..\Deployments\gta5sync_%APP_VERSION%.zip
   - cd ..
   - appveyor PushArtifact deploy\gta5sync_%APP_VERSION%.zip
   
-after_build:
-  - dir Deployments
-  
 artifacts: 
-  - path: deploy\gta5sync_%APP_VERSION%.zip
+  - path: gta5sync_%APP_VERSION%.zip
     name: gta5synczip
     
 deploy:
