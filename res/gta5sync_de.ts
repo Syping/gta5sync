@@ -559,17 +559,17 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation>Schließen</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="127"/>
+        <location filename="../PictureDialog.cpp" line="128"/>
         <source>Export as &amp;JPG picture...</source>
         <translation>Exportiere als &amp;JPG Bild...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="128"/>
+        <location filename="../PictureDialog.cpp" line="129"/>
         <source>Export as &amp;GTA Snapmatic...</source>
         <translation>Exportiere als &amp;GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="342"/>
+        <location filename="../PictureDialog.cpp" line="343"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -578,19 +578,19 @@ Taste 2 - Overlay umschalten
 Pfeiltasten - Navigieren</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="401"/>
-        <location filename="../PictureDialog.cpp" line="473"/>
+        <location filename="../PictureDialog.cpp" line="402"/>
+        <location filename="../PictureDialog.cpp" line="474"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Snapmatic Bildansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="401"/>
-        <location filename="../PictureDialog.cpp" line="473"/>
+        <location filename="../PictureDialog.cpp" line="402"/>
+        <location filename="../PictureDialog.cpp" line="474"/>
         <source>Failed at %1</source>
         <translation>Fehlgeschlagen bei %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="528"/>
+        <location filename="../PictureDialog.cpp" line="529"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Avatar Vorschaumodus
@@ -627,19 +627,19 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Avatar Vorschaumodus&lt;br&gt;Drücke A für Standardansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="462"/>
-        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="463"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>No player</source>
         <translation>Keine Spieler</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="465"/>
-        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="466"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>No crew</source>
         <translation>Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>Unknown Location</source>
         <translation>Unbekannter Standort</translation>
     </message>
@@ -1408,7 +1408,7 @@ Exportieren als:</translation>
     <message>
         <location filename="../SnapmaticEditor.ui" line="14"/>
         <location filename="../SnapmaticEditor.ui" line="81"/>
-        <location filename="../SnapmaticEditor.cpp" line="250"/>
+        <location filename="../SnapmaticEditor.cpp" line="247"/>
         <source>Snapmatic Properties</source>
         <translation>Snapmatic Eigenschaften</translation>
     </message>
@@ -1456,44 +1456,45 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="125"/>
-        <location filename="../SnapmaticEditor.cpp" line="300"/>
+        <location filename="../SnapmaticEditor.cpp" line="297"/>
         <source>Snapmatic Title</source>
         <translation>Snapmatic Titel</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="136"/>
+        <location filename="../SnapmaticEditor.ui" line="140"/>
+        <location filename="../SnapmaticEditor.cpp" line="200"/>
         <source>Title: %1 (%2)</source>
         <translation>Titel: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="148"/>
-        <location filename="../SnapmaticEditor.cpp" line="207"/>
-        <location filename="../SnapmaticEditor.cpp" line="211"/>
+        <location filename="../SnapmaticEditor.ui" line="156"/>
+        <location filename="../SnapmaticEditor.cpp" line="204"/>
+        <location filename="../SnapmaticEditor.cpp" line="208"/>
         <source>Appropriate: %1</source>
         <translation>Angemessen: %1</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="161"/>
+        <location filename="../SnapmaticEditor.ui" line="169"/>
         <source>Extras</source>
         <translation>Extras</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="167"/>
+        <location filename="../SnapmaticEditor.ui" line="175"/>
         <source>Qualify as Avatar automatically at apply</source>
         <translation>Beim Übernehmen als Avatar qualifizieren  </translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="180"/>
+        <location filename="../SnapmaticEditor.ui" line="188"/>
         <source>Qualify as Avatar allows you to use this Snapmatic as a Social Club profile picture</source>
         <translation>Das Qualifizieren als Avatar erlaubt dir dieses Snapmatic als Social Club Profilbild zu nutzen</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="230"/>
+        <location filename="../SnapmaticEditor.ui" line="238"/>
         <source>&amp;Apply</source>
         <translation>&amp;Übernehmen</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="243"/>
+        <location filename="../SnapmaticEditor.ui" line="251"/>
         <source>&amp;Cancel</source>
         <translation>Abbre&amp;chen</translation>
     </message>
@@ -1506,29 +1507,29 @@ Exportieren als:</translation>
         <translation type="vanished">Cancel</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="198"/>
+        <location filename="../SnapmaticEditor.cpp" line="199"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="207"/>
+        <location filename="../SnapmaticEditor.cpp" line="204"/>
         <source>Yes</source>
         <comment>Yes, should work fine</comment>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="211"/>
+        <location filename="../SnapmaticEditor.cpp" line="208"/>
         <source>No</source>
         <comment>No, could lead to issues</comment>
         <translation>Nein</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="250"/>
+        <location filename="../SnapmaticEditor.cpp" line="247"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation>Patchen von Snapmatic Eigenschaften fehlgeschlagen wegen I/O Fehler</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="300"/>
+        <location filename="../SnapmaticEditor.cpp" line="297"/>
         <source>New Snapmatic title:</source>
         <translation>Neuer Snapmatic Titel:</translation>
     </message>
@@ -1575,13 +1576,13 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.ui" line="149"/>
-        <location filename="../SnapmaticWidget.cpp" line="149"/>
-        <location filename="../SnapmaticWidget.cpp" line="162"/>
+        <location filename="../SnapmaticWidget.cpp" line="150"/>
+        <location filename="../SnapmaticWidget.cpp" line="163"/>
         <source>Delete picture</source>
         <translation>Bild löschen</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="149"/>
+        <location filename="../SnapmaticWidget.cpp" line="150"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
         <translation>Bist du sicher %1 von deinen Snapmatic Bilder zu löschen?</translation>
     </message>
@@ -1720,7 +1721,7 @@ Exportieren als:</translation>
         <translation type="obsolete">Bist du sicher %1 von deinen Snapmatic Bilder zu löschen?</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="162"/>
+        <location filename="../SnapmaticWidget.cpp" line="163"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation>Fehlgeschlagen beim Löschen %1 von deinen Snapmatic Bildern</translation>
     </message>

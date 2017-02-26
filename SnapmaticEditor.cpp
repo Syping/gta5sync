@@ -197,7 +197,7 @@ void SnapmaticEditor::setSnapmaticTitle(const QString &title)
         snapmaticTitle = title;
     }
     QString editStr = QString("<a href=\"g5e://edittitle\" style=\"text-decoration: none;\">%1</a>").arg(tr("Edit"));
-    QString titleStr = QString("Title: %1 (%2)").arg(StringParser::escapeString(snapmaticTitle), editStr);
+    QString titleStr = tr("Title: %1 (%2)").arg(StringParser::escapeString(snapmaticTitle), editStr);
     ui->labTitle->setText(titleStr);
     if (SnapmaticPicture::verifyTitle(snapmaticTitle))
     {
