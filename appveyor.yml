@@ -28,12 +28,12 @@ after_build:
   
 artifacts: 
   - path: Deployments
-    name: gta5sync_%APP_VERSION%.zip
+    name: gta5sync_%APP_VERSION%
     
 deploy:
 - provider: GitHub
   draft: false
-  artifact: gta5sync_%APP_VERSION%.zip
+  artifact: gta5sync_%APP_VERSION%
   auth_token:
     secure: L2q3lBljsLOz5YXwjoVEI+04O52Zc85NP4gSEtfK1OxQMWv/3GGf1vecnnkRzSPh
   on:
