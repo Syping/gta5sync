@@ -18,13 +18,13 @@ build_script:
   - copy /Y release\gta5sync.exe deploy\gta5sync.exe
   - cd deploy
   - windeployqt --release --no-translations gta5sync.exe
-  - 7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=64m -ms=on -bd -o./ -y gta5sync_%APP_VERSION%.7z *
-  - appveyor PushArtifact gta5sync_%APP_VERSION%.7z
+  - 7z a -tzip -o./ -y gta5sync_%APP_VERSION%.zip *
+  - appveyor PushArtifact gta5sync_%APP_VERSION%.zip
  
 deploy:
 - provider: GitHub
   draft: false
-  artifact: gta5sync_*.7z
+  artifact: gta5sync_*.zip
   auth_token:
     secure: L2q3lBljsLOz5YXwjoVEI+04O52Zc85NP4gSEtfK1OxQMWv/3GGf1vecnnkRzSPh
   on:
