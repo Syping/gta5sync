@@ -27,13 +27,13 @@ after_build:
   - appveyor PushArtifact deploy\gta5sync_%APP_VERSION%.zip
   
 artifacts: 
-  - path: gta5sync_%APP_VERSION%.zip
-    name: gta5synczip
+  - path: Deployments
+    name: gta5sync_%APP_VERSION%.zip
     
 deploy:
 - provider: GitHub
   draft: false
-  artifact: gta5synczip
+  artifact: gta5sync_%APP_VERSION%.zip
   auth_token:
     secure: L2q3lBljsLOz5YXwjoVEI+04O52Zc85NP4gSEtfK1OxQMWv/3GGf1vecnnkRzSPh
   on:
