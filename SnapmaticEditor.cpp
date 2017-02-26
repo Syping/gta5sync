@@ -19,6 +19,7 @@
 #include "SnapmaticEditor.h"
 #include "ui_SnapmaticEditor.h"
 #include "SnapmaticPicture.h"
+#include "StringParser.h"
 #include <QTextDocument>
 #include <QInputDialog>
 #include <QMessageBox>
@@ -196,11 +197,7 @@ void SnapmaticEditor::setSnapmaticTitle(const QString &title)
         snapmaticTitle = title;
     }
     QString editStr = QString("<a href=\"g5e://edittitle\" style=\"text-decoration: none;\">%1</a>").arg(tr("Edit"));
-#if QT_VERSION >= 0x050000
-    QString titleStr = QString("Title: %1 (%2)").arg(snapmaticTitle.toHtmlEscaped(), editStr);
-#else
-    QString titleStr = QString("Title: %1 (%2)").arg(Qt::escape(snapmaticTitle), editStr);
-#endif
+    QString titleStr = QString("Title: %1 (%2)").arg(StringParser::escapeString(snapmaticTitle), editStr);
     ui->labTitle->setText(titleStr);
     if (SnapmaticPicture::verifyTitle(snapmaticTitle))
     {

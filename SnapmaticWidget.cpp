@@ -23,6 +23,7 @@
 #include "DatabaseThread.h"
 #include "PictureDialog.h"
 #include "PictureExport.h"
+#include "StringParser.h"
 #include "config.h"
 #include <QMessageBox>
 #include <QPixmap>
