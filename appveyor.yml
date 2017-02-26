@@ -23,7 +23,7 @@ build_script:
   - appveyor PushArtifact deploy\gta5sync_%APP_VERSION%.zip
   
 artifacts: 
-  - path: deploy\gta5sync_%APP_VERSION%.zip
+  - path: gta5sync_%APP_VERSION%.zip
     name: gta5synczip
     
 deploy:
