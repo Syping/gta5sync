@@ -359,6 +359,8 @@ void SnapmaticPicture::updateStrings()
     cmpPicTitl.replace(" ", "_");
     cmpPicTitl.replace(":", "-");
     cmpPicTitl.replace("\\", "");
+    cmpPicTitl.replace("{", "");
+    cmpPicTitl.replace("}", "");
     cmpPicTitl.replace("/", "");
     cmpPicTitl.replace("<", "");
     cmpPicTitl.replace(">", "");
@@ -667,6 +669,11 @@ void SnapmaticPicture::clearCache()
 {
     cacheEnabled = false;
     cachePicture = QImage(0, 0, QImage::Format_RGB888);
+}
+
+void SnapmaticPicture::emitUpdate()
+{
+    emit updated();
 }
 
 // JSON part

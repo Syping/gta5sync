@@ -23,6 +23,7 @@
 #include "DatabaseThread.h"
 #include "PictureDialog.h"
 #include "PictureExport.h"
+#include "StringParser.h"
 #include "config.h"
 #include <QMessageBox>
 #include <QPixmap>
@@ -84,6 +85,7 @@ void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
     picPath = picture->getPictureFilePath();
     picTitl = picture->getPictureTitl();
     picStr = picture->getPictureStr();
+    QObject::connect(picture, SIGNAL(updated()), this, SLOT(snapmaticUpdated()));
 
     QPixmap SnapmaticPixmap = QPixmap::fromImage(picture->getImage().scaled(ui->labPicture->width(), ui->labPicture->height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation), Qt::AutoColor);
     ui->labPicStr->setText(picStr + "\n" + picTitl + "");
@@ -92,6 +94,15 @@ void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
     picture->clearCache();
 
     adjustTextColor();
+}
+
+void SnapmaticWidget::snapmaticUpdated()
+{
+    // Current only strings get updated
+    picPath = smpic->getPictureFilePath();
+    picTitl = smpic->getPictureTitl();
+    picStr = smpic->getPictureStr();
+    ui->labPicStr->setText(picStr + "\n" + picTitl + "");
 }
 
 void SnapmaticWidget::on_cmdView_clicked()

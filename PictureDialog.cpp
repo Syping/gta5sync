@@ -23,6 +23,7 @@
 #include "SidebarGenerator.h"
 #include "StandardPaths.h"
 #include "PictureExport.h"
+#include "StringParser.h"
 #include "GlobalString.h"
 #include "UiModLabel.h"
 
@@ -422,7 +423,7 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
         }
         created = picture->getSnapmaticProperties().createdDateTime.toString(Qt::DefaultLocaleShortDate);
         plyrsList = picture->getSnapmaticProperties().playersList;
-        picTitl = picture->getPictureTitl();
+        picTitl = StringParser::escapeString(picture->getPictureTitle());
         picArea = picture->getSnapmaticProperties().location.area;
         if (globalMap.contains(picArea))
         {
