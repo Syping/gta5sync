@@ -218,7 +218,7 @@ fileDialogPreSave:
     fileDialog.setDefaultSuffix(".rem");
     fileDialog.setWindowFlags(fileDialog.windowFlags()^Qt::WindowContextHelpButtonHint);
     fileDialog.setWindowTitle(PictureDialog::tr("Export as GTA Snapmatic..."));
-    fileDialog.setLabelText(QFileDialog::Accept, PictureDialog::tr("&Export"));
+    fileDialog.setLabelText(QFileDialog::Accept, PictureDialog::tr("Export"));
 
     QStringList filters;
     filters << PictureDialog::tr("GTA V Export (*.g5e)");
