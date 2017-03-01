@@ -1090,7 +1090,7 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
     contextMenu.addAction(SnapmaticWidget::tr("&View"), picWidget, SLOT(on_cmdView_clicked()));
     contextMenu.addMenu(&editMenu);
     contextMenu.addMenu(&exportMenu);
-    contextMenu.addAction(SavegameWidget::tr("&Remove"), picWidget, SLOT(on_cmdDelete_clicked()));
+    contextMenu.addAction(SnapmaticWidget::tr("&Remove"), picWidget, SLOT(on_cmdDelete_clicked()));
     if (picWidget->isSelected())
     {
         contextMenu.addSeparator();
