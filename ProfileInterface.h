@@ -75,8 +75,6 @@ private slots:
     void dialogNextPictureRequested(QWidget *dialog);
     void dialogPreviousPictureRequested(QWidget *dialog);
 
-    void destroyTest();
-
 private:
     ProfileDatabase *profileDB;
     CrewDatabase *crewDB;

@@ -30,7 +30,6 @@
 #include "ImportDialog.h"
 #include "config.h"
 #include <QProgressDialog>
-#include <QSignalMapper>
 #include <QProgressBar>
 #include <QInputDialog>
 #include <QPushButton>
@@ -344,11 +343,6 @@ void ProfileInterface::pictureDeleted_event()
     pictureDeleted((SnapmaticWidget*)sender(), true);
 }
 
-void ProfileInterface::destroyTest()
-{
-    qDebug() << "destroyed";
-}
-
 void ProfileInterface::pictureDeleted(SnapmaticWidget *picWidget, bool isRemoteEmited)
 {
     SnapmaticPicture *picture = picWidget->getPicture();
@@ -358,7 +352,6 @@ void ProfileInterface::pictureDeleted(SnapmaticWidget *picWidget, bool isRemoteE
     // Deleting when the widget did send a event cause a crash
     if (isRemoteEmited)
     {
-        //connect(picWidget, SIGNAL(destroyed(QObject*)), this, SLOT(destroyTest()));
         picWidget->deleteLater();
     }
     else
