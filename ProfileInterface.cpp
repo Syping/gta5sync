@@ -30,6 +30,7 @@
 #include "ImportDialog.h"
 #include "config.h"
 #include <QProgressDialog>
+#include <QSignalMapper>
 #include <QProgressBar>
 #include <QInputDialog>
 #include <QPushButton>
@@ -42,6 +43,7 @@
 #include <QPalette>
 #include <QPainter>
 #include <QRegExp>
+#include <QAction>
 #include <QDebug>
 #include <QColor>
 #include <QTimer>
@@ -342,6 +344,11 @@ void ProfileInterface::pictureDeleted_event()
     pictureDeleted((SnapmaticWidget*)sender(), true);
 }
 
+void ProfileInterface::destroyTest()
+{
+    qDebug() << "destroyed";
+}
+
 void ProfileInterface::pictureDeleted(SnapmaticWidget *picWidget, bool isRemoteEmited)
 {
     SnapmaticPicture *picture = picWidget->getPicture();
@@ -351,6 +358,7 @@ void ProfileInterface::pictureDeleted(SnapmaticWidget *picWidget, bool isRemoteE
     // Deleting when the widget did send a event cause a crash
     if (isRemoteEmited)
     {
+        //connect(picWidget, SIGNAL(destroyed(QObject*)), this, SLOT(destroyTest()));
         picWidget->deleteLater();
     }
     else
@@ -966,8 +974,7 @@ void ProfileInterface::deleteSelected()
                     if (widget->getWidgetType() == "SnapmaticWidget")
                     {
                         SnapmaticWidget *picWidget = (SnapmaticWidget*)widget;
-                        QString fileName = picWidget->getPicturePath();
-                        if (!QFile::exists(fileName) || QFile::remove(fileName))
+                        if (picWidget->getPicture()->deletePicFile())
                         {
                             pictureDeleted(picWidget);
                         }
@@ -1090,7 +1097,7 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
     contextMenu.addAction(SnapmaticWidget::tr("&View"), picWidget, SLOT(on_cmdView_clicked()));
     contextMenu.addMenu(&editMenu);
     contextMenu.addMenu(&exportMenu);
-    contextMenu.addAction(SnapmaticWidget::tr("&Remove"), picWidget, SLOT(on_cmdDelete_clicked()));
+    contextMenu.addAction(SavegameWidget::tr("&Remove"), picWidget, SLOT(on_cmdDelete_clicked()));
     if (picWidget->isSelected())
     {
         contextMenu.addSeparator();

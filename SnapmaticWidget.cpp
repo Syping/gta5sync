@@ -146,18 +146,24 @@ void SnapmaticWidget::on_cmdExport_clicked()
 
 void SnapmaticWidget::on_cmdDelete_clicked()
 {
+    if (deletePicture()) emit pictureDeleted();
+}
+
+bool SnapmaticWidget::deletePicture()
+{
     int uchoice = QMessageBox::question(this, tr("Delete picture"), tr("Are you sure to delete %1 from your Snapmatic pictures?").arg("\""+picStr+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     if (uchoice == QMessageBox::Yes)
     {
         if (smpic->deletePicFile())
         {
-            emit pictureDeleted();
+            return true;
         }
         else
         {
             QMessageBox::warning(this, tr("Delete picture"), tr("Failed at deleting %1 from your Snapmatic pictures").arg("\""+picStr+"\""));
         }
     }
+    return false;
 }
 
 void SnapmaticWidget::mousePressEvent(QMouseEvent *ev)

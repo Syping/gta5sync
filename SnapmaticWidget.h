@@ -42,6 +42,7 @@ public:
     void setSnapmaticPicture(SnapmaticPicture *picture);
     void setSelectionMode(bool selectionMode);
     void setSelected(bool isSelected);
+    bool deletePicture();
     bool makePictureVisible();
     bool makePictureHidden();
     SnapmaticPicture *getPicture();
