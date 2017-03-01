@@ -79,22 +79,18 @@ ProfileInterface::~ProfileInterface()
     foreach(ProfileWidget *widget, widgets.keys())
     {
         widgets.remove(widget);
-        widget->deleteLater();
         delete widget;
     }
     foreach(SavegameData *savegame, savegames)
     {
         savegames.removeAll(savegame);
-        savegame->deleteLater();
         delete savegame;
     }
     foreach(SnapmaticPicture *picture, pictures)
     {
         pictures.removeAll(picture);
-        picture->deleteLater();
         delete picture;
     }
-    profileLoader->deleteLater();
     delete profileLoader;
 
     delete ui;
@@ -327,7 +323,7 @@ void ProfileInterface::savegameDeleted(SavegameWidget *sgdWidget)
     if (sgdWidget->isSelected()) { sgdWidget->setSelected(false); }
     widgets.remove(sgdWidget);
     sgdWidget->close();
-    sgdWidget->deleteLater();
+    sgdWidget->deleteLater(); // Work?
     savegames.removeAll(savegame);
     delete savegame;
 }
@@ -343,7 +339,7 @@ void ProfileInterface::pictureDeleted(SnapmaticWidget *picWidget)
     if (picWidget->isSelected()) { picWidget->setSelected(false); }
     widgets.remove(picWidget);
     picWidget->close();
-    picWidget->deleteLater();
+    picWidget->deleteLater(); // Work?
     pictures.removeAll(picture);
     delete picture;
 }
@@ -920,7 +916,6 @@ void ProfileInterface::exportSelected()
 
             if (exportThread->isFinished())
             {
-                exportThread->deleteLater();
                 delete exportThread;
             }
             else
@@ -928,7 +923,6 @@ void ProfileInterface::exportSelected()
                 QEventLoop threadFinishLoop;
                 QObject::connect(exportThread, SIGNAL(finished()), &threadFinishLoop, SLOT(quit()));
                 threadFinishLoop.exec();
-                exportThread->deleteLater();
                 delete exportThread;
             }
         }

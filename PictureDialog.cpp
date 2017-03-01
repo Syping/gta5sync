@@ -597,7 +597,7 @@ void PictureDialog::on_labPicture_mouseDoubleClicked(Qt::MouseButton button)
     if (button == Qt::LeftButton)
     {
         QRect desktopRect = QApplication::desktop()->screenGeometry(this);
-        PictureWidget *pictureWidget = new PictureWidget(this);
+        PictureWidget *pictureWidget = new PictureWidget(this); // Work!
         pictureWidget->setObjectName("PictureWidget");
 #if QT_VERSION >= 0x050600
         pictureWidget->setWindowFlags(pictureWidget->windowFlags()^Qt::FramelessWindowHint^Qt::WindowStaysOnTopHint^Qt::MaximizeUsingFullscreenGeometryHint);
@@ -621,8 +621,8 @@ void PictureDialog::on_labPicture_mouseDoubleClicked(Qt::MouseButton button)
         pictureWidget->raise();
         pictureWidget->exec();
 
-        fullscreenWidget = 0;
-        delete pictureWidget;
+        fullscreenWidget = 0; // Work!
+        delete pictureWidget; // Work!
     }
 }
 

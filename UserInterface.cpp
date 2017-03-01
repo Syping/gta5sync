@@ -208,7 +208,6 @@ void UserInterface::closeProfile()
         ui->menuProfile->setEnabled(false);
         ui->actionSelect_profile->setEnabled(false);
         ui->swProfile->removeWidget(profileUI);
-        profileUI->deleteLater();
         delete profileUI;
     }
     this->setWindowTitle(defaultWindowTitle.arg(tr("Select Profile")));
@@ -248,11 +247,10 @@ void UserInterface::openSelectProfile()
 void UserInterface::on_actionAbout_gta5sync_triggered()
 {
     AboutDialog *aboutDialog = new AboutDialog(this);
-    aboutDialog->setWindowFlags(aboutDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
+    aboutDialog->setWindowIcon(windowIcon());
     aboutDialog->setModal(true);
     aboutDialog->show();
     aboutDialog->exec();
-    aboutDialog->deleteLater();
     delete aboutDialog;
 }
 
@@ -297,13 +295,14 @@ void UserInterface::on_actionDelete_selected_triggered()
 void UserInterface::on_actionOptions_triggered()
 {
     OptionsDialog *optionsDialog = new OptionsDialog(profileDB, this);
-    optionsDialog->setWindowFlags(optionsDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
+    optionsDialog->setWindowIcon(windowIcon());
     optionsDialog->commitProfiles(GTAV_Profiles);
-    QObject::connect(optionsDialog, SIGNAL(settingsApplied(int,QString)), this, SLOT(settingsApplied(int,QString)));
+    QObject::connect(optionsDialog, SIGNAL(settingsApplied(int, QString)), this, SLOT(settingsApplied(int, QString)));
 
     optionsDialog->setModal(true);
     optionsDialog->show();
     optionsDialog->exec();
+
     delete optionsDialog;
 }
 
