@@ -17,6 +17,7 @@
 *****************************************************************************/
 
 #include "UiModLabel.h"
+#include <QPaintEvent>
 #include <QMouseEvent>
 
 UiModLabel::UiModLabel(const QString &text, QWidget *parent) : QLabel(parent)
@@ -35,6 +36,12 @@ UiModLabel::UiModLabel(QWidget *parent) : QLabel(parent)
 
 UiModLabel::~UiModLabel()
 {
+}
+
+void UiModLabel::paintEvent(QPaintEvent *ev)
+{
+    QLabel::paintEvent(ev);
+    emit labelPainted();
 }
 
 void UiModLabel::mouseMoveEvent(QMouseEvent *ev)

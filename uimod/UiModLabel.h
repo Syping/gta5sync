@@ -38,6 +38,7 @@ protected:
     void mousePressEvent(QMouseEvent *ev);
     void mouseReleaseEvent(QMouseEvent *ev);
     void mouseDoubleClickEvent(QMouseEvent *ev);
+    void paintEvent(QPaintEvent *ev);
     void resizeEvent(QResizeEvent *ev);
 
 signals:
@@ -45,6 +46,7 @@ signals:
     void mousePressed(Qt::MouseButton button);
     void mouseReleased(Qt::MouseButton button);
     void mouseDoubleClicked(Qt::MouseButton button);
+    void labelPainted();
     void resized(QSize newSize);
 };
 
