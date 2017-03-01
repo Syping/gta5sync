@@ -90,6 +90,10 @@ PictureDialog::PictureDialog(bool primaryWindow, QWidget *parent) :
 
 void PictureDialog::setupPictureDialog(bool withDatabase_)
 {
+    // Set Window Flags
+    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint);
+
+    // Setup User Interface
     ui->setupUi(this);
     windowTitleStr = this->windowTitle();
     jsonDrawString = ui->labJSON->text();

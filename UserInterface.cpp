@@ -427,35 +427,30 @@ bool UserInterface::openFile(QString selectedFile, bool warn)
 
 void UserInterface::openSnapmaticFile(SnapmaticPicture *picture)
 {
-    PictureDialog *picDialog = new PictureDialog(profileDB, crewDB, this);
-    picDialog->setWindowFlags(picDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
-    picDialog->setSnapmaticPicture(picture, true);
-    picDialog->setModal(true);
+    PictureDialog picDialog(profileDB, crewDB, this);
+    picDialog.setSnapmaticPicture(picture, true);
+    picDialog.setModal(true);
 
     int crewID = picture->getSnapmaticProperties().crewID;
     if (crewID != 0) { crewDB->addCrew(crewID); }
 
     QObject::connect(threadDB, SIGNAL(playerNameFound(int, QString)), profileDB, SLOT(setPlayerName(int, QString)));
-    QObject::connect(threadDB, SIGNAL(playerNameUpdated()), picDialog, SLOT(playerNameUpdated()));
+    QObject::connect(threadDB, SIGNAL(playerNameUpdated()), &picDialog, SLOT(playerNameUpdated()));
 
-    picDialog->show();
-    picDialog->setMinimumSize(picDialog->size());
-    picDialog->setMaximumSize(picDialog->size());
+    picDialog.show();
+    picDialog.setMinimumSize(picDialog.size());
+    picDialog.setMaximumSize(picDialog.size());
 
-    picDialog->exec();
-    delete picDialog;
+    picDialog.exec();
 }
 
 void UserInterface::openSavegameFile(SavegameData *savegame)
 {
-    SavegameDialog *sgdDialog = new SavegameDialog(this);
-    sgdDialog->setWindowFlags(sgdDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
-    sgdDialog->setSavegameData(savegame, savegame->getSavegameFileName(), true);
-    sgdDialog->setModal(true);
-
-    sgdDialog->show();
-    sgdDialog->exec();
-    delete sgdDialog;
+    SavegameDialog sgdDialog(this);
+    sgdDialog.setSavegameData(savegame, savegame->getSavegameFileName(), true);
+    sgdDialog.setModal(true);
+    sgdDialog.show();
+    sgdDialog.exec();
 }
 
 void UserInterface::settingsApplied(int _contentMode, QString _language)

@@ -355,7 +355,7 @@ void ProfileInterface::on_cmdImport_clicked()
     settings.beginGroup("FileDialogs");
     settings.beginGroup("ImportCopy");
 
-fileDialogPreOpen:
+fileDialogPreOpen: //Work?
     QFileDialog fileDialog(this);
     fileDialog.setFileMode(QFileDialog::ExistingFiles);
     fileDialog.setViewMode(QFileDialog::Detail);
@@ -386,7 +386,7 @@ fileDialogPreOpen:
         if (selectedFiles.length() == 1)
         {
             QString selectedFile = selectedFiles.at(0);
-            if (!importFile(selectedFile, true, 0)) goto fileDialogPreOpen;
+            if (!importFile(selectedFile, true, 0)) goto fileDialogPreOpen; //Work?
         }
         else if (selectedFiles.length() > 1)
         {
@@ -459,7 +459,7 @@ fileDialogPreOpen:
         else
         {
             QMessageBox::warning(this, tr("Import"), tr("No valid file is selected"));
-            goto fileDialogPreOpen;
+            goto fileDialogPreOpen; //Work?
         }
     }
 
