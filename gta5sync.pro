@@ -115,6 +115,7 @@ DISTFILES += res/app.rc \
     res/gta5sync_de.ts \
     res/gta5sync_fr.ts \
     res/gta5sync.exe.manifest \
+    res/gta5sync.png \
     lang/qtbase_ru.qm \
     lang/gta5sync_ru.ts \
     lang/qt_ru.qm \
@@ -154,6 +155,6 @@ isEqual(QT_MAJOR_VERSION, 4): SOURCES += qjson4/QJsonArray.cpp \
 unix: !macx: appfiles.path = $$(INSTALL_PATH)/share/applications
 unix: !macx: appfiles.files = $$PWD/res/gta5sync.desktop
 unix: !macx: pixmaps.path = $$(INSTALL_PATH)/share/pixmaps
-unix: !macx: pixmaps.files = $$PWD/res/gta5sync.xpm
+unix: !macx: pixmaps.files = $$PWD/res/gta5sync.png
 unix: !macx: target.path = $$(INSTALL_PATH)/bin
 unix: !macx: INSTALLS += target pixmaps appfiles
