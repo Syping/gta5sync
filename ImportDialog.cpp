@@ -30,7 +30,7 @@
 #define snapmaticResolutionLH 240
 #define snapmaticAvatarResolution 470
 #define snapmaticAvatarPlacementW 145
-#define snapmaticAvatarPlacementH 46
+#define snapmaticAvatarPlacementH 66
 
 ImportDialog::ImportDialog(QWidget *parent) :
     QDialog(parent),
