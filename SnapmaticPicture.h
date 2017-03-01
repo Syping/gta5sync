@@ -71,11 +71,14 @@ public:
     bool setImage(const QImage &picture);
     bool setPictureTitl(const QString &newTitle);
     bool setPictureStream(const QByteArray &picByteArray);
-    bool exportPicture(const QString &fileName, bool customFormat = false);
-    void setPicFileName(QString picFileName);
-    void setPicFilePath(QString picFilePath);
     void updateStrings();
     void emitUpdate();
+
+    // FILE MANAGEMENT
+    bool exportPicture(const QString &fileName, bool customFormat = false);
+    void setPicFileName(const QString &picFileName);
+    void setPicFilePath(const QString &picFilePath);
+    bool deletePicFile();
 
     // ALTERNATIVES
     QString getPictureTitle() { return getPictureTitl(); }
@@ -122,9 +125,6 @@ private:
 
     // PICTURE STREAM
     QByteArray rawPicContent;
-
-    // PREDEFINED PROPERTIES
-    QSize snapmaticResolution;
 
     // JSON
     void parseJsonContent();

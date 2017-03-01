@@ -113,7 +113,6 @@ void SnapmaticWidget::on_cmdView_clicked()
     settings.endGroup();
 
     PictureDialog *picDialog = new PictureDialog(profileDB, crewDB, this);
-    picDialog->setWindowFlags(picDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
     picDialog->setSnapmaticPicture(smpic, true);
     picDialog->setModal(true);
 
@@ -150,11 +149,7 @@ void SnapmaticWidget::on_cmdDelete_clicked()
     int uchoice = QMessageBox::question(this, tr("Delete picture"), tr("Are you sure to delete %1 from your Snapmatic pictures?").arg("\""+picStr+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     if (uchoice == QMessageBox::Yes)
     {
-        if (!QFile::exists(picPath))
-        {
-            emit pictureDeleted();
-        }
-        else if(QFile::remove(picPath))
+        if (smpic->deletePicFile())
         {
             emit pictureDeleted();
         }
