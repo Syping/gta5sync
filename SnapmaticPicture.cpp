@@ -106,7 +106,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     if (!picFile->open(QFile::ReadOnly))
     {
         lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFilePath);
-        picFile->deleteLater();
         delete picFile;
         return false;
     }
@@ -191,7 +190,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",1,NOHEADER";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -203,7 +201,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOHEADER";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -215,7 +212,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOJPEG";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -225,7 +221,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOPIC";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -269,7 +264,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",3,NOJSON";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -277,7 +271,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",3,CTJSON";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -289,7 +282,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",4,NOTITL";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -297,7 +289,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",4,CTTITL";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -308,7 +299,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",5,NODESC";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return picOk;
     }
@@ -316,7 +306,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     {
         lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",5,CTDESC";
         picStream->close();
-        picStream->deleteLater();
         delete picStream;
         return false;
     }
@@ -326,7 +315,6 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     updateStrings();
 
     picStream->close();
-    picStream->deleteLater();
     delete picStream;
     if (!writeEnabled) { rawPicContent.clear(); }
     return picOk;
@@ -579,7 +567,6 @@ QImage SnapmaticPicture::getImage()
         if (!picFile->open(QFile::ReadOnly))
         {
             lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFilePath);
-            picFile->deleteLater();
             delete picFile;
             return QImage(0, 0, QImage::Format_RGB888);
         }
