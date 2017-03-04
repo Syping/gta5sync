@@ -768,7 +768,7 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
 
 // FILE MANAGEMENT
 
-bool SnapmaticPicture::exportPicture(const QString &fileName, QString format)
+bool SnapmaticPicture::exportPicture(const QString &fileName, const QString format)
 {
     QFile *picFile = new QFile(fileName);
     if (picFile->open(QIODevice::WriteOnly))

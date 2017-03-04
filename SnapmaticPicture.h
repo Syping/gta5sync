@@ -75,7 +75,7 @@ public:
     void emitUpdate();
 
     // FILE MANAGEMENT
-    bool exportPicture(const QString &fileName, QString format = "PGTA");
+    bool exportPicture(const QString &fileName, const QString format = "PGTA");
     void setPicFileName(const QString &picFileName);
     void setPicFilePath(const QString &picFilePath);
     bool deletePicFile();
