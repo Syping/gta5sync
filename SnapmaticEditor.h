@@ -37,10 +37,6 @@ public:
     ~SnapmaticEditor();
 
 private slots:
-    void on_cbSelfie_toggled(bool checked);
-    void on_cbMugshot_toggled(bool checked);
-    void on_cbDirector_toggled(bool checked);
-    void on_cbEditor_toggled(bool checked);
     void on_rbSelfie_toggled(bool checked);
     void on_rbMugshot_toggled(bool checked);
     void on_rbEditor_toggled(bool checked);
@@ -55,6 +51,12 @@ private:
     SnapmaticProperties localSpJson;
     SnapmaticPicture *smpic;
     QString snapmaticTitle;
+    bool isSelfie;
+    bool isMugshot;
+    bool isEditor;
+    void selfie_toggled(bool checked);
+    void mugshot_toggled(bool checked);
+    void editor_toggled(bool checked);
     void qualifyAvatar();
 };
 
