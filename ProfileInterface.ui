@@ -26,9 +26,6 @@
    <property name="rightMargin">
     <number>0</number>
    </property>
-   <property name="bottomMargin">
-    <number>0</number>
-   </property>
    <item>
     <widget class="QStackedWidget" name="swProfile">
      <property name="currentIndex">
@@ -108,8 +105,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>98</width>
-            <height>28</height>
+            <width>398</width>
+            <height>256</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="vlProfile">
@@ -158,9 +155,6 @@
       <number>9</number>
      </property>
      <property name="rightMargin">
-      <number>9</number>
-     </property>
-     <property name="bottomMargin">
       <number>9</number>
      </property>
      <item>
