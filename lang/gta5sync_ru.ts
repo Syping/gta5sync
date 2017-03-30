@@ -1079,7 +1079,7 @@ Press 1 for Default View</source>
     <message>
         <location filename="../SnapmaticEditor.ui" line="14"/>
         <location filename="../SnapmaticEditor.ui" line="81"/>
-        <location filename="../SnapmaticEditor.cpp" line="242"/>
+        <location filename="../SnapmaticEditor.cpp" line="239"/>
         <source>Snapmatic Properties</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1119,8 +1119,8 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="110"/>
-        <location filename="../SnapmaticEditor.cpp" line="198"/>
+        <location filename="../SnapmaticEditor.ui" line="113"/>
+        <location filename="../SnapmaticEditor.cpp" line="194"/>
         <source>Crew: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1130,74 +1130,84 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="292"/>
+        <location filename="../SnapmaticEditor.cpp" line="289"/>
         <source>Snapmatic Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="120"/>
-        <location filename="../SnapmaticEditor.cpp" line="178"/>
+        <location filename="../SnapmaticEditor.ui" line="126"/>
+        <location filename="../SnapmaticEditor.cpp" line="179"/>
         <source>Title: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="130"/>
-        <location filename="../SnapmaticEditor.cpp" line="182"/>
-        <location filename="../SnapmaticEditor.cpp" line="186"/>
+        <location filename="../SnapmaticEditor.ui" line="136"/>
+        <location filename="../SnapmaticEditor.cpp" line="183"/>
+        <location filename="../SnapmaticEditor.cpp" line="187"/>
         <source>Appropriate: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="143"/>
+        <location filename="../SnapmaticEditor.ui" line="149"/>
         <source>Extras</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="149"/>
+        <location filename="../SnapmaticEditor.ui" line="155"/>
         <source>Qualify as Avatar automatically at apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="162"/>
+        <location filename="../SnapmaticEditor.ui" line="168"/>
         <source>Qualify as Avatar allows you to use this Snapmatic as a Social Club profile picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="212"/>
+        <location filename="../SnapmaticEditor.ui" line="218"/>
         <source>&amp;Apply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="225"/>
+        <location filename="../SnapmaticEditor.ui" line="231"/>
         <source>&amp;Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="177"/>
-        <location filename="../SnapmaticEditor.cpp" line="197"/>
+        <location filename="../SnapmaticEditor.cpp" line="178"/>
+        <location filename="../SnapmaticEditor.cpp" line="193"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="182"/>
+        <location filename="../SnapmaticEditor.cpp" line="183"/>
         <source>Yes</source>
         <comment>Yes, should work fine</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="186"/>
+        <location filename="../SnapmaticEditor.cpp" line="187"/>
         <source>No</source>
         <comment>No, could lead to issues</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="242"/>
+        <location filename="../SnapmaticEditor.cpp" line="239"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="292"/>
+        <location filename="../SnapmaticEditor.cpp" line="289"/>
         <source>New Snapmatic title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.cpp" line="314"/>
+        <source>Snapmatic Crew</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../SnapmaticEditor.cpp" line="314"/>
+        <source>New Snapmatic crew:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
