@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>350</height>
+    <height>360</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -99,11 +99,18 @@
        </widget>
       </item>
       <item>
-       <widget class="QGroupBox" name="gbTitle">
+       <widget class="QGroupBox" name="gbValues">
         <property name="title">
-         <string>Snapmatic Title</string>
+         <string>Snapmatic Values</string>
         </property>
         <layout class="QVBoxLayout" name="vlTitle">
+         <item>
+          <widget class="UiModLabel" name="labCrew">
+           <property name="text">
+            <string>Crew: %1 (%2)</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <widget class="UiModLabel" name="labTitle">
            <property name="contextMenuPolicy">
@@ -169,6 +176,12 @@
     <spacer name="vsEditor">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
      </property>
     </spacer>
    </item>

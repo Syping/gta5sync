@@ -20,6 +20,7 @@
 #define SNAPMATICEDITOR_H
 
 #include <QDialog>
+#include "CrewDatabase.h"
 #include "SnapmaticPicture.h"
 
 namespace Ui {
@@ -31,9 +32,11 @@ class SnapmaticEditor : public QDialog
     Q_OBJECT
 
 public:
-    explicit SnapmaticEditor(QWidget *parent = 0);
+    explicit SnapmaticEditor(CrewDatabase *crewDB, QWidget *parent = 0);
     void setSnapmaticPicture(SnapmaticPicture *picture);
     void setSnapmaticTitle(const QString &title);
+    void setSnapmaticCrew(const QString &crew = "");
+    QString returnCrewName(int crewID);
     ~SnapmaticEditor();
 
 private slots:
@@ -45,12 +48,15 @@ private slots:
     void on_cmdApply_clicked();
     void on_cbQualify_toggled(bool checked);
     void on_labTitle_linkActivated(const QString &link);
+    void on_labCrew_linkActivated(const QString &link);
 
 private:
+    CrewDatabase *crewDB;
     Ui::SnapmaticEditor *ui;
     SnapmaticProperties localSpJson;
     SnapmaticPicture *smpic;
     QString snapmaticTitle;
+    int crewID;
     bool isSelfie;
     bool isMugshot;
     bool isEditor;

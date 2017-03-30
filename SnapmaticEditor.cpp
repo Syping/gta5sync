@@ -26,8 +26,8 @@
 #include <QDebug>
 #include <QFile>
 
-SnapmaticEditor::SnapmaticEditor(QWidget *parent) :
-    QDialog(parent),
+SnapmaticEditor::SnapmaticEditor(CrewDatabase *crewDB, QWidget *parent) :
+    QDialog(parent), crewDB(crewDB),
     ui(new Ui::SnapmaticEditor)
 {
     ui->setupUi(this);
@@ -139,6 +139,7 @@ void SnapmaticEditor::setSnapmaticPicture(SnapmaticPicture *picture)
     smpic = picture;
     localSpJson = smpic->getSnapmaticProperties();
     ui->rbCustom->setChecked(true);
+    crewID = localSpJson.crewID;
     isSelfie = localSpJson.isSelfie;
     isMugshot = localSpJson.isMug;
     isEditor = localSpJson.isFromRSEditor;
@@ -160,6 +161,7 @@ void SnapmaticEditor::setSnapmaticPicture(SnapmaticPicture *picture)
     {
         ui->rbCustom->setChecked(true);
     }
+    setSnapmaticCrew(returnCrewName(crewID));
     setSnapmaticTitle(picture->getPictureTitle());
 }
 
@@ -186,6 +188,18 @@ void SnapmaticEditor::setSnapmaticTitle(const QString &title)
     }
 }
 
+void SnapmaticEditor::setSnapmaticCrew(const QString &crew)
+{
+    QString editStr = QString("<a href=\"g5e://editcrew\" style=\"text-decoration: none;\">%1</a>").arg(tr("Edit"));
+    QString crewStr = tr("Crew: %1 (%2)").arg(StringParser::escapeString(crew), editStr);
+    ui->labCrew->setText(crewStr);
+}
+
+QString SnapmaticEditor::returnCrewName(int crewID_)
+{
+    return crewDB->getCrewName(crewID_);
+}
+
 void SnapmaticEditor::on_cmdCancel_clicked()
 {
     close();
@@ -197,6 +211,7 @@ void SnapmaticEditor::on_cmdApply_clicked()
     {
         qualifyAvatar();
     }
+    localSpJson.crewID = crewID;
     localSpJson.isSelfie = isSelfie;
     localSpJson.isMug = isMugshot;
     localSpJson.isFromRSEditor = isEditor;
@@ -275,6 +290,41 @@ void SnapmaticEditor::on_labTitle_linkActivated(const QString &link)
         if (ok && !newTitle.isEmpty())
         {
             setSnapmaticTitle(newTitle);
+        }
+    }
+}
+
+void SnapmaticEditor::on_labCrew_linkActivated(const QString &link)
+{
+    if (link == "g5e://editcrew")
+    {
+        bool ok;
+        int indexNum = 0;
+        QStringList itemList;
+        QStringList crewList = crewDB->getCrews();
+        crewList.sort();
+        foreach(const QString &crew, crewList)
+        {
+            itemList.append(QString("%1 (%2)").arg(crew, returnCrewName(crew.toInt())));
+        }
+        if (crewList.contains(QString::number(crewID)))
+        {
+            indexNum = crewList.indexOf(QRegExp(QString::number(crewID)));
+        }
+        QString newCrew = QInputDialog::getItem(this, tr("Snapmatic Crew"), tr("New Snapmatic crew:"), itemList, indexNum, true, &ok, windowFlags());
+        if (ok && !newCrew.isEmpty())
+        {
+            if (newCrew.contains(" ")) newCrew = newCrew.split(" ").at(0);
+            if (newCrew.length() > 10) return;
+            foreach (const QChar &crewChar, newCrew)
+            {
+                if (!crewChar.isNumber())
+                {
+                    return;
+                }
+            }
+            crewID = newCrew.toInt();
+            setSnapmaticCrew(returnCrewName(crewID));
         }
     }
 }
