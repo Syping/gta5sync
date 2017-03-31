@@ -56,6 +56,8 @@ ImportDialog::ImportDialog(QWidget *parent) :
     setMinimumSize(430 * screenRatio, 380 * screenRatio);
     setMaximumSize(430 * screenRatio, 380 * screenRatio);
     setFixedSize(430 * screenRatio, 380 * screenRatio);
+    ui->vlButtom->setSpacing(6 * screenRatio);
+    ui->vlButtom->setContentsMargins(9 * screenRatio, 6 * screenRatio, 9 * screenRatio, 9 * screenRatio);
 }
 
 ImportDialog::~ImportDialog()
