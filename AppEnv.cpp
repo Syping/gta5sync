@@ -20,10 +20,13 @@
 #include "AppEnv.h"
 #include "StringParser.h"
 #include "StandardPaths.h"
-#include <QDir>
-#include <QDebug>
 #include <QtGlobal>
+#include <QApplication>
 #include <QSettings>
+#include <QScreen>
+#include <QDebug>
+#include <QRect>
+#include <QDir>
 #include <iostream>
 using namespace std;
 
@@ -129,4 +132,26 @@ QUrl AppEnv::getCrewFetchingUrl(QString crewID)
 QUrl AppEnv::getPlayerFetchingUrl(QString crewID, QString pageNumber)
 {
     return QUrl(QString("https://socialclub.rockstargames.com/crewsapi/GetMembersList?crewId=%1&pageNumber=%2").arg(crewID, pageNumber));
+}
+
+qreal AppEnv::screenRatio()
+{
+    qreal refHeight = 1920.;
+    qreal refWidth = 1080.;
+    QRect rect = QGuiApplication::primaryScreen()->geometry();
+    qreal height = qMax(rect.width(), rect.height());
+    qreal width = qMin(rect.width(), rect.height());
+    return qMin(height/refHeight, width/refWidth);
+}
+
+qreal AppEnv::screenFontRatio()
+{
+    qreal refDpi = 96.;
+    qreal refHeight = 1920.;
+    qreal refWidth = 1080.;
+    QRect rect = QGuiApplication::primaryScreen()->geometry();
+    qreal height = qMax(rect.width(), rect.height());
+    qreal width = qMin(rect.width(), rect.height());
+    qreal dpi = QGuiApplication::primaryScreen()->logicalDotsPerInch();
+    return qMin(height*refDpi/(dpi*refHeight), width*refDpi/(dpi*refWidth));
 }

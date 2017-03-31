@@ -37,6 +37,10 @@ public:
     static QByteArray getUserAgent();
     static QUrl getCrewFetchingUrl(QString crewID);
     static QUrl getPlayerFetchingUrl(QString crewID, QString pageNumber);
+
+    // Screen Stuff
+    static qreal screenRatio();
+    static qreal screenFontRatio();
 };
 
 #endif // APPENV_H
