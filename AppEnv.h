@@ -40,7 +40,6 @@ public:
 
     // Screen Stuff
     static qreal screenRatio();
-    static qreal screenFontRatio();
 };
 
 #endif // APPENV_H

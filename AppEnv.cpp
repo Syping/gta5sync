@@ -21,6 +21,7 @@
 #include "StringParser.h"
 #include "StandardPaths.h"
 #include <QtGlobal>
+#include <QDesktopWidget>
 #include <QApplication>
 #include <QSettings>
 #include <QScreen>
@@ -136,22 +137,10 @@ QUrl AppEnv::getPlayerFetchingUrl(QString crewID, QString pageNumber)
 
 qreal AppEnv::screenRatio()
 {
-    qreal refHeight = 1920.;
-    qreal refWidth = 1080.;
-    QRect rect = QGuiApplication::primaryScreen()->geometry();
-    qreal height = qMax(rect.width(), rect.height());
-    qreal width = qMin(rect.width(), rect.height());
-    return qMin(height/refHeight, width/refWidth);
-}
-
-qreal AppEnv::screenFontRatio()
-{
-    qreal refDpi = 96.;
-    qreal refHeight = 1920.;
-    qreal refWidth = 1080.;
-    QRect rect = QGuiApplication::primaryScreen()->geometry();
-    qreal height = qMax(rect.width(), rect.height());
-    qreal width = qMin(rect.width(), rect.height());
+#if QT_VERSION >= 0x050000
     qreal dpi = QGuiApplication::primaryScreen()->logicalDotsPerInch();
-    return qMin(height*refDpi/(dpi*refHeight), width*refDpi/(dpi*refWidth));
+#else
+    qreal dpi = qApp->desktop()->logicalDpiX();
+#endif
+    return (dpi / 96);
 }
