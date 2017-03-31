@@ -82,6 +82,8 @@ UserInterface::UserInterface(ProfileDatabase *profileDB, CrewDatabase *crewDB, D
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
     resize(625 * screenRatio, 500 * screenRatio);
+    ui->vlUserInterface->setSpacing(6 * screenRatio);
+    ui->vlUserInterface->setContentsMargins(9 * screenRatio, 9 * screenRatio, 9 * screenRatio, 9 * screenRatio);
 }
 
 void UserInterface::setupDirEnv()
