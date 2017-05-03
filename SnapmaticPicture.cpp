@@ -225,14 +225,14 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
         return false;
     }
     QByteArray jpegRawContent = picStream->read(jpegPicStreamLength);
-    if (jpegRawContent.contains(QByteArray::fromHex("FFD9")))
+    if (jpegRawContent.contains("\xFF\xD9"))
     {
-        int jpegRawContentSizeT = jpegRawContent.indexOf(QByteArray::fromHex("FFD9")) + 2;
+        int jpegRawContentSizeT = jpegRawContent.indexOf("\xFF\xD9") + 2;
         jpegRawContentSizeE = jpegRawContentSizeT;
         jpegRawContentSize = jpegRawContentSizeT;
-        if (jpegRawContent.contains(QByteArray::fromHex("FF454F49")))
+        if (jpegRawContent.contains("\xFF\x45\x4F\x49"))
         {
-            jpegRawContentSizeT = jpegRawContent.indexOf(QByteArray::fromHex("FF454F49"));
+            jpegRawContentSizeT = jpegRawContent.indexOf("\xFF\x45\x4F\x49");
         }
         jpegRawContent = jpegRawContent.left(jpegRawContentSize);
         jpegRawContentSize = jpegRawContentSizeT;
@@ -323,7 +323,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
 QString SnapmaticPicture::getSnapmaticHeaderString(const QByteArray &snapmaticHeader)
 {
     QByteArray snapmaticBytes = snapmaticHeader.left(snapmaticUsefulLength);
-    QList<QByteArray> snapmaticBytesList = snapmaticBytes.split(char(0x01));
+    QList<QByteArray> snapmaticBytesList = snapmaticBytes.split('\x01');
     snapmaticBytes = snapmaticBytesList.at(1);
     snapmaticBytesList.clear();
     return StringParser::parseTitleString(snapmaticBytes, snapmaticBytes.length());
@@ -332,8 +332,8 @@ QString SnapmaticPicture::getSnapmaticHeaderString(const QByteArray &snapmaticHe
 QString SnapmaticPicture::getSnapmaticJSONString(const QByteArray &jsonBytes)
 {
     QByteArray jsonUsefulBytes = jsonBytes;
-    jsonUsefulBytes.replace((char)0x00, "");
-    jsonUsefulBytes.replace((char)0x0c, "");
+    jsonUsefulBytes.replace('\x00', "");
+    jsonUsefulBytes.replace('\x0c', "");
     return QString::fromUtf8(jsonUsefulBytes).trimmed();
 }
 
@@ -341,7 +341,7 @@ QString SnapmaticPicture::getSnapmaticTIDEString(const QByteArray &tideBytes)
 {
     QByteArray tideUsefulBytes = tideBytes;
     tideUsefulBytes.remove(0,4);
-    QList<QByteArray> tideUsefulBytesList = tideUsefulBytes.split(char(0x00));
+    QList<QByteArray> tideUsefulBytesList = tideUsefulBytes.split('\x00');
     return QString::fromUtf8(tideUsefulBytesList.at(0)).trimmed();
 }
 
@@ -426,11 +426,11 @@ bool SnapmaticPicture::setPictureStream(const QByteArray &picByteArray_) // clea
         }
         while (picByteArray.length() != jpegPicStreamLength)
         {
-            picByteArray.append((char)0x00);
+            picByteArray += '\x00';
         }
         if (lvlEoi)
         {
-            picByteArray.replace(jpegRawContentSize, 4, QByteArray::fromHex("FF454F49"));
+            picByteArray.replace(jpegRawContentSize, 4, "\xFF\x45\x4F\x49");
         }
         int result = snapmaticStream.write(picByteArray);
         if (result != 0)
@@ -463,7 +463,7 @@ bool SnapmaticPicture::setPictureTitl(const QString &newTitle_)
         QByteArray newTitleArray = newTitle.toUtf8();
         while (newTitleArray.length() != titlStreamEditorLength)
         {
-            newTitleArray.append((char)0x00);
+            newTitleArray += '\x00';
         }
         int result = snapmaticStream.write(newTitleArray);
         if (result != 0)
@@ -722,7 +722,7 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
             QByteArray jsonByteArray = newJsonStr.toUtf8();
             while (jsonByteArray.length() != jsonStreamEditorLength)
             {
-                jsonByteArray.append((char)0x00);
+                jsonByteArray += '\x00';
             }
             QBuffer snapmaticStream(&rawPicContent);
             snapmaticStream.open(QIODevice::ReadWrite);
@@ -773,14 +773,16 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, const QString form
             {
                 numberLength = "00";
             }
-            picFile->write(QByteArray::fromHex("00")); // First Null Byte
-            picFile->write("G5E"); // GTA 5 Export
-            picFile->write(QByteArray::fromHex("1000")); // 2 byte GTA 5 Export Version
-            picFile->write("LEN"); // Before Length
-            picFile->write(QByteArray::fromHex(numberLength)); // Length in HEX before Compressed
-            picFile->write("FIL"); // Before File Name
-            picFile->write(stockFileNameUTF8); // File Name
-            picFile->write("COM"); // Before Compressed
+            QByteArray g5eHeader;
+            g5eHeader += '\x00'; // First Null Byte
+            g5eHeader += "G5E"; // GTA 5 Export
+            g5eHeader += '\x10'; g5eHeader += '\x00'; // 2 byte GTA 5 Export Version
+            g5eHeader += "LEN"; // Before Length
+            g5eHeader += QByteArray::fromHex(numberLength); // Length in HEX before Compressed
+            g5eHeader += "FIL"; // Before File Name
+            g5eHeader += stockFileNameUTF8; // File Name
+            g5eHeader += "COM"; // Before Compressed
+            picFile->write(g5eHeader);
             picFile->write(qCompress(rawPicContent, 9)); // Compressed Snapmatic
             picFile->close();
             delete picFile;
