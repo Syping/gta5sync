@@ -414,7 +414,7 @@ bool SnapmaticPicture::setPictureStream(const QByteArray &picByteArray_) // clea
 {
     if (writeEnabled)
     {
-        bool lvlEoi = false;
+        bool customEOI = false;
         QByteArray picByteArray = picByteArray_;
         QBuffer snapmaticStream(&rawPicContent);
         snapmaticStream.open(QIODevice::ReadWrite);
@@ -422,13 +422,13 @@ bool SnapmaticPicture::setPictureStream(const QByteArray &picByteArray_) // clea
         if (picByteArray.length() > jpegPicStreamLength) return false;
         if (picByteArray.length() < jpegRawContentSize && jpegRawContentSize + 4 < jpegPicStreamLength)
         {
-            lvlEoi = true;
+            customEOI = true;
         }
         while (picByteArray.length() != jpegPicStreamLength)
         {
             picByteArray += '\x00';
         }
-        if (lvlEoi)
+        if (customEOI)
         {
             picByteArray.replace(jpegRawContentSize, 4, "\xFF\x45\x4F\x49");
         }
