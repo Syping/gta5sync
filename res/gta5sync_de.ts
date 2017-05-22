@@ -136,13 +136,13 @@ Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;%8 i
         <location filename="../AboutDialog.cpp" line="40"/>
         <source>Using %1 %2</source>
         <comment>Exp. Using libmyfuck</comment>
-        <translation type="unfinished">Verwendet %1 %2</translation>
+        <translation>Verwendet %1 %2</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="41"/>
         <source>Translated by %1</source>
         <comment>Exp. Translated by Syping</comment>
-        <translation type="unfinished">Übersetzt von %1</translation>
+        <translation>Übersetzt von %1</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="42"/>
@@ -1669,7 +1669,7 @@ Exportieren als:</translation>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="163"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
-        <translation>Bist du sicher %1 von deinen Snapmatic Bilder zu löschen?</translation>
+        <translation>Bist du sicher %1 von deine Snapmatic Bilder zu löschen?</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1083"/>
@@ -1808,7 +1808,7 @@ Exportieren als:</translation>
     <message>
         <location filename="../SnapmaticWidget.cpp" line="172"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
-        <translation>Fehlgeschlagen beim Löschen %1 von deinen Snapmatic Bildern</translation>
+        <translation>Fehlgeschlagen beim Löschen von %1 von deinen Snapmatic Bildern</translation>
     </message>
 </context>
 <context>
