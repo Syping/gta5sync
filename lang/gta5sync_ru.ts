@@ -82,8 +82,8 @@ Pictures and Savegames</source>
         <location filename="../AboutDialog.cpp" line="62"/>
         <source>A project for viewing and sync Grand Theft Auto V Snapmatic&lt;br/&gt;
 Pictures and Savegames</source>
-        <translation>Проект для просмотра и синхронизирования Grand Theft Auto V Snapmatic &lt;br/&gt;
-картинок и сохранений</translation>
+        <translation>Проект для просмотра и синхронизирования &lt;br/&gt;
+Grand Theft Auto V Snapmatic картинок и сохранений</translation>
     </message>
 </context>
 <context>
@@ -1160,7 +1160,7 @@ Press 1 for Default View</source>
     <message>
         <location filename="../SnapmaticEditor.ui" line="94"/>
         <source>Director</source>
-        <translation type="unfinished"></translation>
+        <translation>Director</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="104"/>
@@ -1176,7 +1176,7 @@ Press 1 for Default View</source>
     <message>
         <location filename="../SnapmaticEditor.ui" line="87"/>
         <source>Meme</source>
-        <translation type="unfinished"></translation>
+        <translation>Meme</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.cpp" line="294"/>
@@ -1194,7 +1194,7 @@ Press 1 for Default View</source>
         <location filename="../SnapmaticEditor.cpp" line="188"/>
         <location filename="../SnapmaticEditor.cpp" line="192"/>
         <source>Appropriate: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Разумные: %1</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="149"/>
