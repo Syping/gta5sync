@@ -105,7 +105,7 @@ FORMS    += \
 TRANSLATIONS += \
     res/gta5sync_de.ts \
     res/gta5sync_fr.ts \
-    lang/gta5sync_ru.ts
+    res/gta5sync_ru.ts
 
 RESOURCES += \
     res/app.qrc
@@ -114,11 +114,9 @@ DISTFILES += res/app.rc \
     res/gta5sync.desktop \
     res/gta5sync_de.ts \
     res/gta5sync_fr.ts \
+    res/gta5sync_ru.ts \
     res/gta5sync.exe.manifest \
     res/gta5sync.png \
-    lang/qtbase_ru.qm \
-    lang/gta5sync_ru.ts \
-    lang/qt_ru.qm \
     lang/README.txt
 
 INCLUDEPATH += ./uimod
