@@ -55,7 +55,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     }
 #ifdef WITH_LIBJPEGTURBO // DONT USE IT FOR NOW
     bool additionalContentClip = false;
-    if (additionalContent != "")
+    if (!additionalContent.isEmpty())
     {
         additionalContentClip = true;
         additionalContent.append(" (");
@@ -82,7 +82,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     QString copyrightDes2 = tr("%1 is licensed under <a href=\"https://www.gnu.org/licenses/gpl-3.0.html#content\">GNU GPLv3</a>");
     copyrightDes2 = copyrightDes2.arg(GTA5SYNC_APPSTR);
     QString copyrightDesA;
-    if (additionalContent != "")
+    if (!additionalContent.isEmpty())
     {
         copyrightDesA = copyrightDes1 % "<br/>" % additionalContent % "<br/>" % copyrightDes2;
     }
@@ -105,7 +105,14 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
-    resize(375 * screenRatio, 270 * screenRatio);
+    if (!additionalContent.isEmpty())
+    {
+        resize(375 * screenRatio, 270 * screenRatio);
+    }
+    else
+    {
+        resize(375 * screenRatio, 260 * screenRatio);
+    }
 }
 
 AboutDialog::~AboutDialog()
