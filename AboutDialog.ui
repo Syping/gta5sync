@@ -34,7 +34,7 @@ Version %3&lt;br/&gt;
 Created on %4&lt;br/&gt;
 Built with Qt %5&lt;br/&gt;
 Running with Qt %6&lt;br/&gt;
-%8&lt;br/&gt;
+&lt;br/&gt;
 %7</string>
      </property>
      <property name="alignment">

@@ -47,9 +47,40 @@ Version %3&lt;br/&gt;
 Created on %4&lt;br/&gt;
 Built with Qt %5&lt;br/&gt;
 Running with Qt %6&lt;br/&gt;
+&lt;br/&gt;
+%7</source>
+        <translation>&lt;span style=&quot; font-weight:600;&quot;&gt;%1&lt;/span&gt;&lt;br/&gt;
+&lt;br/&gt;
+%2&lt;br/&gt;
+&lt;br/&gt;
+Version %3&lt;br/&gt;
+Publié le %4&lt;br/&gt;
+Compilé avec Qt %5&lt;br/&gt;
+Fonctionne avec Qt %6&lt;br/&gt;
+&lt;br/&gt;
+%7</translation>
+    </message>
+    <message>
+        <source>&lt;span style=&quot; font-weight:600;&quot;&gt;%1&lt;/span&gt;&lt;br/&gt;
+&lt;br/&gt;
+%2&lt;br/&gt;
+&lt;br/&gt;
+Version %3&lt;br/&gt;
+Created on %4&lt;br/&gt;
+Built with Qt %5&lt;br/&gt;
+Running with Qt %6&lt;br/&gt;
 %8&lt;br/&gt;
 %7</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">&lt;span style=&quot; font-weight:600;&quot;&gt;%1&lt;/span&gt;&lt;br/&gt;
+&lt;br/&gt;
+%2&lt;br/&gt;
+&lt;br/&gt;
+Version %3&lt;br/&gt;
+Publié le %4&lt;br/&gt;
+Compilé avec Qt %5&lt;br/&gt;
+Fonctionne avec Qt %6&lt;br/&gt;
+%8&lt;br/&gt;
+%7</translation>
     </message>
     <message>
         <source>&lt;span style=&quot; font-weight:600;&quot;&gt;%8&lt;/span&gt;&lt;br/&gt;
@@ -83,19 +114,25 @@ Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;
         <location filename="../AboutDialog.cpp" line="40"/>
         <source>Using %1 %2</source>
         <comment>Exp. Using libmyfuck</comment>
-        <translation type="unfinished"></translation>
+        <translation>Utilise %1 %2</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="41"/>
         <source>Translated by %1</source>
         <comment>Exp. Translated by Syping</comment>
-        <translation type="unfinished"></translation>
+        <translation>Traduit par %1</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="42"/>
         <source>NAME_OF_TRANSLATOR</source>
         <comment>Your Name (The person behind your screen looking at this text!)</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ganjalo</translation>
+    </message>
+    <message>
+        <location filename="../AboutDialog.cpp" line="43"/>
+        <source>TRANSLATOR_PROFILE</source>
+        <comment>mailto: http:// https:// Exp. https://github.com/Syping/</comment>
+        <translation>https://github.com/Ganjalo/</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="64"/>
@@ -106,8 +143,17 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="68"/>
+        <source>Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3</source>
+        <translation>Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3</translation>
+    </message>
+    <message>
+        <location filename="../AboutDialog.cpp" line="70"/>
+        <source>%1 is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
+        <translation>%1 est distribué sous license &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</translation>
+    </message>
+    <message>
         <source>Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3&lt;br/&gt;%4 is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3&lt;br/&gt;%4 est distribué sous license &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="62"/>
@@ -122,7 +168,7 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     <message>
         <location filename="../CrewDatabase.cpp" line="64"/>
         <source>No Crew</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun crew</translation>
     </message>
 </context>
 <context>
@@ -1145,13 +1191,13 @@ Appuyer sur 1 pour le mode par défaut</translation>
     <message>
         <location filename="../SnapmaticEditor.ui" line="104"/>
         <source>Snapmatic Values</source>
-        <translation type="unfinished"></translation>
+        <translation>Valeurs Snapmatic</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="113"/>
         <location filename="../SnapmaticEditor.cpp" line="199"/>
         <source>Crew: %1 (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Crew : %1 (%2)</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="126"/>
@@ -1224,18 +1270,18 @@ Appuyer sur 1 pour le mode par défaut</translation>
     <message>
         <location filename="../SnapmaticEditor.cpp" line="319"/>
         <source>Snapmatic Crew</source>
-        <translation type="unfinished"></translation>
+        <translation>Crew Snapmatic</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.cpp" line="319"/>
         <source>New Snapmatic crew:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nouveau crew Snapmatic :</translation>
     </message>
 </context>
 <context>
     <name>SnapmaticPicture</name>
     <message>
-        <location filename="../SnapmaticPicture.cpp" line="363"/>
+        <location filename="../SnapmaticPicture.cpp" line="367"/>
         <source>PHOTO - %1</source>
         <translation>PHOTO - %1</translation>
     </message>

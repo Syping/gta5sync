@@ -68,9 +68,31 @@ Version %3&lt;br/&gt;
 Created on %4&lt;br/&gt;
 Built with Qt %5&lt;br/&gt;
 Running with Qt %6&lt;br/&gt;
-%8&lt;br/&gt;
+&lt;br/&gt;
 %7</source>
         <translation>&lt;span style=&quot; font-weight:600;&quot;&gt;%1&lt;/span&gt;&lt;br/&gt;
+&lt;br/&gt;
+%2&lt;br/&gt;
+&lt;br/&gt;
+Version %3&lt;br/&gt;
+Erstellt am %4&lt;br/&gt;
+Gebaut mit Qt %5&lt;br/&gt;
+Läuft auf Qt %6&lt;br/&gt;
+&lt;br/&gt;
+%7</translation>
+    </message>
+    <message>
+        <source>&lt;span style=&quot; font-weight:600;&quot;&gt;%1&lt;/span&gt;&lt;br/&gt;
+&lt;br/&gt;
+%2&lt;br/&gt;
+&lt;br/&gt;
+Version %3&lt;br/&gt;
+Created on %4&lt;br/&gt;
+Built with Qt %5&lt;br/&gt;
+Running with Qt %6&lt;br/&gt;
+%8&lt;br/&gt;
+%7</source>
+        <translation type="vanished">&lt;span style=&quot; font-weight:600;&quot;&gt;%1&lt;/span&gt;&lt;br/&gt;
 &lt;br/&gt;
 %2&lt;br/&gt;
 &lt;br/&gt;
@@ -151,6 +173,12 @@ Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;%8 i
         <translation>Syping</translation>
     </message>
     <message>
+        <location filename="../AboutDialog.cpp" line="43"/>
+        <source>TRANSLATOR_PROFILE</source>
+        <comment>mailto: http:// https:// Exp. https://github.com/Syping/</comment>
+        <translation>https://github.com/Syping/</translation>
+    </message>
+    <message>
         <location filename="../AboutDialog.cpp" line="64"/>
         <source>A project for viewing Grand Theft Auto V Snapmatic&lt;br/&gt;
 Pictures and Savegames</source>
@@ -159,8 +187,17 @@ Snapmatic Bilder und Spielständen</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="68"/>
+        <source>Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3</source>
+        <translation>Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3</translation>
+    </message>
+    <message>
+        <location filename="../AboutDialog.cpp" line="70"/>
+        <source>%1 is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
+        <translation>%1 ist lizenziert unter &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</translation>
+    </message>
+    <message>
         <source>Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3&lt;br/&gt;%4 is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
-        <translation>Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3&lt;br/&gt;%4 ist lizenziert unter &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</translation>
+        <translation type="vanished">Copyright &amp;copy; &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; %3&lt;br/&gt;%4 ist lizenziert unter &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../AboutDialog.cpp" line="62"/>
@@ -1622,7 +1659,7 @@ Exportieren als:</translation>
 <context>
     <name>SnapmaticPicture</name>
     <message>
-        <location filename="../SnapmaticPicture.cpp" line="363"/>
+        <location filename="../SnapmaticPicture.cpp" line="367"/>
         <source>PHOTO - %1</source>
         <translation>FOTO - %1</translation>
     </message>
