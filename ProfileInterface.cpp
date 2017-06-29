@@ -77,8 +77,13 @@ ProfileInterface::ProfileInterface(ProfileDatabase *profileDB, CrewDatabase *cre
 
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
+#ifndef Q_OS_MAC
     ui->hlButtons->setSpacing(6 * screenRatio);
     ui->hlButtons->setContentsMargins(9 * screenRatio, 9 * screenRatio, 9 * screenRatio, 9 * screenRatio);
+#else
+    ui->hlButtons->setSpacing(6 * screenRatio);
+    ui->hlButtons->setContentsMargins(9 * screenRatio, 15 * screenRatio, 15 * screenRatio, 17 * screenRatio);
+#endif
 }
 
 ProfileInterface::~ProfileInterface()
