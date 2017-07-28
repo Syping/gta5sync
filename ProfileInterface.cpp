@@ -69,6 +69,7 @@ ProfileInterface::ProfileInterface(ProfileDatabase *profileDB, CrewDatabase *cre
     QColor baseColor = palette.base().color();
     ui->labVersion->setText(ui->labVersion->text().arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER));
     ui->saProfile->setStyleSheet(QString("QWidget#saProfileContent{background-color: rgb(%1, %2, %3)}").arg(QString::number(baseColor.red()),QString::number(baseColor.green()),QString::number(baseColor.blue())));
+    ui->saProfileContent->setFilesMode(true);
 
     if (QIcon::hasThemeIcon("dialog-close"))
     {
@@ -420,71 +421,7 @@ fileDialogPreOpen: //Work?
         }
         else if (selectedFiles.length() > 1)
         {
-            int maximumId = selectedFiles.length();
-            int overallId = 1;
-            int currentId = 0;
-            QString errorStr;
-            QStringList failedFiles;
-
-            // Progress dialog
-            QProgressDialog pbDialog(this);
-            pbDialog.setWindowFlags(pbDialog.windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowCloseButtonHint);
-            pbDialog.setWindowTitle(tr("Import..."));
-            pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(overallId), QString::number(maximumId)));
-            pbDialog.setRange(1, maximumId);
-            pbDialog.setValue(1);
-            pbDialog.setModal(true);
-            QList<QPushButton*> pbBtn = pbDialog.findChildren<QPushButton*>();
-            pbBtn.at(0)->setDisabled(true);
-            QList<QProgressBar*> pbBar = pbDialog.findChildren<QProgressBar*>();
-            pbBar.at(0)->setTextVisible(false);
-            pbDialog.show();
-
-            QTime t;
-            t.start();
-            foreach(const QString &selectedFile, selectedFiles)
-            {
-                pbDialog.setValue(overallId);
-                pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(overallId), QString::number(maximumId)));
-                if (currentId == 10)
-                {
-                    // Break until two seconds are over (this prevent import failures)
-                    int elapsedTime = t.elapsed();
-                    if (elapsedTime > 2000)
-                    {
-                    }
-                    else if (elapsedTime < 0)
-                    {
-                        QEventLoop loop;
-                        QTimer::singleShot(2000, &loop, SLOT(quit()));
-                        loop.exec();
-                    }
-                    else
-                    {
-                        QEventLoop loop;
-                        QTimer::singleShot(2000 - elapsedTime, &loop, SLOT(quit()));
-                        loop.exec();
-                    }
-                    currentId = 0;
-                    t.restart();
-                }
-                if (!importFile(selectedFile, false, currentId))
-                {
-                    failedFiles << QFileInfo(selectedFile).fileName();
-                }
-                overallId++;
-                currentId++;
-            }
-            pbDialog.close();
-            foreach (const QString &curErrorStr, failedFiles)
-            {
-                errorStr.append(", " + curErrorStr);
-            }
-            if (errorStr != "")
-            {
-                errorStr.remove(0, 2);
-                QMessageBox::warning(this, tr("Import"), tr("Import failed with...\n\n%1").arg(errorStr));
-            }
+            importFilesProgress(selectedFiles);
         }
         else
         {
@@ -497,6 +434,75 @@ fileDialogPreOpen: //Work?
     settings.setValue(profileName + "+Directory", fileDialog.directory().absolutePath());
     settings.endGroup();
     settings.endGroup();
+}
+
+void ProfileInterface::importFilesProgress(QStringList selectedFiles)
+{
+    int maximumId = selectedFiles.length();
+    int overallId = 1;
+    int currentId = 0;
+    QString errorStr;
+    QStringList failedFiles;
+
+    // Progress dialog
+    QProgressDialog pbDialog(this);
+    pbDialog.setWindowFlags(pbDialog.windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowCloseButtonHint);
+    pbDialog.setWindowTitle(tr("Import..."));
+    pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(overallId), QString::number(maximumId)));
+    pbDialog.setRange(1, maximumId);
+    pbDialog.setValue(1);
+    pbDialog.setModal(true);
+    QList<QPushButton*> pbBtn = pbDialog.findChildren<QPushButton*>();
+    pbBtn.at(0)->setDisabled(true);
+    QList<QProgressBar*> pbBar = pbDialog.findChildren<QProgressBar*>();
+    pbBar.at(0)->setTextVisible(false);
+    pbDialog.show();
+
+    QTime t;
+    t.start();
+    foreach(const QString &selectedFile, selectedFiles)
+    {
+        pbDialog.setValue(overallId);
+        pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(overallId), QString::number(maximumId)));
+        if (currentId == 10)
+        {
+            // Break until two seconds are over (this prevent import failures)
+            int elapsedTime = t.elapsed();
+            if (elapsedTime > 2000)
+            {
+            }
+            else if (elapsedTime < 0)
+            {
+                QEventLoop loop;
+                QTimer::singleShot(2000, &loop, SLOT(quit()));
+                loop.exec();
+            }
+            else
+            {
+                QEventLoop loop;
+                QTimer::singleShot(2000 - elapsedTime, &loop, SLOT(quit()));
+                loop.exec();
+            }
+            currentId = 0;
+            t.restart();
+        }
+        if (!importFile(selectedFile, false, currentId))
+        {
+            failedFiles << QFileInfo(selectedFile).fileName();
+        }
+        overallId++;
+        currentId++;
+    }
+    pbDialog.close();
+    foreach (const QString &curErrorStr, failedFiles)
+    {
+        errorStr.append(", " + curErrorStr);
+    }
+    if (errorStr != "")
+    {
+        errorStr.remove(0, 2);
+        QMessageBox::warning(this, tr("Import"), tr("Import failed with...\n\n%1").arg(errorStr));
+    }
 }
 
 bool ProfileInterface::importFile(QString selectedFile, bool notMultiple, int currentId)
@@ -1135,4 +1141,29 @@ void ProfileInterface::contextMenuTriggeredSGD(QContextMenuEvent *ev)
         contextMenu.addAction(SavegameWidget::tr("&Deselect All"), sgdWidget, SLOT(deselectAllWidgets()), QKeySequence::fromString("Ctrl+D"));
     }
     contextMenu.exec(ev->globalPos());
+}
+
+void ProfileInterface::on_saProfileContent_dropped(const QMimeData *mimeData)
+{
+    if (!mimeData) return;
+    QStringList pathList;
+    QList<QUrl> urlList = mimeData->urls();
+
+    foreach(const QUrl &currentUrl, urlList)
+    {
+        if (currentUrl.isLocalFile())
+        {
+            pathList.append(currentUrl.toLocalFile());
+        }
+    }
+
+    if (pathList.length() == 1)
+    {
+       QString selectedFile = pathList.at(0);
+       importFile(selectedFile, true, 0);
+    }
+    else if (pathList.length() > 1)
+    {
+        importFilesProgress(pathList);
+    }
 }
