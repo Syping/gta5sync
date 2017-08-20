@@ -366,18 +366,18 @@ QString SnapmaticPicture::getSnapmaticTIDEString(const QByteArray &tideBytes)
 void SnapmaticPicture::updateStrings()
 {
     QString cmpPicTitl = titlStr;
-    cmpPicTitl.replace("\"", "''");
-    cmpPicTitl.replace(" ", "_");
-    cmpPicTitl.replace(":", "-");
-    cmpPicTitl.replace("\\", "");
-    cmpPicTitl.replace("{", "");
-    cmpPicTitl.replace("}", "");
-    cmpPicTitl.replace("/", "");
-    cmpPicTitl.replace("<", "");
-    cmpPicTitl.replace(">", "");
-    cmpPicTitl.replace("*", "");
-    cmpPicTitl.replace("?", "");
-    cmpPicTitl.replace(".", "");
+    cmpPicTitl.replace('\"', "''");
+    cmpPicTitl.replace(' ', '_');
+    cmpPicTitl.replace(':', '-');
+    cmpPicTitl.remove('\\');
+    cmpPicTitl.remove('{');
+    cmpPicTitl.remove('}');
+    cmpPicTitl.remove('/');
+    cmpPicTitl.remove('<');
+    cmpPicTitl.remove('>');
+    cmpPicTitl.remove('*');
+    cmpPicTitl.remove('?');
+    cmpPicTitl.remove('.');
     pictureStr = tr("PHOTO - %1").arg(localSpJson.createdDateTime.toString("MM/dd/yy HH:mm:ss"));
     sortStr = localSpJson.createdDateTime.toString("yyMMddHHmmss") + QString::number(localSpJson.uid);
     picExportFileName = sortStr + "_" + cmpPicTitl;
