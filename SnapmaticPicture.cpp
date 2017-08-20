@@ -73,6 +73,7 @@ void SnapmaticPicture::reset()
     jpegRawContentSize = 0;
     picExportFileName = "";
     isCustomFormat = 0;
+    isLoadedInRAM = 0;
     pictureHead = "";
     pictureStr = "";
     lowRamMode = 0;
@@ -90,21 +91,10 @@ void SnapmaticPicture::reset()
     localSpJson = {};
 }
 
-bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bool fastLoad, bool lowRamMode_)
+bool SnapmaticPicture::preloadFile()
 {
-    // Start opening file
-    // lastStep is like currentStep
-
-    // Set boolean values
-    writeEnabled = writeEnabled_;
-    cacheEnabled = cacheEnabled_;
-    lowRamMode = lowRamMode_;
-    if (!writeEnabled) { lowRamMode = false; } // Low RAM Mode only works when writeEnabled is true
-
     QFile *picFile = new QFile(picFilePath);
     picFileName = QFileInfo(picFilePath).fileName();
-
-    QIODevice *picStream;
 
     if (!picFile->open(QFile::ReadOnly))
     {
@@ -112,15 +102,15 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
         delete picFile;
         return false;
     }
-
     if (picFilePath.right(4) != ".g5e")
     {
         rawPicContent = picFile->read(snapmaticFileMaxSize);
         picFile->close();
         delete picFile;
 
-        // Set Custom Format
+        // Setting is values
         isCustomFormat = false;
+        isLoadedInRAM = true;
     }
     else
     {
@@ -153,6 +143,9 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
                         {
                             g5eContent.remove(0, 3);
                             rawPicContent = qUncompress(g5eContent);
+
+                            // Setting is values
+                            isLoadedInRAM = true;
                         }
                         else
                         {
@@ -184,6 +177,24 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
             return false;
         }
     }
+    emit preloaded();
+    return true;
+}
+
+bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bool fastLoad, bool lowRamMode_)
+{
+    // Start opening file
+    // lastStep is like currentStep
+
+    // Set boolean values
+    writeEnabled = writeEnabled_;
+    cacheEnabled = cacheEnabled_;
+    lowRamMode = lowRamMode_;
+    if (!writeEnabled) { lowRamMode = false; } // Low RAM Mode only works when writeEnabled is true
+
+    QIODevice *picStream;
+
+    if (!isLoadedInRAM) { preloadFile(); }
 
     picStream = new QBuffer(&rawPicContent);
     picStream->open(QIODevice::ReadWrite);
@@ -319,8 +330,11 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
 
     picStream->close();
     delete picStream;
+
     if (!writeEnabled) { rawPicContent.clear(); }
     else if (lowRamMode) { rawPicContent = qCompress(rawPicContent, 9); }
+
+    emit loaded();
     return picOk;
 }
 
