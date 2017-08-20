@@ -18,6 +18,7 @@
 
 #include "SnapmaticPicture.h"
 #include "StringParser.h"
+#include <QStringBuilder>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QStringList>
@@ -98,7 +99,7 @@ bool SnapmaticPicture::preloadFile()
 
     if (!picFile->open(QFile::ReadOnly))
     {
-        lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFilePath);
+        lastStep = "1;/1,OpenFile," % StringParser::convertDrawStringForLog(picFilePath);
         delete picFile;
         return false;
     }
@@ -149,31 +150,31 @@ bool SnapmaticPicture::preloadFile()
                         }
                         else
                         {
-                            lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",4,G5E_FORMATERROR";
+                            lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",4,G5E_FORMATERROR";
                             return false;
                         }
                     }
                     else
                     {
-                        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",3,G5E_FORMATERROR";
+                        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",3,G5E_FORMATERROR";
                         return false;
                     }
                 }
                 else
                 {
-                    lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,G5E_FORMATERROR";
+                    lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",2,G5E_FORMATERROR";
                     return false;
                 }
             }
             else
             {
-                lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",1,G5E_NOTCOMPATIBLE";
+                lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",1,G5E_NOTCOMPATIBLE";
                 return false;
             }
         }
         else
         {
-            lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",1,G5E_FORMATERROR";
+            lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",1,G5E_FORMATERROR";
             return false;
         }
     }
@@ -202,7 +203,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     // Reading Snapmatic Header
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",1,NOHEADER";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",1,NOHEADER";
         picStream->close();
         delete picStream;
         return false;
@@ -213,7 +214,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     // Reading JPEG Header Line
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOHEADER";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",2,NOHEADER";
         picStream->close();
         delete picStream;
         return false;
@@ -224,7 +225,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     jpegHeaderLine.remove(0, jpegHeaderLineDifStr);
     if (jpegHeaderLine.left(4) != QByteArray("JPEG"))
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOJPEG";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",2,NOJPEG";
         picStream->close();
         delete picStream;
         return false;
@@ -233,7 +234,7 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     // Read JPEG Stream
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",2,NOPIC";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",2,NOPIC";
         picStream->close();
         delete picStream;
         return false;
@@ -276,14 +277,14 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     // Read JSON Stream
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",3,NOJSON";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",3,NOJSON";
         picStream->close();
         delete picStream;
         return false;
     }
     else if (picStream->read(4) != QByteArray("JSON"))
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",3,CTJSON";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",3,CTJSON";
         picStream->close();
         delete picStream;
         return false;
@@ -294,14 +295,14 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
 
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",4,NOTITL";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",4,NOTITL";
         picStream->close();
         delete picStream;
         return false;
     }
     else if (picStream->read(4) != QByteArray("TITL"))
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",4,CTTITL";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",4,CTTITL";
         picStream->close();
         delete picStream;
         return false;
@@ -311,14 +312,14 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
 
     if (!picStream->isReadable())
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",5,NODESC";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",5,NODESC";
         picStream->close();
         delete picStream;
         return picOk;
     }
     else if (picStream->read(4) != QByteArray("DESC"))
     {
-        lastStep = "2;/3,ReadingFile," + StringParser::convertDrawStringForLog(picFilePath) + ",5,CTDESC";
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",5,CTDESC";
         picStream->close();
         delete picStream;
         return false;
@@ -379,8 +380,8 @@ void SnapmaticPicture::updateStrings()
     cmpPicTitl.remove('?');
     cmpPicTitl.remove('.');
     pictureStr = tr("PHOTO - %1").arg(localSpJson.createdDateTime.toString("MM/dd/yy HH:mm:ss"));
-    sortStr = localSpJson.createdDateTime.toString("yyMMddHHmmss") + QString::number(localSpJson.uid);
-    picExportFileName = sortStr + "_" + cmpPicTitl;
+    sortStr = localSpJson.createdDateTime.toString("yyMMddHHmmss") % QString::number(localSpJson.uid);
+    picExportFileName = sortStr % "_" % cmpPicTitl;
 }
 
 bool SnapmaticPicture::readingPictureFromFile(const QString &fileName, bool writeEnabled_, bool cacheEnabled_, bool fastLoad, bool lowRamMode_)
@@ -594,7 +595,7 @@ QImage SnapmaticPicture::getImage()
         QFile *picFile = new QFile(picFilePath);
         if (!picFile->open(QFile::ReadOnly))
         {
-            lastStep = "1;/1,OpenFile," + StringParser::convertDrawStringForLog(picFilePath);
+            lastStep = "1;/1,OpenFile," % StringParser::convertDrawStringForLog(picFilePath);
             delete picFile;
             return QImage(0, 0, QImage::Format_RGB888);
         }
@@ -809,6 +810,7 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, const QString form
                 numberLength = "00";
             }
             QByteArray g5eHeader;
+            g5eHeader.reserve(stockFileNameUTF8.length() + 16);
             g5eHeader += '\x00'; // First Null Byte
             g5eHeader += QByteArray("G5E"); // GTA 5 Export
             g5eHeader += '\x10'; g5eHeader += '\x00'; // 2 byte GTA 5 Export Version
@@ -905,7 +907,7 @@ bool SnapmaticPicture::setPictureHidden()
     }
     if (!isHidden())
     {
-        QString newPicFilePath = QString(picFilePath + ".hidden");
+        QString newPicFilePath = QString(picFilePath % ".hidden");
         if (QFile::rename(picFilePath, newPicFilePath))
         {
             picFilePath = newPicFilePath;
