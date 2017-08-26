@@ -56,11 +56,11 @@ QString AppEnv::getGameFolder(bool *ok)
     QString GTAV_defaultFolder = StandardPaths::documentsLocation() + QDir::separator() + "Rockstar Games" + QDir::separator() + "GTA V";
     QString GTAV_returnFolder = GTAV_defaultFolder;
 
-    QSettings SyncSettings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
-    SyncSettings.beginGroup("dir");
-    bool forceDir = SyncSettings.value("force", false).toBool();
-    GTAV_returnFolder = SyncSettings.value("dir", GTAV_defaultFolder).toString();
-    SyncSettings.endGroup();
+    QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
+    settings.beginGroup("dir");
+    bool forceDir = settings.value("force", false).toBool();
+    GTAV_returnFolder = settings.value("dir", GTAV_defaultFolder).toString();
+    settings.endGroup();
 
     if (forceDir)
     {
