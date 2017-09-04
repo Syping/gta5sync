@@ -46,11 +46,11 @@ AboutDialog::AboutDialog(QWidget *parent) :
     {
         if (translatorProfile != "TRANSLATOR_PROFILE")
         {
-            additionalContent.append(translatedByStr.arg(QString("<a href=\"%1\">%2</a>").arg(translatorProfile, translatedByVal)));
+            additionalContent += translatedByStr.arg(QString("<a href=\"%1\">%2</a>").arg(translatorProfile, translatedByVal));
         }
         else
         {
-            additionalContent.append(translatedByStr.arg(translatedByVal));
+            additionalContent += translatedByStr.arg(translatedByVal);
         }
     }
 #ifdef WITH_LIBJPEGTURBO // DONT USE IT FOR NOW
@@ -58,12 +58,12 @@ AboutDialog::AboutDialog(QWidget *parent) :
     if (!additionalContent.isEmpty())
     {
         additionalContentClip = true;
-        additionalContent.append(" (");
+        additionalContent += " (";
     }
-    additionalContent.append(usingStr.arg("libjpegturbo", WITH_LIBJPEGTURBO));
+    additionalContent += usingStr.arg("libjpegturbo", WITH_LIBJPEGTURBO);
     if (additionalContentClip)
     {
-        additionalContent.append(")");
+        additionalContent += ")";
     }
 #else
     Q_UNUSED(usingStr)

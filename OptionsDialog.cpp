@@ -116,7 +116,7 @@ void OptionsDialog::setupTreeWidget()
 
             QTreeWidgetItem *playerItem = new QTreeWidgetItem(playerTreeViewList);
             ui->twPlayers->addTopLevelItem(playerItem);
-            playerItems.append(playerItem);
+            playerItems += playerItem;
         }
     }
     ui->twPlayers->sortItems(1, Qt::AscendingOrder);

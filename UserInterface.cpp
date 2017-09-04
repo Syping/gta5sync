@@ -164,7 +164,7 @@ void UserInterface::setupProfileUi()
         changeDirBtn->setMinimumSize(0, 40 * screenRatio);
         changeDirBtn->setAutoDefault(true);
         ui->vlButtons->addWidget(changeDirBtn);
-        profileBtns.append(changeDirBtn);
+        profileBtns += changeDirBtn;
 
         QObject::connect(changeDirBtn, SIGNAL(clicked(bool)), this, SLOT(changeFolder_clicked()));
     }
@@ -175,7 +175,7 @@ void UserInterface::setupProfileUi()
         profileBtn->setMinimumSize(0, 40 * screenRatio);
         profileBtn->setAutoDefault(true);
         ui->vlButtons->addWidget(profileBtn);
-        profileBtns.append(profileBtn);
+        profileBtns += profileBtn;
 
         QObject::connect(profileBtn, SIGNAL(clicked(bool)), this, SLOT(profileButton_clicked()));
     }

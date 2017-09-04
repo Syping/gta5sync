@@ -35,6 +35,7 @@
 #endif
 #endif
 
+#include <QStringBuilder>
 #include <QDesktopWidget>
 #include <QJsonDocument>
 #include <QApplication>
@@ -467,13 +468,7 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
                 {
                     playerName = player;
                 }
-                plyrsStr.append(", <a href=\"https://socialclub.rockstargames.com/member/");
-                plyrsStr.append(playerName);
-                plyrsStr.append("/");
-                plyrsStr.append(player);
-                plyrsStr.append("\">");
-                plyrsStr.append(playerName);
-                plyrsStr.append("</a>");
+                plyrsStr += ", <a href=\"https://socialclub.rockstargames.com/member/" % playerName % "/" % player % "\">" % playerName % "</a>";
             }
             plyrsStr.remove(0,2);
         }
@@ -595,20 +590,16 @@ void PictureDialog::playerNameUpdated()
             {
                 playerName = player;
             }
-            plyrsStr.append(", <a href=\"https://socialclub.rockstargames.com/member/");
+            plyrsStr += ", <a href=\"https://socialclub.rockstargames.com/member/";
             if (playerName != player)
             {
-                plyrsStr.append(playerName);
+                plyrsStr += playerName;
             }
             else
             {
-                plyrsStr.append("id");
+                plyrsStr += "id";
             }
-            plyrsStr.append("/");
-            plyrsStr.append(player);
-            plyrsStr.append("\">");
-            plyrsStr.append(playerName);
-            plyrsStr.append("</a>");
+            plyrsStr += "/" % player % "\">" % playerName % "</a>";
         }
         plyrsStr.remove(0,2);
         ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, plyrsStr, crewID, picTitl, picAreaStr, created));

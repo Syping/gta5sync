@@ -90,7 +90,7 @@ void ExportThread::run()
                     QString exportFileName = PictureExport::getPictureFileName(picture);
                     if (exportFileName.right(4) != ".jpg" && exportFileName.right(4) != ".png")
                     {
-                        exportFileName.append(".jpg");
+                        exportFileName += ".jpg";
                     }
 
                     intExportProgress++;

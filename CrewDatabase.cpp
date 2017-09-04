@@ -52,7 +52,7 @@ QStringList CrewDatabase::getCrews()
     crewDB->endGroup();
     crewDB->beginGroup("CrewList");
     QStringList crewIDs = crewDB->value("IDs", QStringList()).toStringList();
-    crewIDs.append(compatibleCrewList);
+    crewIDs += compatibleCrewList;
     crewIDs.removeDuplicates();
     crewDB->endGroup();
     crewDB->beginGroup("Crews");
@@ -74,7 +74,7 @@ void CrewDatabase::setCrewName(int crewID, QString crewName)
 void CrewDatabase::addCrew(int crewID)
 {
     QStringList crews = getCrews();
-    crews.append(QString::number(crewID));
+    crews += QString::number(crewID);
     crews.removeDuplicates();
     crewDB->endGroup();
     crewDB->beginGroup("CrewList");
