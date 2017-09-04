@@ -22,6 +22,7 @@
 #include "UserInterface.h"
 #include "AppEnv.h"
 #include "config.h"
+#include <QStringBuilder>
 #include <QDesktopWidget>
 #include <QApplication>
 #include <QFileDialog>
@@ -166,8 +167,8 @@ void OptionsDialog::setupLanguageBox()
         QString languageNameInternational = QLocale::languageToString(langLocale.language());
         QString languageNameNative = langLocale.nativeLanguageName();
 
-        QString cbLangStr = languageNameNative + " (" + languageNameInternational + ") [" + lang + "]";
-        QString langIconStr = "flag-" + lang;
+        QString cbLangStr = languageNameNative % " (" % languageNameInternational % ") [" % lang % "]";
+        QString langIconStr = "flag-" % lang;
 
         ui->cbLanguage->addItem(QIcon::fromTheme(langIconStr), cbLangStr, lang);
         if (currentLanguage == lang)

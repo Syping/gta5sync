@@ -21,6 +21,7 @@
 #include "StringParser.h"
 #include "StandardPaths.h"
 #include <QtGlobal>
+#include <QStringBuilder>
 #include <QDesktopWidget>
 #include <QApplication>
 #include <QSettings>
@@ -53,7 +54,7 @@ QString AppEnv::getGameFolder(bool *ok)
         }
     }
 
-    QString GTAV_defaultFolder = StandardPaths::documentsLocation() + QDir::separator() + "Rockstar Games" + QDir::separator() + "GTA V";
+    QString GTAV_defaultFolder = StandardPaths::documentsLocation() % QDir::separator() % "Rockstar Games" % QDir::separator() % "GTA V";
     QString GTAV_returnFolder = GTAV_defaultFolder;
 
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);

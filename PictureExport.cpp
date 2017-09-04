@@ -21,6 +21,7 @@
 #include "PictureDialog.h"
 #include "StandardPaths.h"
 #include "SidebarGenerator.h"
+#include <QStringBuilder>
 #include <QDesktopWidget>
 #include <QApplication>
 #include <QMessageBox>
@@ -97,9 +98,9 @@ fileDialogPreSave: //Work?
 
     fileDialog.setSidebarUrls(sidebarUrls);
     fileDialog.setDirectory(settings.value("Directory", StandardPaths::picturesLocation()).toString());
-    fileDialog.restoreGeometry(settings.value(parent->objectName() + "+Geomtery", "").toByteArray());
+    fileDialog.restoreGeometry(settings.value(parent->objectName() % "+Geomtery", "").toByteArray());
 
-    QString newPictureFileName = getPictureFileName(picture) + defaultExportFormat;
+    QString newPictureFileName = getPictureFileName(picture) % defaultExportFormat;
     fileDialog.selectFile(newPictureFileName);
 
     if (fileDialog.exec())
@@ -189,7 +190,7 @@ fileDialogPreSave: //Work?
         }
     }
 
-    settings.setValue(parent->objectName() + "+Geometry", fileDialog.saveGeometry());
+    settings.setValue(parent->objectName() % "+Geometry", fileDialog.saveGeometry());
     settings.setValue("Directory", fileDialog.directory().absolutePath());
     settings.endGroup();
     settings.endGroup();
@@ -230,8 +231,8 @@ fileDialogPreSave: //Work?
 
     fileDialog.setSidebarUrls(sidebarUrls);
     fileDialog.setDirectory(settings.value("Directory", StandardPaths::documentsLocation()).toString());
-    fileDialog.selectFile(QString(picture->getExportPictureFileName() + ".g5e"));
-    fileDialog.restoreGeometry(settings.value(parent->objectName() + "+Geomtery", "").toByteArray());
+    fileDialog.selectFile(QString(picture->getExportPictureFileName() % ".g5e"));
+    fileDialog.restoreGeometry(settings.value(parent->objectName() % "+Geomtery", "").toByteArray());
 
 
     if (fileDialog.exec())
@@ -274,7 +275,7 @@ fileDialogPreSave: //Work?
                     isAutoExt = true;
                     QString dirPath = QFileInfo(selectedFile).dir().path();
                     QString stockFileName = sgdFileInfo.fileName();
-                    selectedFile = dirPath + "/" + stockFileName;
+                    selectedFile = dirPath % "/" % stockFileName;
                 }
                 else if (selectedFile.right(4) == ".rem")
                 {
@@ -299,7 +300,7 @@ fileDialogPreSave: //Work?
         }
     }
 
-    settings.setValue(parent->objectName() + "+Geometry", fileDialog.saveGeometry());
+    settings.setValue(parent->objectName() % "+Geometry", fileDialog.saveGeometry());
     settings.setValue("Directory", fileDialog.directory().absolutePath());
     settings.endGroup();
 }

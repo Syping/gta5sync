@@ -26,6 +26,7 @@
 #include "StringParser.h"
 #include "AppEnv.h"
 #include "config.h"
+#include <QStringBuilder>
 #include <QMessageBox>
 #include <QPixmap>
 #include <QTimer>
@@ -92,7 +93,7 @@ void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
     ui->labPicture->setFixedSize(48 * screenRatio, 27 * screenRatio);
 
     QPixmap SnapmaticPixmap = QPixmap::fromImage(picture->getImage().scaled(ui->labPicture->width(), ui->labPicture->height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation), Qt::AutoColor);
-    ui->labPicStr->setText(picStr + "\n" + picTitl + "");
+    ui->labPicStr->setText(picStr % "\n" % picTitl % "");
     ui->labPicture->setPixmap(SnapmaticPixmap);
 
     picture->clearCache();
@@ -106,7 +107,7 @@ void SnapmaticWidget::snapmaticUpdated()
     picPath = smpic->getPictureFilePath();
     picTitl = smpic->getPictureTitl();
     picStr = smpic->getPictureStr();
-    ui->labPicStr->setText(picStr + "\n" + picTitl + "");
+    ui->labPicStr->setText(picStr % "\n" % picTitl % "");
 }
 
 void SnapmaticWidget::on_cmdView_clicked()

@@ -31,6 +31,7 @@
 #include "AppEnv.h"
 #include "config.h"
 #include <QtGlobal>
+#include <QStringBuilder>
 #include <QStyleFactory>
 #include <QFileDialog>
 #include <QHBoxLayout>
@@ -130,7 +131,7 @@ void UserInterface::setupDirEnv()
     if (folderExists)
     {
         QDir GTAV_ProfilesDir;
-        GTAV_ProfilesFolder = GTAV_Folder + QDir::separator() + "Profiles";
+        GTAV_ProfilesFolder = GTAV_Folder % QDir::separator() % "Profiles";
         GTAV_ProfilesDir.setPath(GTAV_ProfilesFolder);
 
         GTAV_Profiles = GTAV_ProfilesDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
@@ -209,7 +210,7 @@ void UserInterface::openProfile(QString profileName)
     profileUI = new ProfileInterface(profileDB, crewDB, threadDB);
     ui->swProfile->addWidget(profileUI);
     ui->swProfile->setCurrentWidget(profileUI);
-    profileUI->setProfileFolder(GTAV_ProfilesFolder + QDir::separator() + profileName, profileName);
+    profileUI->setProfileFolder(GTAV_ProfilesFolder % QDir::separator() % profileName, profileName);
     profileUI->settingsApplied(contentMode, language);
     profileUI->setupProfileInterface();
     QObject::connect(profileUI, SIGNAL(profileClosed()), this, SLOT(closeProfile()));

@@ -20,6 +20,7 @@
 #include <QSettings>
 #include <QFileInfo>
 #include <QStringList>
+#include <QStringBuilder>
 #include "GlobalString.h"
 #include "config.h"
 
@@ -62,7 +63,7 @@ QString GlobalString::getString(QString valueStr, bool *ok)
 QString GlobalString::getLanguageFile()
 {
     QString language = getLanguage();
-    QString languageFile = ":/global/global." + language + ".ini";
+    QString languageFile = ":/global/global." % language % ".ini";
     if (!QFileInfo(languageFile).exists())
     {
         languageFile = ":/global/global.en.ini";
