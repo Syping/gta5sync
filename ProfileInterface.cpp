@@ -584,13 +584,15 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                     spJson.uid = QString(currentTime +
                                          QString::number(QDate::currentDate().dayOfYear())).toInt();
                     bool fExists = QFile::exists(QString(profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid)));
+                    bool fExistsHidden = QFile::exists(QString(profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid) + ".hidden"));
                     int cEnough = 0;
-                    while (fExists && cEnough < 5000)
+                    while ((fExists || fExistsHidden) && cEnough < 5000)
                     {
                         currentTime = QString::number(currentTime.toInt() - 1);
                         spJson.uid = QString(currentTime +
                                              QString::number(QDate::currentDate().dayOfYear())).toInt();
                         fExists = QFile::exists(QString(profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid)));
+                        fExistsHidden = QFile::exists(QString(profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid) + ".hidden"));
                         cEnough++;
                     }
                     spJson.createdDateTime = QDateTime::currentDateTime();
@@ -626,14 +628,16 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                             SnapmaticProperties spJson = picture->getSnapmaticProperties();
                             spJson.uid = QString(currentTime +
                                                  QString::number(QDate::currentDate().dayOfYear())).toInt();
-                            bool fExists = QFile::exists(QString( profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid) ));
+                            bool fExists = QFile::exists(QString(profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid)));
+                            bool fExistsHidden = QFile::exists(QString(profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid) + ".hidden"));
                             int cEnough = 0;
-                            while (fExists && cEnough < 25)
+                            while ((fExists || fExistsHidden) && cEnough < 25)
                             {
                                 currentTime = QString::number(currentTime.toInt() - 1);
                                 spJson.uid = QString(currentTime +
                                                      QString::number(QDate::currentDate().dayOfYear())).toInt();
                                 fExists = QFile::exists(QString(profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid)));
+                                fExistsHidden = QFile::exists(QString(profileFolder + QDir::separator() + "PGTA5" + QString::number(spJson.uid) + ".hidden"));
                                 cEnough++;
                             }
                             spJson.createdDateTime = QDateTime::currentDateTime();
