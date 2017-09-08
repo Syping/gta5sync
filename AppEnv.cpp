@@ -120,7 +120,7 @@ QString AppEnv::getInLangFolder()
 #ifdef GTA5SYNC_INLANG
     return StringParser::convertBuildedString(GTA5SYNC_INLANG);
 #else
-    return StringParser::convertBuildedString(GTA5SYNC_SHARE % QLatin1String("$SEPARATOR$APPNAME$SEPARATORtranslations"));
+    return StringParser::convertBuildedString(GTA5SYNC_SHARE % QLatin1String("<SEPARATOR><APPNAME><SEPARATOR>translations"));
 #endif
 #else
 #ifdef GTA5SYNC_INLANG
