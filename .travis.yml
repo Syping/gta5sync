@@ -20,6 +20,7 @@ before_script:
   - echo "gta5sync build version is $APPLICATION_VERSION"
   - mkdir build
   - mkdir package
+  - chmod -x res/gta5sync_*.qm res/gta5sync.desktop res/gta5sync.png
   - cd build
   - echo "Grand Theft Auto V Savegame and Snapmatic sync" > ./description-pak
 
