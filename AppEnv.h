@@ -30,7 +30,8 @@ public:
     // Folder Stuff
     static QString getGameFolder(bool *ok = 0);
     static bool setGameFolder(QString gameFolder);
-    static QString getLangFolder();
+    static QString getExLangFolder();
+    static QString getInLangFolder();
     static QString getPluginsFolder();
 
     // Web Stuff

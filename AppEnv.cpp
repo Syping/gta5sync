@@ -109,14 +109,31 @@ bool AppEnv::setGameFolder(QString gameFolder)
     return false;
 }
 
-QString AppEnv::getLangFolder()
+QString AppEnv::getExLangFolder()
 {
-    return StringParser::convertBuildedString(QString::fromUtf8(GTA5SYNC_LANG));
+    return StringParser::convertBuildedString(GTA5SYNC_LANG);
+}
+
+QString AppEnv::getInLangFolder()
+{
+#ifdef GTA5SYNC_QCONF
+#ifdef GTA5SYNC_INLANG
+    return StringParser::convertBuildedString(GTA5SYNC_INLANG);
+#else
+    return StringParser::convertBuildedString(GTA5SYNC_SHARE % QLatin1String("$SEPARATOR$APPNAME$SEPARATORtranslations"));
+#endif
+#else
+#ifdef GTA5SYNC_INLANG
+    return StringParser::convertBuildedString(GTA5SYNC_INLANG);
+#else
+    return QString(":/tr");
+#endif
+#endif
 }
 
 QString AppEnv::getPluginsFolder()
 {
-    return StringParser::convertBuildedString(QString::fromUtf8(GTA5SYNC_PLUG));
+    return StringParser::convertBuildedString(GTA5SYNC_PLUG);
 }
 
 // Web Stuff

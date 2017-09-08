@@ -19,6 +19,7 @@
 #include "StringParser.h"
 #include "config.h"
 #include <QTextDocument>
+#include <QLibraryInfo>
 #ifndef GTA5VIEW_CMD
 #include <QApplication>
 #endif
@@ -59,8 +60,11 @@ QString StringParser::convertBuildedString(const QString &buildedStr)
 {
     QString outputStr = buildedStr;
     QByteArray sharePath = GTA5SYNC_SHARE;
+    outputStr.replace("$APPNAME", GTA5SYNC_APPSTR);
     outputStr.replace("$SHAREDIR", QString::fromUtf8(sharePath));
     outputStr.replace("$RUNDIR", QFileInfo(qApp->applicationFilePath()).absoluteDir().absolutePath());
+    outputStr.replace("$QCONFLANG", QLibraryInfo::location(QLibraryInfo::TranslationsPath));
+    outputStr.replace("$QCONFPLUG", QLibraryInfo::location(QLibraryInfo::PluginsPath));
     outputStr.replace("$SEPARATOR", QDir::separator());
     return outputStr;
 }

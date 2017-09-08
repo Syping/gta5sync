@@ -150,10 +150,10 @@ void OptionsDialog::setupLanguageBox()
 
     QDir langDir;
     langDir.setNameFilters(QStringList("gta5sync_*.qm"));
-    langDir.setPath(AppEnv::getLangFolder());
+    langDir.setPath(AppEnv::getExLangFolder());
     QStringList langFiles;
     langFiles << langDir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::NoSort);
-    langDir.setPath(":/tr");
+    langDir.setPath(AppEnv::getInLangFolder());
     langFiles << langDir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::NoSort);
     langFiles.removeDuplicates();
 

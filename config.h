@@ -60,6 +60,18 @@
 #define GTA5SYNC_BUILDTYPE "Custom"
 #endif
 
+#ifdef GTA5SYNC_QCONF
+#ifndef GTA5SYNC_SHARE
+#define GTA5SYNC_SHARE "$RUNDIR$SEPARATOR..$SEPARATORshare"
+#endif
+#ifndef GTA5SYNC_LANG
+#define GTA5SYNC_LANG "$QCONFLANG"
+#endif
+#ifndef GTA5SYNC_PLUG
+#define GTA5SYNC_PLUG "$QCONFPLUG"
+#endif
+#endif
+
 #ifndef GTA5SYNC_SHARE
 #define GTA5SYNC_SHARE "$RUNDIR"
 #endif

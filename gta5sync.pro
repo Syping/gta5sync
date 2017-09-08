@@ -168,3 +168,14 @@ unix: !macx: pixmaps.path = $$(INSTALL_PATH)/share/pixmaps
 unix: !macx: pixmaps.files = $$PWD/res/gta5sync.png
 unix: !macx: target.path = $$(INSTALL_PATH)/bin
 unix: !macx: INSTALLS += target pixmaps appfiles
+
+# QCONF BASED BUILD STUFF
+
+contains(DEFINES, GTA5SYNC_QCONF){
+    RESOURCES -= res/tr_g5p.qrc
+    isEqual(QT_MAJOR_VERSION, 4): RESOURCES -= res/tr_qt4.qrc
+    isEqual(QT_MAJOR_VERSION, 5): RESOURCES -= res/tr_qt5.qrc
+    unix: !macx: langfiles.path = $$(INSTALL_PATH)/share/gta5sync/translations
+    unix: !macx: langfiles.files = $$PWD/res/gta5sync_de.qm $$PWD/res/gta5sync_fr.qm $$PWD/res/gta5sync_ru.qm
+    unix: !macx: INSTALLS += langfiles
+}

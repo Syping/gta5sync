@@ -89,7 +89,8 @@ int main(int argc, char *argv[])
     settings.endGroup();
 
     // Start external translate loading
-    QString langpath = AppEnv::getLangFolder();
+    QString exLangPath = AppEnv::getExLangFolder();
+    QString inLangPath = AppEnv::getInLangFolder();
     bool trsf = false;
     bool svlp = false;
     QTranslator EappTranslator;
@@ -99,9 +100,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
             {
-                EappTranslator.load(langpath % QDir::separator() % "/gta5sync_" % langList.at(0) % ".qm");
+                EappTranslator.load(exLangPath % QDir::separator() % "/gta5sync_" % langList.at(0) % ".qm");
                 QLocale::setDefault(QLocale::system());
             }
         }
@@ -112,9 +113,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
             {
-                if (!EappTranslator.load(langpath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
+                if (!EappTranslator.load(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
                 {
                     if (langList.at(0) != "en")
                     {
@@ -142,9 +143,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
             {
-                EappTranslator.load(langpath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
+                EappTranslator.load(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
                 QLocale::setDefault(QLocale(langList.at(0)));
             }
         }
@@ -158,9 +159,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
             {
-                EqtTranslator1.load(langpath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
+                EqtTranslator1.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -170,9 +171,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
             {
-                EqtTranslator1.load(langpath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
+                EqtTranslator1.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -182,9 +183,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
             {
-                EqtTranslator1.load(langpath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
+                EqtTranslator1.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -197,9 +198,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
             {
-                EqtTranslator.load(langpath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
+                EqtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -209,9 +210,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
             {
-                EqtTranslator.load(langpath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
+                EqtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -221,9 +222,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(langpath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
+            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
             {
-                EqtTranslator.load(langpath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
+                EqtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -239,9 +240,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/gta5sync_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
             {
-                if (!appTranslator.load(":/tr/gta5sync_" % langList.at(0) % ".qm"))
+                if (!appTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
                 {
                     if (langList.at(0) != "en")
                     {
@@ -272,9 +273,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/gta5sync_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
             {
-                appTranslator.load(":/tr/gta5sync_" % langList.at(0) % ".qm");
+                appTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
                 QLocale::setDefault(QLocale(langList.at(0)));
 
             }
@@ -286,9 +287,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/gta5sync_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
             {
-                appTranslator.load(":/tr/gta5sync_" % langList.at(0) % ".qm");
+                appTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
                 QLocale::setDefault(QLocale(langList.at(0)));
             }
         }
@@ -302,9 +303,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/qtbase_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
             {
-                qtTranslator1.load(":/tr/qtbase_" % langList.at(0) % ".qm");
+                qtTranslator1.load(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -314,9 +315,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/qtbase_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
             {
-                qtTranslator1.load(":/tr/qtbase_" % langList.at(0) % ".qm");
+                qtTranslator1.load(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -326,9 +327,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/qtbase_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
             {
-                qtTranslator1.load(":/tr/qtbase_" % langList.at(0) % ".qm");
+                qtTranslator1.load(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -341,9 +342,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/qt_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
             {
-                qtTranslator1.load(":/tr/qt_" % langList.at(0) % ".qm");
+                qtTranslator1.load(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -353,9 +354,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/qt_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
             {
-                qtTranslator1.load(":/tr/qt_" % langList.at(0) % ".qm");
+                qtTranslator1.load(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
             }
         }
     }
@@ -365,9 +366,9 @@ int main(int argc, char *argv[])
         QStringList langList = languageName.split("_");
         if (langList.length() >= 1)
         {
-            if (QFile::exists(":/tr/qt_" % langList.at(0) % ".qm"))
+            if (QFile::exists(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
             {
-                qtTranslator1.load(":/tr/qt_" % langList.at(0) % ".qm");
+                qtTranslator1.load(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
             }
         }
     }
