@@ -110,6 +110,7 @@ TRANSLATIONS += \
     res/gta5sync_ru.ts
 
 RESOURCES += \
+    res/tr_g5p.qrc \
     res/app.qrc
 
 DISTFILES += res/app.rc \
@@ -152,6 +153,12 @@ isEqual(QT_MAJOR_VERSION, 4): SOURCES += qjson4/QJsonArray.cpp \
     qjson4/QJsonValue.cpp \
     qjson4/QJsonValueRef.cpp \
     qjson4/QJsonParser.cpp
+
+isEqual(QT_MAJOR_VERSION, 4): RESOURCES += res/tr_qt4.qrc
+
+# QT5 ONLY STUFF
+
+isEqual(QT_MAJOR_VERSION, 5): RESOURCES += res/tr_qt5.qrc
 
 # UNIX SYSTEM STUFF
 
