@@ -105,6 +105,7 @@ FORMS    += \
     UserInterface.ui
 
 TRANSLATIONS += \
+    lang/gta5sync_no.ts \
     res/gta5sync_de.ts \
     res/gta5sync_fr.ts \
     res/gta5sync_ru.ts
