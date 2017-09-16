@@ -35,7 +35,7 @@ public:
     QImage image();
     QString getImageTitle();
     void setImage(const QImage &image);
-    bool isDoImport();
+    bool isImportAgreed();
 
 private slots:
     void processImage();
@@ -52,7 +52,7 @@ private:
     QString imageTitle;
     QImage workImage;
     QImage newImage;
-    bool doImport;
+    bool importAgreed;
     int snapmaticResolutionLW;
     int snapmaticResolutionLH;
 };

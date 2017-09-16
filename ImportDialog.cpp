@@ -36,7 +36,7 @@ ImportDialog::ImportDialog(QWidget *parent) :
     ui(new Ui::ImportDialog)
 {
     ui->setupUi(this);
-    doImport = false;
+    importAgreed = false;
     avatarAreaImage = QImage(":/img/avatarareaimport.png");
 
     if (QIcon::hasThemeIcon("dialog-ok"))
@@ -143,9 +143,9 @@ void ImportDialog::setImage(const QImage &image_)
     processImage();
 }
 
-bool ImportDialog::isDoImport()
+bool ImportDialog::isImportAgreed()
 {
-    return doImport;
+    return importAgreed;
 }
 
 QString ImportDialog::getImageTitle()
@@ -175,7 +175,7 @@ void ImportDialog::on_cmdCancel_clicked()
 
 void ImportDialog::on_cmdOK_clicked()
 {
-    doImport = true;
+    importAgreed = true;
     close();
 }
 

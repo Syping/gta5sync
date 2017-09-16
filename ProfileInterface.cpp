@@ -640,7 +640,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                     importDialog->setModal(true);
                     importDialog->show();
                     importDialog->exec();
-                    if (importDialog->isDoImport())
+                    if (importDialog->isImportAgreed())
                     {
                         if (picture->setImage(importDialog->image()))
                         {
