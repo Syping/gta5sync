@@ -35,6 +35,7 @@ SOURCES += main.cpp \
     GlobalString.cpp \
     IconLoader.cpp \
     ImportDialog.cpp \
+    MapPreviewDialog.cpp \
     OptionsDialog.cpp \
     PictureDialog.cpp \
     PictureExport.cpp \
@@ -67,6 +68,7 @@ HEADERS  += \
     GlobalString.h \
     IconLoader.h \
     ImportDialog.h \
+    MapPreviewDialog.h \
     OptionsDialog.h \
     PictureDialog.h \
     PictureExport.h \
@@ -95,6 +97,7 @@ FORMS    += \
     AboutDialog.ui \
     ExportDialog.ui \
     ImportDialog.ui \
+    MapPreviewDialog.ui \
     OptionsDialog.ui \
     PictureDialog.ui \
     ProfileInterface.ui \

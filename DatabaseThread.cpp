@@ -71,6 +71,7 @@ void DatabaseThread::run()
 
         // Long time scan
         scanCrewReference(crewList, 10000);
+        emit crewNameUpdated();
         scanCrewMembersList(crewList, crewMaxPages, 10000);
         emit playerNameUpdated();
 
@@ -197,7 +198,7 @@ void DatabaseThread::scanCrewReference(QStringList crewList, int requestDelay)
                 }
                 if (!crewName.isEmpty())
                 {
-                    crewDB->setCrewName(crewID.toInt(), crewName);
+                    emit crewNameFound(crewID.toInt(), crewName);
                 }
             }
 

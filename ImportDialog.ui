@@ -150,6 +150,9 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="toolTip">
+           <string>Import picture</string>
+          </property>
           <property name="text">
            <string>&amp;OK</string>
           </property>
@@ -162,6 +165,9 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>Discard picture</string>
           </property>
           <property name="text">
            <string>&amp;Cancel</string>
@@ -179,7 +185,13 @@
   <customwidget>
    <class>UiModLabel</class>
    <extends>QLabel</extends>
-   <header>UiModLabel.h</header>
+   <header>uimod/UiModLabel.h</header>
+   <slots>
+    <signal>mouseMoved()</signal>
+    <signal>mouseReleased()</signal>
+    <signal>mousePressed()</signal>
+    <signal>mouseDoubleClicked()</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>

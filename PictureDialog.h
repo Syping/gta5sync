@@ -52,6 +52,7 @@ public:
     ~PictureDialog();
 
 public slots:
+    void crewNameUpdated();
     void playerNameUpdated();
     void dialogNextPictureRequested();
     void dialogPreviousPictureRequested();
@@ -83,6 +84,8 @@ protected:
     bool event(QEvent *event);
 
 private:
+    QString generateCrewString();
+    QString generatePlayersString();
     bool primaryWindow;
     ProfileDatabase *profileDB;
     CrewDatabase *crewDB;
@@ -103,6 +106,7 @@ private:
     QString picTitl;
     QString picPath;
     QString created;
+    QString crewStr;
     QString crewID;
     QString locX;
     QString locY;

@@ -85,9 +85,6 @@ private:
     QColor highlightBackColor;
     QColor highlightTextColor;
     QColor highlightHiddenColor;
-    QString picPath;
-    QString picTitl;
-    QString picStr;
     QWidget *snwgt;
 
 signals:

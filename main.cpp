@@ -584,6 +584,8 @@ int main(int argc, char *argv[])
         if (!readOk) { return 1; }
 
         QEventLoop threadLoop;
+        QObject::connect(&threadDB, SIGNAL(crewNameFound(int, QString)), &crewDB, SLOT(setCrewName(int, QString)));
+        QObject::connect(&threadDB, SIGNAL(crewNameUpdated()), &picDialog, SLOT(crewNameUpdated()));
         QObject::connect(&threadDB, SIGNAL(playerNameFound(int, QString)), &profileDB, SLOT(setPlayerName(int, QString)));
         QObject::connect(&threadDB, SIGNAL(playerNameUpdated()), &picDialog, SLOT(playerNameUpdated()));
         QObject::connect(&threadDB, SIGNAL(finished()), &threadLoop, SLOT(quit()));
@@ -617,6 +619,7 @@ int main(int argc, char *argv[])
     DatabaseThread threadDB(&crewDB);
 
     QEventLoop threadLoop;
+    QObject::connect(&threadDB, SIGNAL(crewNameFound(int,QString)), &crewDB, SLOT(setCrewName(int, QString)));
     QObject::connect(&threadDB, SIGNAL(playerNameFound(int, QString)), &profileDB, SLOT(setPlayerName(int, QString)));
     QObject::connect(&threadDB, SIGNAL(finished()), &threadLoop, SLOT(quit()));
     threadDB.start();

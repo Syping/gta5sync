@@ -110,6 +110,7 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
     picTitl = "";
     picPath = "";
     created = "";
+    crewStr = "";
     crewID = "";
     locX = "";
     locY = "";
@@ -435,11 +436,13 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
         locZ = QString::number(picture->getSnapmaticProperties().location.z);
         if (withDatabase)
         {
-            crewID = crewDB->getCrewName(picture->getSnapmaticProperties().crewID);
+            crewID = QString::number(picture->getSnapmaticProperties().crewID);
+            crewStr = crewDB->getCrewName(picture->getSnapmaticProperties().crewID);
         }
         else
         {
             crewID = QString::number(picture->getSnapmaticProperties().crewID);
+            crewStr = QString::number(picture->getSnapmaticProperties().crewID);
         }
         created = picture->getSnapmaticProperties().createdDateTime.toString(Qt::DefaultLocaleShortDate);
         plyrsList = picture->getSnapmaticProperties().playersList;
@@ -454,37 +457,16 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
             picAreaStr = picArea;
         }
 
-        QString plyrsStr;
-        if (plyrsList.length() >= 1)
-        {
-            foreach (const QString &player, plyrsList)
-            {
-                QString playerName;
-                if (withDatabase)
-                {
-                    playerName = profileDB->getPlayerName(player.toInt());
-                }
-                else
-                {
-                    playerName = player;
-                }
-                plyrsStr += ", <a href=\"https://socialclub.rockstargames.com/member/" % playerName % "/" % player % "\">" % playerName % "</a>";
-            }
-            plyrsStr.remove(0,2);
-        }
-        else
-        {
-            plyrsStr = tr("No player");
-        }
+        QString crewLStr = generateCrewString();
 
-        if (crewID == "") { crewID = tr("No crew"); }
+        if (crewStr == "") { crewLStr = tr("No crew"); }
 
         this->setWindowTitle(windowTitleStr.arg(picture->getPictureStr()));
-        ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, plyrsStr, crewID, picTitl, picAreaStr, created));
+        ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, generatePlayersString(), crewLStr, picTitl, picAreaStr, created));
     }
     else
     {
-        ui->labJSON->setText(jsonDrawString.arg("0.0", "0.0", "0.0", tr("No player"), tr("No crew"), tr("Unknown Location")));
+        ui->labJSON->setText(jsonDrawString.arg("0", "0", "0", tr("No player"), tr("No crew"), tr("Unknown Location")));
         QMessageBox::warning(this,tr("Snapmatic Picture Viewer"),tr("Failed at %1").arg(picture->getLastStep()));
     }
     emit newPictureCommited(snapmaticPicture);
@@ -574,11 +556,37 @@ void PictureDialog::renderPicture()
     }
 }
 
+void PictureDialog::crewNameUpdated()
+{
+    if (withDatabase && crewID == crewStr)
+    {
+        crewStr = crewDB->getCrewName(crewID.toInt());
+        ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, generatePlayersString(), generateCrewString(), picTitl, picAreaStr, created));
+    }
+}
+
 void PictureDialog::playerNameUpdated()
 {
     if (plyrsList.count() >= 1)
     {
-        QString plyrsStr;
+        ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, generatePlayersString(), generateCrewString(), picTitl, picAreaStr, created));
+    }
+}
+
+QString PictureDialog::generateCrewString()
+{
+    if (crewID != "0" && !crewID.isEmpty())
+    {
+        return QString("<a href=\"https://socialclub.rockstargames.com/crew/" % QString(crewStr).replace(" ", "_") % "/" % crewID % "\">" % crewStr % "</a>");
+    }
+    return crewStr;
+}
+
+QString PictureDialog::generatePlayersString()
+{
+    QString plyrsStr;
+    if (plyrsList.length() >= 1)
+    {
         foreach (const QString &player, plyrsList)
         {
             QString playerName;
@@ -590,20 +598,15 @@ void PictureDialog::playerNameUpdated()
             {
                 playerName = player;
             }
-            plyrsStr += ", <a href=\"https://socialclub.rockstargames.com/member/";
-            if (playerName != player)
-            {
-                plyrsStr += playerName;
-            }
-            else
-            {
-                plyrsStr += "id";
-            }
-            plyrsStr += "/" % player % "\">" % playerName % "</a>";
+            plyrsStr += ", <a href=\"https://socialclub.rockstargames.com/member/" % playerName % "/" % player % "\">" % playerName % "</a>";
         }
         plyrsStr.remove(0,2);
-        ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, plyrsStr, crewID, picTitl, picAreaStr, created));
     }
+    else
+    {
+        plyrsStr = tr("No player");
+    }
+    return plyrsStr;
 }
 
 void PictureDialog::exportSnapmaticPicture()

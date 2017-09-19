@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016-2017 Syping
+* Copyright (C) 2017 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -16,39 +16,25 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef DATABASETHREAD_H
-#define DATABASETHREAD_H
+#ifndef MAPPREVIEWDIALOG_H
+#define MAPPREVIEWDIALOG_H
 
-#include "CrewDatabase.h"
-#include <QObject>
-#include <QThread>
+#include <QDialog>
 
-class DatabaseThread : public QThread
+namespace Ui {
+class MapPreviewDialog;
+}
+
+class MapPreviewDialog : public QDialog
 {
     Q_OBJECT
-public:
-    explicit DatabaseThread(CrewDatabase *crewDB, QObject *parent = 0);
 
-public slots:
-    void doEndThread();
+public:
+    explicit MapPreviewDialog(QWidget *parent = 0);
+    ~MapPreviewDialog();
 
 private:
-    CrewDatabase *crewDB;
-    void scanCrewMembersList(QStringList crewList, int maxPages, int requestDelay);
-    void scanCrewReference(QStringList crewList, int requestDelay);
-    bool threadRunning;
-    int crewMaxPages;
-    int plyrPerReq;
-
-protected:
-    void run();
-
-signals:
-    void crewNameFound(int crewID, QString crewName);
-    void crewNameUpdated();
-    void playerNameFound(int playerID, QString playerName);
-    void playerNameUpdated();
-    void threadEndCommited();
+    Ui::MapPreviewDialog *ui;
 };
 
-#endif // DATABASETHREAD_H
+#endif // MAPPREVIEWDIALOG_H

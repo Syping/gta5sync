@@ -16,6 +16,7 @@
         <file>empty1x16.png</file>
         <file>avatararea.png</file>
         <file>avatarareaimport.png</file>
+        <file>mappreview.jpg</file>
     </qresource>
     <qresource prefix="/global">
         <file>global.de.ini</file>

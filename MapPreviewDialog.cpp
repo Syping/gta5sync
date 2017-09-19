@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016-2017 Syping
+* Copyright (C) 2017 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -16,28 +16,20 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef CREWDATABASE_H
-#define CREWDATABASE_H
+#include "MapPreviewDialog.h"
+#include "ui_MapPreviewDialog.h"
 
-#include <QSettings>
-#include <QObject>
-#include <QMap>
-
-class CrewDatabase : public QObject
+MapPreviewDialog::MapPreviewDialog(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::MapPreviewDialog)
 {
-    Q_OBJECT
-public:
-    explicit CrewDatabase(QObject *parent = 0);
-    QString getCrewName(int crewID);
-    QStringList getCrews();
-    ~CrewDatabase();
+    // Set Window Flags
+    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint);
 
-private:
-    QSettings *crewDB;
+    ui->setupUi(this);
+}
 
-public slots:
-    void setCrewName(int crewID, QString crewName);
-    void addCrew(int crewID);
-};
-
-#endif // CREWDATABASE_H
+MapPreviewDialog::~MapPreviewDialog()
+{
+    delete ui;
+}

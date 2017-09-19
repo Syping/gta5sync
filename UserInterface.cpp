@@ -58,6 +58,7 @@ UserInterface::UserInterface(ProfileDatabase *profileDB, CrewDatabase *crewDB, D
     ui->actionSelect_profile->setEnabled(false);
     ui->actionAbout_gta5sync->setIcon(IconLoader::loadingAppIcon());
     ui->actionAbout_gta5sync->setText(tr("&About %1").arg(GTA5SYNC_APPSTR));
+    ui->cmdClose->setToolTip(ui->cmdClose->toolTip().arg(GTA5SYNC_APPSTR));
     defaultWindowTitle = tr("%2 - %1").arg("%1", GTA5SYNC_APPSTR);
 
     this->setWindowTitle(defaultWindowTitle.arg(tr("Select Profile")));
@@ -462,7 +463,7 @@ void UserInterface::openSnapmaticFile(SnapmaticPicture *picture)
     int crewID = picture->getSnapmaticProperties().crewID;
     if (crewID != 0) { crewDB->addCrew(crewID); }
 
-    QObject::connect(threadDB, SIGNAL(playerNameFound(int, QString)), profileDB, SLOT(setPlayerName(int, QString)));
+    QObject::connect(threadDB, SIGNAL(crewNameUpdated()), &picDialog, SLOT(crewNameUpdated()));
     QObject::connect(threadDB, SIGNAL(playerNameUpdated()), &picDialog, SLOT(playerNameUpdated()));
 
 #ifdef Q_OS_ANDROID

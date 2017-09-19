@@ -196,7 +196,7 @@
                <enum>Qt::NoFocus</enum>
               </property>
               <property name="toolTip">
-               <string>Close</string>
+               <string>Close viewer</string>
               </property>
               <property name="text">
                <string>&amp;Close</string>

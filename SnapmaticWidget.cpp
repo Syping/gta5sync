@@ -51,8 +51,6 @@ SnapmaticWidget::SnapmaticWidget(ProfileDatabase *profileDB, CrewDatabase *crewD
     palette.setCurrentColorGroup(QPalette::Disabled);
     highlightHiddenColor = palette.text().color();
 
-    picPath = "";
-    picStr = "";
     smpic = 0;
 
     installEventFilter(this);
@@ -84,16 +82,13 @@ bool SnapmaticWidget::eventFilter(QObject *obj, QEvent *ev)
 void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
 {
     smpic = picture;
-    picPath = picture->getPictureFilePath();
-    picTitl = picture->getPictureTitl();
-    picStr = picture->getPictureStr();
     QObject::connect(picture, SIGNAL(updated()), this, SLOT(snapmaticUpdated()));
 
     qreal screenRatio = AppEnv::screenRatio();
     ui->labPicture->setFixedSize(48 * screenRatio, 27 * screenRatio);
 
     QPixmap SnapmaticPixmap = QPixmap::fromImage(picture->getImage().scaled(ui->labPicture->width(), ui->labPicture->height(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation), Qt::AutoColor);
-    ui->labPicStr->setText(picStr % "\n" % picTitl % "");
+    ui->labPicStr->setText(smpic->getPictureStr() % "\n" % smpic->getPictureTitl() % "");
     ui->labPicture->setPixmap(SnapmaticPixmap);
 
     picture->clearCache();
@@ -104,10 +99,7 @@ void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
 void SnapmaticWidget::snapmaticUpdated()
 {
     // Current only strings get updated
-    picPath = smpic->getPictureFilePath();
-    picTitl = smpic->getPictureTitl();
-    picStr = smpic->getPictureStr();
-    ui->labPicStr->setText(picStr % "\n" % picTitl % "");
+    ui->labPicStr->setText(smpic->getPictureStr() % "\n" % smpic->getPictureTitl() % "");
 }
 
 void SnapmaticWidget::on_cmdView_clicked()
@@ -121,7 +113,8 @@ void SnapmaticWidget::on_cmdView_clicked()
     picDialog->setSnapmaticPicture(smpic, true);
     picDialog->setModal(true);
 
-    // be ready for playerName updated
+    // be ready for crewName and playerName updated
+    QObject::connect(threadDB, SIGNAL(crewNameUpdated()), picDialog, SLOT(crewNameUpdated()));
     QObject::connect(threadDB, SIGNAL(playerNameUpdated()), picDialog, SLOT(playerNameUpdated()));
     QObject::connect(picDialog, SIGNAL(nextPictureRequested()), this, SLOT(dialogNextPictureRequested()));
     QObject::connect(picDialog, SIGNAL(previousPictureRequested()), this, SLOT(dialogPreviousPictureRequested()));
@@ -161,7 +154,7 @@ void SnapmaticWidget::on_cmdDelete_clicked()
 
 bool SnapmaticWidget::deletePicture()
 {
-    int uchoice = QMessageBox::question(this, tr("Delete picture"), tr("Are you sure to delete %1 from your Snapmatic pictures?").arg("\""+picStr+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+    int uchoice = QMessageBox::question(this, tr("Delete picture"), tr("Are you sure to delete %1 from your Snapmatic pictures?").arg("\""+smpic->getPictureStr()+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     if (uchoice == QMessageBox::Yes)
     {
         if (smpic->deletePicFile())
@@ -170,7 +163,7 @@ bool SnapmaticWidget::deletePicture()
         }
         else
         {
-            QMessageBox::warning(this, tr("Delete picture"), tr("Failed at deleting %1 from your Snapmatic pictures").arg("\""+picStr+"\""));
+            QMessageBox::warning(this, tr("Delete picture"), tr("Failed at deleting %1 from your Snapmatic pictures").arg("\""+smpic->getPictureStr()+"\""));
         }
     }
     return false;
@@ -263,7 +256,6 @@ bool SnapmaticWidget::makePictureHidden()
 {
     if (smpic->setPictureHidden())
     {
-        picPath = smpic->getPictureFilePath();
         adjustTextColor();
         return true;
     }
@@ -274,7 +266,6 @@ bool SnapmaticWidget::makePictureVisible()
 {
     if (smpic->setPictureVisible())
     {
-        picPath = smpic->getPictureFilePath();
         adjustTextColor();
         return true;
     }
@@ -308,11 +299,7 @@ bool SnapmaticWidget::isSelected()
 
 bool SnapmaticWidget::isHidden()
 {
-    if (picPath.right(7) == ".hidden")
-    {
-        return true;
-    }
-    return false;
+    return smpic->isHidden();
 }
 
 void SnapmaticWidget::setSelectionMode(bool selectionMode)
@@ -337,7 +324,7 @@ SnapmaticPicture* SnapmaticWidget::getPicture()
 
 QString SnapmaticWidget::getPicturePath()
 {
-    return picPath;
+    return smpic->getPictureFilePath();
 }
 
 QString SnapmaticWidget::getWidgetType()
