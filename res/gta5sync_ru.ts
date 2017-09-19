@@ -561,6 +561,18 @@ Arrow Keys - Navigate</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
+        <location filename="../PictureDialog.cpp" line="462"/>
+        <location filename="../PictureDialog.cpp" line="469"/>
+        <source>No Crew</source>
+        <translation>Вне банды</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="469"/>
+        <location filename="../PictureDialog.cpp" line="607"/>
+        <source>No Players</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../PictureDialog.cpp" line="553"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
@@ -568,16 +580,12 @@ Press 1 for Default View</source>
 Нажмите 1 для стандартного просмотра</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="469"/>
-        <location filename="../PictureDialog.cpp" line="603"/>
         <source>No player</source>
-        <translation>Игроков нет</translation>
+        <translation type="vanished">Игроков нет</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="462"/>
-        <location filename="../PictureDialog.cpp" line="469"/>
         <source>No crew</source>
-        <translation>Без группы</translation>
+        <translation type="vanished">Без группы</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="469"/>

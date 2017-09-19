@@ -649,7 +649,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     <message>
         <location filename="../PictureDialog.ui" line="199"/>
         <source>Close viewer</source>
-        <translation>Schließe Ansicht</translation>
+        <translation>Ansicht schließen</translation>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="202"/>
@@ -726,6 +726,18 @@ Pfeiltasten - Navigieren</translation>
         <translation>Fehlgeschlagen bei %1</translation>
     </message>
     <message>
+        <location filename="../PictureDialog.cpp" line="462"/>
+        <location filename="../PictureDialog.cpp" line="469"/>
+        <source>No Crew</source>
+        <translation>Keine Crew</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="469"/>
+        <location filename="../PictureDialog.cpp" line="607"/>
+        <source>No Players</source>
+        <translation>Keine Spieler</translation>
+    </message>
+    <message>
         <location filename="../PictureDialog.cpp" line="553"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
@@ -763,16 +775,12 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Avatar Vorschaumodus&lt;br&gt;Drücke A für Standardansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="469"/>
-        <location filename="../PictureDialog.cpp" line="603"/>
         <source>No player</source>
-        <translation>Keine Spieler</translation>
+        <translation type="vanished">Keine Spieler</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="462"/>
-        <location filename="../PictureDialog.cpp" line="469"/>
         <source>No crew</source>
-        <translation>Keine Crew</translation>
+        <translation type="vanished">Keine Crew</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="469"/>

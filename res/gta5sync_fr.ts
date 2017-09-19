@@ -639,6 +639,18 @@ Touches fléchées - Naviguer</translation>
         <translation>Echec de %1</translation>
     </message>
     <message>
+        <location filename="../PictureDialog.cpp" line="462"/>
+        <location filename="../PictureDialog.cpp" line="469"/>
+        <source>No Crew</source>
+        <translation>Aucun crew</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="469"/>
+        <location filename="../PictureDialog.cpp" line="607"/>
+        <source>No Players</source>
+        <translation>Aucun joueurs</translation>
+    </message>
+    <message>
         <location filename="../PictureDialog.cpp" line="553"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
@@ -650,16 +662,12 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Aperçu avatar&lt;br&gt;Appuyer sur A pour la vue par défaut</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="469"/>
-        <location filename="../PictureDialog.cpp" line="603"/>
         <source>No player</source>
-        <translation>Aucun joueur</translation>
+        <translation type="vanished">Aucun joueur</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="462"/>
-        <location filename="../PictureDialog.cpp" line="469"/>
         <source>No crew</source>
-        <translation>Aucun crew</translation>
+        <translation type="vanished">Aucun crew</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="469"/>

@@ -480,20 +480,20 @@ Arrow Keys - Navigate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="469"/>
-        <location filename="../PictureDialog.cpp" line="603"/>
-        <source>No player</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../PictureDialog.cpp" line="462"/>
         <location filename="../PictureDialog.cpp" line="469"/>
-        <source>No crew</source>
+        <source>No Crew</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="469"/>
         <source>Unknown Location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="469"/>
+        <location filename="../PictureDialog.cpp" line="607"/>
+        <source>No Players</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
