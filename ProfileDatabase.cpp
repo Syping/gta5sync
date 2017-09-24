@@ -20,6 +20,8 @@
 #include "StandardPaths.h"
 #include "config.h"
 #include <QStringBuilder>
+#include <QMutexLocker>
+#include <QDebug>
 #include <QFile>
 #include <QDir>
 
@@ -48,15 +50,27 @@ ProfileDatabase::~ProfileDatabase()
 
 QStringList ProfileDatabase::getPlayers()
 {
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "getPlayers";
+#endif
     return profileDB->childKeys();
 }
 
 QString ProfileDatabase::getPlayerName(int playerID)
 {
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "getPlayerName";
+#endif
     return profileDB->value(QString::number(playerID), playerID).toString();
 }
 
 void ProfileDatabase::setPlayerName(int playerID, QString playerName)
 {
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "setPlayerName";
+#endif
     profileDB->setValue(QString::number(playerID), playerName);
 }

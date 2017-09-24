@@ -94,6 +94,7 @@ ProfileInterface::~ProfileInterface()
     foreach(ProfileWidget *widget, widgets.keys())
     {
         widgets.remove(widget);
+        widget->disconnect();
         delete widget;
     }
     foreach(SavegameData *savegame, savegames)
@@ -341,10 +342,12 @@ void ProfileInterface::savegameDeleted(SavegameWidget *sgdWidget, bool isRemoteE
     // Deleting when the widget did send a event cause a crash
     if (isRemoteEmited)
     {
+        sgdWidget->disconnect();
         sgdWidget->deleteLater();
     }
     else
     {
+        sgdWidget->disconnect();
         delete sgdWidget;
     }
 
@@ -366,10 +369,12 @@ void ProfileInterface::pictureDeleted(SnapmaticWidget *picWidget, bool isRemoteE
     // Deleting when the widget did send a event cause a crash
     if (isRemoteEmited)
     {
+        picWidget->disconnect();
         picWidget->deleteLater();
     }
     else
     {
+        picWidget->disconnect();
         delete picWidget;
     }
 

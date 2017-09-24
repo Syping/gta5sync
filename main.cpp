@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
         QString uiFontStr(QString::fromStdWString(std::wstring(uiFont.lfFaceName)));
 
 #ifdef GTA5SYNC_DEBUG
-        QMessageBox::information(a.desktop(), QApplication::tr("Font"), QApplication::tr("Selected Font: %1").arg(uiFontStr));
+        qDebug() << QApplication::tr("Font") << QApplication::tr("Selected Font: %1").arg(uiFontStr);
 #endif
 
         // Set Application Font

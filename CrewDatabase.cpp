@@ -20,6 +20,8 @@
 #include "CrewDatabase.h"
 #include "config.h"
 #include <QStringBuilder>
+#include <QMutexLocker>
+#include <QDebug>
 #include <QFile>
 #include <QDir>
 
@@ -48,6 +50,18 @@ CrewDatabase::~CrewDatabase()
 
 QStringList CrewDatabase::getCrews()
 {
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "getCrews";
+#endif
+    return getCrews_p();
+}
+
+QStringList CrewDatabase::getCrews_p()
+{
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "getCrews_p";
+#endif
     QStringList compatibleCrewList = crewDB->childKeys();
     crewDB->endGroup();
     crewDB->beginGroup("CrewList");
@@ -61,6 +75,10 @@ QStringList CrewDatabase::getCrews()
 
 QString CrewDatabase::getCrewName(int crewID)
 {
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "getCrewName";
+#endif
     QString crewStr = crewDB->value(QString::number(crewID), crewID).toString();
     if (crewID == 0) crewStr = tr("No Crew", "");
     return crewStr;
@@ -68,12 +86,20 @@ QString CrewDatabase::getCrewName(int crewID)
 
 void CrewDatabase::setCrewName(int crewID, QString crewName)
 {
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "setCrewName";
+#endif
     crewDB->setValue(QString::number(crewID), crewName);
 }
 
 void CrewDatabase::addCrew(int crewID)
 {
-    QStringList crews = getCrews();
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "addCrew";
+#endif
+    QStringList crews = getCrews_p();
     crews += QString::number(crewID);
     crews.removeDuplicates();
     crewDB->endGroup();

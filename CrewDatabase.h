@@ -21,6 +21,7 @@
 
 #include <QSettings>
 #include <QObject>
+#include <QMutex>
 #include <QMap>
 
 class CrewDatabase : public QObject
@@ -33,7 +34,9 @@ public:
     ~CrewDatabase();
 
 private:
+    mutable QMutex mutex;
     QSettings *crewDB;
+    QStringList getCrews_p();
 
 public slots:
     void setCrewName(int crewID, QString crewName);
