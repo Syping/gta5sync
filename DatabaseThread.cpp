@@ -94,11 +94,11 @@ void DatabaseThread::run()
             emit playerNameUpdated();
         }
 
-        QEventLoop *waitingLoop = new QEventLoop();
-        QTimer::singleShot(10000, waitingLoop, SLOT(quit()));
-        QObject::connect(this, SIGNAL(threadEndCommited()), waitingLoop, SLOT(quit()));
-        waitingLoop->exec();
-        delete waitingLoop;
+        if (threadRunning)
+        {
+            QTimer::singleShot(10000, &threadLoop, SLOT(quit()));
+            threadLoop.exec();
+        }
     }
 
     while (threadRunning)
