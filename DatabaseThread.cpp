@@ -31,46 +31,88 @@
 #include <QDebug>
 #include <QUrl>
 
+#define crewMaxPages 83
+
 DatabaseThread::DatabaseThread(CrewDatabase *crewDB, QObject *parent) : QThread(parent), crewDB(crewDB)
 {
-    crewMaxPages = 83;
     threadRunning = true;
 }
 
 void DatabaseThread::run()
 {
     QEventLoop threadLoop;
+
     QStringList crewList;
+    QStringList crewListR;
 
     // Register thread loop end signal
     QObject::connect(this, SIGNAL(threadEndCommited()), &threadLoop, SLOT(quit()));
 
-    // Quick time scan
-    if (crewList.length() <= 3)
+    // Setup crewList for Quick time scan
+    crewList = crewDB->getCrews();
+    if (!crewList.isEmpty())
     {
-        scanCrewReference(crewList, 2500);
-        scanCrewMembersList(crewList, 3, 2500);
-        emit playerNameUpdated();
+        crewListR = deleteCompatibleCrews(crewList);
     }
-    else if (crewList.length() <= 5)
+    else
     {
-        scanCrewReference(crewList, 2500);
-        scanCrewMembersList(crewList, 2, 2500);
-        emit playerNameUpdated();
+        bool crewListEmpty = true;
+        while (crewListEmpty && threadRunning)
+        {
+            QTimer::singleShot(1000, &threadLoop, SLOT(quit()));
+            threadLoop.exec();
+            if (!crewDB->isAddingCrews())
+            {
+                crewList = crewDB->getCrews();
+                crewListEmpty = crewList.isEmpty();
+            }
+        }
+        if (threadRunning)
+        {
+            crewListR = deleteCompatibleCrews(crewList);
+        }
     }
 
-    QEventLoop *waitingLoop = new QEventLoop();
-    QTimer::singleShot(10000, waitingLoop, SLOT(quit()));
-    QObject::connect(this, SIGNAL(threadEndCommited()), waitingLoop, SLOT(quit()));
-    waitingLoop->exec();
-    delete waitingLoop;
+    // Only do QTS when Thread should be run
+    if (threadRunning)
+    {
+        // Quick time scan
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "Start QTS";
+#endif
+        if (crewListR.length() <= 5)
+        {
+            scanCrewReference(crewListR, 2500);
+            emit crewNameUpdated();
+        }
+        if (crewList.length() <= 3)
+        {
+            scanCrewMembersList(crewList, 3, 2500);
+            emit playerNameUpdated();
+        }
+        else if (crewList.length() <= 5)
+        {
+            scanCrewMembersList(crewList, 2, 2500);
+            emit playerNameUpdated();
+        }
+
+        QEventLoop *waitingLoop = new QEventLoop();
+        QTimer::singleShot(10000, waitingLoop, SLOT(quit()));
+        QObject::connect(this, SIGNAL(threadEndCommited()), waitingLoop, SLOT(quit()));
+        waitingLoop->exec();
+        delete waitingLoop;
+    }
 
     while (threadRunning)
     {
         crewList = crewDB->getCrews();
+        crewListR = deleteCompatibleCrews(crewList);
 
         // Long time scan
-        scanCrewReference(crewList, 10000);
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "Start LTS";
+#endif
+        scanCrewReference(crewListR, 10000);
         emit crewNameUpdated();
         scanCrewMembersList(crewList, crewMaxPages, 10000);
         emit playerNameUpdated();
@@ -157,7 +199,7 @@ void DatabaseThread::run()
 //     }
 // }
 
-void DatabaseThread::scanCrewReference(QStringList crewList, int requestDelay)
+void DatabaseThread::scanCrewReference(const QStringList &crewList, const int &requestDelay)
 {
     foreach (const QString &crewID, crewList)
     {
@@ -214,7 +256,7 @@ void DatabaseThread::scanCrewReference(QStringList crewList, int requestDelay)
     }
 }
 
-void DatabaseThread::scanCrewMembersList(QStringList crewList, int maxPages, int requestDelay)
+void DatabaseThread::scanCrewMembersList(const QStringList &crewList, const int &maxPages, const int &requestDelay)
 {
     foreach (const QString &crewID, crewList)
     {
@@ -288,6 +330,19 @@ void DatabaseThread::scanCrewMembersList(QStringList crewList, int maxPages, int
             }
         }
     }
+}
+
+QStringList DatabaseThread::deleteCompatibleCrews(const QStringList &crewList)
+{
+    QStringList crewListR = crewList;
+    foreach(const QString &crewNID, crewListR)
+    {
+        if (crewDB->isCompatibleCrew(crewNID))
+        {
+            crewListR.removeAll(crewNID);
+        }
+    }
+    return crewListR;
 }
 
 void DatabaseThread::doEndThread()

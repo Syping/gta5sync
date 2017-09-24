@@ -61,7 +61,7 @@ QString ProfileDatabase::getPlayerName(int playerID)
 {
     QMutexLocker locker(&mutex);
 #ifdef GTA5SYNC_DEBUG
-    qDebug() << "getPlayerName";
+    qDebug() << "getPlayerName" << playerID;
 #endif
     return profileDB->value(QString::number(playerID), playerID).toString();
 }
@@ -70,7 +70,7 @@ void ProfileDatabase::setPlayerName(int playerID, QString playerName)
 {
     QMutexLocker locker(&mutex);
 #ifdef GTA5SYNC_DEBUG
-    qDebug() << "setPlayerName";
+    qDebug() << "setPlayerName" << playerID << playerName;
 #endif
     profileDB->setValue(QString::number(playerID), playerName);
 }

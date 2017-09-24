@@ -184,7 +184,7 @@ void ProfileInterface::loadingProgress(int value, int maximum)
 
 void ProfileInterface::insertSnapmaticIPI(QWidget *widget)
 {
-    ProfileWidget *proWidget = (ProfileWidget*)widget;
+    ProfileWidget *proWidget = qobject_cast<ProfileWidget*>(widget);
     if (widgets.contains(proWidget))
     {
         QString widgetKey = widgets[proWidget];
@@ -205,7 +205,7 @@ void ProfileInterface::insertSnapmaticIPI(QWidget *widget)
 
 void ProfileInterface::insertSavegameIPI(QWidget *widget)
 {
-    ProfileWidget *proWidget = (ProfileWidget*)widget;
+    ProfileWidget *proWidget = qobject_cast<ProfileWidget*>(widget);
     if (widgets.contains(proWidget))
     {
         QString widgetKey = widgets[proWidget];
@@ -222,8 +222,8 @@ void ProfileInterface::insertSavegameIPI(QWidget *widget)
 
 void ProfileInterface::dialogNextPictureRequested(QWidget *dialog)
 {
-    PictureDialog *picDialog = (PictureDialog*)dialog;
-    ProfileWidget *proWidget = (ProfileWidget*)sender();
+    PictureDialog *picDialog = qobject_cast<PictureDialog*>(dialog);
+    ProfileWidget *proWidget = qobject_cast<ProfileWidget*>(sender());
     if (widgets.contains(proWidget))
     {
         QString widgetKey = widgets[proWidget];
@@ -257,8 +257,8 @@ void ProfileInterface::dialogNextPictureRequested(QWidget *dialog)
 
 void ProfileInterface::dialogPreviousPictureRequested(QWidget *dialog)
 {
-    PictureDialog *picDialog = (PictureDialog*)dialog;
-    ProfileWidget *proWidget = (ProfileWidget*)sender();
+    PictureDialog *picDialog = qobject_cast<PictureDialog*>(dialog);
+    ProfileWidget *proWidget = qobject_cast<ProfileWidget*>(sender());
     if (widgets.contains(proWidget))
     {
         QString widgetKey = widgets[proWidget];
@@ -330,7 +330,7 @@ void ProfileInterface::profileLoaded_p()
 
 void ProfileInterface::savegameDeleted_event()
 {
-    savegameDeleted((SavegameWidget*)sender(), true);
+    savegameDeleted(qobject_cast<SavegameWidget*>(sender()), true);
 }
 
 void ProfileInterface::savegameDeleted(SavegameWidget *sgdWidget, bool isRemoteEmited)
@@ -357,7 +357,7 @@ void ProfileInterface::savegameDeleted(SavegameWidget *sgdWidget, bool isRemoteE
 
 void ProfileInterface::pictureDeleted_event()
 {
-    pictureDeleted((SnapmaticWidget*)sender(), true);
+    pictureDeleted(qobject_cast<SnapmaticWidget*>(sender()), true);
 }
 
 void ProfileInterface::pictureDeleted(SnapmaticWidget *picWidget, bool isRemoteEmited)
@@ -1008,7 +1008,7 @@ void ProfileInterface::deleteSelected()
                 {
                     if (widget->getWidgetType() == "SnapmaticWidget")
                     {
-                        SnapmaticWidget *picWidget = (SnapmaticWidget*)widget;
+                        SnapmaticWidget *picWidget = qobject_cast<SnapmaticWidget*>(widget);
                         if (picWidget->getPicture()->deletePicFile())
                         {
                             pictureDeleted(picWidget);
@@ -1016,7 +1016,7 @@ void ProfileInterface::deleteSelected()
                     }
                     else if (widget->getWidgetType() == "SavegameWidget")
                     {
-                        SavegameWidget *sgdWidget = (SavegameWidget*)widget;
+                        SavegameWidget *sgdWidget = qobject_cast<SavegameWidget*>(widget);
                         SavegameData *savegame = sgdWidget->getSavegame();
                         QString fileName = savegame->getSavegameFileName();
                         if (!QFile::exists(fileName) || QFile::remove(fileName))
@@ -1078,7 +1078,7 @@ void ProfileInterface::enableSelected()
         {
             if (widget->getWidgetType() == "SnapmaticWidget")
             {
-                SnapmaticWidget *snapmaticWidget = (SnapmaticWidget*)widget;
+                SnapmaticWidget *snapmaticWidget = qobject_cast<SnapmaticWidget*>(widget);
                 if (!snapmaticWidget->makePictureVisible())
                 {
                     fails++;
@@ -1097,7 +1097,7 @@ void ProfileInterface::disableSelected()
         {
             if (widget->getWidgetType() == "SnapmaticWidget")
             {
-                SnapmaticWidget *snapmaticWidget = (SnapmaticWidget*)widget;
+                SnapmaticWidget *snapmaticWidget = qobject_cast<SnapmaticWidget*>(widget);
                 if (!snapmaticWidget->makePictureHidden())
                 {
                     fails++;
@@ -1114,7 +1114,7 @@ int ProfileInterface::selectedWidgets()
 
 void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
 {
-    SnapmaticWidget *picWidget = (SnapmaticWidget*)sender();
+    SnapmaticWidget *picWidget = qobject_cast<SnapmaticWidget*>(sender());
     QMenu contextMenu(picWidget);
     QMenu editMenu(SnapmaticWidget::tr("Edi&t"), picWidget);
     if (picWidget->isHidden())
@@ -1149,7 +1149,7 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
 
 void ProfileInterface::contextMenuTriggeredSGD(QContextMenuEvent *ev)
 {
-    SavegameWidget *sgdWidget = (SavegameWidget*)sender();
+    SavegameWidget *sgdWidget = qobject_cast<SavegameWidget*>(sender());
     QMenu contextMenu(sgdWidget);
     contextMenu.addAction(SavegameWidget::tr("&View"), sgdWidget, SLOT(on_cmdView_clicked()));
     contextMenu.addAction(SavegameWidget::tr("&Export"), sgdWidget, SLOT(on_cmdCopy_clicked()));

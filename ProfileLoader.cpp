@@ -87,10 +87,12 @@ void ProfileLoader::run()
     }
 
     // adding found crews
+    crewDB->setAddingCrews(true);
     foreach(int crewID, crewList)
     {
         crewDB->addCrew(crewID);
     }
+    crewDB->setAddingCrews(false);
 }
 
 void ProfileLoader::preloaded()

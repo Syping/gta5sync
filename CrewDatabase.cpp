@@ -40,6 +40,8 @@ CrewDatabase::CrewDatabase(QObject *parent) : QObject(parent)
 
     crewDB = new QSettings(confPathFile, QSettings::IniFormat);
     crewDB->beginGroup("Crews");
+
+    addProcess = false;
 }
 
 CrewDatabase::~CrewDatabase()
@@ -62,7 +64,7 @@ QStringList CrewDatabase::getCrews_p()
 #ifdef GTA5SYNC_DEBUG
     qDebug() << "getCrews_p";
 #endif
-    QStringList compatibleCrewList = crewDB->childKeys();
+    QStringList compatibleCrewList = getCompatibleCrews_p();
     crewDB->endGroup();
     crewDB->beginGroup("CrewList");
     QStringList crewIDs = crewDB->value("IDs", QStringList()).toStringList();
@@ -73,11 +75,28 @@ QStringList CrewDatabase::getCrews_p()
     return crewIDs;
 }
 
+QStringList CrewDatabase::getCompatibleCrews()
+{
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "getCompatibleCrews";
+#endif
+    return getCompatibleCrews_p();
+}
+
+QStringList CrewDatabase::getCompatibleCrews_p()
+{
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "getCompatibleCrews_p";
+#endif
+    return crewDB->childKeys();
+}
+
 QString CrewDatabase::getCrewName(int crewID)
 {
     QMutexLocker locker(&mutex);
 #ifdef GTA5SYNC_DEBUG
-    qDebug() << "getCrewName";
+    qDebug() << "getCrewName" << crewID;
 #endif
     QString crewStr = crewDB->value(QString::number(crewID), crewID).toString();
     if (crewID == 0) crewStr = tr("No Crew", "");
@@ -88,7 +107,7 @@ void CrewDatabase::setCrewName(int crewID, QString crewName)
 {
     QMutexLocker locker(&mutex);
 #ifdef GTA5SYNC_DEBUG
-    qDebug() << "setCrewName";
+    qDebug() << "setCrewName" << crewID << crewName;
 #endif
     crewDB->setValue(QString::number(crewID), crewName);
 }
@@ -97,7 +116,7 @@ void CrewDatabase::addCrew(int crewID)
 {
     QMutexLocker locker(&mutex);
 #ifdef GTA5SYNC_DEBUG
-    qDebug() << "addCrew";
+    qDebug() << "addCrew" << crewID;
 #endif
     QStringList crews = getCrews_p();
     crews += QString::number(crewID);
@@ -107,4 +126,40 @@ void CrewDatabase::addCrew(int crewID)
     crewDB->setValue("IDs", crews);
     crewDB->endGroup();
     crewDB->beginGroup("Crews");
+}
+
+bool CrewDatabase::isCompatibleCrew(QString crewNID)
+{
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "isCompatibleCrew" << crewNID;
+#endif
+    return crewDB->contains(crewNID);
+}
+
+bool CrewDatabase::isCompatibleCrew(int crewID)
+{
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "isCompatibleCrew" << crewID;
+#endif
+    return crewDB->contains(QString::number(crewID));
+}
+
+void CrewDatabase::setAddingCrews(bool addingCrews)
+{
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "setAddingCrews" << addingCrews;
+#endif
+    addProcess = addingCrews;
+}
+
+bool CrewDatabase::isAddingCrews()
+{
+    QMutexLocker locker(&mutex);
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "isAddingCrews";
+#endif
+    return addProcess;
 }
