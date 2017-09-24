@@ -20,8 +20,10 @@
 #include "ui_MapPreviewDialog.h"
 #include "IconLoader.h"
 #include "AppEnv.h"
+#include "math.h"
 #include <QPainter>
 #include <QDebug>
+using namespace std;
 
 MapPreviewDialog::MapPreviewDialog(QWidget *parent) :
     QDialog(parent),
