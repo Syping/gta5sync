@@ -158,6 +158,11 @@ QUrl AppEnv::getPlayerFetchingUrl(QString crewID, QString pageNumber)
     return QUrl(QString("https://socialclub.rockstargames.com/crewsapi/GetMembersList?crewId=%1&pageNumber=%2").arg(crewID, pageNumber));
 }
 
+QUrl AppEnv::getPlayerFetchingUrl(QString crewID, int pageNumber)
+{
+    return getPlayerFetchingUrl(crewID, QString::number(pageNumber));
+}
+
 qreal AppEnv::screenRatio()
 {
 #if QT_VERSION >= 0x050000
