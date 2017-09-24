@@ -70,6 +70,7 @@ private slots:
     void previousPictureRequestedSlot();
     void renderOverlayPicture();
     void renderPicture();
+    void openPreviewMap();
 
 signals:
     void nextPictureRequested();

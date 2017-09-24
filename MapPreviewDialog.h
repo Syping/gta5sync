@@ -31,6 +31,7 @@ class MapPreviewDialog : public QDialog
 
 public:
     explicit MapPreviewDialog(QWidget *parent = 0);
+    void drawPointOnMap(double x, double y);
     ~MapPreviewDialog();
 
 private:

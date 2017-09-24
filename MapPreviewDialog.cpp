@@ -18,6 +18,10 @@
 
 #include "MapPreviewDialog.h"
 #include "ui_MapPreviewDialog.h"
+#include "IconLoader.h"
+#include "AppEnv.h"
+#include <QPainter>
+#include <QDebug>
 
 MapPreviewDialog::MapPreviewDialog(QWidget *parent) :
     QDialog(parent),
@@ -27,9 +31,42 @@ MapPreviewDialog::MapPreviewDialog(QWidget *parent) :
     setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint);
 
     ui->setupUi(this);
+
+    // DPI calculation
+    qreal screenRatio = AppEnv::screenRatio();
+    setMinimumSize(500 * screenRatio, 600 * screenRatio);
+    setMaximumSize(500 * screenRatio, 600 * screenRatio);
+    setFixedSize(500 * screenRatio, 600 * screenRatio);
 }
 
 MapPreviewDialog::~MapPreviewDialog()
 {
     delete ui;
+}
+
+void MapPreviewDialog::drawPointOnMap(double xpos_d, double ypos_d)
+{
+    qreal screenRatio = AppEnv::screenRatio();
+    int pointMakerSize = 8 * screenRatio;
+    QPixmap pointMakerPixmap = IconLoader::loadingPointmakerIcon().pixmap(QSize(pointMakerSize, pointMakerSize));
+
+    int pointMakerHalfSize = pointMakerSize / 2;
+    long xpos_ms = round(xpos_d);
+    long ypos_ms = round(ypos_d);
+    double xpos_ma = xpos_ms + 4000;
+    double ypos_ma = ypos_ms + 4000;
+    double xrat = (double)size().width() / 10000;
+    double yrat = (double)size().height() / 12000;
+    long xpos_mp = round(xpos_ma * xrat);
+    long ypos_mp = round(ypos_ma * yrat);
+    long xpos_pr = xpos_mp - pointMakerHalfSize;
+    long ypos_pr = ypos_mp + pointMakerHalfSize;
+
+    QPixmap mapPixmap(size());
+    QPainter mapPainter(&mapPixmap);
+    mapPainter.drawPixmap(0, 0, size().width(), size().height(), QPixmap(":/img/mappreview.jpg").scaled(size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    mapPainter.drawPixmap(xpos_pr, size().height() - ypos_pr, pointMakerSize, pointMakerSize, pointMakerPixmap);
+    mapPainter.end();
+
+    ui->labPicture->setPixmap(mapPixmap);
 }

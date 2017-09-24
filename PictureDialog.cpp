@@ -21,6 +21,7 @@
 #include "ProfileDatabase.h"
 #include "ui_PictureDialog.h"
 #include "SidebarGenerator.h"
+#include "MapPreviewDialog.h"
 #include "StandardPaths.h"
 #include "PictureExport.h"
 #include "StringParser.h"
@@ -304,6 +305,10 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                     overlayEnabled = true;
                     if (!previewMode) renderPicture();
                 }
+                break;
+            case Qt::Key_M:
+                openPreviewMap();
+                returnValue = true;
                 break;
 #if QT_VERSION >= 0x050300
             case Qt::Key_Exit:
@@ -680,4 +685,15 @@ bool PictureDialog::isIndexed()
 int PictureDialog::getIndex()
 {
     return index;
+}
+
+void PictureDialog::openPreviewMap()
+{
+    MapPreviewDialog *mapPreviewDialog = new MapPreviewDialog(this);
+    mapPreviewDialog->setWindowIcon(windowIcon());
+    mapPreviewDialog->setModal(true);
+    mapPreviewDialog->drawPointOnMap(smpic->getSnapmaticProperties().location.x, smpic->getSnapmaticProperties().location.y);
+    mapPreviewDialog->show();
+    mapPreviewDialog->exec();
+    delete mapPreviewDialog;
 }
