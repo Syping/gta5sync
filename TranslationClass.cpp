@@ -59,7 +59,6 @@ void TranslationClass::loadTranslation(QApplication *app)
     QString externalLanguageStr;
     bool externalLanguageReady = false;
     bool loadInternalLang = false;
-    bool systemLangMode = false;
     bool trLoadSuccess = false;
     if (isUserLanguageSystem_p())
     {
@@ -67,7 +66,6 @@ void TranslationClass::loadTranslation(QApplication *app)
         qDebug() << "loadExSystemLanguage";
 #endif
         trLoadSuccess = loadSystemTranslation_p(exLangPath, &exAppTranslator);
-        systemLangMode = true;
     }
     else
     {
@@ -86,8 +84,6 @@ void TranslationClass::loadTranslation(QApplication *app)
 #ifdef GTA5SYNC_DEBUG
                 qDebug() << "loadUserLanguageFailed";
 #endif
-                trLoadSuccess = loadSystemTranslation_p(exLangPath, &exAppTranslator);
-                systemLangMode = true;
             }
             else
             {
