@@ -54,6 +54,7 @@ SOURCES += main.cpp \
     SnapmaticWidget.cpp \
     StandardPaths.cpp \
     StringParser.cpp \
+    TranslationClass.cpp \
     UserInterface.cpp \
     uimod/UiModLabel.cpp \
     uimod/UiModWidget.cpp
@@ -87,6 +88,7 @@ HEADERS  += \
     SnapmaticWidget.h \
     StandardPaths.h \
     StringParser.h \
+    TranslationClass.h \
     UserInterface.h \
     uimod/UiModLabel.h \
     uimod/UiModWidget.h
