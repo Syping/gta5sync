@@ -1060,7 +1060,7 @@ void ProfileInterface::settingsApplied(int _contentMode, QString _language)
         {
             widget->setSelectionMode(true);
             widget->setContentMode(contentMode);
-            widget->retranslate();
+            if (translationUpdated) widget->retranslate();
         }
     }
     else
@@ -1072,7 +1072,7 @@ void ProfileInterface::settingsApplied(int _contentMode, QString _language)
                 widget->setSelectionMode(false);
             }
             widget->setContentMode(contentMode);
-            widget->retranslate();
+            if (translationUpdated) widget->retranslate();
         }
     }
 }
