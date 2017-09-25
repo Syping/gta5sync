@@ -16,13 +16,15 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#include <QLocale>
-#include <QSettings>
-#include <QFileInfo>
-#include <QStringList>
-#include <QStringBuilder>
+#include "TranslationClass.h"
 #include "GlobalString.h"
 #include "config.h"
+#include <QStringBuilder>
+#include <QStringList>
+#include <QFileInfo>
+#include <QSettings>
+#include <QLocale>
+#include <QDebug>
 
 GlobalString::GlobalString()
 {
@@ -73,18 +75,11 @@ QString GlobalString::getLanguageFile()
 
 QString GlobalString::getLanguage()
 {
-    QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
-    settings.beginGroup("Interface");
-    QString language = settings.value("Language","System").toString();
-    settings.endGroup();
-    if (language == "System" || language.trimmed() == "")
+    QString language = TCInstance->getCurrentLanguage();
+    QStringList langList = QString(language).replace("-", "_").split("_");
+    if (langList.length() >= 1)
     {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            language = langList.at(0);
-        }
+        language = langList.at(0);
     }
     return language;
 }

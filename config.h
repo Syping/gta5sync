@@ -77,7 +77,7 @@
 #endif
 
 #ifndef GTA5SYNC_LANG
-#define GTA5SYNC_LANG "$SHAREDIRSEPARATOR:lang"
+#define GTA5SYNC_LANG "SHAREDDIR:SEPARATOR:lang"
 #endif
 
 #ifndef GTA5SYNC_PLUG
