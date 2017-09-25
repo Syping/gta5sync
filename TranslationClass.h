@@ -21,6 +21,7 @@
 
 #include <QApplication>
 #include <QTranslator>
+#include <QStringList>
 #include <QString>
 #include <QObject>
 
@@ -28,20 +29,27 @@ class TranslationClass : public QObject
 {
     Q_OBJECT
 public:
-    explicit TranslationClass(QObject *parent = 0);
+    static TranslationClass* getInstance() { return &translationClassInstance; }
+    void initUserLanguage();
     void loadTranslation(QApplication *app);
     void unloadTranslation(QApplication *app);
+    QStringList listTranslations(const QString &langPath);
 
 private:
+    static TranslationClass translationClassInstance;
+    bool loadSystemTranslation_p(const QString &langPath, QTranslator *appTranslator);
+    bool loadUserTranslation_p(const QString &langPath, QTranslator *appTranslator);
+    bool loadQtTranslation_p(const QString &langPath, QTranslator *qtTranslator);
+    bool isUserLanguageSystem_p();
     QTranslator exAppTranslator;
     QTranslator exQtTranslator;
     QTranslator inAppTranslator;
     QTranslator inQtTranslator;
-    QString systemLanguage;
-
-signals:
-
-public slots:
+    QString currentLanguage;
+    QString userLanguage;
+    bool isLangLoaded;
 };
+
+extern TranslationClass translationClass;
 
 #endif // TRANSLATIONCLASS_H

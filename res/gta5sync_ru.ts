@@ -444,45 +444,55 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
         <translation>От&amp;мена</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="134"/>
         <source>System</source>
         <comment>System like PC System</comment>
         <translatorcomment>может быть надо прилагательное</translatorcomment>
+        <translation type="vanished">Система</translation>
+    </message>
+    <message>
+        <source>%1 (%2 if available)</source>
+        <comment>System like PC System = %1, System Language like Deutsch = %2</comment>
+        <translation type="vanished">%1 (%2 если имеется)</translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.cpp" line="132"/>
+        <source>%1 (Next Closest Language)</source>
+        <comment>First language a person can talk with a different person/application. &quot;Native&quot; or &quot;Not Native&quot;.</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.cpp" line="132"/>
+        <source>System</source>
+        <comment>System in context of System default</comment>
         <translation>Система</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="134"/>
-        <source>%1 (%2 if available)</source>
-        <comment>System like PC System = %1, System Language like Deutsch = %2</comment>
-        <translation>%1 (%2 если имеется)</translation>
-    </message>
-    <message>
-        <location filename="../OptionsDialog.cpp" line="293"/>
-        <location filename="../OptionsDialog.cpp" line="297"/>
+        <location filename="../OptionsDialog.cpp" line="285"/>
+        <location filename="../OptionsDialog.cpp" line="289"/>
         <source>%1</source>
         <comment>%1</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="293"/>
+        <location filename="../OptionsDialog.cpp" line="285"/>
         <source>The new Custom Folder will initialize after you restart %1.</source>
         <translation>Другая папка будет загружена после перезапуска %1.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="297"/>
+        <location filename="../OptionsDialog.cpp" line="289"/>
         <source>The language change will take effect after you restart %1.</source>
         <translation>Язык изменится после перезапуска %1.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="307"/>
+        <location filename="../OptionsDialog.cpp" line="299"/>
         <source>No Profile</source>
         <comment>No Profile, as default</comment>
         <translation>Нет профиля</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="315"/>
-        <location filename="../OptionsDialog.cpp" line="319"/>
-        <location filename="../OptionsDialog.cpp" line="321"/>
+        <location filename="../OptionsDialog.cpp" line="307"/>
+        <location filename="../OptionsDialog.cpp" line="311"/>
+        <location filename="../OptionsDialog.cpp" line="313"/>
         <source>Profile: %1</source>
         <translation>Профиль: %1</translation>
     </message>
@@ -996,12 +1006,12 @@ Press 1 for Default View</source>
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="66"/>
         <source>Font</source>
         <translation>Шрифт</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="66"/>
         <source>Selected Font: %1</source>
         <translation>Выбранный шрифт: %1</translation>
     </message>
@@ -1709,7 +1719,7 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="312"/>
-        <location filename="../OptionsDialog.cpp" line="453"/>
+        <location filename="../OptionsDialog.cpp" line="445"/>
         <location filename="../UserInterface.cpp" line="104"/>
         <location filename="../UserInterface.cpp" line="507"/>
         <source>Select GTA V Folder...</source>

@@ -482,44 +482,54 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <translation>&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="134"/>
         <source>%1 (%2 if available)</source>
         <comment>System like PC System = %1, System Language like Deutsch = %2</comment>
-        <translation>%1 (%2 si disponible)</translation>
+        <translation type="vanished">%1 (%2 si disponible)</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="134"/>
         <source>System</source>
         <comment>System like PC System</comment>
+        <translation type="vanished">Système</translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.cpp" line="132"/>
+        <source>%1 (Next Closest Language)</source>
+        <comment>First language a person can talk with a different person/application. &quot;Native&quot; or &quot;Not Native&quot;.</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.cpp" line="132"/>
+        <source>System</source>
+        <comment>System in context of System default</comment>
         <translation>Système</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="293"/>
-        <location filename="../OptionsDialog.cpp" line="297"/>
+        <location filename="../OptionsDialog.cpp" line="285"/>
+        <location filename="../OptionsDialog.cpp" line="289"/>
         <source>%1</source>
         <comment>%1</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="293"/>
+        <location filename="../OptionsDialog.cpp" line="285"/>
         <source>The new Custom Folder will initialize after you restart %1.</source>
         <translation>Le répertoire personnalisé sera actif au prochain lancement de %1.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="297"/>
+        <location filename="../OptionsDialog.cpp" line="289"/>
         <source>The language change will take effect after you restart %1.</source>
         <translation>Le changement de langue sera actif au prochain lancement de %1.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="307"/>
+        <location filename="../OptionsDialog.cpp" line="299"/>
         <source>No Profile</source>
         <comment>No Profile, as default</comment>
         <translation>Aucun profil</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="315"/>
-        <location filename="../OptionsDialog.cpp" line="319"/>
-        <location filename="../OptionsDialog.cpp" line="321"/>
+        <location filename="../OptionsDialog.cpp" line="307"/>
+        <location filename="../OptionsDialog.cpp" line="311"/>
+        <location filename="../OptionsDialog.cpp" line="313"/>
         <source>Profile: %1</source>
         <translation>Profil : %1</translation>
     </message>
@@ -999,12 +1009,12 @@ Appuyer sur 1 pour le mode par défaut</translation>
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="66"/>
         <source>Font</source>
         <translation>Police</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="66"/>
         <source>Selected Font: %1</source>
         <translation>Police sélectionnée : %1</translation>
     </message>
@@ -1647,7 +1657,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="312"/>
-        <location filename="../OptionsDialog.cpp" line="453"/>
+        <location filename="../OptionsDialog.cpp" line="445"/>
         <location filename="../UserInterface.cpp" line="104"/>
         <location filename="../UserInterface.cpp" line="507"/>
         <source>Select GTA V Folder...</source>

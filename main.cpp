@@ -79,9 +79,9 @@ int main(int argc, char *argv[])
         a.addLibraryPath(pluginsDir);
     }
 
-    // Loading Translation
-    TranslationClass translationClass;
-    translationClass.loadTranslation(&a);
+    TranslationClass *translationClassInstance = TranslationClass::getInstance();
+    translationClassInstance->initUserLanguage();
+    translationClassInstance->loadTranslation(&a);
 
     QStringList applicationArgs = a.arguments();
     QString selectedAction;

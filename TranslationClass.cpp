@@ -28,449 +28,269 @@
 #include <QFile>
 #include <QDir>
 
-TranslationClass::TranslationClass(QObject *parent) : QObject(parent)
+#if QT_VERSION >= 0x050000
+#define QtBaseTranslationFormat "qtbase_"
+#else
+#define QtBaseTranslationFormat "qt_"
+#endif
+
+TranslationClass TranslationClass::translationClassInstance;
+
+void TranslationClass::initUserLanguage()
 {
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
     settings.beginGroup("Interface");
-    systemLanguage = settings.value("Language","System").toString();
+    userLanguage = settings.value("Language", "System").toString();
     settings.endGroup();
 }
 
 void TranslationClass::loadTranslation(QApplication *app)
 {
+    if (isLangLoaded) unloadTranslation(app);
 #ifndef GTA5SYNC_QCONF // Classic modable loading method
     // Start external translate loading
     QString exLangPath = AppEnv::getExLangFolder();
-    bool trLoadFail = false;
-    bool trLoaded = false;
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
+    if (isUserLanguageSystem_p())
     {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                exAppTranslator.load(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
-                QLocale::setDefault(QLocale::system());
-            }
-        }
+        loadSystemTranslation_p(exLangPath, &exAppTranslator);
     }
     else
     {
-        QString languageName = systemLanguage;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                if (!exAppTranslator.load(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-                {
-                    if (langList.at(0) != "en")
-                    {
-                        trLoadFail = true;
-                    }
-                }
-                else
-                {
-                    QLocale::setDefault(QLocale(langList.at(0)));
-                    trLoaded = true;
-                }
-            }
-            else
-            {
-                if (langList.at(0) != "en")
-                {
-                    trLoadFail = true;
-                }
-            }
-        }
+        loadUserTranslation_p(exLangPath, &exAppTranslator);
     }
-    if (trLoadFail)
+    if (currentLanguage.isEmpty() && !isUserLanguageSystem_p())
     {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                exAppTranslator.load(exLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
-                QLocale::setDefault(QLocale(langList.at(0)));
-            }
-        }
+        loadSystemTranslation_p(exLangPath, &exAppTranslator);
     }
-    app->installTranslator(&exAppTranslator);
-#if QT_VERSION >= 0x050000
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
+    if (!currentLanguage.isEmpty())
     {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    else
-    {
-        QString languageName = systemLanguage;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    if (trLoadFail)
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    app->installTranslator(&exQtTranslator);
-#else
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    else
-    {
-        QString languageName = language;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    if (trLoadFail)
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    app->installTranslator(&exQtTranslator);
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "installTranslation" << currentLanguage;
 #endif
+        app->installTranslator(&exAppTranslator);
+        loadQtTranslation_p(exLangPath, &exQtTranslator);
+        app->installTranslator(&exQtTranslator);
+        isLangLoaded = true;
+    }
     // End external translate loading
     // Start internal translate loading
-    trLoadFail = false;
-    QString inLangPath = AppEnv::getInLangFolder();
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
+    if (currentLanguage.isEmpty())
     {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
+        QString inLangPath = AppEnv::getInLangFolder();
+        if (isUserLanguageSystem_p())
         {
-            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                if (!inAppTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-                {
-                    if (langList.at(0) != "en")
-                    {
-                        if (trLoaded) { trLoadFail = true; }
-                    }
-                }
-                else
-                {
-                    QLocale::setDefault(QLocale(langList.at(0)));
-                }
-            }
-            else
-            {
-                if (langList.at(0) != "en")
-                {
-                    if (trLoaded) { trLoadFail = true; }
-                }
-            }
+            loadSystemTranslation_p(inLangPath, &inAppTranslator);
         }
-    }
-    else if (systemLanguage == "en" || systemLanguage == "English")
-    {
-        QLocale::setDefault(QLocale(QLocale::English, QLocale::AnyCountry));
-    }
-    else
-    {
-        QString languageName = systemLanguage;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
+        else
         {
-            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                inAppTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
-                QLocale::setDefault(QLocale(langList.at(0)));
-
-            }
+            loadUserTranslation_p(inLangPath, &inAppTranslator);
         }
-    }
-    if (trLoadFail)
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
+        if (currentLanguage.isEmpty() && !isUserLanguageSystem_p())
         {
-            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                inAppTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
-                QLocale::setDefault(QLocale(langList.at(0)));
-            }
+            loadSystemTranslation_p(inLangPath, &inAppTranslator);
         }
-    }
-    app->installTranslator(&inAppTranslator);
-#if QT_VERSION >= 0x050000
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
+        if (!currentLanguage.isEmpty())
         {
-            if (QFile::exists(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                inQtTranslator.load(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    else
-    {
-        QString languageName = systemLanguage;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                inQtTranslator.load(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    if (trLoadFail)
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                inQtTranslator.load(inLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    app->installTranslator(&inQtTranslator);
-#else
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                inQtTranslator.load(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    else
-    {
-        QString languageName = language;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                inQtTranslator.load(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    if (trLoadFail)
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                inQtTranslator.load(inLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    app->installTranslator(&inQtTranslator);
+#ifdef GTA5SYNC_DEBUG
+            qDebug() << "installTranslation" << currentLanguage;
 #endif
+            app->installTranslator(&inAppTranslator);
+            loadQtTranslation_p(inLangPath, &inQtTranslator);
+            app->installTranslator(&inQtTranslator);
+            isLangLoaded = true;
+        }
+    }
     // End internal translate loading
 #else // New qconf loading method
     QString inLangPath = AppEnv::getInLangFolder();
     QString exLangPath = AppEnv::getExLangFolder();
-    bool trLoadFail = false;
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
+    if (isUserLanguageSystem_p())
     {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                exAppTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
-                QLocale::setDefault(QLocale::system());
-            }
-        }
+        loadSystemTranslation_p(inLangPath, &inAppTranslator);
     }
     else
     {
-        QString languageName = systemLanguage;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                if (!exAppTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-                {
-                    if (langList.at(0) != "en")
-                    {
-                        trLoadFail = true;
-                    }
-                }
-                else
-                {
-                    QLocale::setDefault(QLocale(langList.at(0)));
-                }
-            }
-            else
-            {
-                if (langList.at(0) != "en")
-                {
-                    trLoadFail = true;
-                }
-            }
-        }
+        loadUserTranslation_p(inLangPath, &inAppTranslator);
     }
-    if (trLoadFail)
+    if (currentLanguage.isEmpty() && !isUserLanguageSystem_p())
     {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
-            {
-                exAppTranslator.load(inLangPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
-                QLocale::setDefault(QLocale(langList.at(0)));
-            }
-        }
+        loadSystemTranslation_p(inLangPath, &inAppTranslator);
     }
-    app->installTranslator(&exAppTranslator);
-#if QT_VERSION >= 0x050000
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
+    if (!currentLanguage.isEmpty())
     {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    else
-    {
-        QString languageName = language;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    if (trLoadFail)
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qtbase_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    app->installTranslator(&exQtTranslator);
-#else
-    if (systemLanguage == "System" || systemLanguage.trimmed().isEmpty())
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    else
-    {
-        QString languageName = systemLanguage;
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    if (trLoadFail)
-    {
-        QString languageName = QLocale::system().name();
-        QStringList langList = languageName.split("_");
-        if (langList.length() >= 1)
-        {
-            if (QFile::exists(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm"))
-            {
-                exQtTranslator.load(exLangPath % QDir::separator() % "qt_" % langList.at(0) % ".qm");
-            }
-        }
-    }
-    app->installTranslator(&exQtTranslator);
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "installTranslation" << currentLanguage;
 #endif
+        app->installTranslator(&inAppTranslator);
+        loadQtTranslation_p(exLangPath, &exQtTranslator);
+        app->installTranslator(&exQtTranslator);
+        isLangLoaded = true;
+    }
 #endif
-#ifdef _MSC_VER // Fix dumb Microsoft compiler warning
-    Q_UNUSED(app)
+}
+
+QStringList TranslationClass::listTranslations(const QString &langPath)
+{
+    QDir langDir;
+    langDir.setNameFilters(QStringList("gta5sync_*.qm"));
+    langDir.setPath(langPath);
+    QStringList availableLanguages;
+    foreach(const QString &lang, langDir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::NoSort))
+    {
+        availableLanguages << QString(lang).remove("gta5sync_").remove(".qm");
+    }
+    return availableLanguages;
+}
+
+bool TranslationClass::loadSystemTranslation_p(const QString &langPath, QTranslator *appTranslator)
+{
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "loadSystemTranslation_p";
 #endif
+    foreach(const QString &languageName, QLocale::system().uiLanguages())
+    {
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "loadLanguage" << languageName;
+#endif
+        QStringList langList = QString(languageName).replace("-","_").split("_");
+        if (langList.length() == 2)
+        {
+#ifdef GTA5SYNC_DEBUG
+            qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % "_" % langList.at(1) % ".qm");
+#endif
+            if (appTranslator->load(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % "_" % langList.at(1) % ".qm"))
+            {
+#ifdef GTA5SYNC_DEBUG
+                qDebug() << "loadLanguageFileSuccess" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % "_" % langList.at(1) % ".qm");
+#endif
+                currentLanguage = languageName;
+                return true;
+            }
+#ifdef GTA5SYNC_DEBUG
+            qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
+#endif
+            if (appTranslator->load(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
+            {
+#ifdef GTA5SYNC_DEBUG
+                qDebug() << "loadLanguageFileSuccess" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
+#endif
+                currentLanguage = languageName;
+                return true;
+            }
+        }
+        else if (langList.length() == 1)
+        {
+#ifdef GTA5SYNC_DEBUG
+            qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
+#endif
+            if (appTranslator->load(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
+            {
+#ifdef GTA5SYNC_DEBUG
+                qDebug() << "loadLanguageFileSuccess" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
+#endif
+                currentLanguage = languageName;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool TranslationClass::loadUserTranslation_p(const QString &langPath, QTranslator *appTranslator)
+{
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "loadUserTranslation_p";
+#endif
+    QString languageName = userLanguage;
+    QStringList langList = QString(languageName).replace("-","_").split("_");
+    if (langList.length() == 2)
+    {
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % "_" % langList.at(1) % ".qm");
+#endif
+        if (appTranslator->load(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % "_" % langList.at(1) % ".qm"))
+        {
+            currentLanguage = languageName;
+            return true;
+        }
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
+#endif
+        if (appTranslator->load(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
+        {
+            currentLanguage = languageName;
+            return true;
+        }
+    }
+    else if (langList.length() == 1)
+    {
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
+#endif
+        if (appTranslator->load(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
+        {
+            currentLanguage = languageName;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool TranslationClass::loadQtTranslation_p(const QString &langPath, QTranslator *qtTranslator)
+{
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "loadQtTranslation_p" << currentLanguage;
+#endif
+    QString languageName = currentLanguage;
+    QStringList langList = QString(languageName).replace("-","_").split("_");
+    if (langList.length() == 2)
+    {
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % QtBaseTranslationFormat % langList.at(0) % "_" % langList.at(1) % ".qm");
+#endif
+        if (qtTranslator->load(langPath % QDir::separator() % QtBaseTranslationFormat % langList.at(0) % "_" % langList.at(1) % ".qm"))
+        {
+            return true;
+        }
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % QtBaseTranslationFormat % langList.at(0) % ".qm");
+#endif
+        if (qtTranslator->load(langPath % QDir::separator() % QtBaseTranslationFormat % langList.at(0) % ".qm"))
+        {
+            return true;
+        }
+    }
+    else if (langList.length() == 1)
+    {
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "loadLanguageFile" << QString(langPath % QDir::separator() % QtBaseTranslationFormat % langList.at(0) % ".qm");
+#endif
+        if (qtTranslator->load(langPath % QDir::separator() % QtBaseTranslationFormat % langList.at(0) % ".qm"))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool TranslationClass::isUserLanguageSystem_p()
+{
+    return (userLanguage == "System" || userLanguage.trimmed().isEmpty());
 }
 
 void TranslationClass::unloadTranslation(QApplication *app)
 {
-#ifdef GTA5SYNC_QCONF
+#ifndef GTA5SYNC_QCONF
     app->removeTranslator(&exAppTranslator);
     app->removeTranslator(&exQtTranslator);
-#endif
     app->removeTranslator(&inAppTranslator);
     app->removeTranslator(&inQtTranslator);
+#else
+    app->removeTranslator(&inAppTranslator);
+    app->removeTranslator(&exQtTranslator);
+#endif
+    currentLanguage = "";
+    isLangLoaded = false;
 #ifdef _MSC_VER // Fix dumb Microsoft compiler warning
     Q_UNUSED(app)
 #endif

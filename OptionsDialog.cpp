@@ -18,6 +18,7 @@
 
 #include "OptionsDialog.h"
 #include "ui_OptionsDialog.h"
+#include "TranslationClass.h"
 #include "StandardPaths.h"
 #include "UserInterface.h"
 #include "AppEnv.h"
@@ -128,13 +129,9 @@ void OptionsDialog::setupLanguageBox()
     currentLanguage = settings->value("Language","System").toString();
     settings->endGroup();
 
-    QStringList langList = QLocale::system().name().split("_");
-    if (langList.length() > 0)
-    {
-        QString cbSysStr = tr("%1 (%2 if available)", "System like PC System = %1, System Language like Deutsch = %2").arg(tr("System",
-                                                                                                                              "System like PC System"), QLocale::languageToString(QLocale(langList.at(0)).language()));
-        ui->cbLanguage->addItem(cbSysStr, "System");
-    }
+     QString cbSysStr = tr("%1 (Next Closest Language)", "First language a person can talk with a different person/application. \"Native\" or \"Not Native\".").arg(tr("System",
+    "System in context of System default"));
+    ui->cbLanguage->addItem(cbSysStr, "System");
 
     QString cbEngStr = "English (English) [en]";
     ui->cbLanguage->addItem(QIcon::fromTheme("flag-us"), cbEngStr, "en");
@@ -148,21 +145,16 @@ void OptionsDialog::setupLanguageBox()
 #endif
     }
 
-    QDir langDir;
-    langDir.setNameFilters(QStringList("gta5sync_*.qm"));
-    langDir.setPath(AppEnv::getExLangFolder());
-    QStringList langFiles;
-    langFiles << langDir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::NoSort);
-    langDir.setPath(AppEnv::getInLangFolder());
-    langFiles << langDir.entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::NoSort);
-    langFiles.removeDuplicates();
+    TranslationClass *translationClassInstance = TranslationClass::getInstance();
+    QStringList availableLanguages;
+    availableLanguages << translationClassInstance->listTranslations(AppEnv::getExLangFolder());
+#ifndef GTA5SYNC_QCONF
+    availableLanguages << translationClassInstance->listTranslations(AppEnv::getInLangFolder());
+#endif
+    availableLanguages.removeDuplicates();
 
-    foreach(const QString &langFile, langFiles)
+    foreach(const QString &lang, availableLanguages)
     {
-        QString lang = langFile;
-        lang.remove("gta5sync_");
-        lang.remove(".qm");
-
         QLocale langLocale(lang);
         QString languageNameInternational = QLocale::languageToString(langLocale.language());
         QString languageNameNative = langLocale.nativeLanguageName();
