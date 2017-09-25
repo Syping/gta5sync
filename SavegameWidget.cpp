@@ -97,11 +97,19 @@ bool SavegameWidget::eventFilter(QObject *obj, QEvent *ev)
 void SavegameWidget::setSavegameData(SavegameData *savegame, QString savegamePath)
 {
     // BETA CODE
+    QString savegameString = savegame->getSavegameStr();
+    QString fileName = QFileInfo(savegame->getSavegameFileName()).fileName();
+    renderString(savegameString, fileName);
+    sgdStr = savegameString;
+    sgdPath = savegamePath;
+    sgdata = savegame;
+}
+
+void SavegameWidget::renderString(const QString &savegameString, const QString &fileName)
+{
     bool validNumber;
     QString savegameName = tr("WRONG FORMAT");
     QString savegameDate = tr("WRONG FORMAT");
-    QString savegameString = savegame->getSavegameStr();
-    QString fileName = QFileInfo(savegame->getSavegameFileName()).fileName();
     QStringList savegameNDL = QString(savegameString).split(" - ");
     if (savegameNDL.length() >= 2)
     {
@@ -124,9 +132,15 @@ void SavegameWidget::setSavegameData(SavegameData *savegame, QString savegamePat
     {
         ui->labSavegameStr->setText(labelSaveStr.arg(savegameDate, savegameName, tr("UNKNOWN")));
     }
-    sgdStr = savegameString;
-    sgdPath = savegamePath;
-    sgdata = savegame;
+}
+
+void SavegameWidget::retranslate()
+{
+    labelAutosaveStr = tr("AUTOSAVE - %1\n%2");
+    labelSaveStr = tr("SAVE %3 - %1\n%2");
+
+    QString fileName = QFileInfo(sgdata->getSavegameFileName()).fileName();
+    renderString(sgdStr, fileName);
 }
 
 void SavegameWidget::on_cmdCopy_clicked()

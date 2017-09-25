@@ -98,7 +98,12 @@ void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
 
 void SnapmaticWidget::snapmaticUpdated()
 {
-    // Current only strings get updated
+    ui->labPicStr->setText(smpic->getPictureStr() % "\n" % smpic->getPictureTitl() % "");
+}
+
+void SnapmaticWidget::retranslate()
+{
+    smpic->updateStrings();
     ui->labPicStr->setText(smpic->getPictureStr() % "\n" % smpic->getPictureTitl() % "");
 }
 

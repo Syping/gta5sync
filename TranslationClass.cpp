@@ -183,6 +183,7 @@ void TranslationClass::loadTranslation(QApplication *app)
             {
                 app->installTranslator(&inQtTranslator);
             }
+            QLocale::setDefault(currentLanguage);
             isLangLoaded = true;
         }
     }

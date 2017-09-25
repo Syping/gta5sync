@@ -267,27 +267,26 @@ void OptionsDialog::applySettings()
     settings->endGroup();
 
 #if QT_VERSION >= 0x050000
+    bool languageChanged = ui->cbLanguage->currentData().toString() != currentLanguage;
+#else
+    bool languageChanged = ui->cbLanguage->itemData(ui->cbLanguage->currentIndex()).toString() != currentLanguage;
+#endif
+    if (languageChanged)
+    {
+        TCInstance->unloadTranslation(qApp);
+        TCInstance->initUserLanguage();
+        TCInstance->loadTranslation(qApp);
+    }
+
+#if QT_VERSION >= 0x050000
     emit settingsApplied(newContentMode, ui->cbLanguage->currentData().toString());
 #else
     emit settingsApplied(newContentMode, ui->cbLanguage->itemData(ui->cbLanguage->currentIndex()).toString());
 #endif
 
-#if QT_VERSION >= 0x050000
-    bool languageChanged = ui->cbLanguage->currentData().toString() != currentLanguage;
-#else
-    bool languageChanged = ui->cbLanguage->itemData(ui->cbLanguage->currentIndex()).toString() != currentLanguage;
-#endif
-
     if ((forceCustomFolder && ui->txtFolder->text() != currentCFolder) || (forceCustomFolder != currentFFolder && forceCustomFolder))
     {
         QMessageBox::information(this, tr("%1", "%1").arg(GTA5SYNC_APPSTR), tr("The new Custom Folder will initialize after you restart %1.").arg(GTA5SYNC_APPSTR));
-    }
-    if (languageChanged)
-    {
-        QMessageBox::information(this, tr("%1", "%1").arg(GTA5SYNC_APPSTR), tr("The language change will take effect after you restart %1.").arg(GTA5SYNC_APPSTR));
-        TCInstance->unloadTranslation(qApp);
-        TCInstance->initUserLanguage();
-        TCInstance->loadTranslation(qApp);
     }
 }
 

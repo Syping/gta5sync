@@ -73,6 +73,7 @@ private:
     Ui::UserInterface *ui;
     ProfileInterface *profileUI;
     QList<QPushButton*> profileBtns;
+    QString profileName;
     bool profileOpen;
     int contentMode;
     QString language;
@@ -81,8 +82,9 @@ private:
     QString GTAV_ProfilesFolder;
     QStringList GTAV_Profiles;
     void setupProfileUi();
-    void openProfile(QString profileName);
+    void openProfile(const QString &profileName);
     void openSelectProfile();
+    void retranslateUi();
 
     // Open File
     bool openFile(QString selectedFile, bool warn = true);

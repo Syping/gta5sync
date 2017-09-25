@@ -69,7 +69,7 @@ ProfileInterface::ProfileInterface(ProfileDatabase *profileDB, CrewDatabase *cre
 
     QPalette palette;
     QColor baseColor = palette.base().color();
-    ui->labVersion->setText(ui->labVersion->text().arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER));
+    ui->labVersion->setText(QString("%1 %2").arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER));
     ui->saProfile->setStyleSheet(QString("QWidget#saProfileContent{background-color: rgb(%1, %2, %3)}").arg(QString::number(baseColor.red()),QString::number(baseColor.green()),QString::number(baseColor.blue())));
     ui->saProfileContent->setFilesMode(true);
 
@@ -1043,9 +1043,15 @@ void ProfileInterface::importFiles()
     on_cmdImport_clicked();
 }
 
-void ProfileInterface::settingsApplied(int _contentMode, QString language)
+void ProfileInterface::settingsApplied(int _contentMode, QString _language)
 {
-    Q_UNUSED(language)
+    bool translationUpdated = false;
+    if (language != _language)
+    {
+        retranslateUi();
+        language = _language;
+        translationUpdated = true;
+    }
     contentMode = _contentMode;
 
     if (contentMode == 2)
@@ -1054,6 +1060,7 @@ void ProfileInterface::settingsApplied(int _contentMode, QString language)
         {
             widget->setSelectionMode(true);
             widget->setContentMode(contentMode);
+            widget->retranslate();
         }
     }
     else
@@ -1065,6 +1072,7 @@ void ProfileInterface::settingsApplied(int _contentMode, QString language)
                 widget->setSelectionMode(false);
             }
             widget->setContentMode(contentMode);
+            widget->retranslate();
         }
     }
 }
@@ -1191,4 +1199,10 @@ void ProfileInterface::on_saProfileContent_dropped(const QMimeData *mimeData)
     {
         importFilesProgress(pathList);
     }
+}
+
+void ProfileInterface::retranslateUi()
+{
+    ui->retranslateUi(this);
+    ui->labVersion->setText(QString("%1 %2").arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER));
 }

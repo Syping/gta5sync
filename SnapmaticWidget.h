@@ -50,6 +50,7 @@ public:
     QString getWidgetType();
     bool isSelected();
     bool isHidden();
+    void retranslate();
     ~SnapmaticWidget();
 
 private slots:

@@ -41,6 +41,7 @@ public:
     SavegameData* getSavegame();
     QString getWidgetType();
     bool isSelected();
+    void retranslate();
     ~SavegameWidget();
 
 private slots:
@@ -69,6 +70,7 @@ private:
     QString sgdPath;
     QString sgdStr;
     QWidget *snwgt;
+    void renderString(const QString &savegameString, const QString &fileName);
 
 signals:
     void savegameDeleted();

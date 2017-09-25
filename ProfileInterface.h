@@ -50,6 +50,7 @@ public:
     void disableSelected();
     void enableSelected();
     int selectedWidgets();
+    void retranslateUi();
     ~ProfileInterface();
 
 public slots:
@@ -91,6 +92,7 @@ private:
     QString profileFolder;
     QString profileName;
     QString loadingStr;
+    QString language;
     int selectedWidgts;
     int contentMode;
 

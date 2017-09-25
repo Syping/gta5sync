@@ -62,7 +62,7 @@ UserInterface::UserInterface(ProfileDatabase *profileDB, CrewDatabase *crewDB, D
     defaultWindowTitle = tr("%2 - %1").arg("%1", GTA5SYNC_APPSTR);
 
     this->setWindowTitle(defaultWindowTitle.arg(tr("Select Profile")));
-    ui->labVersion->setText(ui->labVersion->text().arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER));
+    ui->labVersion->setText(QString("%1 %2").arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER));
 
     if (QIcon::hasThemeIcon("dialog-close"))
     {
@@ -205,9 +205,10 @@ void UserInterface::profileButton_clicked()
     openProfile(profileBtn->objectName());
 }
 
-void UserInterface::openProfile(QString profileName)
+void UserInterface::openProfile(const QString &profileName_)
 {
     profileOpen = true;
+    profileName = profileName_;
     profileUI = new ProfileInterface(profileDB, crewDB, threadDB);
     ui->swProfile->addWidget(profileUI);
     ui->swProfile->setCurrentWidget(profileUI);
@@ -224,6 +225,7 @@ void UserInterface::closeProfile()
     if (profileOpen)
     {
         profileOpen = false;
+        profileName.clear();
         ui->menuProfile->setEnabled(false);
         ui->actionSelect_profile->setEnabled(false);
         ui->swProfile->removeWidget(profileUI);
@@ -494,7 +496,11 @@ void UserInterface::openSavegameFile(SavegameData *savegame)
 
 void UserInterface::settingsApplied(int _contentMode, QString _language)
 {
-    language = _language;
+    if (language != _language)
+    {
+        retranslateUi();
+        language = _language;
+    }
     contentMode = _contentMode;
     if (profileOpen)
     {
@@ -527,5 +533,20 @@ void UserInterface::on_action_Disable_In_game_triggered()
     if (profileOpen)
     {
         profileUI->disableSelected();
+    }
+}
+
+void UserInterface::retranslateUi()
+{
+    ui->retranslateUi(this);
+    ui->actionAbout_gta5sync->setText(tr("&About %1").arg(GTA5SYNC_APPSTR));
+    ui->labVersion->setText(QString("%1 %2").arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER));
+    if (profileOpen)
+    {
+        this->setWindowTitle(defaultWindowTitle.arg(profileName));
+    }
+    else
+    {
+        this->setWindowTitle(defaultWindowTitle.arg(tr("Select Profile")));
     }
 }
