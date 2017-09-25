@@ -36,11 +36,15 @@ AboutDialog::AboutDialog(QWidget *parent) :
     QString projectBuild = GTA5SYNC_BUILDDATETIME;
     QString buildStr = GTA5SYNC_BUILDSTRING;
 
-    // Additional Content
-    QString usingStr = tr("Using %1 %2", "Exp. Using libmyfuck");
-    QString translatedByStr = tr("Translated by %1", "Exp. Translated by Syping");
-    QString translatedByVal = tr("NAME_OF_TRANSLATOR", "Your Name (The person behind your screen looking at this text!)");
-    QString translatorProfile = tr("TRANSLATOR_PROFILE", "mailto: http:// https:// Exp. https://github.com/Syping/");
+    // Translator Comments
+    //: Using specific library, example Using libmyfuck
+    QString usingStr = tr("Using %1 %2");
+    //: Translated by translator, example Translated by Syping
+    QString translatedByStr = tr("Translated by %1");
+    //: Enter your name there
+    QString translatedByVal = tr("NAME_OF_TRANSLATOR");
+    //: Enter your proilfe there, example a GitHub profile, E-Mail with "mailto: afucker@sumfuck.com" or a webpage
+    QString translatorProfile = tr("TRANSLATOR_PROFILE");
     QString additionalContent = "";
     if (translatedByVal != "NAME_OF_TRANSLATOR")
     {
