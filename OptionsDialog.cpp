@@ -285,6 +285,9 @@ void OptionsDialog::applySettings()
     if (languageChanged)
     {
         QMessageBox::information(this, tr("%1", "%1").arg(GTA5SYNC_APPSTR), tr("The language change will take effect after you restart %1.").arg(GTA5SYNC_APPSTR));
+        TCInstance->unloadTranslation(qApp);
+        TCInstance->initUserLanguage();
+        TCInstance->loadTranslation(qApp);
     }
 }
 
