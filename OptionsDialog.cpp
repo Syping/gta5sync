@@ -144,12 +144,10 @@ void OptionsDialog::setupLanguageBox()
         ui->cbLanguage->setCurrentIndex(indexOfEnglish);
 #endif
     }
-
-    TranslationClass *translationClassInstance = TranslationClass::getInstance();
     QStringList availableLanguages;
-    availableLanguages << translationClassInstance->listTranslations(AppEnv::getExLangFolder());
+    availableLanguages << TCInstance->listTranslations(AppEnv::getExLangFolder());
 #ifndef GTA5SYNC_QCONF
-    availableLanguages << translationClassInstance->listTranslations(AppEnv::getInLangFolder());
+    availableLanguages << TCInstance->listTranslations(AppEnv::getInLangFolder());
 #endif
     availableLanguages.removeDuplicates();
 

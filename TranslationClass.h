@@ -52,4 +52,6 @@ private:
 
 extern TranslationClass translationClass;
 
+#define TCInstance TranslationClass::getInstance()
+
 #endif // TRANSLATIONCLASS_H
