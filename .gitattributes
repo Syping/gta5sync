@@ -1,0 +1,14 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.qm binary
+*.ico binary
+*.icns binary
+*.xcf binary
+*.g5e binary
+
+# Windows Resource files
+*.rc text eol=crlf
