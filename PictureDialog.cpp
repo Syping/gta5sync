@@ -555,7 +555,7 @@ void PictureDialog::renderPicture()
         snapPainter.drawImage(0, 0, avatarAreaPicture);
         snapPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
         snapPainter.setFont(snapPainterFont);
-        snapPainter.drawText(QRect(3 * screenRatio, 3 * screenRatio, 140 * screenRatio, 60 * screenRatio), Qt::AlignLeft | Qt::TextWordWrap, tr("Avatar Preview Mode\nPress 1 for Default View"));
+        snapPainter.drawText(QRect(3 * screenRatio, 3 * screenRatio, 140 * screenRatio, 536 * screenRatio), Qt::AlignLeft | Qt::TextWordWrap, tr("Avatar Preview Mode\nPress 1 for Default View"));
         snapPainter.end();
         ui->labPicture->setPixmap(avatarPixmap);
     }
