@@ -919,8 +919,10 @@ void ProfileInterface::exportSelected()
                 }
                 else
                 {
-                    pictureExportEnabled = true;
-                    pictureCopyEnabled = true;
+                    // Don't export anymore when any Cancel button got clicked
+                    settings.endGroup();
+                    settings.endGroup();
+                    return;
                 }
             }
 
