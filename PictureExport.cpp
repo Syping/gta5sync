@@ -86,11 +86,11 @@ fileDialogPreSave: //Work?
     fileDialog.setOption(QFileDialog::DontConfirmOverwrite, true);
     fileDialog.setDefaultSuffix("suffix");
     fileDialog.setWindowFlags(fileDialog.windowFlags()^Qt::WindowContextHelpButtonHint);
-    fileDialog.setWindowTitle(PictureDialog::tr("Export as JPG picture..."));
+    fileDialog.setWindowTitle(PictureDialog::tr("Export as Picture..."));
     fileDialog.setLabelText(QFileDialog::Accept, PictureDialog::tr("Export"));
 
     QStringList filters;
-    filters << PictureDialog::tr("JPEG picture (*.jpg)");
+    filters << PictureDialog::tr("JPEG Graphics (*.jpg *.jpeg)");
     filters << PictureDialog::tr("Portable Network Graphics (*.png)");
     fileDialog.setNameFilters(filters);
 
@@ -218,7 +218,7 @@ fileDialogPreSave: //Work?
     fileDialog.setOption(QFileDialog::DontConfirmOverwrite, true);
     fileDialog.setDefaultSuffix(".rem");
     fileDialog.setWindowFlags(fileDialog.windowFlags()^Qt::WindowContextHelpButtonHint);
-    fileDialog.setWindowTitle(PictureDialog::tr("Export as GTA Snapmatic..."));
+    fileDialog.setWindowTitle(PictureDialog::tr("Export as Snapmatic..."));
     fileDialog.setLabelText(QFileDialog::Accept, PictureDialog::tr("Export"));
 
     QStringList filters;

@@ -22,6 +22,7 @@
 #include "ui_PictureDialog.h"
 #include "SidebarGenerator.h"
 #include "MapPreviewDialog.h"
+#include "SnapmaticEditor.h"
 #include "StandardPaths.h"
 #include "PictureExport.h"
 #include "StringParser.h"
@@ -100,13 +101,13 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
     ui->setupUi(this);
     windowTitleStr = this->windowTitle();
     jsonDrawString = ui->labJSON->text();
-    ui->cmdExport->setEnabled(0);
+    ui->cmdManage->setEnabled(false);
     plyrsList = QStringList();
-    fullscreenWidget = 0;
-    rqFullscreen = 0;
-    previewMode = 0;
-    naviEnabled = 0;
-    indexed = 0;
+    fullscreenWidget = nullptr;
+    rqFullscreen = false;
+    previewMode = false;
+    naviEnabled = false;
+    indexed = false;
     picArea = "";
     picTitl = "";
     picPath = "";
@@ -116,7 +117,7 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
     locX = "";
     locY = "";
     locZ = "";
-    smpic = 0;
+    smpic = nullptr;
 
     // With datebase
     withDatabase = withDatabase_;
@@ -137,13 +138,16 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
 
     // Overlay area
     renderOverlayPicture();
-    overlayEnabled = 1;
+    overlayEnabled = true;
 
     // Export menu
-    exportMenu = new QMenu(this);
-    jpegExportAction = exportMenu->addAction(tr("Export as &JPG picture..."), this, SLOT(exportSnapmaticPicture()));
-    pgtaExportAction = exportMenu->addAction(tr("Export as &GTA Snapmatic..."), this, SLOT(copySnapmaticPicture()));
-    ui->cmdExport->setMenu(exportMenu);
+    manageMenu = new QMenu(this);
+    editMenu = manageMenu->addMenu(tr("Edi&t"));
+    propEditorAction = editMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
+    exportMenu = manageMenu->addMenu(tr("&Export"));
+    jpegExportAction = exportMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
+    pgtaExportAction = exportMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
+    ui->cmdManage->setMenu(manageMenu);
 
     // Global map
     globalMap = GlobalString::getGlobalMap();
@@ -169,9 +173,11 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
 
 PictureDialog::~PictureDialog()
 {
+    delete propEditorAction;
     delete jpegExportAction;
     delete pgtaExportAction;
     delete exportMenu;
+    delete manageMenu;
     delete ui;
 }
 
@@ -279,7 +285,7 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                 returnValue = true;
                 break;
             case Qt::Key_E: case Qt::Key_S: case Qt::Key_Save:
-                ui->cmdExport->click();
+                ui->cmdManage->click();
                 returnValue = true;
                 break;
             case Qt::Key_1:
@@ -418,6 +424,7 @@ void PictureDialog::renderOverlayPicture()
 
 void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, bool _indexed, int _index)
 {
+    if (smpic != nullptr) smpic->disconnect(this, SLOT(updated()));
     snapmaticPicture = QImage();
     indexed = _indexed;
     index = _index;
@@ -432,7 +439,7 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
     {
         snapmaticPicture = picture->getImage();
         renderPicture();
-        ui->cmdExport->setEnabled(true);
+        ui->cmdManage->setEnabled(true);
     }
     if (picture->isJsonOk())
     {
@@ -462,18 +469,15 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
             picAreaStr = picArea;
         }
 
-        QString crewLStr = generateCrewString();
-
-        if (crewStr == "") { crewLStr = tr("No Crew"); }
-
         this->setWindowTitle(windowTitleStr.arg(picture->getPictureStr()));
-        ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, generatePlayersString(), crewLStr, picTitl, picAreaStr, created));
+        ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, generatePlayersString(), generateCrewString(), picTitl, picAreaStr, created));
     }
     else
     {
         ui->labJSON->setText(jsonDrawString.arg("0", "0", "0", tr("No Players"), tr("No Crew"), tr("Unknown Location")));
         QMessageBox::warning(this,tr("Snapmatic Picture Viewer"),tr("Failed at %1").arg(picture->getLastStep()));
     }
+    QObject::connect(smpic, SIGNAL(updated()), this, SLOT(updated()));
     emit newPictureCommited(snapmaticPicture);
 }
 
@@ -584,7 +588,7 @@ QString PictureDialog::generateCrewString()
     {
         return QString("<a href=\"https://socialclub.rockstargames.com/crew/" % QString(crewStr).replace(" ", "_") % "/" % crewID % "\">" % crewStr % "</a>");
     }
-    return crewStr;
+    return tr("No Crew");
 }
 
 QString PictureDialog::generatePlayersString()
@@ -616,7 +620,7 @@ QString PictureDialog::generatePlayersString()
 
 void PictureDialog::exportSnapmaticPicture()
 {
-    if (rqFullscreen && fullscreenWidget)
+    if (rqFullscreen && fullscreenWidget != nullptr)
     {
         PictureExport::exportAsPicture(fullscreenWidget, smpic);
     }
@@ -628,7 +632,7 @@ void PictureDialog::exportSnapmaticPicture()
 
 void PictureDialog::copySnapmaticPicture()
 {
-    if (rqFullscreen && fullscreenWidget)
+    if (rqFullscreen && fullscreenWidget != nullptr)
     {
         PictureExport::exportAsSnapmatic(fullscreenWidget, smpic);
     }
@@ -667,7 +671,7 @@ void PictureDialog::on_labPicture_mouseDoubleClicked(Qt::MouseButton button)
         pictureWidget->raise();
         pictureWidget->exec();
 
-        fullscreenWidget = 0; // Work!
+        fullscreenWidget = nullptr; // Work!
         delete pictureWidget; // Work!
     }
 }
@@ -696,4 +700,31 @@ void PictureDialog::openPreviewMap()
     mapPreviewDialog->show();
     mapPreviewDialog->exec();
     delete mapPreviewDialog;
+}
+
+void PictureDialog::editSnapmaticProperties()
+{
+    SnapmaticEditor *snapmaticEditor = new SnapmaticEditor(crewDB, this);
+    snapmaticEditor->setWindowFlags(snapmaticEditor->windowFlags()^Qt::WindowContextHelpButtonHint);
+    snapmaticEditor->setWindowIcon(windowIcon());
+    snapmaticEditor->setSnapmaticPicture(smpic);
+    snapmaticEditor->setModal(true);
+    snapmaticEditor->exec();
+    delete snapmaticEditor;
+}
+
+void PictureDialog::updated()
+{
+    if (withDatabase)
+    {
+        crewID = QString::number(smpic->getSnapmaticProperties().crewID);
+        crewStr = crewDB->getCrewName(smpic->getSnapmaticProperties().crewID);
+    }
+    else
+    {
+        crewID = QString::number(smpic->getSnapmaticProperties().crewID);
+        crewStr = QString::number(smpic->getSnapmaticProperties().crewID);
+    }
+    picTitl = StringParser::escapeString(smpic->getPictureTitle());
+    ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, generatePlayersString(), generateCrewString(), picTitl, picAreaStr, created));
 }

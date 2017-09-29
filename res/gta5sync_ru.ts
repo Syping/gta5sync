@@ -542,6 +542,11 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="180"/>
+        <source>&amp;Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="146"/>
         <source>&amp;Export</source>
         <translation>&amp;Экспорт</translation>
     </message>
@@ -570,17 +575,35 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
         <translation type="vanished">Закрыть</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="144"/>
         <source>Export as &amp;JPG picture...</source>
-        <translation>Эксп&amp;ортировать как картинку JPG...</translation>
+        <translation type="vanished">Эксп&amp;ортировать как картинку JPG...</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="147"/>
+        <source>Export as &amp;Picture...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export as &amp;GTA Snapmatic...</source>
+        <translation type="vanished">Экс&amp;портировать как GTA Snapmatic...</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="148"/>
+        <source>Export as &amp;Snapmatic...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="144"/>
+        <source>Edi&amp;t</source>
+        <translation type="unfinished">&amp;Правка</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="145"/>
-        <source>Export as &amp;GTA Snapmatic...</source>
-        <translation>Экс&amp;портировать как GTA Snapmatic...</translation>
+        <source>&amp;Edit Properties...</source>
+        <translation type="unfinished">&amp;Изменить свойства...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="369"/>
+        <location filename="../PictureDialog.cpp" line="374"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -589,31 +612,31 @@ Arrow Keys - Navigate</source>
 Стрелки - Навигация</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="428"/>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="480"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Просмотрщик фотографий Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="428"/>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="480"/>
         <source>Failed at %1</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="467"/>
-        <location filename="../PictureDialog.cpp" line="474"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
         <source>No Crew</source>
         <translation>Вне банды</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="474"/>
-        <location filename="../PictureDialog.cpp" line="612"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="617"/>
         <source>No Players</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="558"/>
+        <location filename="../PictureDialog.cpp" line="563"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Режим просмотра аватарок
@@ -628,19 +651,17 @@ Press 1 for Default View</source>
         <translation type="vanished">Без группы</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="474"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
         <source>Unknown Location</source>
         <translation>Неизвестное место</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="89"/>
         <source>Export as JPG picture...</source>
-        <translation>Экспортировать картинкой JPG...</translation>
+        <translation type="vanished">Экспортировать картинкой JPG...</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="93"/>
         <source>JPEG picture (*.jpg)</source>
-        <translation>Картинка JPEG (*.jpg)</translation>
+        <translation type="vanished">Картинка JPEG (*.jpg)</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="94"/>
@@ -678,11 +699,26 @@ Press 1 for Default View</source>
         <translation>Не удалось перезаписать %1 картинкой Snapmatic</translation>
     </message>
     <message>
+        <location filename="../PictureExport.cpp" line="89"/>
+        <source>Export as Picture...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="93"/>
+        <source>JPEG Graphics (*.jpg *.jpeg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../PictureExport.cpp" line="182"/>
         <location filename="../PictureExport.cpp" line="266"/>
         <location filename="../PictureExport.cpp" line="287"/>
         <source>Failed to export current Snapmatic picture</source>
         <translation>Не удалось экспортировать текущую картинку Snapmatic</translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="221"/>
+        <source>Export as Snapmatic...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="292"/>
@@ -700,9 +736,8 @@ Press 1 for Default View</source>
         <translation type="obsolete">Скопировать картинку</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="221"/>
         <source>Export as GTA Snapmatic...</source>
-        <translation>Экспортировать как GTA Snapmatic...</translation>
+        <translation type="vanished">Экспортировать как GTA Snapmatic...</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="225"/>
@@ -1469,14 +1504,22 @@ Press 1 for Default View</source>
         <translation>&amp;Экспорт</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1140"/>
         <source>Export as &amp;JPG picture...</source>
-        <translation>Эксп&amp;ортировать как картинку JPG...</translation>
+        <translation type="vanished">Эксп&amp;ортировать как картинку JPG...</translation>
+    </message>
+    <message>
+        <location filename="../ProfileInterface.cpp" line="1140"/>
+        <source>Export as &amp;Picture...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export as &amp;GTA Snapmatic...</source>
+        <translation type="vanished">Экс&amp;портировать как GTA Snapmatic...</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1141"/>
-        <source>Export as &amp;GTA Snapmatic...</source>
-        <translation>Экс&amp;портировать как GTA Snapmatic...</translation>
+        <source>Export as &amp;Snapmatic...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1142"/>

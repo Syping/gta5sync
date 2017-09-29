@@ -1137,8 +1137,8 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
     }
     editMenu.addAction(SnapmaticWidget::tr("&Edit Properties..."), picWidget, SLOT(editSnapmaticProperties()));
     QMenu exportMenu(SnapmaticWidget::tr("&Export"), this);
-    exportMenu.addAction(SnapmaticWidget::tr("Export as &JPG picture..."), picWidget, SLOT(on_cmdExport_clicked()));
-    exportMenu.addAction(SnapmaticWidget::tr("Export as &GTA Snapmatic..."), picWidget, SLOT(on_cmdCopy_clicked()));
+    exportMenu.addAction(SnapmaticWidget::tr("Export as &Picture..."), picWidget, SLOT(on_cmdExport_clicked()));
+    exportMenu.addAction(SnapmaticWidget::tr("Export as &Snapmatic..."), picWidget, SLOT(on_cmdCopy_clicked()));
     contextMenu.addAction(SnapmaticWidget::tr("&View"), picWidget, SLOT(on_cmdView_clicked()));
     contextMenu.addMenu(&editMenu);
     contextMenu.addMenu(&exportMenu);

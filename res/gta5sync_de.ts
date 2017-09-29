@@ -674,9 +674,14 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
 &lt;span style=&quot; font-weight:600;&quot;&gt;Erstellt: &lt;/span&gt;%8</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.ui" line="180"/>
+        <location filename="../PictureDialog.cpp" line="146"/>
         <source>&amp;Export</source>
         <translation>&amp;Exportieren</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.ui" line="180"/>
+        <source>&amp;Manage</source>
+        <translation>&amp;Verwalten</translation>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="199"/>
@@ -686,7 +691,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     <message>
         <location filename="../PictureDialog.ui" line="202"/>
         <source>&amp;Close</source>
-        <translation>&amp;Schließen</translation>
+        <translation>S&amp;chließen</translation>
     </message>
     <message>
         <source>&lt;span style=&quot; font-weight:600;&quot;&gt;Location: &lt;/span&gt;%1, %2, %3 &lt;br&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Players: &lt;/span&gt;%4&lt;br&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Crew ID: &lt;/span&gt;%5</source>
@@ -727,17 +732,35 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Schließen</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="144"/>
         <source>Export as &amp;JPG picture...</source>
-        <translation>Exportiere als &amp;JPG Bild...</translation>
+        <translation type="vanished">Exportiere als &amp;JPG Bild...</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="147"/>
+        <source>Export as &amp;Picture...</source>
+        <translation>Exportiere als &amp;Bild...</translation>
+    </message>
+    <message>
+        <source>Export as &amp;GTA Snapmatic...</source>
+        <translation type="vanished">Exportiere als &amp;GTA Snapmatic...</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="148"/>
+        <source>Export as &amp;Snapmatic...</source>
+        <translation>Exportiere als &amp;Snapmatic...</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="144"/>
+        <source>Edi&amp;t</source>
+        <translation>Bearbei&amp;ten</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="145"/>
-        <source>Export as &amp;GTA Snapmatic...</source>
-        <translation>Exportiere als &amp;GTA Snapmatic...</translation>
+        <source>&amp;Edit Properties...</source>
+        <translation>&amp;Eigenschaften bearbeiten...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="369"/>
+        <location filename="../PictureDialog.cpp" line="374"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -746,31 +769,31 @@ Taste 2 - Overlay umschalten
 Pfeiltasten - Navigieren</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="428"/>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="480"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Snapmatic Bildansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="428"/>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="480"/>
         <source>Failed at %1</source>
         <translation>Fehlgeschlagen bei %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="467"/>
-        <location filename="../PictureDialog.cpp" line="474"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
         <source>No Crew</source>
         <translation>Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="474"/>
-        <location filename="../PictureDialog.cpp" line="612"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="617"/>
         <source>No Players</source>
         <translation>Keine Spieler</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="558"/>
+        <location filename="../PictureDialog.cpp" line="563"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Avatar Vorschaumodus
@@ -815,7 +838,7 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="474"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
         <source>Unknown Location</source>
         <translation>Unbekannter Standort</translation>
     </message>
@@ -824,14 +847,12 @@ Drücke A für Standardansicht</translation>
         <translation type="obsolete">Exportiere Bild...</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="89"/>
         <source>Export as JPG picture...</source>
-        <translation>Exportiere als JPG Bild...</translation>
+        <translation type="vanished">Exportiere als JPG Bild...</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="93"/>
         <source>JPEG picture (*.jpg)</source>
-        <translation>JPEG Bild (*.jpg)</translation>
+        <translation type="vanished">JPEG Bild (*.jpg)</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="94"/>
@@ -869,11 +890,26 @@ Drücke A für Standardansicht</translation>
         <translation>Fehlgeschlagen beim Überschreiben von %1 mit aktuellen Snapmatic Bild</translation>
     </message>
     <message>
+        <location filename="../PictureExport.cpp" line="89"/>
+        <source>Export as Picture...</source>
+        <translation>Exportiere als Bild...</translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="93"/>
+        <source>JPEG Graphics (*.jpg *.jpeg)</source>
+        <translation>JPEG Graphics (*.jpg *.jpeg)</translation>
+    </message>
+    <message>
         <location filename="../PictureExport.cpp" line="182"/>
         <location filename="../PictureExport.cpp" line="266"/>
         <location filename="../PictureExport.cpp" line="287"/>
         <source>Failed to export current Snapmatic picture</source>
         <translation>Fehlgeschlagen beim Exportieren vom aktuellen Snapmatic Bild</translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="221"/>
+        <source>Export as Snapmatic...</source>
+        <translation>Exportiere als Snapmatic...</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="292"/>
@@ -893,9 +929,8 @@ Drücke A für Standardansicht</translation>
         <translation type="obsolete">Exporti</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="221"/>
         <source>Export as GTA Snapmatic...</source>
-        <translation>Exportiere als GTA Snapmatic...</translation>
+        <translation type="vanished">Exportiere als GTA Snapmatic...</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="225"/>
@@ -1834,14 +1869,22 @@ Exportieren als:</translation>
         <translation>&amp;Eigenschaften bearbeiten...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1140"/>
         <source>Export as &amp;JPG picture...</source>
-        <translation>Exportiere als &amp;JPG Bild...</translation>
+        <translation type="vanished">Exportiere als &amp;JPG Bild...</translation>
+    </message>
+    <message>
+        <location filename="../ProfileInterface.cpp" line="1140"/>
+        <source>Export as &amp;Picture...</source>
+        <translation>Exportiere als &amp;Bild...</translation>
+    </message>
+    <message>
+        <source>Export as &amp;GTA Snapmatic...</source>
+        <translation type="vanished">Exportiere als &amp;GTA Snapmatic...</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1141"/>
-        <source>Export as &amp;GTA Snapmatic...</source>
-        <translation>Exportiere als &amp;GTA Snapmatic...</translation>
+        <source>Export as &amp;Snapmatic...</source>
+        <translation>Exportiere als &amp;Snapmatic...</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1142"/>

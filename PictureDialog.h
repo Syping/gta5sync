@@ -68,9 +68,11 @@ private slots:
     void exportCustomContextMenuRequestedPrivate(const QPoint &pos, bool fullscreen);
     void nextPictureRequestedSlot();
     void previousPictureRequestedSlot();
+    void editSnapmaticProperties();
     void renderOverlayPicture();
     void renderPicture();
     void openPreviewMap();
+    void updated();
 
 signals:
     void nextPictureRequested();
@@ -96,6 +98,7 @@ private:
     QWidget *fullscreenWidget;
     QAction *jpegExportAction;
     QAction *pgtaExportAction;
+    QAction *propEditorAction;
     QImage avatarAreaPicture;
     QImage snapmaticPicture;
     QImage overlayTempImage;
@@ -122,6 +125,8 @@ private:
     int avatarLocX;
     int avatarLocY;
     int avatarSize;
+    QMenu *editMenu;
+    QMenu *manageMenu;
     QMenu *exportMenu;
 };
 

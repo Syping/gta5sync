@@ -431,6 +431,11 @@ Pictures and Savegames</source>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="180"/>
+        <source>&amp;Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="146"/>
         <source>&amp;Export</source>
         <translation type="unfinished"></translation>
     </message>
@@ -445,60 +450,65 @@ Pictures and Savegames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../PictureDialog.cpp" line="147"/>
+        <source>Export as &amp;Picture...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="148"/>
+        <source>Export as &amp;Snapmatic...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../PictureDialog.cpp" line="144"/>
-        <source>Export as &amp;JPG picture...</source>
+        <source>Edi&amp;t</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="145"/>
-        <source>Export as &amp;GTA Snapmatic...</source>
+        <source>&amp;Edit Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="369"/>
+        <location filename="../PictureDialog.cpp" line="374"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="428"/>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="480"/>
         <source>Snapmatic Picture Viewer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="428"/>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="480"/>
         <source>Failed at %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="467"/>
-        <location filename="../PictureDialog.cpp" line="474"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
         <source>No Crew</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="474"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
         <source>Unknown Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="474"/>
-        <location filename="../PictureDialog.cpp" line="612"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="617"/>
         <source>No Players</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="558"/>
+        <location filename="../PictureDialog.cpp" line="563"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../PictureExport.cpp" line="89"/>
-        <source>Export as JPG picture...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -508,8 +518,13 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../PictureExport.cpp" line="89"/>
+        <source>Export as Picture...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../PictureExport.cpp" line="93"/>
-        <source>JPEG picture (*.jpg)</source>
+        <source>JPEG Graphics (*.jpg *.jpeg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -552,7 +567,7 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="221"/>
-        <source>Export as GTA Snapmatic...</source>
+        <source>Export as Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1262,12 +1277,12 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1140"/>
-        <source>Export as &amp;JPG picture...</source>
+        <source>Export as &amp;Picture...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1141"/>
-        <source>Export as &amp;GTA Snapmatic...</source>
+        <source>Export as &amp;Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

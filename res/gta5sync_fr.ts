@@ -569,6 +569,11 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="180"/>
+        <source>&amp;Manage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="146"/>
         <source>&amp;Export</source>
         <translation>&amp;Exporter</translation>
     </message>
@@ -587,9 +592,13 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <translation>&amp;Fermer</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="221"/>
         <source>Export as GTA Snapmatic...</source>
-        <translation>Exporter comme Snapmatic...</translation>
+        <translation type="vanished">Exporter comme Snapmatic...</translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="221"/>
+        <source>Export as Snapmatic...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="225"/>
@@ -632,6 +641,16 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <translation>%1 existe déjà. Vous-vous le remplacer ?</translation>
     </message>
     <message>
+        <location filename="../PictureExport.cpp" line="89"/>
+        <source>Export as Picture...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="93"/>
+        <source>JPEG Graphics (*.jpg *.jpeg)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../PictureExport.cpp" line="148"/>
         <location filename="../PictureExport.cpp" line="251"/>
         <source>Failed to overwrite %1 with current Snapmatic picture</source>
@@ -648,17 +667,35 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <translation>Fichier invalide</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="144"/>
         <source>Export as &amp;JPG picture...</source>
-        <translation>Exporter comme image &amp;JPG...</translation>
+        <translation type="vanished">Exporter comme image &amp;JPG...</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="147"/>
+        <source>Export as &amp;Picture...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export as &amp;GTA Snapmatic...</source>
+        <translation type="vanished">Exporter comme &amp;GTA Snapmatic...</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="148"/>
+        <source>Export as &amp;Snapmatic...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="144"/>
+        <source>Edi&amp;t</source>
+        <translation type="unfinished">Édi&amp;ter</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="145"/>
-        <source>Export as &amp;GTA Snapmatic...</source>
-        <translation>Exporter comme &amp;GTA Snapmatic...</translation>
+        <source>&amp;Edit Properties...</source>
+        <translation type="unfinished">Modifier les &amp;propriétés...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="369"/>
+        <location filename="../PictureDialog.cpp" line="374"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -667,31 +704,31 @@ Touche 2 - Activer/désactiver l&apos;overlay
 Touches fléchées - Naviguer</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="428"/>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="480"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Visionneuse de photo Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="428"/>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="480"/>
         <source>Failed at %1</source>
         <translation>Echec de %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="467"/>
-        <location filename="../PictureDialog.cpp" line="474"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
         <source>No Crew</source>
         <translation>Aucun crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="474"/>
-        <location filename="../PictureDialog.cpp" line="612"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="617"/>
         <source>No Players</source>
         <translation>Aucun joueurs</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="558"/>
+        <location filename="../PictureDialog.cpp" line="563"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Mode Aperçu Avatar
@@ -710,14 +747,13 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Aucun crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="474"/>
+        <location filename="../PictureDialog.cpp" line="479"/>
         <source>Unknown Location</source>
         <translation>Emplacement inconnu</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="89"/>
         <source>Export as JPG picture...</source>
-        <translation>Exporter comme image JPG...</translation>
+        <translation type="vanished">Exporter comme image JPG...</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="90"/>
@@ -726,9 +762,8 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Exporter</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="93"/>
         <source>JPEG picture (*.jpg)</source>
-        <translation>Image JPEG (*.jpg)</translation>
+        <translation type="vanished">Image JPEG (*.jpg)</translation>
     </message>
     <message>
         <location filename="../PictureExport.cpp" line="94"/>
@@ -1460,14 +1495,22 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>&amp;Exporter</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1140"/>
         <source>Export as &amp;JPG picture...</source>
-        <translation>Exporter comme image &amp;JPG...</translation>
+        <translation type="vanished">Exporter comme image &amp;JPG...</translation>
+    </message>
+    <message>
+        <location filename="../ProfileInterface.cpp" line="1140"/>
+        <source>Export as &amp;Picture...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Export as &amp;GTA Snapmatic...</source>
+        <translation type="vanished">Exporter comme &amp;GTA Snapmatic...</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1141"/>
-        <source>Export as &amp;GTA Snapmatic...</source>
-        <translation>Exporter comme &amp;GTA Snapmatic...</translation>
+        <source>Export as &amp;Snapmatic...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1142"/>
