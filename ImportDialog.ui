@@ -93,21 +93,21 @@
          <item row="1" column="0">
           <widget class="QRadioButton" name="rbKeep">
            <property name="text">
-            <string>&amp;Keep Aspect Ratio</string>
+            <string>Keep Aspect Ratio</string>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
           <widget class="QRadioButton" name="rbIgnore">
            <property name="text">
-            <string>&amp;Ignore Aspect Ratio</string>
+            <string>Ignore Aspect Ratio</string>
            </property>
           </widget>
          </item>
          <item row="0" column="0">
           <widget class="QCheckBox" name="cbAvatar">
            <property name="text">
-            <string>&amp;Avatar</string>
+            <string>Avatar</string>
            </property>
           </widget>
          </item>
