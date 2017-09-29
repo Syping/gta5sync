@@ -149,6 +149,7 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
     //pgtaExportAction = exportMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
     jpegExportAction = manageMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
     pgtaExportAction = manageMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
+    manageMenuSep1 = manageMenu->addSeparator();
     propEditorAction = manageMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
     ui->cmdManage->setMenu(manageMenu);
 
@@ -179,7 +180,7 @@ PictureDialog::~PictureDialog()
     delete propEditorAction;
     delete jpegExportAction;
     delete pgtaExportAction;
-    //delete exportMenu;
+    delete manageMenuSep1;
     delete manageMenu;
     delete ui;
 }

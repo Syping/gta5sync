@@ -99,6 +99,7 @@ private:
     QAction *jpegExportAction;
     QAction *pgtaExportAction;
     QAction *propEditorAction;
+    QAction *manageMenuSep1;
     QImage avatarAreaPicture;
     QImage snapmaticPicture;
     QImage overlayTempImage;
@@ -125,9 +126,7 @@ private:
     int avatarLocX;
     int avatarLocY;
     int avatarSize;
-    //QMenu *editMenu;
     QMenu *manageMenu;
-    //QMenu *exportMenu;
 };
 
 #endif // PICTUREDIALOG_H
