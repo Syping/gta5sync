@@ -697,7 +697,15 @@ int PictureDialog::getIndex()
 
 void PictureDialog::openPreviewMap()
 {
-    MapPreviewDialog *mapPreviewDialog = new MapPreviewDialog(this);
+    MapPreviewDialog *mapPreviewDialog;
+    if (rqFullscreen && fullscreenWidget != nullptr)
+    {
+        mapPreviewDialog = new MapPreviewDialog(fullscreenWidget);
+    }
+    else
+    {
+        mapPreviewDialog = new MapPreviewDialog(this);
+    }
     mapPreviewDialog->setWindowIcon(windowIcon());
     mapPreviewDialog->setModal(true);
     mapPreviewDialog->drawPointOnMap(smpic->getSnapmaticProperties().location.x, smpic->getSnapmaticProperties().location.y);
@@ -708,7 +716,15 @@ void PictureDialog::openPreviewMap()
 
 void PictureDialog::editSnapmaticProperties()
 {
-    SnapmaticEditor *snapmaticEditor = new SnapmaticEditor(crewDB, this);
+    SnapmaticEditor *snapmaticEditor;
+    if (rqFullscreen && fullscreenWidget != nullptr)
+    {
+        snapmaticEditor = new SnapmaticEditor(crewDB, fullscreenWidget);
+    }
+    else
+    {
+        snapmaticEditor = new SnapmaticEditor(crewDB, this);
+    }
     snapmaticEditor->setWindowFlags(snapmaticEditor->windowFlags()^Qt::WindowContextHelpButtonHint);
     snapmaticEditor->setWindowIcon(windowIcon());
     snapmaticEditor->setSnapmaticPicture(smpic);
