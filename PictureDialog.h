@@ -125,9 +125,9 @@ private:
     int avatarLocX;
     int avatarLocY;
     int avatarSize;
-    QMenu *editMenu;
+    //QMenu *editMenu;
     QMenu *manageMenu;
-    QMenu *exportMenu;
+    //QMenu *exportMenu;
 };
 
 #endif // PICTUREDIALOG_H

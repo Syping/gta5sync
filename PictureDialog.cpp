@@ -142,11 +142,14 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
 
     // Export menu
     manageMenu = new QMenu(this);
-    editMenu = manageMenu->addMenu(tr("Edi&t"));
-    propEditorAction = editMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
-    exportMenu = manageMenu->addMenu(tr("&Export"));
-    jpegExportAction = exportMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
-    pgtaExportAction = exportMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
+    //editMenu = manageMenu->addMenu(tr("Edi&t"));
+    //propEditorAction = editMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
+    //exportMenu = manageMenu->addMenu(tr("&Export"));
+    //jpegExportAction = exportMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
+    //pgtaExportAction = exportMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
+    jpegExportAction = manageMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
+    pgtaExportAction = manageMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
+    propEditorAction = manageMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
     ui->cmdManage->setMenu(manageMenu);
 
     // Global map
@@ -176,7 +179,7 @@ PictureDialog::~PictureDialog()
     delete propEditorAction;
     delete jpegExportAction;
     delete pgtaExportAction;
-    delete exportMenu;
+    //delete exportMenu;
     delete manageMenu;
     delete ui;
 }
@@ -344,7 +347,7 @@ void PictureDialog::triggerFullscreenDoubeClick()
 void PictureDialog::exportCustomContextMenuRequestedPrivate(const QPoint &pos, bool fullscreen)
 {
     rqFullscreen = fullscreen;
-    exportMenu->popup(pos);
+    manageMenu->popup(pos);
 }
 
 void PictureDialog::exportCustomContextMenuRequested(const QPoint &pos)
