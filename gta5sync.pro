@@ -169,14 +169,16 @@ isEqual(QT_MAJOR_VERSION, 4): RESOURCES += res/tr_qt4.qrc
 # QT5 ONLY STUFF
 isEqual(QT_MAJOR_VERSION, 5): RESOURCES += res/tr_qt5.qrc
 
-# UNIX SYSTEM STUFF
+# PROJECT INSTALLATION
 
-unix: !macx: appfiles.path = $$(INSTALL_PATH)/share/applications
-unix: !macx: appfiles.files = $$PWD/res/gta5sync.desktop
-unix: !macx: pixmaps.path = $$(INSTALL_PATH)/share/pixmaps
-unix: !macx: pixmaps.files = $$PWD/res/gta5sync.png
-unix: !macx: target.path = $$(INSTALL_PATH)/bin
-unix: !macx: INSTALLS += target pixmaps appfiles
+isEmpty(GTA5SYNC_PREFIX): GTA5SYNC_PREFIX = /usr/local
+
+appfiles.path = $$GTA5SYNC_PREFIX/share/applications
+appfiles.files = $$PWD/res/gta5sync.desktop
+pixmaps.path = $$GTA5SYNC_PREFIX/share/pixmaps
+pixmaps.files = $$PWD/res/gta5sync.png
+target.path = $$GTA5SYNC_PREFIX/bin
+INSTALLS += target pixmaps appfiles
 
 # QCONF BASED BUILD STUFF
 
@@ -185,8 +187,8 @@ contains(DEFINES, GTA5SYNC_QCONF){
     isEqual(QT_MAJOR_VERSION, 5): RESOURCES -= res/tr_qt5.qrc
     !contains(DEFINES, GTA5SYNC_QCONF_IN){
         RESOURCES -= res/tr_g5p.qrc
-        unix: !macx: langfiles.path = $$(INSTALL_PATH)/share/gta5sync/translations
-        unix: !macx: langfiles.files = $$PWD/res/gta5sync_de.qm $$PWD/res/gta5sync_fr.qm $$PWD/res/gta5sync_ru.qm
-        unix: !macx: INSTALLS += langfiles
+        langfiles.path = $$GTA5SYNC_PREFIX/share/gta5sync/translations
+        langfiles.files = $$PWD/res/gta5sync_de.qm $$PWD/res/gta5sync_fr.qm $$PWD/res/gta5sync_ru.qm
+        INSTALLS += langfiles
     }
 }
