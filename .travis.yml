@@ -25,7 +25,7 @@ before_script:
   - echo "Grand Theft Auto V Savegame and Snapmatic sync" > ./description-pak
 
 script:
-  - qmake -qt=5 "DEFINES+=GTA5SYNC_BUILDTYPE=\\\\\\\"TravisCI\\\\\\\"" "DEFINES+=GTA5SYNC_DAILYB=\\\\\\\"$APPLICATION_VERSION\\\\\\\"" "DEFINES+=GTA5SYNC_QCONF" ../gta5sync.pro
+  - qmake -qt=5 "QMAKE_CXXFLAGS+=-std=c++11" "DEFINES+=GTA5SYNC_BUILDTYPE=\\\\\\\"TravisCI\\\\\\\"" "DEFINES+=GTA5SYNC_DAILYB=\\\\\\\"$APPLICATION_VERSION\\\\\\\"" "DEFINES+=GTA5SYNC_QCONF" ../gta5sync.pro
   - make -j 4
   - sudo checkinstall -D --default --nodoc --pkgname=gta5sync --pkgversion=$APPLICATION_VERSION --pkgrelease=travis1 --pkggroup=utility --maintainer="Syping on Travis \<travisci@syping.de\>"  --requires=libqt5core5a,libqt5gui5,libqt5network5,libqt5widgets5,qttranslations5-l10n --pakdir=../package
 
