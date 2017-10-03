@@ -52,7 +52,43 @@
 #ifndef GTA5SYNC_DAILYB
 #define GTA5SYNC_APPVER "1.0.0"
 #else
-#define GTA5SYNC_APPVER QString("%1").arg(GTA5SYNC_DAILYB)
+#define GTA5SYNC_APPVER GTA5SYNC_DAILYB
+#endif
+#endif
+
+#ifdef GTA5SYNC_BUILDTYPE_REL
+#ifndef GTA5SYNC_BUILDTYPE
+#define GTA5SYNC_BUILDTYPE "Release"
+#endif
+#endif
+
+#ifdef GTA5SYNC_BUILDTYPE_RC
+#ifndef GTA5SYNC_BUILDTYPE
+#define GTA5SYNC_BUILDTYPE "Release Candidate"
+#endif
+#endif
+
+#ifdef GTA5SYNC_BUILDTYPE_DAILY
+#ifndef GTA5SYNC_BUILDTYPE
+#define GTA5SYNC_BUILDTYPE "Daily Build"
+#endif
+#endif
+
+#ifdef GTA5SYNC_BUILDTYPE_DEV
+#ifndef GTA5SYNC_BUILDTYPE
+#define GTA5SYNC_BUILDTYPE "Developer"
+#endif
+#endif
+
+#ifdef GTA5SYNC_BUILDTYPE_BETA
+#ifndef GTA5SYNC_BUILDTYPE
+#define GTA5SYNC_BUILDTYPE "Beta"
+#endif
+#endif
+
+#ifdef GTA5SYNC_BUILDTYPE_ALPHA
+#ifndef GTA5SYNC_BUILDTYPE
+#define GTA5SYNC_BUILDTYPE "Alpha"
 #endif
 #endif
 
