@@ -15,7 +15,6 @@ install:
   - sudo apt-get install -qq checkinstall dpkg-dev g++ gcc qtbase5-dev qt5-qmake qttranslations5-l10n
   
 before_script:
-  - export INSTALL_ROOT=/usr
   - if [ `git name-rev --tags --name-only $(git rev-parse HEAD)` == "undefined" ]; then export APPLICATION_VERSION="$PACKAGE_VERSION.$TRAVIS_BUILD_NUMBER"; else export APPLICATION_VERSION=`git name-rev --tags --name-only $(git rev-parse HEAD)`; fi
   - echo "gta5sync build version is $APPLICATION_VERSION"
   - mkdir build
@@ -25,7 +24,7 @@ before_script:
   - echo "Grand Theft Auto V Savegame and Snapmatic sync" > ./description-pak
 
 script:
-  - qmake -qt=5 "GTA5SYNC_PREFIX=/usr" "QMAKE_CXXFLAGS+=-std=c++11" "DEFINES+=GTA5SYNC_BUILDTYPE_DEV" "DEFINES+=GTA5SYNC_APPVER=\\\\\\\"$APPLICATION_VERSION\\\\\\\"" "DEFINES+=GTA5SYNC_QCONF" ../gta5sync.pro
+  - qmake -qt=5 GTA5SYNC_PREFIX=/usr QMAKE_CXXFLAGS+=-std=c++11 DEFINES+=GTA5SYNC_BUILDTYPE_DEV "DEFINES+=GTA5SYNC_APPVER=\\\\\\\"$APPLICATION_VERSION\\\\\\\"" DEFINES+=GTA5SYNC_QCONF ../gta5sync.pro
   - make -j 4
   - sudo checkinstall -D --default --nodoc --pkgname=gta5sync --pkgversion=$APPLICATION_VERSION --pkgrelease=travis1 --pkggroup=utility --maintainer="Syping on Travis \<travisci@syping.de\>"  --requires=libqt5core5a,libqt5gui5,libqt5network5,libqt5widgets5,qttranslations5-l10n --pakdir=../package
 
