@@ -73,6 +73,36 @@ Pictures and Savegames</source>
         <source>%1 is licensed under &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../config.h" line="62"/>
+        <source>Release</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="68"/>
+        <source>Release Candidate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="74"/>
+        <source>Daily Build</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="80"/>
+        <source>Developer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="86"/>
+        <source>Beta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="92"/>
+        <source>Alpha</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CrewDatabase</name>

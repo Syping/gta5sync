@@ -25,6 +25,11 @@ DEPLOYMENT.display_name = gta5sync
 TARGET = gta5sync
 TEMPLATE = app
 
+# CONFIGURATION
+
+HEADERS += config.h
+PRECOMPILED_HEADER += config.h
+
 SOURCES += main.cpp \
     AboutDialog.cpp \
     AppEnv.cpp \
@@ -92,8 +97,6 @@ HEADERS  += \
     UserInterface.h \
     uimod/UiModLabel.h \
     uimod/UiModWidget.h
-
-PRECOMPILED_HEADER += config.h
 
 FORMS    += \
     AboutDialog.ui \
@@ -164,7 +167,6 @@ isEqual(QT_MAJOR_VERSION, 4): SOURCES += qjson4/QJsonArray.cpp \
 isEqual(QT_MAJOR_VERSION, 4): RESOURCES += res/tr_qt4.qrc
 
 # QT5 ONLY STUFF
-
 isEqual(QT_MAJOR_VERSION, 5): RESOURCES += res/tr_qt5.qrc
 
 # UNIX SYSTEM STUFF

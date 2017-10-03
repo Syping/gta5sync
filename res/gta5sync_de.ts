@@ -218,6 +218,36 @@ Pictures and Savegames</source>
         <translation>Ein Projekt zum ansehen und synchronisieren von&lt;br/&gt;
 Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     </message>
+    <message>
+        <location filename="../config.h" line="62"/>
+        <source>Release</source>
+        <translation>Release</translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="68"/>
+        <source>Release Candidate</source>
+        <translation>Release Candidate</translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="74"/>
+        <source>Daily Build</source>
+        <translation>Daily Build</translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="80"/>
+        <source>Developer</source>
+        <translation>Entwickler</translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="86"/>
+        <source>Beta</source>
+        <translation>Beta</translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="92"/>
+        <source>Alpha</source>
+        <translation>Alpha</translation>
+    </message>
 </context>
 <context>
     <name>CrewDatabase</name>

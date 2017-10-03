@@ -182,6 +182,36 @@ Pictures and Savegames</source>
         <translation>Un outil pour gérer et synchroniser les photos Snapmatic&lt;br/&gt;
 et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
+    <message>
+        <location filename="../config.h" line="62"/>
+        <source>Release</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="68"/>
+        <source>Release Candidate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="74"/>
+        <source>Daily Build</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="80"/>
+        <source>Developer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="86"/>
+        <source>Beta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="92"/>
+        <source>Alpha</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CrewDatabase</name>

@@ -31,7 +31,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
 
     // Build Strings
     QString appVersion = qApp->applicationVersion();
-    QString buildType = GTA5SYNC_BUILDTYPE;
+    QString buildType = tr(GTA5SYNC_BUILDTYPE);
     buildType.replace("_", " ");
     QString projectBuild = GTA5SYNC_BUILDDATETIME;
     QString buildStr = GTA5SYNC_BUILDSTRING;
