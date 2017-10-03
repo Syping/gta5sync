@@ -56,6 +56,12 @@
 #endif
 #endif
 
+#ifdef GTA5SYNC_DAILYB
+#ifndef GTA5SYNC_BUILDTYPE
+#define GTA5SYNC_BUILDTYPE "Daily Build"
+#endif
+#endif
+
 #ifndef GTA5SYNC_BUILDTYPE
 #define GTA5SYNC_BUILDTYPE "Custom"
 #endif
