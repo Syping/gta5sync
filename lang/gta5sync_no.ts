@@ -426,17 +426,12 @@ Pictures and Savegames</source>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="177"/>
-        <source>Export picture</source>
+        <source>Manage picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="180"/>
         <source>&amp;Manage</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../PictureDialog.cpp" line="146"/>
-        <source>&amp;Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -450,63 +445,58 @@ Pictures and Savegames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="147"/>
+        <location filename="../PictureDialog.cpp" line="150"/>
         <source>Export as &amp;Picture...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
+        <location filename="../PictureDialog.cpp" line="151"/>
         <source>Export as &amp;Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="144"/>
-        <source>Edi&amp;t</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../PictureDialog.cpp" line="145"/>
+        <location filename="../PictureDialog.cpp" line="153"/>
         <source>&amp;Edit Properties...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="374"/>
+        <location filename="../PictureDialog.cpp" line="379"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Snapmatic Picture Viewer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Failed at %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="472"/>
-        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="595"/>
         <source>No Crew</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
         <source>Unknown Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
-        <location filename="../PictureDialog.cpp" line="617"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="620"/>
         <source>No Players</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="563"/>
+        <location filename="../PictureDialog.cpp" line="566"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation type="unfinished"></translation>

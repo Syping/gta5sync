@@ -674,9 +674,13 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
 &lt;span style=&quot; font-weight:600;&quot;&gt;Erstellt: &lt;/span&gt;%8</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="146"/>
         <source>&amp;Export</source>
-        <translation>&amp;Exportieren</translation>
+        <translation type="vanished">&amp;Exportieren</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.ui" line="177"/>
+        <source>Manage picture</source>
+        <translation>Bild verwalten</translation>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="180"/>
@@ -736,7 +740,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Exportiere als &amp;JPG Bild...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="147"/>
+        <location filename="../PictureDialog.cpp" line="150"/>
         <source>Export as &amp;Picture...</source>
         <translation>Exportiere als &amp;Bild...</translation>
     </message>
@@ -745,22 +749,21 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Exportiere als &amp;GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
+        <location filename="../PictureDialog.cpp" line="151"/>
         <source>Export as &amp;Snapmatic...</source>
         <translation>Exportiere als &amp;Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="144"/>
         <source>Edi&amp;t</source>
-        <translation>Bearbei&amp;ten</translation>
+        <translation type="vanished">Bearbei&amp;ten</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="145"/>
+        <location filename="../PictureDialog.cpp" line="153"/>
         <source>&amp;Edit Properties...</source>
         <translation>&amp;Eigenschaften bearbeiten...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="374"/>
+        <location filename="../PictureDialog.cpp" line="379"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -769,31 +772,31 @@ Taste 2 - Overlay umschalten
 Pfeiltasten - Navigieren</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Snapmatic Bildansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Failed at %1</source>
         <translation>Fehlgeschlagen bei %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="472"/>
-        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="595"/>
         <source>No Crew</source>
         <translation>Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
-        <location filename="../PictureDialog.cpp" line="617"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="620"/>
         <source>No Players</source>
         <translation>Keine Spieler</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="563"/>
+        <location filename="../PictureDialog.cpp" line="566"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Avatar Vorschaumodus
@@ -838,7 +841,7 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
         <source>Unknown Location</source>
         <translation>Unbekannter Standort</translation>
     </message>
@@ -964,9 +967,8 @@ Drücke A für Standardansicht</translation>
         <translation type="obsolete">JPEG Bild (*.jpg);;Portable Network Graphics (*.png)</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.ui" line="177"/>
         <source>Export picture</source>
-        <translation>Bild exportieren</translation>
+        <translation type="vanished">Bild exportieren</translation>
     </message>
     <message>
         <source>Snapmatic Picture Exporter</source>
@@ -1166,7 +1168,7 @@ Drücke A für Standardansicht</translation>
     <message>
         <location filename="../ProfileInterface.cpp" line="754"/>
         <source>Failed to import the Snapmatic picture, can&apos;t copy the file into profile</source>
-        <translation>Fehlgeschlagen beim Importieren vom Snapmatic Bild, kann Snapmatic Bild nicht ins Profil kopieren </translation>
+        <translation>Fehlgeschlagen beim Importieren vom Snapmatic Bild, kann Snapmatic Bild nicht ins Profil kopieren</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="791"/>
@@ -1703,7 +1705,7 @@ Exportieren als:</translation>
     <message>
         <location filename="../SnapmaticEditor.ui" line="155"/>
         <source>Qualify as Avatar automatically at apply</source>
-        <translation>Beim Übernehmen als Avatar qualifizieren  </translation>
+        <translation>Beim Übernehmen als Avatar qualifizieren</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="168"/>

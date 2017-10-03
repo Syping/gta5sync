@@ -536,9 +536,8 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
 &lt;span style=&quot; font-weight:600;&quot;&gt;Сделано: &lt;/span&gt;%8</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.ui" line="177"/>
         <source>Export picture</source>
-        <translation>Экспорт картинки</translation>
+        <translation type="vanished">Экспорт картинки</translation>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="180"/>
@@ -546,9 +545,13 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="146"/>
         <source>&amp;Export</source>
-        <translation>&amp;Экспорт</translation>
+        <translation type="vanished">&amp;Экспорт</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.ui" line="177"/>
+        <source>Manage picture</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PictureDialog.ui" line="199"/>
@@ -579,7 +582,7 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
         <translation type="vanished">Эксп&amp;ортировать как картинку JPG...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="147"/>
+        <location filename="../PictureDialog.cpp" line="150"/>
         <source>Export as &amp;Picture...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -588,22 +591,21 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
         <translation type="vanished">Экс&amp;портировать как GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
+        <location filename="../PictureDialog.cpp" line="151"/>
         <source>Export as &amp;Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="144"/>
         <source>Edi&amp;t</source>
-        <translation type="unfinished">&amp;Правка</translation>
+        <translation type="obsolete">&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="145"/>
+        <location filename="../PictureDialog.cpp" line="153"/>
         <source>&amp;Edit Properties...</source>
         <translation type="unfinished">&amp;Изменить свойства...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="374"/>
+        <location filename="../PictureDialog.cpp" line="379"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -612,31 +614,31 @@ Arrow Keys - Navigate</source>
 Стрелки - Навигация</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Просмотрщик фотографий Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Failed at %1</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="472"/>
-        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="595"/>
         <source>No Crew</source>
         <translation>Вне банды</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
-        <location filename="../PictureDialog.cpp" line="617"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="620"/>
         <source>No Players</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="563"/>
+        <location filename="../PictureDialog.cpp" line="566"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Режим просмотра аватарок
@@ -651,7 +653,7 @@ Press 1 for Default View</source>
         <translation type="vanished">Без группы</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
         <source>Unknown Location</source>
         <translation>Неизвестное место</translation>
     </message>
