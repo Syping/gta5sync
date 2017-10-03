@@ -12,7 +12,7 @@ before_install:
 
 install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq checkinstall dpkg-dev g++ gcc qtbase5-dev qt5-qmake qttranslations5-l10n
+  - sudo apt-get install -qq checkinstall dpkg-dev g++ gcc qtbase5-dev qt5-qmake qttranslations5-l10n libqt4-dev
   
 before_script:
   - if [ `git name-rev --tags --name-only $(git rev-parse HEAD)` == "undefined" ]; then export APPLICATION_VERSION="$PACKAGE_VERSION.$TRAVIS_BUILD_NUMBER"; else export APPLICATION_VERSION=`git name-rev --tags --name-only $(git rev-parse HEAD)`; fi
@@ -22,17 +22,27 @@ before_script:
   - chmod -x res/gta5sync_*.qm res/gta5sync.desktop res/gta5sync.png
   - cd build
   - echo "Grand Theft Auto V Savegame and Snapmatic sync" > ./description-pak
+  - mkdir qt4
+  - mkdir qt5
 
 script:
+  - cd qt5
   - qmake -qt=5 GTA5SYNC_PREFIX=/usr QMAKE_CXXFLAGS+=-std=c++11 DEFINES+=GTA5SYNC_BUILDTYPE_DEV "DEFINES+=GTA5SYNC_APPVER=\\\\\\\"$APPLICATION_VERSION\\\\\\\"" DEFINES+=GTA5SYNC_QCONF ../gta5sync.pro
   - make -j 4
-  - sudo checkinstall -D --default --nodoc --pkgname=gta5sync --pkgversion=$APPLICATION_VERSION --pkgrelease=travis1 --pkggroup=utility --maintainer="Syping on Travis \<travisci@syping.de\>"  --requires=libqt5core5a,libqt5gui5,libqt5network5,libqt5widgets5,qttranslations5-l10n --pakdir=../package
+  - sudo checkinstall -D --default --nodoc --install=no --pkgname=gta5sync --pkgversion=$APPLICATION_VERSION --pkgrelease=travis1 --pkggroup=utility --maintainer="Syping on Travis \<travisci@syping.de\>"  --requires=libqt5core5a,libqt5gui5,libqt5network5,libqt5widgets5,qttranslations5-l10n --pakdir=../../package
+  - cd ..
+  - cd qt4
+  - qmake -qt=4 GTA5SYNC_PREFIX=/usr QMAKE_CXXFLAGS+=-std=c++11 DEFINES+=GTA5SYNC_BUILDTYPE_DEV "DEFINES+=GTA5SYNC_APPVER=\\\\\\\"$APPLICATION_VERSION\\\\\\\"" DEFINES+=GTA5SYNC_QCONF ../gta5sync.pro
+  - make -j 4
+  - sudo checkinstall -D --default --nodoc --install=no --pkgname=gta5sync-legacy --pkgversion=$APPLICATION_VERSION --pkgrelease=travis1 --pkggroup=utility --maintainer="Syping on Travis \<travisci@syping.de\>"  --requires=libqtcore4,libqtgui4,libqt4-network,qtcore4-l10n --pakdir=../../package
+  - cd ..
 
 deploy:
   provider: releases
   api_key:
     secure: "gNWX6TnP8hmwJLXQLi5EnCevgfCaA5MSW135rYY1EpU38eNRz/uMwVr+WV905+qRkhQzllgsuwgqDymDUlhLjbVrgNkWtw0Urt19BmFSeKm/FvwJIypFgaCHf+4wd9iiaPZjvVa95+wevbpABnmRSyDVo1PpGSjlcY5GdEQU/QsQtQdjJu52BPxb6Xbe1ycqGEizpxnwJvJERoBiaWcocVU+GdAdCzqp09u6M9B9ytq0lb9+nHwvizirnkvsPnXR8QIy9XA8fi86Xtq2Ij9hTja+r2bdqvsTJUWQRgSVbrEvRKzLIHFU8ZazjgeVopPhb1Gb9ToWeKcu7l4lW242sDsdSLLGIHvaQhKIeBIkIk3OyrhGcoZczQtHKjSyZtFDU9r7NNgnJqOEwdbvBIRHkOJa4Nqv2edzSeWrNh4w8LLC5r6CdXQpgLArU/o914qb3zGSyZQ5TO6xIP86IkG9XCSCs5LIG/bu6DkVirasKdEXdS2vFmasklkVfdLmkT21EjOTMD5bsNyzBh6NtR5qSkYmiNlWE7JUBOXLoQY6nQvcfu8ybnAuxSAWOd6xaoGHOtVZ1RAK6ZBGGPOiScKceVFHWxmc0XmRHNtkEpXN4AV4R5NPZUT189SgrIylIWZSJ++ezhkIO6IM7z0C0OLpGjZ4/9a/3RChqd/0LpGBCFE="
-  file: "../package/gta5sync_$APPLICATION_VERSION-travis1_amd64.deb"
+  file_glob: true
+  file: "../package/gta5sync_*.deb"
   skip_cleanup: true
   on:
     tags: true
