@@ -129,8 +129,8 @@ void OptionsDialog::setupLanguageBox()
     currentLanguage = settings->value("Language","System").toString();
     settings->endGroup();
 
-     QString cbSysStr = tr("%1 (Next Closest Language)", "First language a person can talk with a different person/application. \"Native\" or \"Not Native\".").arg(tr("System",
-    "System in context of System default"));
+    QString cbSysStr = tr("%1 (Next Closest Language)", "First language a person can talk with a different person/application. \"Native\" or \"Not Native\".").arg(tr("System",
+                                                                                                                                                                      "System in context of System default"));
     ui->cbLanguage->addItem(cbSysStr, "System");
 
     QString cbEngStr = "English (English) [en]";
@@ -145,10 +145,10 @@ void OptionsDialog::setupLanguageBox()
 #endif
     }
     QStringList availableLanguages;
-    availableLanguages << TCInstance->listTranslations(AppEnv::getExLangFolder());
 #ifndef GTA5SYNC_QCONF
-    availableLanguages << TCInstance->listTranslations(AppEnv::getInLangFolder());
+    availableLanguages << TCInstance->listTranslations(AppEnv::getExLangFolder());
 #endif
+    availableLanguages << TCInstance->listTranslations(AppEnv::getInLangFolder());
     availableLanguages.removeDuplicates();
 
     foreach(const QString &lang, availableLanguages)

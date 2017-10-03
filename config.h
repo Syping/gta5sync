@@ -70,6 +70,11 @@
 #ifndef GTA5SYNC_PLUG
 #define GTA5SYNC_PLUG "QCONFPLUG:"
 #endif
+#ifdef GTA5SYNC_QCONF_IN
+#ifndef GTA5SYNC_INLANG
+#define GTA5SYNC_INLANG ":/tr"
+#endif
+#endif
 #endif
 
 #ifndef GTA5SYNC_SHARE
