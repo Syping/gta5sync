@@ -141,11 +141,11 @@ fileDialogPreSave: //Work?
 
             if (QFile::exists(selectedFile))
             {
-                if (QMessageBox::Yes == QMessageBox::warning(parent, PictureDialog::tr("Export as JPG picture"), PictureDialog::tr("Overwrite %1 with current Snapmatic picture?").arg("\""+selectedFile+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
+                if (QMessageBox::Yes == QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Overwrite %1 with current Snapmatic picture?").arg("\""+selectedFile+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
                 {
                     if (!QFile::remove(selectedFile))
                     {
-                        QMessageBox::warning(parent, PictureDialog::tr("Export as JPG picture"), PictureDialog::tr("Failed to overwrite %1 with current Snapmatic picture").arg("\""+selectedFile+"\""));
+                        QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Failed to overwrite %1 with current Snapmatic picture").arg("\""+selectedFile+"\""));
                         goto fileDialogPreSave; //Work?
                     }
                 }
@@ -179,13 +179,13 @@ fileDialogPreSave: //Work?
 
             if (!isSaved)
             {
-                QMessageBox::warning(parent, PictureDialog::tr("Export as JPG picture"), PictureDialog::tr("Failed to export current Snapmatic picture"));
+                QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Failed to export current Snapmatic picture"));
                 goto fileDialogPreSave; //Work?
             }
         }
         else
         {
-            QMessageBox::warning(parent, PictureDialog::tr("Export as JPG picture"), PictureDialog::tr("No valid file is selected"));
+            QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("No valid file is selected"));
             goto fileDialogPreSave; //Work?
         }
     }
@@ -244,11 +244,11 @@ fileDialogPreSave: //Work?
 
             if (QFile::exists(selectedFile))
             {
-                if (QMessageBox::Yes == QMessageBox::warning(parent, PictureDialog::tr("Export as GTA Snapmatic"), PictureDialog::tr("Overwrite %1 with current Snapmatic picture?").arg("\""+selectedFile+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
+                if (QMessageBox::Yes == QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Overwrite %1 with current Snapmatic picture?").arg("\""+selectedFile+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
                 {
                     if (!QFile::remove(selectedFile))
                     {
-                        QMessageBox::warning(parent, PictureDialog::tr("Export as GTA Snapmatic"), PictureDialog::tr("Failed to overwrite %1 with current Snapmatic picture").arg("\""+selectedFile+"\""));
+                        QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Failed to overwrite %1 with current Snapmatic picture").arg("\""+selectedFile+"\""));
                         goto fileDialogPreSave; //Work?
                     }
                 }
@@ -263,7 +263,7 @@ fileDialogPreSave: //Work?
                 bool isExported = picture->exportPicture(selectedFile, "G5E");
                 if (!isExported)
                 {
-                    QMessageBox::warning(parent, PictureDialog::tr("Export as GTA Snapmatic"), PictureDialog::tr("Failed to export current Snapmatic picture"));
+                    QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Failed to export current Snapmatic picture"));
                     goto fileDialogPreSave; //Work?
                 }
             }
@@ -284,18 +284,18 @@ fileDialogPreSave: //Work?
                 bool isCopied = picture->exportPicture(selectedFile, "PGTA");
                 if (!isCopied)
                 {
-                    QMessageBox::warning(parent, PictureDialog::tr("Export as GTA Snapmatic"), PictureDialog::tr("Failed to export current Snapmatic picture"));
+                    QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Failed to export current Snapmatic picture"));
                     goto fileDialogPreSave; //Work?
                 }
                 else
                 {
-                    if (isAutoExt) QMessageBox::information(parent, PictureDialog::tr("Export as GTA Snapmatic"), PictureDialog::tr("Exported Snapmatic to \"%1\" because of using the .auto extension.").arg(selectedFile));
+                    if (isAutoExt) QMessageBox::information(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Exported Snapmatic to \"%1\" because of using the .auto extension.").arg(selectedFile));
                 }
             }
         }
         else
         {
-            QMessageBox::warning(parent, PictureDialog::tr("Export as GTA Snapmatic"), PictureDialog::tr("No valid file is selected"));
+            QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("No valid file is selected"));
             goto fileDialogPreSave; //Work?
         }
     }
