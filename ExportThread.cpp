@@ -82,7 +82,7 @@ void ExportThread::run()
         {
             if (widget->getWidgetType() == "SnapmaticWidget")
             {
-                SnapmaticWidget *picWidget = (SnapmaticWidget*)widget;
+                SnapmaticWidget *picWidget = qobject_cast<SnapmaticWidget*>(widget);
                 SnapmaticPicture *picture = picWidget->getPicture();
 
                 if (pictureExportEnabled)
@@ -101,7 +101,7 @@ void ExportThread::run()
                     QImage exportPicture = picture->getImage();
                     if (sizeMode == "Desktop")
                     {
-                        QRect desktopResolution = QApplication::desktop()->screenGeometry();
+                        QRect desktopResolution = qApp->desktop()->screenGeometry();
                         exportPicture = exportPicture.scaled(desktopResolution.width(), desktopResolution.height(), aspectRatio, Qt::SmoothTransformation);
                     }
                     else if (sizeMode == "Custom")
@@ -146,7 +146,7 @@ void ExportThread::run()
             }
             else if (widget->getWidgetType() == "SavegameWidget")
             {
-                SavegameWidget *sgdWidget = (SavegameWidget*)widget;
+                SavegameWidget *sgdWidget = qobject_cast<SavegameWidget*>(widget);
                 SavegameData *savegame = sgdWidget->getSavegame();
 
                 QString originalFileName = savegame->getSavegameFileName();

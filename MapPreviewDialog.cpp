@@ -49,23 +49,24 @@ void MapPreviewDialog::drawPointOnMap(double xpos_d, double ypos_d)
     qreal screenRatio = AppEnv::screenRatio();
     int pointMakerSize = 8 * screenRatio;
     QPixmap pointMakerPixmap = IconLoader::loadingPointmakerIcon().pixmap(QSize(pointMakerSize, pointMakerSize));
+    QSize mapPixelSize = size();
 
     int pointMakerHalfSize = pointMakerSize / 2;
     long xpos_ms = std::round(xpos_d);
     long ypos_ms = std::round(ypos_d);
     double xpos_ma = xpos_ms + 4000;
     double ypos_ma = ypos_ms + 4000;
-    double xrat = (double)size().width() / 10000;
-    double yrat = (double)size().height() / 12000;
+    double xrat = (double)mapPixelSize.width() / 10000;
+    double yrat = (double)mapPixelSize.height() / 12000;
     long xpos_mp = std::round(xpos_ma * xrat);
     long ypos_mp = std::round(ypos_ma * yrat);
     long xpos_pr = xpos_mp - pointMakerHalfSize;
     long ypos_pr = ypos_mp + pointMakerHalfSize;
 
-    QPixmap mapPixmap(size());
+    QPixmap mapPixmap(mapPixelSize);
     QPainter mapPainter(&mapPixmap);
-    mapPainter.drawPixmap(0, 0, size().width(), size().height(), QPixmap(":/img/mappreview.jpg").scaled(size(), Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
-    mapPainter.drawPixmap(xpos_pr, size().height() - ypos_pr, pointMakerSize, pointMakerSize, pointMakerPixmap);
+    mapPainter.drawPixmap(0, 0, mapPixelSize.width(), mapPixelSize.height(), QPixmap(":/img/mappreview.jpg").scaled(mapPixelSize, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+    mapPainter.drawPixmap(xpos_pr, mapPixelSize.height() - ypos_pr, pointMakerSize, pointMakerSize, pointMakerPixmap);
     mapPainter.end();
 
     ui->labPicture->setPixmap(mapPixmap);
