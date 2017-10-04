@@ -1277,7 +1277,7 @@ bool ProfileInterface::eventFilter(QObject *watched, QEvent *event)
             return true;
         }
     }
-    else if (event->type() == QEvent::MouseButtonPress || event->type() == QEvent::MouseButtonRelease || event->type() == QEvent::WindowActivate)
+    else if ((event->type() == QEvent::MouseButtonPress || event->type() == QEvent::MouseButtonRelease || event->type() == QEvent::WindowActivate) && isProfileLoaded)
     {
         ProfileWidget *pWidget = nullptr;
         foreach(ProfileWidget *widget, widgets.keys())
