@@ -57,8 +57,8 @@ void MapPreviewDialog::drawPointOnMap(double xpos_d, double ypos_d)
     double ypos_ma = ypos_ms + 4000;
     double xrat = (double)size().width() / 10000;
     double yrat = (double)size().height() / 12000;
-    long xpos_mp = round(xpos_ma * xrat);
-    long ypos_mp = round(ypos_ma * yrat);
+    long xpos_mp = std::round(xpos_ma * xrat);
+    long ypos_mp = std::round(ypos_ma * yrat);
     long xpos_pr = xpos_mp - pointMakerHalfSize;
     long ypos_pr = ypos_mp + pointMakerHalfSize;
 
