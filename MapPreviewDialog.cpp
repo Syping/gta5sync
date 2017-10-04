@@ -20,10 +20,8 @@
 #include "ui_MapPreviewDialog.h"
 #include "IconLoader.h"
 #include "AppEnv.h"
-#include "math.h"
 #include <QPainter>
 #include <QDebug>
-using namespace std;
 
 MapPreviewDialog::MapPreviewDialog(QWidget *parent) :
     QDialog(parent),
@@ -53,8 +51,8 @@ void MapPreviewDialog::drawPointOnMap(double xpos_d, double ypos_d)
     QPixmap pointMakerPixmap = IconLoader::loadingPointmakerIcon().pixmap(QSize(pointMakerSize, pointMakerSize));
 
     int pointMakerHalfSize = pointMakerSize / 2;
-    long xpos_ms = round(xpos_d);
-    long ypos_ms = round(ypos_d);
+    long xpos_ms = std::round(xpos_d);
+    long ypos_ms = std::round(ypos_d);
     double xpos_ma = xpos_ms + 4000;
     double ypos_ma = ypos_ms + 4000;
     double xrat = (double)size().width() / 10000;
