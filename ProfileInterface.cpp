@@ -1150,6 +1150,15 @@ int ProfileInterface::selectedWidgets()
 void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
 {
     SnapmaticWidget *picWidget = qobject_cast<SnapmaticWidget*>(sender());
+    if (picWidget != previousWidget)
+    {
+        if (previousWidget != nullptr)
+        {
+            previousWidget->setStyleSheet(QLatin1String(""));
+        }
+        picWidget->setStyleSheet(QString("QFrame#SnapmaticFrame{background-color: rgb(%1, %2, %3)}QLabel#labPicStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
+        previousWidget = picWidget;
+    }
     QMenu contextMenu(picWidget);
     QMenu editMenu(SnapmaticWidget::tr("Edi&t"), picWidget);
     if (picWidget->isHidden())
@@ -1185,6 +1194,15 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
 void ProfileInterface::contextMenuTriggeredSGD(QContextMenuEvent *ev)
 {
     SavegameWidget *sgdWidget = qobject_cast<SavegameWidget*>(sender());
+    if (sgdWidget != previousWidget)
+    {
+        if (previousWidget != nullptr)
+        {
+            previousWidget->setStyleSheet(QLatin1String(""));
+        }
+        sgdWidget->setStyleSheet(QString("QFrame#SavegameFrame{background-color: rgb(%1, %2, %3)}QLabel#labSavegameStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
+        previousWidget = sgdWidget;
+    }
     QMenu contextMenu(sgdWidget);
     contextMenu.addAction(SavegameWidget::tr("&View"), sgdWidget, SLOT(on_cmdView_clicked()));
     contextMenu.addAction(SavegameWidget::tr("&Export"), sgdWidget, SLOT(on_cmdCopy_clicked()));
