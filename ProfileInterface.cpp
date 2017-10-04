@@ -1287,10 +1287,6 @@ bool ProfileInterface::eventFilter(QObject *watched, QEvent *event)
                     previousWidget = pWidget;
                 }
             }
-            else
-            {
-                pWidget->setStyleSheet(QLatin1String(""));
-            }
             return true;
         }
     }
@@ -1335,5 +1331,28 @@ bool ProfileInterface::eventFilter(QObject *watched, QEvent *event)
             }
         }
     }
+    else if (event->type() == QEvent::WindowDeactivate && isProfileLoaded)
+    {
+        if (previousWidget != nullptr)
+        {
+            previousWidget->setStyleSheet(QLatin1String(""));
+            previousWidget = nullptr;
+        }
+    }
+#if QT_VERSION >= 0x050000
+    else if (event->type() == QEvent::Leave)
+    {
+        ProfileWidget *pWidget = qobject_cast<ProfileWidget*>(watched);
+        QPoint mousePos = pWidget->mapFromGlobal(QCursor::pos());
+        if (!pWidget->rect().contains(mousePos))
+        {
+            if (previousWidget != nullptr)
+            {
+                previousWidget->setStyleSheet(QLatin1String(""));
+                previousWidget = nullptr;
+            }
+        }
+    }
+#endif
     return false;
 }
