@@ -26,6 +26,7 @@
 #include "CrewDatabase.h"
 #include "SavegameData.h"
 #include <QMainWindow>
+#include <QMouseEvent>
 #include <QCloseEvent>
 #include <QString>
 #include <QMap>

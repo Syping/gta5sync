@@ -65,6 +65,7 @@ ProfileInterface::ProfileInterface(ProfileDatabase *profileDB, CrewDatabase *cre
     enabledPicStr = tr("Enabled pictures: %1 of %2");
     selectedWidgts = 0;
     profileFolder = "";
+    contextMenuOpened = false;
     isProfileLoaded = false;
     previousWidget = nullptr;
     profileLoader = nullptr;
@@ -94,6 +95,7 @@ ProfileInterface::ProfileInterface(ProfileDatabase *profileDB, CrewDatabase *cre
 #endif
 
     setMouseTracking(true);
+    installEventFilter(this);
 }
 
 ProfileInterface::~ProfileInterface()
@@ -1188,7 +1190,10 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
     {
         contextMenu.addAction(SnapmaticWidget::tr("&Deselect All"), picWidget, SLOT(deselectAllWidgets()), QKeySequence::fromString("Ctrl+D"));
     }
+    contextMenuOpened = true;
     contextMenu.exec(ev->globalPos());
+    contextMenuOpened = false;
+    hoverProfileWidgetCheck();
 }
 
 void ProfileInterface::contextMenuTriggeredSGD(QContextMenuEvent *ev)
@@ -1218,7 +1223,10 @@ void ProfileInterface::contextMenuTriggeredSGD(QContextMenuEvent *ev)
     {
         contextMenu.addAction(SavegameWidget::tr("&Deselect All"), sgdWidget, SLOT(deselectAllWidgets()), QKeySequence::fromString("Ctrl+D"));
     }
+    contextMenuOpened = true;
     contextMenu.exec(ev->globalPos());
+    contextMenuOpened = false;
+    hoverProfileWidgetCheck();
 }
 
 void ProfileInterface::on_saProfileContent_dropped(const QMimeData *mimeData)
@@ -1290,44 +1298,47 @@ bool ProfileInterface::eventFilter(QObject *watched, QEvent *event)
             return true;
         }
     }
-    else if ((event->type() == QEvent::MouseButtonPress || event->type() == QEvent::MouseButtonRelease || event->type() == QEvent::WindowActivate) && isProfileLoaded)
+    else if (event->type() == QEvent::MouseButtonPress || event->type() == QEvent::MouseButtonRelease || event->type() == QEvent::WindowActivate)
     {
-        ProfileWidget *pWidget = nullptr;
-        foreach(ProfileWidget *widget, widgets.keys())
+        if ((watched->objectName() == "SavegameWidget" || watched->objectName() == "SnapmaticWidget") && isProfileLoaded)
         {
-            QPoint mousePos = widget->mapFromGlobal(QCursor::pos());
-            if (widget->rect().contains(mousePos))
+            ProfileWidget *pWidget = nullptr;
+            foreach(ProfileWidget *widget, widgets.keys())
             {
-                pWidget = widget;
-                break;
-            }
-        }
-        if (pWidget != nullptr)
-        {
-            bool styleSheetChanged = false;
-            if (pWidget->getWidgetType() == "SnapmaticWidget")
-            {
-                if (pWidget != previousWidget)
+                QPoint mousePos = widget->mapFromGlobal(QCursor::pos());
+                if (widget->rect().contains(mousePos))
                 {
-                    pWidget->setStyleSheet(QString("QFrame#SnapmaticFrame{background-color: rgb(%1, %2, %3)}QLabel#labPicStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
-                    styleSheetChanged = true;
+                    pWidget = widget;
+                    break;
                 }
             }
-            else if (pWidget->getWidgetType() == "SavegameWidget")
+            if (pWidget != nullptr)
             {
-                if (pWidget != previousWidget)
+                bool styleSheetChanged = false;
+                if (pWidget->getWidgetType() == "SnapmaticWidget")
                 {
-                    pWidget->setStyleSheet(QString("QFrame#SavegameFrame{background-color: rgb(%1, %2, %3)}QLabel#labSavegameStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
-                    styleSheetChanged = true;
+                    if (pWidget != previousWidget)
+                    {
+                        pWidget->setStyleSheet(QString("QFrame#SnapmaticFrame{background-color: rgb(%1, %2, %3)}QLabel#labPicStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
+                        styleSheetChanged = true;
+                    }
                 }
-            }
-            if (styleSheetChanged)
-            {
-                if (previousWidget != nullptr)
+                else if (pWidget->getWidgetType() == "SavegameWidget")
                 {
-                    previousWidget->setStyleSheet(QLatin1String(""));
+                    if (pWidget != previousWidget)
+                    {
+                        pWidget->setStyleSheet(QString("QFrame#SavegameFrame{background-color: rgb(%1, %2, %3)}QLabel#labSavegameStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
+                        styleSheetChanged = true;
+                    }
                 }
-                previousWidget = pWidget;
+                if (styleSheetChanged)
+                {
+                    if (previousWidget != nullptr)
+                    {
+                        previousWidget->setStyleSheet(QLatin1String(""));
+                    }
+                    previousWidget = pWidget;
+                }
             }
         }
     }
@@ -1339,20 +1350,70 @@ bool ProfileInterface::eventFilter(QObject *watched, QEvent *event)
             previousWidget = nullptr;
         }
     }
-#if QT_VERSION >= 0x050000
-    else if (event->type() == QEvent::Leave)
+    else if (event->type() == QEvent::Leave && isProfileLoaded && !contextMenuOpened)
     {
-        ProfileWidget *pWidget = qobject_cast<ProfileWidget*>(watched);
-        QPoint mousePos = pWidget->mapFromGlobal(QCursor::pos());
-        if (!pWidget->rect().contains(mousePos))
+        if (watched->objectName() == "SavegameWidget" || watched->objectName() == "SnapmaticWidget")
+        {
+            ProfileWidget *pWidget = qobject_cast<ProfileWidget*>(watched);
+            QPoint mousePos = pWidget->mapFromGlobal(QCursor::pos());
+            if (!pWidget->geometry().contains(mousePos))
+            {
+                if (previousWidget != nullptr)
+                {
+                    previousWidget->setStyleSheet(QLatin1String(""));
+                    previousWidget = nullptr;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+void ProfileInterface::hoverProfileWidgetCheck()
+{
+    ProfileWidget *pWidget = nullptr;
+    foreach(ProfileWidget *widget, widgets.keys())
+    {
+        if (widget->underMouse())
+        {
+            pWidget = widget;
+            break;
+        }
+    }
+    if (pWidget != nullptr)
+    {
+        bool styleSheetChanged = false;
+        if (pWidget->getWidgetType() == "SnapmaticWidget")
+        {
+            if (pWidget != previousWidget)
+            {
+                pWidget->setStyleSheet(QString("QFrame#SnapmaticFrame{background-color: rgb(%1, %2, %3)}QLabel#labPicStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
+                styleSheetChanged = true;
+            }
+        }
+        else if (pWidget->getWidgetType() == "SavegameWidget")
+        {
+            if (pWidget != previousWidget)
+            {
+                pWidget->setStyleSheet(QString("QFrame#SavegameFrame{background-color: rgb(%1, %2, %3)}QLabel#labSavegameStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
+                styleSheetChanged = true;
+            }
+        }
+        if (styleSheetChanged)
         {
             if (previousWidget != nullptr)
             {
                 previousWidget->setStyleSheet(QLatin1String(""));
-                previousWidget = nullptr;
             }
+            previousWidget = pWidget;
         }
     }
-#endif
-    return false;
+    else
+    {
+        if (previousWidget != nullptr)
+        {
+            previousWidget->setStyleSheet(QLatin1String(""));
+            previousWidget = nullptr;
+        }
+    }
 }

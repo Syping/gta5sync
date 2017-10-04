@@ -56,6 +56,7 @@ public:
 public slots:
     void contextMenuTriggeredPIC(QContextMenuEvent* ev);
     void contextMenuTriggeredSGD(QContextMenuEvent* ev);
+    void hoverProfileWidgetCheck();
     void selectAllWidgets();
     void deselectAllWidgets();
     void exportSelected();
@@ -99,6 +100,7 @@ private:
     QString profileName;
     QString loadingStr;
     QString language;
+    bool contextMenuOpened;
     bool isProfileLoaded;
     int selectedWidgts;
     int contentMode;
