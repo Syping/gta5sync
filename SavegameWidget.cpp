@@ -57,41 +57,19 @@ SavegameWidget::SavegameWidget(QWidget *parent) :
     QString exportSavegameStr = tr("Export Savegame...");
     Q_UNUSED(exportSavegameStr)
 
-    QPalette palette;
-    highlightBackColor = palette.highlight().color();
-    highlightTextColor = palette.highlightedText().color();
-
     labelAutosaveStr = tr("AUTOSAVE - %1\n%2");
     labelSaveStr = tr("SAVE %3 - %1\n%2");
-    snwgt = parent;
-    sgdPath = "";
-    sgdStr = "";
-    sgdata = 0;
 
-    installEventFilter(this);
+    ui->SavegameFrame->setMouseTracking(true);
+    ui->labSavegamePic->setMouseTracking(true);
+    ui->labSavegameStr->setMouseTracking(true);
+    ui->cbSelected->setMouseTracking(true);
+    sgdata = nullptr;
 }
 
 SavegameWidget::~SavegameWidget()
 {
     delete ui;
-}
-
-bool SavegameWidget::eventFilter(QObject *obj, QEvent *ev)
-{
-    if (obj == this)
-    {
-        if (ev->type() == QEvent::Enter)
-        {
-            setStyleSheet(QString("QFrame#SavegameFrame{background-color: rgb(%1, %2, %3)}QLabel#labSavegameStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
-            return true;
-        }
-        else if(ev->type() == QEvent::Leave)
-        {
-            setStyleSheet("");
-            return true;
-        }
-    }
-    return false;
 }
 
 void SavegameWidget::setSavegameData(SavegameData *savegame, QString savegamePath)

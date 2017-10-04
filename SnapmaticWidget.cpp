@@ -46,37 +46,19 @@ SnapmaticWidget::SnapmaticWidget(ProfileDatabase *profileDB, CrewDatabase *crewD
     ui->cbSelected->setVisible(false);
 
     QPalette palette;
-    highlightBackColor = palette.highlight().color();
-    highlightTextColor = palette.highlightedText().color();
     palette.setCurrentColorGroup(QPalette::Disabled);
     highlightHiddenColor = palette.text().color();
 
-    smpic = 0;
-
-    installEventFilter(this);
+    ui->SnapmaticFrame->setMouseTracking(true);
+    ui->labPicture->setMouseTracking(true);
+    ui->labPicStr->setMouseTracking(true);
+    ui->cbSelected->setMouseTracking(true);
+    smpic = nullptr;
 }
 
 SnapmaticWidget::~SnapmaticWidget()
 {
     delete ui;
-}
-
-bool SnapmaticWidget::eventFilter(QObject *obj, QEvent *ev)
-{
-    if (obj == this)
-    {
-        if (ev->type() == QEvent::Enter)
-        {
-            setStyleSheet(QString("QFrame#SnapmaticFrame{background-color: rgb(%1, %2, %3)}QLabel#labPicStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
-            return true;
-        }
-        else if(ev->type() == QEvent::Leave)
-        {
-            setStyleSheet("");
-            return true;
-        }
-    }
-    return false;
 }
 
 void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)

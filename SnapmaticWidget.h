@@ -71,7 +71,6 @@ private slots:
     void snapmaticUpdated();
 
 protected:
-    bool eventFilter(QObject *obj, QEvent *ev);
     void mouseDoubleClickEvent(QMouseEvent *ev);
     void mouseReleaseEvent(QMouseEvent *ev);
     void mousePressEvent(QMouseEvent *ev);
@@ -83,10 +82,7 @@ private:
     DatabaseThread *threadDB;
     Ui::SnapmaticWidget *ui;
     SnapmaticPicture *smpic;
-    QColor highlightBackColor;
-    QColor highlightTextColor;
     QColor highlightHiddenColor;
-    QWidget *snwgt;
 
 signals:
     void pictureDeleted();
