@@ -1241,8 +1241,7 @@ bool ProfileInterface::eventFilter(QObject *watched, QEvent *event)
         if ((watched->objectName() == "SavegameWidget" || watched->objectName() == "SnapmaticWidget") && isProfileLoaded)
         {
             ProfileWidget *pWidget = qobject_cast<ProfileWidget*>(watched);
-            QPoint mousePos = pWidget->mapFromGlobal(QCursor::pos());
-            if (pWidget->rect().contains(mousePos))
+            if (pWidget->underMouse())
             {
                 bool styleSheetChanged = false;
                 if (pWidget->getWidgetType() == "SnapmaticWidget")
