@@ -71,12 +71,8 @@ ProfileInterface::ProfileInterface(ProfileDatabase *profileDB, CrewDatabase *cre
     profileLoader = nullptr;
     saSpacerItem = nullptr;
 
-    QPalette palette;
-    QColor baseColor = palette.base().color();
-    highlightBackColor = palette.highlight().color();
-    highlightTextColor = palette.highlightedText().color();
+    updatePalette();
     ui->labVersion->setText(QString("%1 %2").arg(GTA5SYNC_APPSTR, GTA5SYNC_APPVER));
-    ui->saProfile->setStyleSheet(QString("QWidget#saProfileContent{background-color: rgb(%1, %2, %3)}").arg(QString::number(baseColor.red()),QString::number(baseColor.green()),QString::number(baseColor.blue())));
     ui->saProfileContent->setFilesMode(true);
 
     if (QIcon::hasThemeIcon("dialog-close"))
@@ -1414,6 +1410,26 @@ void ProfileInterface::hoverProfileWidgetCheck()
         {
             previousWidget->setStyleSheet(QLatin1String(""));
             previousWidget = nullptr;
+        }
+    }
+}
+
+void ProfileInterface::updatePalette()
+{
+    QPalette palette;
+    QColor baseColor = palette.base().color();
+    highlightBackColor = palette.highlight().color();
+    highlightTextColor = palette.highlightedText().color();
+    ui->saProfile->setStyleSheet(QString("QWidget#saProfileContent{background-color: rgb(%1, %2, %3)}").arg(QString::number(baseColor.red()), QString::number(baseColor.green()), QString::number(baseColor.blue())));
+    if (previousWidget != nullptr)
+    {
+        if (previousWidget->getWidgetType() == "SnapmaticWidget")
+        {
+            previousWidget->setStyleSheet(QString("QFrame#SnapmaticFrame{background-color: rgb(%1, %2, %3)}QLabel#labPicStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
+        }
+        else if (previousWidget->getWidgetType() == "SavegameWidget")
+        {
+            previousWidget->setStyleSheet(QString("QFrame#SavegameFrame{background-color: rgb(%1, %2, %3)}QLabel#labSavegameStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
         }
     }
 }

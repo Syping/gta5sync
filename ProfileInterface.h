@@ -61,6 +61,7 @@ public slots:
     void deselectAllWidgets();
     void exportSelected();
     void deleteSelected();
+    void updatePalette();
     void importFiles();
 
 private slots:
