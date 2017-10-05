@@ -1014,12 +1014,12 @@ QSize SnapmaticPicture::getSnapmaticResolution()
 
 // SNAPMATIC DEFAULTS
 
-bool SnapmaticPicture::isSnapmaticResEnforced()
+bool SnapmaticPicture::isSnapmaticDefaultsEnforced()
 {
     return careSnapDefault;
 }
 
-void SnapmaticPicture::setSnapmaticResEnforced(bool enforced)
+void SnapmaticPicture::setSnapmaticDefaultsEnforced(bool enforced)
 {
     careSnapDefault = enforced;
 }

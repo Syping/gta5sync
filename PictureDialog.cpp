@@ -140,16 +140,13 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
     renderOverlayPicture();
     overlayEnabled = true;
 
-    // Export menu
+    // Manage menu
     manageMenu = new QMenu(this);
-    //editMenu = manageMenu->addMenu(tr("Edi&t"));
-    //propEditorAction = editMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
-    //exportMenu = manageMenu->addMenu(tr("&Export"));
-    //jpegExportAction = exportMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
-    //pgtaExportAction = exportMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
     jpegExportAction = manageMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
     pgtaExportAction = manageMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
     manageMenuSep1 = manageMenu->addSeparator();
+    openViewerAction = manageMenu->addAction(tr("Open &Map View..."), this, SLOT(openPreviewMap()));
+    openViewerAction->setShortcut(Qt::Key_M);
     propEditorAction = manageMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
     ui->cmdManage->setMenu(manageMenu);
 
@@ -178,6 +175,7 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
 PictureDialog::~PictureDialog()
 {
     delete propEditorAction;
+    delete openViewerAction;
     delete jpegExportAction;
     delete pgtaExportAction;
     delete manageMenuSep1;

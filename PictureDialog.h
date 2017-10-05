@@ -99,6 +99,7 @@ private:
     QAction *jpegExportAction;
     QAction *pgtaExportAction;
     QAction *propEditorAction;
+    QAction *openViewerAction;
     QAction *manageMenuSep1;
     QImage avatarAreaPicture;
     QImage snapmaticPicture;
