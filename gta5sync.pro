@@ -191,22 +191,3 @@ contains(DEFINES, GTA5SYNC_QCONF){
         INSTALLS += langfiles
     }
 }
-
-# COMPILE FLAG BASED STUFF
-
-contains(DEFINES, GTA5SYNC_FORCE_CXX11){
-    CONFIG += c++11
-}
-else{
-    greaterThan(QT_MAJOR_VERSION, 4){
-        greaterThan(QT_MINOR_VERSION, 3){
-            CONFIG += c++14
-        }
-        else{
-            CONFIG += c++11
-        }
-    }
-    else{
-        CONFIG += c++11
-    }
-}

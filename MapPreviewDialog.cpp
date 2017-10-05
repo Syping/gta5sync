@@ -22,6 +22,9 @@
 #include "AppEnv.h"
 #include <QPainter>
 #include <QDebug>
+#ifdef __MINGW32__
+#include <cmath>
+#endif
 
 MapPreviewDialog::MapPreviewDialog(QWidget *parent) :
     QDialog(parent),
