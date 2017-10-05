@@ -103,8 +103,8 @@ public:
     QSize getSnapmaticResolution();
 
     // SNAPMATIC DEFAULTS
-    bool isSnapmaticResEnforced();
-    void setSnapmaticResEnforced(bool enforced);
+    bool isSnapmaticDefaultsEnforced();
+    void setSnapmaticDefaultsEnforced(bool enforced);
 
     // VERIFY CONTENT
     static bool verifyTitle(const QString &title);
