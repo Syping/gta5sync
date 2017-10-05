@@ -808,7 +808,16 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
 
     jsonDocument.setObject(jsonObject);
 
-    QString newJsonStr = QString::fromUtf8(jsonDocument.toJson(QJsonDocument::Compact));
+    if (setJsonStr(QString::fromUtf8(jsonDocument.toJson(QJsonDocument::Compact))))
+    {
+        localSpJson = newSpJson;
+        return true;
+    }
+    return false;
+}
+
+bool SnapmaticPicture::setJsonStr(const QString &newJsonStr)
+{
     if (newJsonStr.length() < jsonStreamEditorLength)
     {
         if (writeEnabled)
@@ -830,7 +839,6 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
             snapmaticStream.close();
             if (result != 0)
             {
-                localSpJson = newSpJson;
                 jsonStr = newJsonStr;
                 if (lowRamMode) { rawPicContent = qCompress(rawPicContent, 9); }
                 return true;
@@ -846,12 +854,7 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
             return false;
         }
     }
-    else
-    {
-        return false;
-    }
-
-    return true;
+    return false;
 }
 
 // FILE MANAGEMENT
