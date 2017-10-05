@@ -27,6 +27,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QSettings>
+#include <QRegExp>
 #include <QDebug>
 
 PictureExport::PictureExport()
@@ -241,6 +242,18 @@ fileDialogPreSave: //Work?
         if (selectedFiles.length() == 1)
         {
             QString selectedFile = selectedFiles.at(0);
+            bool isAutoExt = false;
+            if (selectedFile.right(5) == ".auto")
+            {
+                isAutoExt = true;
+                QString dirPath = QFileInfo(selectedFile).dir().path();
+                QString stockFileName = sgdFileInfo.fileName();
+                selectedFile = dirPath % "/" % stockFileName;
+            }
+            else if (selectedFile.right(4) == ".rem")
+            {
+                selectedFile.remove(selectedFile.length() - 4, 4);
+            }
 
             if (QFile::exists(selectedFile))
             {
@@ -269,18 +282,6 @@ fileDialogPreSave: //Work?
             }
             else
             {
-                bool isAutoExt = false;
-                if (selectedFile.right(5) == ".auto")
-                {
-                    isAutoExt = true;
-                    QString dirPath = QFileInfo(selectedFile).dir().path();
-                    QString stockFileName = sgdFileInfo.fileName();
-                    selectedFile = dirPath % "/" % stockFileName;
-                }
-                else if (selectedFile.right(4) == ".rem")
-                {
-                    selectedFile.remove(".rem");
-                }
                 bool isCopied = picture->exportPicture(selectedFile, "PGTA");
                 if (!isCopied)
                 {
