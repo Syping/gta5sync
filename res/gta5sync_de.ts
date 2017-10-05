@@ -796,17 +796,27 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Bearbei&amp;ten</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
+        <location filename="../PictureDialog.cpp" line="149"/>
         <source>Open &amp;Map View...</source>
         <translation>&amp;Kartenansicht öffnen...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="150"/>
+        <location filename="../PictureDialog.cpp" line="151"/>
         <source>&amp;Edit Properties...</source>
-        <translation>&amp;Eigenschaften bearbeiten...</translation>
+        <translation>Eigenschaften b&amp;earbeiten...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="377"/>
+        <source>&amp;Other</source>
+        <translation type="vanished">&amp;Andere</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="148"/>
+        <source>&amp;Advanced</source>
+        <comment>Advanced for more options</comment>
+        <translation>Erweitert (&amp;A)</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="379"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -815,31 +825,31 @@ Taste 2 - Overlay umschalten
 Pfeiltasten - Navigieren</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="437"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Snapmatic Bildansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="437"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Failed at %1</source>
         <translation>Fehlgeschlagen bei %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
-        <location filename="../PictureDialog.cpp" line="593"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="595"/>
         <source>No Crew</source>
         <translation>Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
-        <location filename="../PictureDialog.cpp" line="618"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="620"/>
         <source>No Players</source>
         <translation>Keine Spieler</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="564"/>
+        <location filename="../PictureDialog.cpp" line="566"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Avatar Vorschaumodus
@@ -884,7 +894,7 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
         <source>Unknown Location</source>
         <translation>Unbekannter Standort</translation>
     </message>

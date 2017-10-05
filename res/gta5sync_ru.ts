@@ -630,17 +630,23 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
         <translation type="obsolete">&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
+        <location filename="../PictureDialog.cpp" line="149"/>
         <source>Open &amp;Map View...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="150"/>
+        <location filename="../PictureDialog.cpp" line="151"/>
         <source>&amp;Edit Properties...</source>
         <translation type="unfinished">&amp;Изменить свойства...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="377"/>
+        <location filename="../PictureDialog.cpp" line="148"/>
+        <source>&amp;Advanced</source>
+        <comment>Advanced for more options</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="379"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -649,31 +655,31 @@ Arrow Keys - Navigate</source>
 Стрелки - Навигация</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="437"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Просмотрщик фотографий Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="437"/>
-        <location filename="../PictureDialog.cpp" line="480"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="482"/>
         <source>Failed at %1</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
-        <location filename="../PictureDialog.cpp" line="593"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="595"/>
         <source>No Crew</source>
         <translation>Вне банды</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
-        <location filename="../PictureDialog.cpp" line="618"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
+        <location filename="../PictureDialog.cpp" line="620"/>
         <source>No Players</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="564"/>
+        <location filename="../PictureDialog.cpp" line="566"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Режим просмотра аватарок
@@ -688,7 +694,7 @@ Press 1 for Default View</source>
         <translation type="vanished">Без группы</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="479"/>
+        <location filename="../PictureDialog.cpp" line="481"/>
         <source>Unknown Location</source>
         <translation>Неизвестное место</translation>
     </message>

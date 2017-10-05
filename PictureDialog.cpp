@@ -145,9 +145,10 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
     jpegExportAction = manageMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
     pgtaExportAction = manageMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
     manageMenuSep1 = manageMenu->addSeparator();
-    openViewerAction = manageMenu->addAction(tr("Open &Map View..."), this, SLOT(openPreviewMap()));
+    otherMenu = manageMenu->addMenu(tr("&Advanced", "Advanced for more options"));
+    openViewerAction = otherMenu->addAction(tr("Open &Map View..."), this, SLOT(openPreviewMap()));
     openViewerAction->setShortcut(Qt::Key_M);
-    propEditorAction = manageMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
+    propEditorAction = otherMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
     ui->cmdManage->setMenu(manageMenu);
 
     // Global map
@@ -179,6 +180,7 @@ PictureDialog::~PictureDialog()
     delete jpegExportAction;
     delete pgtaExportAction;
     delete manageMenuSep1;
+    delete otherMenu;
     delete manageMenu;
     delete ui;
 }
