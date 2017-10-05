@@ -803,7 +803,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     <message>
         <location filename="../PictureDialog.cpp" line="151"/>
         <source>&amp;Edit Properties...</source>
-        <translation>Eigenschaften b&amp;earbeiten...</translation>
+        <translation>Eigenschaften bearb&amp;eiten...</translation>
     </message>
     <message>
         <source>&amp;Other</source>
