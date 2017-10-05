@@ -55,7 +55,7 @@ QString GlobalString::getString(QString valueStr, bool *ok)
     QStringList globalStrList = globalFile.childKeys();
     if (globalStrList.contains(valueStr))
     {
-        if (ok != 0) *ok = true;
+        if (ok != NULL) *ok = true;
         globalString = globalFile.value(valueStr, valueStr).toString();
     }
     globalFile.endGroup();
