@@ -27,6 +27,7 @@ TEMPLATE = app
 
 # CONFIGURATION
 
+DEFINES += GTA5SYNC_CSDF # Not assisting at proper usage of SnapmaticPicture class
 HEADERS += config.h
 PRECOMPILED_HEADER += config.h
 

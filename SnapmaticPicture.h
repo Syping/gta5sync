@@ -58,7 +58,7 @@ public:
     bool readingPicture(bool writeEnabled = true, bool cacheEnabled = false, bool fastLoad = true, bool lowRamMode = false);
     bool isPicOk();
     void clearCache();
-    QImage getImage();
+    QImage getImage(bool fastLoad = false);
     QString getLastStep();
     QString getPictureStr();
     QString getPictureHead();
@@ -101,6 +101,10 @@ public:
     // PREDEFINED PROPERTIES
     QSize getSnapmaticResolution();
 
+    // SNAPMATIC DEFAULTS
+    bool isSnapmaticResEnforced();
+    void setSnapmaticResEnforced(bool enforced);
+
     // VERIFY CONTENT
     static bool verifyTitle(const QString &title);
 
@@ -124,6 +128,7 @@ private:
     bool cacheEnabled;
     bool isLoadedInRAM;
     bool isCustomFormat;
+    bool careSnapDefault;
     int jpegRawContentSize;
     int jpegRawContentSizeE;
 

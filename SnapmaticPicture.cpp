@@ -82,11 +82,18 @@ void SnapmaticPicture::reset()
     sortStr = "";
     titlStr = "";
     descStr = "";
-    picOk = 0;
+    picOk = false;
 
     // INIT JSON
-    jsonOk = 0;
+    jsonOk = false;
     jsonStr = "";
+
+    // SNAPMATIC DEFAULTS
+#ifdef GTA5SYNC_CSDF
+    careSnapDefault = false;
+#else
+    careSnapDefault = true;
+#endif
 
     // SNAPMATIC PROPERTIES
     localSpJson = {};
@@ -260,18 +267,29 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     }
     else if (!fastLoad)
     {
-        QImage tempPicture = QImage(snapmaticResolution, QImage::Format_RGB888);
-        QPainter tempPainter(&tempPicture);
-        if (cachePicture.size() == snapmaticResolution)
+        if (careSnapDefault)
         {
-            tempPainter.drawImage(0, 0, cachePicture);
+            QImage tempPicture = QImage(snapmaticResolution, QImage::Format_RGB888);
+            QPainter tempPainter(&tempPicture);
+            if (cachePicture.size() != snapmaticResolution)
+            {
+                tempPainter.drawImage(0, 0, cachePicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            }
+            else
+            {
+                tempPainter.drawImage(0, 0, cachePicture);
+            }
+            tempPainter.end();
+            cachePicture = tempPicture;
         }
         else
         {
-            tempPainter.drawImage(0, 0, cachePicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+            QImage tempPicture = QImage(cachePicture.size(), QImage::Format_RGB888);
+            QPainter tempPainter(&tempPicture);
+            tempPainter.drawImage(0, 0, cachePicture);
+            tempPainter.end();
+            cachePicture = tempPicture;
         }
-        tempPainter.end();
-        cachePicture = tempPicture;
     }
 
     // Read JSON Stream
@@ -397,10 +415,17 @@ bool SnapmaticPicture::readingPictureFromFile(const QString &fileName, bool writ
     }
 }
 
-bool SnapmaticPicture::setImage(const QImage &picture) // dirty method
+bool SnapmaticPicture::setImage(const QImage &picture)
 {
     if (writeEnabled)
     {
+        QImage altPicture;
+        bool useAltPicture = false;
+        if (picture.size() != snapmaticResolution && careSnapDefault)
+        {
+            altPicture = picture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+            useAltPicture = true;
+        }
         QByteArray picByteArray;
         int comLvl = 100;
         bool saveSuccess = false;
@@ -409,7 +434,8 @@ bool SnapmaticPicture::setImage(const QImage &picture) // dirty method
             QByteArray picByteArrayT;
             QBuffer picStreamT(&picByteArrayT);
             picStreamT.open(QIODevice::WriteOnly);
-            saveSuccess = picture.save(&picStreamT, "JPEG", comLvl);
+            if (useAltPicture) { saveSuccess = altPicture.save(&picStreamT, "JPEG", comLvl); }
+            else { saveSuccess = picture.save(&picStreamT, "JPEG", comLvl); }
             picStreamT.close();
             if (saveSuccess)
             {
@@ -424,7 +450,7 @@ bool SnapmaticPicture::setImage(const QImage &picture) // dirty method
                 }
             }
         }
-        if (saveSuccess) return setPictureStream(picByteArray);
+        if (saveSuccess) { return setPictureStream(picByteArray); }
     }
     return false;
 }
@@ -548,7 +574,7 @@ QString SnapmaticPicture::getLastStep()
     return lastStep;
 }
 
-QImage SnapmaticPicture::getImage()
+QImage SnapmaticPicture::getImage(bool fastLoad)
 {
     if (cacheEnabled)
     {
@@ -556,9 +582,16 @@ QImage SnapmaticPicture::getImage()
     }
     else if (writeEnabled)
     {
-        bool returnOk = 0;
+        bool fastLoadU = fastLoad;
+        if (!careSnapDefault) { fastLoadU = true; }
+
+        bool returnOk = false;
         QImage tempPicture;
-        QImage returnPicture(snapmaticResolution, QImage::Format_RGB888);
+        QImage returnPicture;
+        if (!fastLoadU)
+        {
+            returnPicture = QImage(snapmaticResolution, QImage::Format_RGB888);
+        }
 
         if (lowRamMode) { rawPicContent = qUncompress(rawPicContent); }
         QBuffer snapmaticStream(&rawPicContent);
@@ -573,23 +606,38 @@ QImage SnapmaticPicture::getImage()
 
         if (returnOk)
         {
-            QPainter returnPainter(&returnPicture);
-            if (tempPicture.size() == snapmaticResolution)
+            if (!fastLoadU)
             {
-                returnPainter.drawImage(0, 0, tempPicture);
+                QPainter returnPainter(&returnPicture);
+                if (tempPicture.size() != snapmaticResolution)
+                {
+                    returnPainter.drawImage(0, 0, tempPicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+                }
+                else
+                {
+                    returnPainter.drawImage(0, 0, tempPicture);
+                }
+                returnPainter.end();
+                return returnPicture;
             }
             else
             {
-                returnPainter.drawImage(0, 0, tempPicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+                return tempPicture;
             }
-            returnPainter.end();
-            return returnPicture;
         }
     }
     else
     {
-        bool returnOk = 0;
+        bool fastLoadU = fastLoad;
+        if (!careSnapDefault) { fastLoadU = true; }
+
+        bool returnOk = false;
+        QImage tempPicture;
         QImage returnPicture;
+        if (!fastLoadU)
+        {
+            returnPicture = QImage(snapmaticResolution, QImage::Format_RGB888);
+        }
         QIODevice *picStream;
 
         QFile *picFile = new QFile(picFilePath);
@@ -597,7 +645,7 @@ QImage SnapmaticPicture::getImage()
         {
             lastStep = "1;/1,OpenFile," % StringParser::convertDrawStringForLog(picFilePath);
             delete picFile;
-            return QImage(0, 0, QImage::Format_RGB888);
+            return QImage();
         }
         rawPicContent = picFile->read(snapmaticFileMaxSize);
         picFile->close();
@@ -608,17 +656,34 @@ QImage SnapmaticPicture::getImage()
         if (picStream->seek(jpegStreamEditorBegin))
         {
             QByteArray jpegRawContent = picStream->read(jpegPicStreamLength);
-            returnOk = returnPicture.loadFromData(jpegRawContent, "JPEG");
+            returnOk = tempPicture.loadFromData(jpegRawContent, "JPEG");
         }
         picStream->close();
         delete picStream;
 
         if (returnOk)
         {
-            return returnPicture;
+            if (!fastLoadU)
+            {
+                QPainter returnPainter(&returnPicture);
+                if (tempPicture.size() != snapmaticResolution)
+                {
+                    returnPainter.drawImage(0, 0, tempPicture.scaled(snapmaticResolution, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+                }
+                else
+                {
+                    returnPainter.drawImage(0, 0, tempPicture);
+                }
+                returnPainter.end();
+                return returnPicture;
+            }
+            else
+            {
+                return tempPicture;
+            }
         }
     }
-    return QImage(0, 0, QImage::Format_RGB888);
+    return QImage();
 }
 
 int SnapmaticPicture::getContentMaxLength()
@@ -942,6 +1007,18 @@ bool SnapmaticPicture::setPictureVisible()
 QSize SnapmaticPicture::getSnapmaticResolution()
 {
     return snapmaticResolution;
+}
+
+// SNAPMATIC DEFAULTS
+
+bool SnapmaticPicture::isSnapmaticResEnforced()
+{
+    return careSnapDefault;
+}
+
+void SnapmaticPicture::setSnapmaticResEnforced(bool enforced)
+{
+    careSnapDefault = enforced;
 }
 
 // VERIFY CONTENT
