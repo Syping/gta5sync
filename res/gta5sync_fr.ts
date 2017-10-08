@@ -309,39 +309,55 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <translation type="vanished">&amp;Avatar</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="96"/>
         <source>Keep Aspect Ratio</source>
-        <translation>Conserver le rapport d&apos;aspect</translation>
+        <translation type="vanished">Conserver le rapport d&apos;aspect</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="103"/>
+        <location filename="../ImportDialog.ui" line="148"/>
         <source>Ignore Aspect Ratio</source>
         <translation>Déverrouiller le ratio d&apos;aspect</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="110"/>
+        <location filename="../ImportDialog.ui" line="135"/>
         <source>Avatar</source>
         <translation>Avatar</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="154"/>
+        <location filename="../ImportDialog.ui" line="98"/>
+        <location filename="../ImportDialog.cpp" line="54"/>
+        <location filename="../ImportDialog.cpp" line="196"/>
+        <source>Background Colour: &lt;span style=&quot;color:rgb(%1,%2,%3)&quot;&gt;%4&lt;/span&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="105"/>
+        <source>...</source>
+        <translation type="unfinished">...</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="194"/>
         <source>Import picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="157"/>
+        <location filename="../ImportDialog.ui" line="197"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="170"/>
+        <location filename="../ImportDialog.ui" line="210"/>
         <source>Discard picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="173"/>
+        <location filename="../ImportDialog.ui" line="213"/>
         <source>&amp;Cancel</source>
         <translation>A&amp;nnuler</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.cpp" line="192"/>
+        <source>Select Colour...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -734,23 +750,17 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <translation type="obsolete">Édi&amp;ter</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="149"/>
+        <location filename="../PictureDialog.cpp" line="148"/>
         <source>Open &amp;Map View...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="151"/>
+        <location filename="../PictureDialog.cpp" line="150"/>
         <source>&amp;Edit Properties...</source>
         <translation>Modifier les &amp;propriétés...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
-        <source>&amp;Advanced</source>
-        <comment>Advanced for more options</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../PictureDialog.cpp" line="375"/>
+        <location filename="../PictureDialog.cpp" line="373"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -759,31 +769,31 @@ Touche 2 - Activer/désactiver l&apos;overlay
 Touches fléchées - Naviguer</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="435"/>
-        <location filename="../PictureDialog.cpp" line="478"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="476"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Visionneuse de photo Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="435"/>
-        <location filename="../PictureDialog.cpp" line="478"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="476"/>
         <source>Failed at %1</source>
         <translation>Echec de %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="477"/>
-        <location filename="../PictureDialog.cpp" line="591"/>
+        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="589"/>
         <source>No Crew</source>
         <translation>Aucun crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="477"/>
-        <location filename="../PictureDialog.cpp" line="616"/>
+        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="614"/>
         <source>No Players</source>
         <translation>Aucun joueurs</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="562"/>
+        <location filename="../PictureDialog.cpp" line="560"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Mode Aperçu Avatar
@@ -802,7 +812,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Aucun crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="477"/>
+        <location filename="../PictureDialog.cpp" line="475"/>
         <source>Unknown Location</source>
         <translation>Emplacement inconnu</translation>
     </message>

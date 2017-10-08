@@ -19,6 +19,7 @@
 #include "ImportDialog.h"
 #include "ui_ImportDialog.h"
 #include "AppEnv.h"
+#include <QColorDialog>
 #include <QPainter>
 #include <QPixmap>
 #include <QImage>
@@ -38,6 +39,7 @@ ImportDialog::ImportDialog(QWidget *parent) :
     ui->setupUi(this);
     importAgreed = false;
     avatarAreaImage = QImage(":/img/avatarareaimport.png");
+    selectedColour = QColor::fromRgb(0, 0, 0, 255);
 
     if (QIcon::hasThemeIcon("dialog-ok"))
     {
@@ -48,7 +50,8 @@ ImportDialog::ImportDialog(QWidget *parent) :
         ui->cmdCancel->setIcon(QIcon::fromTheme("dialog-cancel"));
     }
 
-    ui->rbKeep->setChecked(true);
+    ui->cbIgnore->setChecked(false);
+    ui->labColour->setText(tr("Background Colour: <span style=\"color:rgb(%1,%2,%3)\">%4</span>").arg("0", "0", "0", selectedColour.name()));
 
     qreal screenRatio = AppEnv::screenRatio();
     snapmaticResolutionLW = 430 * screenRatio;
@@ -69,14 +72,14 @@ void ImportDialog::processImage()
 {
     QImage snapmaticImage = workImage;
     QPixmap snapmaticPixmap(snapmaticResolutionW, snapmaticResolutionH);
-    snapmaticPixmap.fill(Qt::black);
+    snapmaticPixmap.fill(selectedColour);
     QPainter snapmaticPainter(&snapmaticPixmap);
     if (ui->cbAvatar->isChecked())
     {
         // Avatar mode
         int diffWidth = 0;
         int diffHeight = 0;
-        if (ui->rbKeep->isChecked())
+        if (!ui->cbIgnore->isChecked())
         {
             snapmaticImage = snapmaticImage.scaled(snapmaticAvatarResolution, snapmaticAvatarResolution, Qt::KeepAspectRatio, Qt::SmoothTransformation);
             if (snapmaticImage.width() > snapmaticImage.height())
@@ -102,7 +105,7 @@ void ImportDialog::processImage()
         // Picture mode
         int diffWidth = 0;
         int diffHeight = 0;
-        if (ui->rbKeep->isChecked())
+        if (!ui->cbIgnore->isChecked())
         {
             snapmaticImage = snapmaticImage.scaled(snapmaticResolutionW, snapmaticResolutionH, Qt::KeepAspectRatio, Qt::SmoothTransformation);
             if (snapmaticImage.width() != snapmaticResolutionW)
@@ -153,12 +156,7 @@ QString ImportDialog::getImageTitle()
     return imageTitle;
 }
 
-void ImportDialog::on_rbIgnore_clicked()
-{
-    processImage();
-}
-
-void ImportDialog::on_rbKeep_clicked()
+void ImportDialog::on_cbIgnore_clicked()
 {
     processImage();
 }
@@ -186,5 +184,16 @@ void ImportDialog::on_labPicture_labelPainted()
         QPainter labelPainter(ui->labPicture);
         labelPainter.drawImage(0, 0, avatarAreaImage.scaled(snapmaticResolutionLW, snapmaticResolutionLH, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
         labelPainter.end();
+    }
+}
+
+void ImportDialog::on_cmdColourChange_clicked()
+{
+    QColor newSelectedColour = QColorDialog::getColor(selectedColour, this, tr("Select Colour..."));
+    if (newSelectedColour.isValid())
+    {
+        selectedColour = newSelectedColour;
+        ui->labColour->setText(tr("Background Colour: <span style=\"color:rgb(%1,%2,%3)\">%4</span>").arg("0", "0", "0", selectedColour.name()));
+        processImage();
     }
 }

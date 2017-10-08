@@ -359,39 +359,59 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">&amp;Avatar</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="96"/>
         <source>Keep Aspect Ratio</source>
-        <translation>Seitenverhältnis behalten</translation>
+        <translation type="vanished">Seitenverhältnis behalten</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="103"/>
+        <location filename="../ImportDialog.ui" line="148"/>
         <source>Ignore Aspect Ratio</source>
         <translation>Seitenverhältnis ignorieren</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="110"/>
+        <location filename="../ImportDialog.ui" line="135"/>
         <source>Avatar</source>
         <translation>Avatar</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="154"/>
+        <location filename="../ImportDialog.ui" line="98"/>
+        <location filename="../ImportDialog.cpp" line="54"/>
+        <location filename="../ImportDialog.cpp" line="196"/>
+        <source>Background Colour: &lt;span style=&quot;color:rgb(%1,%2,%3)&quot;&gt;%4&lt;/span&gt;</source>
+        <translation>Hintergrundfarbe: &lt;span style=&quot;color:rgb(%1,%2,%3)&quot;&gt;%4&lt;/span&gt;</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="105"/>
+        <source>...</source>
+        <translation>...</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="194"/>
         <source>Import picture</source>
         <translation>Bild importieren</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="157"/>
+        <location filename="../ImportDialog.ui" line="197"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="170"/>
+        <location filename="../ImportDialog.ui" line="210"/>
         <source>Discard picture</source>
         <translation>Bild verwerfen</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="173"/>
+        <location filename="../ImportDialog.ui" line="213"/>
         <source>&amp;Cancel</source>
         <translation>Abbre&amp;chen</translation>
+    </message>
+    <message>
+        <source>Select Colour</source>
+        <translation type="vanished">Farbe auswählen</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.cpp" line="192"/>
+        <source>Select Colour...</source>
+        <translation>Farbe auswählen...</translation>
     </message>
 </context>
 <context>
@@ -796,12 +816,12 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Bearbei&amp;ten</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="149"/>
+        <location filename="../PictureDialog.cpp" line="148"/>
         <source>Open &amp;Map View...</source>
         <translation>&amp;Kartenansicht öffnen...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="151"/>
+        <location filename="../PictureDialog.cpp" line="150"/>
         <source>&amp;Edit Properties...</source>
         <translation>Eigenschaften bearb&amp;eiten...</translation>
     </message>
@@ -810,13 +830,12 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">&amp;Andere</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
         <source>&amp;Advanced</source>
         <comment>Advanced for more options</comment>
-        <translation>Erweitert (&amp;A)</translation>
+        <translation type="vanished">Erweitert (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="375"/>
+        <location filename="../PictureDialog.cpp" line="373"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -825,31 +844,31 @@ Taste 2 - Overlay umschalten
 Pfeiltasten - Navigieren</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="435"/>
-        <location filename="../PictureDialog.cpp" line="478"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="476"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Snapmatic Bildansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="435"/>
-        <location filename="../PictureDialog.cpp" line="478"/>
+        <location filename="../PictureDialog.cpp" line="433"/>
+        <location filename="../PictureDialog.cpp" line="476"/>
         <source>Failed at %1</source>
         <translation>Fehlgeschlagen bei %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="477"/>
-        <location filename="../PictureDialog.cpp" line="591"/>
+        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="589"/>
         <source>No Crew</source>
         <translation>Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="477"/>
-        <location filename="../PictureDialog.cpp" line="616"/>
+        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="614"/>
         <source>No Players</source>
         <translation>Keine Spieler</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="562"/>
+        <location filename="../PictureDialog.cpp" line="560"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Avatar Vorschaumodus
@@ -894,7 +913,7 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="477"/>
+        <location filename="../PictureDialog.cpp" line="475"/>
         <source>Unknown Location</source>
         <translation>Unbekannter Standort</translation>
     </message>

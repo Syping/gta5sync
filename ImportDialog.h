@@ -39,12 +39,12 @@ public:
 
 private slots:
     void processImage();
-    void on_rbIgnore_clicked();
-    void on_rbKeep_clicked();
+    void on_cbIgnore_clicked();
     void on_cbAvatar_clicked();
     void on_cmdCancel_clicked();
     void on_cmdOK_clicked();
     void on_labPicture_labelPainted();
+    void on_cmdColourChange_clicked();
 
 private:
     Ui::ImportDialog *ui;
@@ -52,6 +52,7 @@ private:
     QString imageTitle;
     QImage workImage;
     QImage newImage;
+    QColor selectedColour;
     bool importAgreed;
     int snapmaticResolutionLW;
     int snapmaticResolutionLH;
