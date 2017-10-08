@@ -217,6 +217,13 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
     }
     QByteArray snapmaticHeaderLine = picStream->read(snapmaticHeaderLength);
     pictureHead = getSnapmaticHeaderString(snapmaticHeaderLine);
+    if (pictureHead == QLatin1String("MALFORMED"))
+    {
+        lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",1,MALFORMEDHEADER";
+        picStream->close();
+        delete picStream;
+        return false;
+    }
 
     // Reading JPEG Header Line
     if (!picStream->isReadable())
@@ -359,10 +366,9 @@ bool SnapmaticPicture::readingPicture(bool writeEnabled_, bool cacheEnabled_, bo
 
 QString SnapmaticPicture::getSnapmaticHeaderString(const QByteArray &snapmaticHeader)
 {
-    QByteArray snapmaticBytes = snapmaticHeader.left(snapmaticUsefulLength);
-    QList<QByteArray> snapmaticBytesList = snapmaticBytes.split('\x01');
-    snapmaticBytes = snapmaticBytesList.at(1);
-    snapmaticBytesList.clear();
+    QList<QByteArray> snapmaticBytesList = snapmaticHeader.left(snapmaticUsefulLength).split('\x01');
+    if (snapmaticBytesList.length() < 2) { return QLatin1String("MALFORMED"); }
+    QByteArray snapmaticBytes = snapmaticBytesList.at(1);
     return StringParser::parseTitleString(snapmaticBytes, snapmaticBytes.length());
 }
 

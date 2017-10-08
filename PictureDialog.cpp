@@ -288,10 +288,6 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                 emit nextPictureRequested();
                 returnValue = true;
                 break;
-            case Qt::Key_E: case Qt::Key_S: case Qt::Key_Save:
-                ui->cmdManage->click();
-                returnValue = true;
-                break;
             case Qt::Key_1:
                 if (previewMode)
                 {

@@ -426,12 +426,24 @@ fileDialogPreOpen: //Work?
     fileDialog.setWindowTitle(tr("Import..."));
     fileDialog.setLabelText(QFileDialog::Accept, tr("Import"));
 
+    // Getting readable Image formats
+    QString imageFormatsStr = " ";
+    foreach(const QByteArray &imageFormat, QImageReader::supportedImageFormats())
+    {
+        imageFormatsStr += QString("*.") % QString::fromUtf8(imageFormat).toLower() % " ";
+    }
+    QString importableFormatsStr = QString("*.g5e SGTA* PGTA*");
+    if (!imageFormatsStr.trimmed().isEmpty())
+    {
+        importableFormatsStr = QString("*.g5e%1SGTA* PGTA*").arg(imageFormatsStr);
+    }
+
     QStringList filters;
-    filters << tr("Importable files (*.g5e *.jpg *.png SGTA* PGTA*)");
+    filters << tr("Importable files (%1)").arg(importableFormatsStr);
     filters << tr("GTA V Export (*.g5e)");
     filters << tr("Savegames files (SGTA*)");
     filters << tr("Snapmatic pictures (PGTA*)");
-    filters << tr("All image files (*.jpg *.png)");
+    filters << tr("All image files (%1)").arg(imageFormatsStr.trimmed());
     filters << tr("All files (**)");
     fileDialog.setNameFilters(filters);
 
@@ -548,7 +560,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                 return false;
             }
         }
-        else if(selectedFileName.right(4) == ".jpg" || selectedFileName.right(4) == ".png")
+        else if(isSupportedImageFile(selectedFileName))
         {
             SnapmaticPicture *picture = new SnapmaticPicture(":/template/template.g5e");
             if (picture->readingPicture(true, false, true, false))
@@ -659,6 +671,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                     snapmaticImageReader.setDevice(&snapmaticFile);
                     if (!snapmaticImageReader.read(&snapmaticImage))
                     {
+                        QMessageBox::warning(this, tr("Import"), tr("Can't import %1 because file can't be parsed properly").arg("\""+selectedFileName+"\""));
                         delete picture;
                         return false;
                     }
@@ -733,9 +746,13 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
             }
             else
             {
-                delete savegame;
+#ifdef GTA5SYNC_DEBUG
+                qDebug() << "ImportError SnapmaticPicture" << picture->getLastStep();
+                qDebug() << "ImportError SavegameData" << savegame->getLastStep();
+#endif
                 delete picture;
-                if (notMultiple) QMessageBox::warning(this, tr("Import"), tr("Can't import %1 because of not valid file format").arg("\""+selectedFileName+"\""));
+                delete savegame;
+                if (notMultiple) QMessageBox::warning(this, tr("Import"), tr("Can't import %1 because file format can't be detected").arg("\""+selectedFileName+"\""));
                 return false;
             }
         }
@@ -1432,4 +1449,17 @@ void ProfileInterface::updatePalette()
             previousWidget->setStyleSheet(QString("QFrame#SavegameFrame{background-color: rgb(%1, %2, %3)}QLabel#labSavegameStr{color: rgb(%4, %5, %6)}").arg(QString::number(highlightBackColor.red()), QString::number(highlightBackColor.green()), QString::number(highlightBackColor.blue()), QString::number(highlightTextColor.red()), QString::number(highlightTextColor.green()), QString::number(highlightTextColor.blue())));
         }
     }
+}
+
+bool ProfileInterface::isSupportedImageFile(QString selectedFileName)
+{
+    foreach(const QByteArray &imageFormat, QImageReader::supportedImageFormats())
+    {
+        QString imageFormatStr = QString(".") % QString::fromUtf8(imageFormat).toLower();
+        if (selectedFileName.length() >= imageFormatStr.length() && selectedFileName.toLower().right(imageFormatStr.length()) == imageFormatStr)
+        {
+            return true;
+        }
+    }
+    return false;
 }

@@ -106,6 +106,7 @@ private:
     int selectedWidgts;
     int contentMode;
 
+    bool isSupportedImageFile(QString selectedFileName);
     bool importFile(QString selectedFile, bool notMultiple);
     void importFilesProgress(QStringList selectedFiles);
     bool importSnapmaticPicture(SnapmaticPicture *picture, bool warn = true);
