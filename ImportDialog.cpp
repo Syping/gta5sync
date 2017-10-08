@@ -24,6 +24,7 @@
 #include <QPixmap>
 #include <QImage>
 #include <QDebug>
+#include <QRgb>
 
 // IMAGES VALUES
 #define snapmaticResolutionW 960
@@ -181,8 +182,13 @@ void ImportDialog::on_labPicture_labelPainted()
 {
     if (ui->cbAvatar->isChecked())
     {
+        QImage avatarAreaFinalImage(avatarAreaImage);
+        if (selectedColour.lightness() > 127)
+        {
+            avatarAreaFinalImage.setColor(1, qRgb(0, 0, 0));
+        }
         QPainter labelPainter(ui->labPicture);
-        labelPainter.drawImage(0, 0, avatarAreaImage.scaled(snapmaticResolutionLW, snapmaticResolutionLH, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        labelPainter.drawImage(0, 0, avatarAreaFinalImage.scaled(snapmaticResolutionLW, snapmaticResolutionLH, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
         labelPainter.end();
     }
 }
