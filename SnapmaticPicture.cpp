@@ -408,7 +408,8 @@ void SnapmaticPicture::updateStrings()
     cmpPicTitl.remove('.');
     pictureStr = tr("PHOTO - %1").arg(localSpJson.createdDateTime.toString("MM/dd/yy HH:mm:ss"));
     sortStr = localSpJson.createdDateTime.toString("yyMMddHHmmss") % QString::number(localSpJson.uid);
-    picExportFileName = sortStr % "_" % cmpPicTitl;
+    QString exportStr = localSpJson.createdDateTime.toString("yyyyMMdd") % "-" % QString::number(localSpJson.uid);
+    picExportFileName = exportStr % "_" % cmpPicTitl;
 }
 
 bool SnapmaticPicture::readingPictureFromFile(const QString &fileName, bool writeEnabled_, bool cacheEnabled_, bool fastLoad, bool lowRamMode_)
