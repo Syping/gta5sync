@@ -273,7 +273,7 @@ fileDialogPreSave: //Work?
 
             if (selectedFile.right(4) == ".g5e")
             {
-                bool isExported = picture->exportPicture(selectedFile, "G5E");
+                bool isExported = picture->exportPicture(selectedFile, SnapmaticFormat::G5E_Format);
                 if (!isExported)
                 {
                     QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Failed to export current Snapmatic picture"));
@@ -282,7 +282,7 @@ fileDialogPreSave: //Work?
             }
             else
             {
-                bool isCopied = picture->exportPicture(selectedFile, "PGTA");
+                bool isCopied = picture->exportPicture(selectedFile, SnapmaticFormat::PGTA_Format);
                 if (!isCopied)
                 {
                     QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Failed to export current Snapmatic picture"));

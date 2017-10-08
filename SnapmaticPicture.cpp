@@ -69,19 +69,22 @@ void SnapmaticPicture::reset()
 {
     // INIT PIC
     rawPicContent = "";
+    rawPicContent.squeeze();
     cachePicture = QImage();
     jpegRawContentSizeE = 0;
     jpegRawContentSize = 0;
     picExportFileName = "";
-    isCustomFormat = 0;
-    isLoadedInRAM = 0;
     pictureHead = "";
     pictureStr = "";
-    lowRamMode = 0;
     lastStep = "";
     sortStr = "";
     titlStr = "";
     descStr = "";
+
+    // INIT PIC BOOLS
+    isCustomFormat = false;
+    isLoadedInRAM = false;
+    lowRamMode = false;
     picOk = false;
 
     // INIT JSON
@@ -865,12 +868,26 @@ bool SnapmaticPicture::setJsonStr(const QString &newJsonStr)
 
 // FILE MANAGEMENT
 
-bool SnapmaticPicture::exportPicture(const QString &fileName, const QString format)
+bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat format_)
 {
+    // Keep current format when Auto_Format is used
+    SnapmaticFormat format = format_;
+    if (format_ == SnapmaticFormat::Auto_Format)
+    {
+        if (isCustomFormat)
+        {
+            format = SnapmaticFormat::G5E_Format;
+        }
+        else
+        {
+            format = SnapmaticFormat::PGTA_Format;
+        }
+    }
+
     QFile *picFile = new QFile(fileName);
     if (picFile->open(QIODevice::WriteOnly))
     {
-        if (format == QLatin1String("G5E"))
+        if (format == SnapmaticFormat::G5E_Format)
         {
             // Modern compressed export
             QByteArray stockFileNameUTF8 = picFileName.toUtf8();
@@ -905,7 +922,7 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, const QString form
             picFile->close();
             delete picFile;
         }
-        else if (format == QLatin1String("JPG"))
+        else if (format == SnapmaticFormat::JPEG_Format)
         {
             // JPEG export
             QBuffer snapmaticStream(&rawPicContent);

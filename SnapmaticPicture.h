@@ -26,6 +26,8 @@
 #include <QImage>
 #include <QFile>
 
+enum class SnapmaticFormat : int { Auto_Format = 0, PGTA_Format = 1, JPEG_Format = 2, G5E_Format = 3 };
+
 struct SnapmaticProperties {
     struct SnapmaticLocation {
         QString area;
@@ -76,7 +78,7 @@ public:
     void emitUpdate();
 
     // FILE MANAGEMENT
-    bool exportPicture(const QString &fileName, const QString format = "PGTA");
+    bool exportPicture(const QString &fileName, SnapmaticFormat format = SnapmaticFormat::Auto_Format);
     void setPicFileName(const QString &picFileName);
     void setPicFilePath(const QString &picFilePath);
     bool deletePicFile();

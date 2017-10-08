@@ -783,7 +783,7 @@ bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, bool wa
         if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to import the Snapmatic picture, the picture is already in the game"));
         return false;
     }
-    else if (picture->exportPicture(profileFolder % QDir::separator() % adjustedFileName, "PGTA"))
+    else if (picture->exportPicture(profileFolder % QDir::separator() % adjustedFileName, SnapmaticFormat::PGTA_Format))
     {
         picture->setPicFilePath(profileFolder % QDir::separator() % adjustedFileName);
         pictureLoaded(picture, true);
