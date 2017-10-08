@@ -326,7 +326,7 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <location filename="../ImportDialog.ui" line="98"/>
         <location filename="../ImportDialog.cpp" line="54"/>
         <location filename="../ImportDialog.cpp" line="196"/>
-        <source>Background Colour: &lt;span style=&quot;color:rgb(%1,%2,%3)&quot;&gt;%4&lt;/span&gt;</source>
+        <source>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

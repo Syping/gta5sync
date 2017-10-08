@@ -51,7 +51,7 @@ ImportDialog::ImportDialog(QWidget *parent) :
     }
 
     ui->cbIgnore->setChecked(false);
-    ui->labColour->setText(tr("Background Colour: <span style=\"color:rgb(%1,%2,%3)\">%4</span>").arg("0", "0", "0", selectedColour.name()));
+    ui->labColour->setText(tr("Background Colour: <span style=\"color: %1\">%1</span>").arg(selectedColour.name()));
 
     qreal screenRatio = AppEnv::screenRatio();
     snapmaticResolutionLW = 430 * screenRatio;
@@ -193,7 +193,7 @@ void ImportDialog::on_cmdColourChange_clicked()
     if (newSelectedColour.isValid())
     {
         selectedColour = newSelectedColour;
-        ui->labColour->setText(tr("Background Colour: <span style=\"color:rgb(%1,%2,%3)\">%4</span>").arg("0", "0", "0", selectedColour.name()));
+        ui->labColour->setText(tr("Background Colour: <span style=\"color: %1\">%1</span>").arg(selectedColour.name()));
         processImage();
     }
 }

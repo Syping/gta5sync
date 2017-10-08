@@ -95,7 +95,7 @@
            <item>
             <widget class="QLabel" name="labColour">
              <property name="text">
-              <string>Background Colour: &lt;span style=&quot;color:rgb(%1,%2,%3)&quot;&gt;%4&lt;/span&gt;</string>
+              <string>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</string>
              </property>
             </widget>
            </item>

@@ -188,6 +188,13 @@ Pictures and Savegames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../ImportDialog.ui" line="98"/>
+        <location filename="../ImportDialog.cpp" line="54"/>
+        <location filename="../ImportDialog.cpp" line="196"/>
+        <source>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../ImportDialog.ui" line="148"/>
         <source>Ignore Aspect Ratio</source>
         <translation type="unfinished"></translation>
@@ -195,13 +202,6 @@ Pictures and Savegames</source>
     <message>
         <location filename="../ImportDialog.ui" line="135"/>
         <source>Avatar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../ImportDialog.ui" line="98"/>
-        <location filename="../ImportDialog.cpp" line="54"/>
-        <location filename="../ImportDialog.cpp" line="196"/>
-        <source>Background Colour: &lt;span style=&quot;color:rgb(%1,%2,%3)&quot;&gt;%4&lt;/span&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
