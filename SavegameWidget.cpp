@@ -180,7 +180,18 @@ void SavegameWidget::mouseReleaseEvent(QMouseEvent *ev)
     {
         if (getContentMode() == 0 && rect().contains(ev->pos()) && ev->button() == Qt::LeftButton)
         {
-            on_cmdView_clicked();
+            if (ev->modifiers().testFlag(Qt::ShiftModifier))
+            {
+                ui->cbSelected->setChecked(!ui->cbSelected->isChecked());
+            }
+            else
+            {
+                on_cmdView_clicked();
+            }
+        }
+        else if (!ui->cbSelected->isVisible() && getContentMode() == 1 && ev->button() == Qt::LeftButton && ev->modifiers().testFlag(Qt::ShiftModifier))
+        {
+            ui->cbSelected->setChecked(!ui->cbSelected->isChecked());
         }
     }
 }
