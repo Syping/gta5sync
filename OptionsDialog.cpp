@@ -145,7 +145,7 @@ void OptionsDialog::setupLanguageBox()
     foreach(const QString &lang, availableLanguages)
     {
         QLocale langLocale(lang);
-        QString cbLangStr = langLocale.nativeLanguageName() % " (" % QLocale::languageToString(langLocale.language()) % ") [" % lang % "]";
+        QString cbLangStr = langLocale.nativeLanguageName() % " (" % langLocale.nativeCountryName() % ") [" % lang % "]";
 
         QString langIconStr = "flag-" % TranslationClass::getCountryCode(langLocale);
 
