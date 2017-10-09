@@ -159,6 +159,7 @@ void TranslationClass::loadTranslation(QApplication *app)
         trLoadSuccess = loadSystemTranslation_p(inLangPath, &inAppTranslator);
 #ifdef GTA5SYNC_DEBUG
         qDebug() << "externalLangIndex" << externalLangIndex << "internalLangIndex" << currentLangIndex;
+        qDebug() << "externalEnglishMode" << externalEnglishMode << "internalEnglishMode" << isEnglishMode;
 #endif
         if ((trLoadSuccess && externalLangIndex > currentLangIndex) || (trLoadSuccess && externalEnglishMode && !isEnglishMode))
         {
@@ -309,6 +310,7 @@ bool TranslationClass::loadSystemTranslation_p(const QString &langPath, QTransla
 #ifdef GTA5SYNC_DEBUG
                     qDebug() << "loadLanguageFileSuccess" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % "_" % langList.at(1) % ".qm");
 #endif
+                    isEnglishMode = false;
                     currentLanguage = languageName;
                     currentLangIndex = currentLangCounter;
                     return true;
@@ -324,6 +326,7 @@ bool TranslationClass::loadSystemTranslation_p(const QString &langPath, QTransla
 #ifdef GTA5SYNC_DEBUG
                     qDebug() << "loadLanguageFileSuccess" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
 #endif
+                    isEnglishMode = false;
                     currentLanguage = languageName;
                     currentLangIndex = currentLangCounter;
                     return true;
@@ -359,10 +362,12 @@ bool TranslationClass::loadSystemTranslation_p(const QString &langPath, QTransla
             {
                 if (appTranslator->load(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm"))
                 {
+                    isEnglishMode = false;
 #ifdef GTA5SYNC_DEBUG
                     qDebug() << "loadLanguageFileSuccess" << QString(langPath % QDir::separator() % "gta5sync_" % langList.at(0) % ".qm");
 #endif
                     currentLanguage = languageName;
+                    currentLangIndex = currentLangCounter;
                     return true;
                 }
             }
