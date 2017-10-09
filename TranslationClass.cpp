@@ -21,6 +21,7 @@
 #include "config.h"
 #include <QStringBuilder>
 #include <QApplication>
+#include <QStringList>
 #include <QTranslator>
 #include <QSettings>
 #include <QLocale>
@@ -478,10 +479,40 @@ void TranslationClass::unloadTranslation(QApplication *app)
         app->removeTranslator(&exQtTranslator);
 #endif
         currentLangIndex = 0;
-        currentLanguage = "";
+        currentLanguage = QString();
         isLangLoaded = false;
     }
 #ifdef _MSC_VER // Fix dumb Microsoft compiler warning
     Q_UNUSED(app)
 #endif
+}
+
+QString TranslationClass::getCountryCode(QLocale::Country country)
+{
+    QList<QLocale> locales = QLocale::matchingLocales(QLocale::AnyLanguage,
+                                                      QLocale::AnyScript,
+                                                      country);
+    if (locales.isEmpty()) return QString();
+    QStringList localeStrList = locales.at(0).name().split("_");
+    if (localeStrList.length() <= 2)
+    {
+        return localeStrList.at(1).toLower();
+    }
+    else
+    {
+        return QString();
+    }
+}
+
+QString TranslationClass::getCountryCode(QLocale locale)
+{
+    QStringList localeStrList = locale.name().split("_");
+    if (localeStrList.length() <= 2)
+    {
+        return localeStrList.at(1).toLower();
+    }
+    else
+    {
+        return QString();
+    }
 }

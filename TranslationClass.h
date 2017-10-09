@@ -24,12 +24,15 @@
 #include <QStringList>
 #include <QString>
 #include <QObject>
+#include <QLocale>
 
 class TranslationClass : public QObject
 {
     Q_OBJECT
 public:
     static TranslationClass* getInstance() { return &translationClassInstance; }
+    static QString getCountryCode(QLocale::Country country);
+    static QString getCountryCode(QLocale locale);
     void initUserLanguage();
     void loadTranslation(QApplication *app);
     void unloadTranslation(QApplication *app);

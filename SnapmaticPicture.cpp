@@ -68,18 +68,20 @@ SnapmaticPicture::~SnapmaticPicture()
 void SnapmaticPicture::reset()
 {
     // INIT PIC
-    rawPicContent = "";
+    rawPicContent.clear();
     rawPicContent.squeeze();
     cachePicture = QImage();
+    picExportFileName = QString();
+    pictureHead = QString();
+    pictureStr = QString();
+    lastStep = QString();
+    sortStr = QString();
+    titlStr = QString();
+    descStr = QString();
+
+    // INIT PIC INTS
     jpegRawContentSizeE = 0;
     jpegRawContentSize = 0;
-    picExportFileName = "";
-    pictureHead = "";
-    pictureStr = "";
-    lastStep = "";
-    sortStr = "";
-    titlStr = "";
-    descStr = "";
 
     // INIT PIC BOOLS
     isCustomFormat = false;
@@ -89,7 +91,7 @@ void SnapmaticPicture::reset()
 
     // INIT JSON
     jsonOk = false;
-    jsonStr = "";
+    jsonStr = QString();
 
     // SNAPMATIC DEFAULTS
 #ifdef GTA5SYNC_CSDF
@@ -378,9 +380,9 @@ QString SnapmaticPicture::getSnapmaticHeaderString(const QByteArray &snapmaticHe
 QString SnapmaticPicture::getSnapmaticJSONString(const QByteArray &jsonBytes)
 {
     QByteArray jsonUsefulBytes = jsonBytes;
-    jsonUsefulBytes.replace('\x00', "");
-    jsonUsefulBytes.replace('\x0c', "");
-    return QString::fromUtf8(jsonUsefulBytes).trimmed();
+    jsonUsefulBytes.replace('\x00', QString());
+    jsonUsefulBytes.replace('\x0c', QString());
+    return QString::fromUtf8(jsonUsefulBytes.trimmed());
 }
 
 QString SnapmaticPicture::getSnapmaticTIDEString(const QByteArray &tideBytes)
@@ -388,7 +390,7 @@ QString SnapmaticPicture::getSnapmaticTIDEString(const QByteArray &tideBytes)
     QByteArray tideUsefulBytes = tideBytes;
     tideUsefulBytes.remove(0,4);
     QList<QByteArray> tideUsefulBytesList = tideUsefulBytes.split('\x00');
-    return QString::fromUtf8(tideUsefulBytesList.at(0)).trimmed();
+    return QString::fromUtf8(tideUsefulBytesList.at(0).trimmed());
 }
 
 void SnapmaticPicture::updateStrings()
@@ -895,7 +897,7 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
             QByteArray numberLength = QByteArray::number(stockFileNameUTF8.length());
             if (numberLength.length() == 1)
             {
-                numberLength.insert(0, "0");
+                numberLength.insert(0, '0');
             }
             else if (numberLength.length() != 2)
             {
