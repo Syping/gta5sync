@@ -39,7 +39,7 @@ public:
 
 private slots:
     void processImage();
-    void on_cbIgnore_clicked();
+    void on_cbIgnore_toggled(bool checked);
     void on_cbAvatar_toggled(bool checked);
     void on_cmdCancel_clicked();
     void on_cmdOK_clicked();

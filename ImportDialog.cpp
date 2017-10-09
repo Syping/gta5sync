@@ -160,8 +160,9 @@ QString ImportDialog::getImageTitle()
     return imageTitle;
 }
 
-void ImportDialog::on_cbIgnore_clicked()
+void ImportDialog::on_cbIgnore_toggled(bool checked)
 {
+    Q_UNUSED(checked)
     processImage();
 }
 
