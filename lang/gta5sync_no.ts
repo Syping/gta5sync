@@ -190,7 +190,7 @@ Pictures and Savegames</source>
     <message>
         <location filename="../ImportDialog.ui" line="98"/>
         <location filename="../ImportDialog.cpp" line="57"/>
-        <location filename="../ImportDialog.cpp" line="215"/>
+        <location filename="../ImportDialog.cpp" line="216"/>
         <source>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -230,18 +230,18 @@ Pictures and Savegames</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="172"/>
+        <location filename="../ImportDialog.cpp" line="173"/>
         <source>Are you sure to use a square image outside of the Avatar Zone?
 When you want to use it as Avatar the image will be detached!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="172"/>
+        <location filename="../ImportDialog.cpp" line="173"/>
         <source>Snapmatic Avatar Zone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="211"/>
+        <location filename="../ImportDialog.cpp" line="212"/>
         <source>Select Colour...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -445,7 +445,7 @@ When you want to use it as Avatar the image will be detached!</source>
     </message>
     <message>
         <location filename="../OptionsDialog.cpp" line="289"/>
-        <source>The new Custom Folder will initialize after you restart %1.</source>
+        <source>The new Custom Folder will initialise after you restart %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -865,7 +865,7 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="984"/>
-        <source>Initializing export...</source>
+        <source>Initialising export...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1245,7 +1245,7 @@ Press 1 for Default View</source>
 <context>
     <name>SnapmaticPicture</name>
     <message>
-        <location filename="../SnapmaticPicture.cpp" line="409"/>
+        <location filename="../SnapmaticPicture.cpp" line="411"/>
         <source>PHOTO - %1</source>
         <translation type="unfinished"></translation>
     </message>

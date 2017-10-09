@@ -379,7 +379,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     <message>
         <location filename="../ImportDialog.ui" line="98"/>
         <location filename="../ImportDialog.cpp" line="57"/>
-        <location filename="../ImportDialog.cpp" line="215"/>
+        <location filename="../ImportDialog.cpp" line="216"/>
         <source>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</source>
         <translation>Hintergrundfarbe: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</translation>
     </message>
@@ -419,19 +419,19 @@ When you plan to use it as Avatar the picture will be cut!</source>
 Wenn du planst es als Avatar zu verwenden das Bild wird abgetrennt!</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="172"/>
+        <location filename="../ImportDialog.cpp" line="173"/>
         <source>Are you sure to use a square image outside of the Avatar Zone?
 When you want to use it as Avatar the image will be detached!</source>
         <translation>Bist du sicher ein Quadrat Bild außerhalb der Avatar Zone zu verwenden?
 Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="172"/>
+        <location filename="../ImportDialog.cpp" line="173"/>
         <source>Snapmatic Avatar Zone</source>
         <translation>Snapmatic Avatar Zone</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="211"/>
+        <location filename="../ImportDialog.cpp" line="212"/>
         <source>Select Colour...</source>
         <translation>Farbe auswählen...</translation>
     </message>
@@ -673,9 +673,8 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="289"/>
         <source>The new Custom Folder will initialize after you restart %1.</source>
-        <translation>Der eigene Ordner wird initialisiert sobald du %1 neugestartet hast.</translation>
+        <translation type="vanished">Der eigene Ordner wird initialisiert sobald du %1 neugestartet hast.</translation>
     </message>
     <message>
         <source>The new Custom Folder initialize after you restart %1.</source>
@@ -692,6 +691,11 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
         <source>System</source>
         <comment>System in context of System default</comment>
         <translation>System</translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.cpp" line="289"/>
+        <source>The new Custom Folder will initialise after you restart %1.</source>
+        <translation>Der eigene Ordner wird initialisiert sobald du %1 neugestartet hast.</translation>
     </message>
     <message>
         <source>The language change will take effect after you restart %1.</source>
@@ -1251,6 +1255,11 @@ Drücke A für Standardansicht</translation>
         <translation>Kann %1 nicht importieren weil das Dateiformat nicht erkannt werden kann</translation>
     </message>
     <message>
+        <location filename="../ProfileInterface.cpp" line="984"/>
+        <source>Initialising export...</source>
+        <translation>Initialisiere Export...</translation>
+    </message>
+    <message>
         <source>Can&apos;t import %1 because of not valid file format</source>
         <translation type="vanished">Kann %1 nicht importieren weil das Dateiformat nicht gültig ist</translation>
     </message>
@@ -1401,9 +1410,8 @@ Exportieren als:</translation>
         <translation>Auswahl exportieren...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="984"/>
         <source>Initializing export...</source>
-        <translation>Initialisiere Export...</translation>
+        <translation type="vanished">Initialisiere Export...</translation>
     </message>
     <message>
         <source>Initializing...</source>
@@ -1892,7 +1900,7 @@ Exportieren als:</translation>
 <context>
     <name>SnapmaticPicture</name>
     <message>
-        <location filename="../SnapmaticPicture.cpp" line="409"/>
+        <location filename="../SnapmaticPicture.cpp" line="411"/>
         <source>PHOTO - %1</source>
         <translation>FOTO - %1</translation>
     </message>

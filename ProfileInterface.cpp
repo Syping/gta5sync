@@ -981,7 +981,7 @@ void ProfileInterface::exportSelected()
             QProgressDialog pbDialog(this);
             pbDialog.setWindowFlags(pbDialog.windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowCloseButtonHint);
             pbDialog.setWindowTitle(tr("Export selected..."));
-            pbDialog.setLabelText(tr("Initializing export..."));
+            pbDialog.setLabelText(tr("Initialising export..."));
             pbDialog.setRange(0, exportCount);
 
             QList<QPushButton*> pbBtn = pbDialog.findChildren<QPushButton*>();

@@ -133,25 +133,14 @@ void OptionsDialog::setupLanguageBox()
                                                                                                                                                                       "System in context of System default"));
     ui->cbLanguage->addItem(cbSysStr, "System");
 
-    QLocale langLocaleEng("en_GB");
-    QString cbEngStr = langLocaleEng.nativeLanguageName() % " (" % QLocale::languageToString(langLocaleEng.language()) % ") [" % "en_GB" % "]";
-
-    ui->cbLanguage->addItem(QIcon::fromTheme("flag-gb"), cbEngStr, "en_GB");
-    if (currentLanguage == "en" || currentLanguage == "en_GB")
-    {
-#if QT_VERSION >= 0x050000
-        ui->cbLanguage->setCurrentText(cbEngStr);
-#else
-        int indexOfEnglish = ui->cbLanguage->findText(cbEngStr);
-        ui->cbLanguage->setCurrentIndex(indexOfEnglish);
-#endif
-    }
     QStringList availableLanguages;
+    availableLanguages << QString("en_GB");
 #ifndef GTA5SYNC_QCONF
     availableLanguages << TCInstance->listTranslations(AppEnv::getExLangFolder());
 #endif
     availableLanguages << TCInstance->listTranslations(AppEnv::getInLangFolder());
     availableLanguages.removeDuplicates();
+    availableLanguages.sort(Qt::CaseInsensitive);
 
     foreach(const QString &lang, availableLanguages)
     {
@@ -286,7 +275,7 @@ void OptionsDialog::applySettings()
 
     if ((forceCustomFolder && ui->txtFolder->text() != currentCFolder) || (forceCustomFolder != currentFFolder && forceCustomFolder))
     {
-        QMessageBox::information(this, tr("%1", "%1").arg(GTA5SYNC_APPSTR), tr("The new Custom Folder will initialize after you restart %1.").arg(GTA5SYNC_APPSTR));
+        QMessageBox::information(this, tr("%1", "%1").arg(GTA5SYNC_APPSTR), tr("The new Custom Folder will initialise after you restart %1.").arg(GTA5SYNC_APPSTR));
     }
 }
 
