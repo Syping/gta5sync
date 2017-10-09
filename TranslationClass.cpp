@@ -255,8 +255,14 @@ void TranslationClass::loadTranslation(QApplication *app)
         qDebug() << "installTranslation" << currentLanguage;
 #endif
         app->installTranslator(&inAppTranslator);
-        loadQtTranslation_p(exLangPath, &exQtTranslator);
-        app->installTranslator(&exQtTranslator);
+        if (loadQtTranslation_p(exLangPath, &exQtTranslator))
+        {
+            app->installTranslator(&exQtTranslator);
+        }
+        else if (loadQtTranslation_p(inLangPath, &inQtTranslator))
+        {
+            app->installTranslator(&inQtTranslator);
+        }
         QLocale::setDefault(currentLanguage);
         isLangLoaded = true;
     }
