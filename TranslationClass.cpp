@@ -325,8 +325,17 @@ bool TranslationClass::loadSystemTranslation_p(const QString &langPath, QTransla
                     currentLangIndex = currentLangCounter;
                     return true;
                 }
+                else if (langList.at(0) == "en")
+                {
+#ifdef GTA5SYNC_DEBUG
+                    qDebug() << "languageEnglishMode index" << currentLangCounter;
+#endif
+                    currentLanguage = languageName;
+                    currentLangIndex = currentLangCounter;
+                    return true;
+                }
             }
-            if (langList.at(0) == "en")
+            else if (langList.at(0) == "en")
             {
 #ifdef GTA5SYNC_DEBUG
                 qDebug() << "languageEnglishMode index" << currentLangCounter;
