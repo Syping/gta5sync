@@ -49,14 +49,24 @@ void TranslationClass::loadTranslation(QApplication *app)
 {
     if (isLangLoaded) { unloadTranslation(app); }
     else { currentLangIndex = 0; }
+    QString exLangPath = AppEnv::getExLangFolder();
+    QString inLangPath = AppEnv::getInLangFolder();
     if (userLanguage == "en" || userLanguage == "en_GB")
     {
-        QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedKingdom));
+        currentLanguage = "en_GB";
+        if (loadQtTranslation_p(exLangPath, &exQtTranslator))
+        {
+            app->installTranslator(&exQtTranslator);
+        }
+        else if (loadQtTranslation_p(inLangPath, &inQtTranslator))
+        {
+            app->installTranslator(&inQtTranslator);
+        }
+        QLocale::setDefault(currentLanguage);
+        isLangLoaded = true;
         return;
     }
 #ifndef GTA5SYNC_QCONF // Classic modable loading method
-    QString exLangPath = AppEnv::getExLangFolder();
-    QString inLangPath = AppEnv::getInLangFolder();
     QString externalLanguageStr;
     bool externalLanguageReady = false;
     bool loadInternalLang = false;
@@ -212,12 +222,20 @@ void TranslationClass::loadTranslation(QApplication *app)
 #ifdef GTA5SYNC_DEBUG
             qDebug() << "fallbackToDefaultApplicationLanguage";
 #endif
-            QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedKingdom));
+            currentLanguage = "en_GB";
+            if (loadQtTranslation_p(exLangPath, &exQtTranslator))
+            {
+                app->installTranslator(&exQtTranslator);
+            }
+            else if (loadQtTranslation_p(inLangPath, &inQtTranslator))
+            {
+                app->installTranslator(&inQtTranslator);
+            }
+            QLocale::setDefault(currentLanguage);
+            isLangLoaded = true;
         }
     }
 #else // New qconf loading method
-    QString inLangPath = AppEnv::getInLangFolder();
-    QString exLangPath = AppEnv::getExLangFolder();
     bool trLoadSuccess;
     if (isUserLanguageSystem_p())
     {
@@ -480,6 +498,7 @@ void TranslationClass::unloadTranslation(QApplication *app)
 #endif
         currentLangIndex = 0;
         currentLanguage = QString();
+        QLocale::setDefault(QLocale::c());
         isLangLoaded = false;
     }
 #ifdef _MSC_VER // Fix dumb Microsoft compiler warning

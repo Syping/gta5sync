@@ -140,7 +140,7 @@ void OptionsDialog::setupLanguageBox()
 #endif
     availableLanguages << TCInstance->listTranslations(AppEnv::getInLangFolder());
     availableLanguages.removeDuplicates();
-    availableLanguages.sort(Qt::CaseInsensitive);
+    availableLanguages.sort();
 
     foreach(const QString &lang, availableLanguages)
     {
