@@ -133,9 +133,11 @@ void OptionsDialog::setupLanguageBox()
                                                                                                                                                                       "System in context of System default"));
     ui->cbLanguage->addItem(cbSysStr, "System");
 
-    QString cbEngStr = "English (English) [en]";
-    ui->cbLanguage->addItem(QIcon::fromTheme("flag-us"), cbEngStr, "en");
-    if (currentLanguage == "en")
+    QLocale langLocaleEng("en_GB");
+    QString cbEngStr = langLocaleEng.nativeLanguageName() % " (" % QLocale::languageToString(langLocaleEng.language()) % ") [" % "en_GB" % "]";
+
+    ui->cbLanguage->addItem(QIcon::fromTheme("flag-gb"), cbEngStr, "en_GB");
+    if (currentLanguage == "en" || currentLanguage == "en_GB")
     {
 #if QT_VERSION >= 0x050000
         ui->cbLanguage->setCurrentText(cbEngStr);
@@ -154,10 +156,7 @@ void OptionsDialog::setupLanguageBox()
     foreach(const QString &lang, availableLanguages)
     {
         QLocale langLocale(lang);
-        QString languageNameInternational = QLocale::languageToString(langLocale.language());
-        QString languageNameNative = langLocale.nativeLanguageName();
-
-        QString cbLangStr = languageNameNative % " (" % languageNameInternational % ") [" % lang % "]";
+        QString cbLangStr = langLocale.nativeLanguageName() % " (" % QLocale::languageToString(langLocale.language()) % ") [" % lang % "]";
         QString langIconStr = "flag-" % lang;
 
         ui->cbLanguage->addItem(QIcon::fromTheme(langIconStr), cbLangStr, lang);

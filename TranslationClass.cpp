@@ -48,9 +48,9 @@ void TranslationClass::loadTranslation(QApplication *app)
 {
     if (isLangLoaded) { unloadTranslation(app); }
     else { currentLangIndex = 0; }
-    if (userLanguage == "en")
+    if (userLanguage == "en" || userLanguage == "en_GB")
     {
-        QLocale::setDefault(QLocale(QLocale::English, QLocale::AnyCountry));
+        QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedKingdom));
         return;
     }
 #ifndef GTA5SYNC_QCONF // Classic modable loading method
@@ -205,6 +205,13 @@ void TranslationClass::loadTranslation(QApplication *app)
             }
             QLocale::setDefault(currentLanguage);
             isLangLoaded = true;
+        }
+        else if (!trLoadSuccess)
+        {
+#ifdef GTA5SYNC_DEBUG
+            qDebug() << "fallbackToDefaultApplicationLanguage";
+#endif
+            QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedKingdom));
         }
     }
 #else // New qconf loading method
