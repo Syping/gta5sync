@@ -20,6 +20,7 @@
 #include "ui_ImportDialog.h"
 #include "AppEnv.h"
 #include <QColorDialog>
+#include <QMessageBox>
 #include <QPainter>
 #include <QPixmap>
 #include <QImage>
@@ -39,6 +40,7 @@ ImportDialog::ImportDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     importAgreed = false;
+    insideAvatarZone = false;
     avatarAreaImage = QImage(":/img/avatarareaimport.png");
     selectedColour = QColor::fromRgb(0, 0, 0, 255);
 
@@ -75,7 +77,7 @@ void ImportDialog::processImage()
     QPixmap snapmaticPixmap(snapmaticResolutionW, snapmaticResolutionH);
     snapmaticPixmap.fill(selectedColour);
     QPainter snapmaticPainter(&snapmaticPixmap);
-    if (ui->cbAvatar->isChecked())
+    if (insideAvatarZone)
     {
         // Avatar mode
         int diffWidth = 0;
@@ -142,6 +144,7 @@ void ImportDialog::setImage(const QImage &image_)
     workImage = image_;
     if (workImage.width() == workImage.height())
     {
+        insideAvatarZone = true;
         ui->cbAvatar->setChecked(true);
     }
     processImage();
@@ -162,8 +165,18 @@ void ImportDialog::on_cbIgnore_clicked()
     processImage();
 }
 
-void ImportDialog::on_cbAvatar_clicked()
+void ImportDialog::on_cbAvatar_toggled(bool checked)
 {
+    if (workImage.width() == workImage.height() && !checked)
+    {
+        if (QMessageBox::No == QMessageBox::warning(this, tr("Snapmatic Avatar Zone"), tr("Are you sure to use a square image outside of the Avatar Zone?\nWhen you want to use it as Avatar the image will be detached!"), QMessageBox::Yes | QMessageBox::No, QMessageBox::No))
+        {
+            ui->cbAvatar->setChecked(true);
+            insideAvatarZone = true;
+            return;
+        }
+    }
+    insideAvatarZone = ui->cbAvatar->isChecked();
     processImage();
 }
 
@@ -180,7 +193,7 @@ void ImportDialog::on_cmdOK_clicked()
 
 void ImportDialog::on_labPicture_labelPainted()
 {
-    if (ui->cbAvatar->isChecked())
+    if (insideAvatarZone)
     {
         QImage avatarAreaFinalImage(avatarAreaImage);
         if (selectedColour.lightness() > 127)

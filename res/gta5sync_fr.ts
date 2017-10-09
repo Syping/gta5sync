@@ -324,8 +324,8 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
     <message>
         <location filename="../ImportDialog.ui" line="98"/>
-        <location filename="../ImportDialog.cpp" line="54"/>
-        <location filename="../ImportDialog.cpp" line="196"/>
+        <location filename="../ImportDialog.cpp" line="57"/>
+        <location filename="../ImportDialog.cpp" line="215"/>
         <source>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -355,7 +355,18 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <translation>A&amp;nnuler</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="192"/>
+        <location filename="../ImportDialog.cpp" line="172"/>
+        <source>Are you sure to use a square image outside of the Avatar Zone?
+When you want to use it as Avatar the image will be detached!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.cpp" line="172"/>
+        <source>Snapmatic Avatar Zone</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.cpp" line="211"/>
         <source>Select Colour...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1479,7 +1490,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
 <context>
     <name>SnapmaticPicture</name>
     <message>
-        <location filename="../SnapmaticPicture.cpp" line="406"/>
+        <location filename="../SnapmaticPicture.cpp" line="409"/>
         <source>PHOTO - %1</source>
         <translation>PHOTO - %1</translation>
     </message>

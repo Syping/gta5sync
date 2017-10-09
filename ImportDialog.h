@@ -40,7 +40,7 @@ public:
 private slots:
     void processImage();
     void on_cbIgnore_clicked();
-    void on_cbAvatar_clicked();
+    void on_cbAvatar_toggled(bool checked);
     void on_cmdCancel_clicked();
     void on_cmdOK_clicked();
     void on_labPicture_labelPainted();
@@ -53,6 +53,7 @@ private:
     QImage workImage;
     QImage newImage;
     QColor selectedColour;
+    bool insideAvatarZone;
     bool importAgreed;
     int snapmaticResolutionLW;
     int snapmaticResolutionLH;
