@@ -132,7 +132,7 @@ void UserInterface::setupDirEnv()
     if (folderExists)
     {
         QDir GTAV_ProfilesDir;
-        GTAV_ProfilesFolder = GTAV_Folder % QDir::separator() % "Profiles";
+        GTAV_ProfilesFolder = GTAV_Folder % "/Profiles";
         GTAV_ProfilesDir.setPath(GTAV_ProfilesFolder);
 
         GTAV_Profiles = GTAV_ProfilesDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot, QDir::NoSort);
