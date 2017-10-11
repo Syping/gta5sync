@@ -25,7 +25,6 @@ DEPLOYMENT.display_name = gta5sync
 TARGET = gta5sync
 TEMPLATE = app
 
-DEFINES += GTA5SYNC_CSDF # Not assisting at proper usage of SnapmaticPicture class
 HEADERS += config.h
 PRECOMPILED_HEADER += config.h
 
@@ -133,6 +132,11 @@ DISTFILES += res/app.rc \
     lang/README.txt
 
 INCLUDEPATH += ./uimod
+
+# GTA5SYNC/GTA5VIEW ONLY
+
+DEFINES += GTA5SYNC_PROJECT # Enable exclusive gta5sync/gta5view functions
+DEFINES += GTA5SYNC_CSDF # Not assisting at proper usage of SnapmaticPicture class
 
 # WINDOWS ONLY
 
