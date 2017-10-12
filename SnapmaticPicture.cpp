@@ -25,6 +25,7 @@
 #include <QVariantMap>
 #include <QJsonArray>
 #include <QFileInfo>
+#include <QSaveFile>
 #include <QPainter>
 #include <QString>
 #include <QBuffer>
@@ -887,7 +888,8 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
         }
     }
 
-    QFile *picFile = new QFile(fileName);
+    bool saveSuccess = false;
+    QSaveFile *picFile = new QSaveFile(fileName);
     if (picFile->open(QIODevice::WriteOnly))
     {
         if (format == SnapmaticFormat::G5E_Format)
@@ -922,7 +924,7 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
             {
                 picFile->write(rawPicContent);
             }
-            picFile->close();
+            saveSuccess = picFile->commit();
             delete picFile;
         }
         else if (format == SnapmaticFormat::JPEG_Format)
@@ -939,7 +941,7 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
                 }
                 picFile->write(jpegRawContent);
             }
-            picFile->close();
+            saveSuccess = picFile->commit();
             delete picFile;
         }
         else
@@ -953,15 +955,15 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
             {
                 picFile->write(qUncompress(rawPicContent));
             }
-            picFile->close();
+            saveSuccess = picFile->commit();
             delete picFile;
         }
-        return true;
+        return saveSuccess;
     }
     else
     {
         delete picFile;
-        return false;
+        return saveSuccess;
     }
 }
 

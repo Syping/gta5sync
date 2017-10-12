@@ -95,12 +95,12 @@
 
 #ifdef GTA5SYNC_DAILYB
 #ifndef GTA5SYNC_BUILDTYPE
-#define GTA5SYNC_BUILDTYPE "Daily Build"
+#define GTA5SYNC_BUILDTYPE QT_TRANSLATE_NOOP("AboutDialog", "Daily Build")
 #endif
 #endif
 
 #ifndef GTA5SYNC_BUILDTYPE
-#define GTA5SYNC_BUILDTYPE "Custom"
+#define GTA5SYNC_BUILDTYPE QT_TRANSLATE_NOOP("AboutDialog", "Custom")
 #endif
 
 #ifdef GTA5SYNC_QCONF
