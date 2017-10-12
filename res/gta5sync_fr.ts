@@ -194,6 +194,7 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
     </message>
     <message>
         <location filename="../config.h" line="74"/>
+        <location filename="../config.h" line="98"/>
         <source>Daily Build</source>
         <translation type="unfinished"></translation>
     </message>
@@ -211,6 +212,11 @@ et les fichiers de sauvegarde de Grand Theft Auto V</translation>
         <location filename="../config.h" line="92"/>
         <source>Alpha</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../config.h" line="103"/>
+        <source>Custom</source>
+        <translation type="unfinished">Personnalisé</translation>
     </message>
 </context>
 <context>
@@ -573,13 +579,13 @@ When you want to use it as Avatar the image will be detached!</source>
         <translation>Système</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="289"/>
+        <location filename="../OptionsDialog.cpp" line="278"/>
         <source>%1</source>
         <comment>%1</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="289"/>
+        <location filename="../OptionsDialog.cpp" line="278"/>
         <source>The new Custom Folder will initialise after you restart %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -592,15 +598,15 @@ When you want to use it as Avatar the image will be detached!</source>
         <translation type="vanished">Le changement de langue sera actif au prochain lancement de %1.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="299"/>
+        <location filename="../OptionsDialog.cpp" line="288"/>
         <source>No Profile</source>
         <comment>No Profile, as default</comment>
         <translation>Aucun profil</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="307"/>
-        <location filename="../OptionsDialog.cpp" line="311"/>
-        <location filename="../OptionsDialog.cpp" line="313"/>
+        <location filename="../OptionsDialog.cpp" line="296"/>
+        <location filename="../OptionsDialog.cpp" line="300"/>
+        <location filename="../OptionsDialog.cpp" line="302"/>
         <source>Profile: %1</source>
         <translation>Profil : %1</translation>
     </message>
@@ -660,37 +666,56 @@ When you want to use it as Avatar the image will be detached!</source>
         <translation type="vanished">Exporter comme Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="222"/>
+        <location filename="../PictureExport.cpp" line="214"/>
+        <source>Failed to export the picture because the system occurred a write failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="217"/>
+        <source>Failed to export the picture because the format detection failures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="220"/>
+        <source>Failed to export the picture because the file can&apos;t be written</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="223"/>
+        <source>Failed to export the picture because of an unknown reason</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureExport.cpp" line="263"/>
         <source>Export as Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="226"/>
+        <location filename="../PictureExport.cpp" line="267"/>
         <source>GTA V Export (*.g5e)</source>
         <translation>GTA V Export (*.g5e)</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="227"/>
+        <location filename="../PictureExport.cpp" line="268"/>
         <source>GTA V Raw Export (*.auto)</source>
         <translation>GTA V Export Brut (*.g5e)</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="228"/>
+        <location filename="../PictureExport.cpp" line="269"/>
         <source>Snapmatic pictures (PGTA*)</source>
         <translation>Fichiers GTA Snapmatic (PGTA*)</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="260"/>
-        <location filename="../PictureExport.cpp" line="264"/>
-        <location filename="../PictureExport.cpp" line="279"/>
-        <location filename="../PictureExport.cpp" line="288"/>
-        <location filename="../PictureExport.cpp" line="293"/>
-        <location filename="../PictureExport.cpp" line="299"/>
+        <location filename="../PictureExport.cpp" line="301"/>
+        <location filename="../PictureExport.cpp" line="312"/>
+        <location filename="../PictureExport.cpp" line="321"/>
+        <location filename="../PictureExport.cpp" line="326"/>
+        <location filename="../PictureExport.cpp" line="332"/>
         <source>Export as Snapmatic</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="293"/>
+        <location filename="../PictureExport.cpp" line="326"/>
         <source>Exported Snapmatic to &quot;%1&quot; because of using the .auto extension.</source>
         <translation>Exporté comme &quot;%1&quot; avec l&apos;utilisation de l&apos;extension .auto.</translation>
     </message>
@@ -703,42 +728,42 @@ When you want to use it as Avatar the image will be detached!</source>
         <translation type="vanished">Exporter comme GTA Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="145"/>
-        <location filename="../PictureExport.cpp" line="260"/>
+        <location filename="../PictureExport.cpp" line="146"/>
+        <location filename="../PictureExport.cpp" line="301"/>
         <source>Overwrite %1 with current Snapmatic picture?</source>
         <translation>%1 existe déjà. Vous-vous le remplacer ?</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="90"/>
+        <location filename="../PictureExport.cpp" line="91"/>
         <source>Export as Picture...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="94"/>
+        <location filename="../PictureExport.cpp" line="95"/>
         <source>JPEG Graphics (*.jpg *.jpeg)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="145"/>
-        <location filename="../PictureExport.cpp" line="149"/>
-        <location filename="../PictureExport.cpp" line="183"/>
-        <location filename="../PictureExport.cpp" line="189"/>
+        <location filename="../PictureExport.cpp" line="146"/>
+        <location filename="../PictureExport.cpp" line="214"/>
+        <location filename="../PictureExport.cpp" line="217"/>
+        <location filename="../PictureExport.cpp" line="220"/>
+        <location filename="../PictureExport.cpp" line="223"/>
+        <location filename="../PictureExport.cpp" line="230"/>
         <source>Export as Picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="149"/>
-        <location filename="../PictureExport.cpp" line="264"/>
         <source>Failed to overwrite %1 with current Snapmatic picture</source>
-        <translation>Echec du remplacement de %1</translation>
+        <translation type="vanished">Echec du remplacement de %1</translation>
     </message>
     <message>
         <source>Failed to copy current Snapmatic picture</source>
         <translation type="vanished">Echec de la copie</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="189"/>
-        <location filename="../PictureExport.cpp" line="299"/>
+        <location filename="../PictureExport.cpp" line="230"/>
+        <location filename="../PictureExport.cpp" line="332"/>
         <source>No valid file is selected</source>
         <translation>Fichier invalide</translation>
     </message>
@@ -836,8 +861,8 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Exporter comme image JPG...</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="91"/>
-        <location filename="../PictureExport.cpp" line="223"/>
+        <location filename="../PictureExport.cpp" line="92"/>
+        <location filename="../PictureExport.cpp" line="264"/>
         <source>Export</source>
         <translation>Exporter</translation>
     </message>
@@ -846,7 +871,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Image JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="95"/>
+        <location filename="../PictureExport.cpp" line="96"/>
         <source>Portable Network Graphics (*.png)</source>
         <translation>Portable Network Graphics (*.png)</translation>
     </message>
@@ -855,9 +880,8 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Exporter comme image JPG</translation>
     </message>
     <message>
-        <location filename="../PictureExport.cpp" line="183"/>
-        <location filename="../PictureExport.cpp" line="279"/>
-        <location filename="../PictureExport.cpp" line="288"/>
+        <location filename="../PictureExport.cpp" line="312"/>
+        <location filename="../PictureExport.cpp" line="321"/>
         <source>Failed to export current Snapmatic picture</source>
         <translation>Échec de l&apos;export de la photo Snapmatic</translation>
     </message>
@@ -1498,7 +1522,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
 <context>
     <name>SnapmaticPicture</name>
     <message>
-        <location filename="../SnapmaticPicture.cpp" line="411"/>
+        <location filename="../SnapmaticPicture.cpp" line="412"/>
         <source>PHOTO - %1</source>
         <translation>PHOTO - %1</translation>
     </message>
@@ -1810,7 +1834,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="312"/>
-        <location filename="../OptionsDialog.cpp" line="445"/>
+        <location filename="../OptionsDialog.cpp" line="434"/>
         <location filename="../UserInterface.cpp" line="104"/>
         <location filename="../UserInterface.cpp" line="513"/>
         <source>Select GTA V Folder...</source>
