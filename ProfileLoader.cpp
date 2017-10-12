@@ -23,6 +23,8 @@
 #include <QStringBuilder>
 #include <QStringList>
 #include <QString>
+#include <QThread>
+#include <QList>
 #include <QFile>
 #include <QDir>
 

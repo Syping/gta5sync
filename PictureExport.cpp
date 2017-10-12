@@ -174,8 +174,7 @@ fileDialogPreSave: //Work?
 #endif
             if (picFile->open(QIODevice::WriteOnly))
             {
-                if (useCustomQuality) { isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), customQuality); }
-                else { isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), 100); }
+                isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), useCustomQuality ? customQuality : defaultQuality);
 #if QT_VERSION >= 0x050000
                 if (isSaved)
                 {
