@@ -263,9 +263,8 @@ fileDialogPreSave: //Work?
 
     fileDialog.setSidebarUrls(sidebarUrls);
     fileDialog.setDirectory(settings.value("Directory", StandardPaths::documentsLocation()).toString());
+    fileDialog.restoreGeometry(settings.value(parent->objectName() % "+Geometry", "").toByteArray());
     fileDialog.selectFile(QString(picture->getExportPictureFileName() % ".g5e"));
-    fileDialog.restoreGeometry(settings.value(parent->objectName() % "+Geomtery", "").toByteArray());
-
 
     if (fileDialog.exec())
     {
