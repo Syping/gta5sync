@@ -233,11 +233,7 @@ void PictureExport::exportAsSnapmatic(QWidget *parent, SnapmaticPicture *picture
     bool dontUseNativeDialog = settings.value("DontUseNativeDialog", false).toBool();
     settings.beginGroup("ExportAsSnapmatic");
 
-    QString adjustedPicPath = picture->getPictureFileName();
-    if (adjustedPicPath.right(7) == ".hidden") // for the hidden file system
-    {
-        adjustedPicPath.remove(adjustedPicPath.length() - 7, 7);
-    }
+    QString adjustedPicPath = picture->getOriginalPictureFileName();
 
 fileDialogPreSave: //Work?
     QFileInfo sgdFileInfo(adjustedPicPath);

@@ -552,6 +552,34 @@ QString SnapmaticPicture::getExportPictureFileName()
     return picExportFileName;
 }
 
+QString SnapmaticPicture::getOriginalPictureFileName()
+{
+    QString newPicFileName = picFileName;
+    if (picFileName.right(4) == ".bak")
+    {
+        newPicFileName = QString(picFileName).remove(picFileName.length() - 4, 4);
+    }
+    if (picFileName.right(7) == ".hidden")
+    {
+        newPicFileName = QString(picFileName).remove(picFileName.length() - 7, 7);
+    }
+    return newPicFileName;
+}
+
+QString SnapmaticPicture::getOriginalPictureFilePath()
+{
+    QString newPicFilePath = picFilePath;
+    if (picFilePath.right(4) == ".bak")
+    {
+        newPicFilePath = QString(picFilePath).remove(picFilePath.length() - 4, 4);
+    }
+    if (picFilePath.right(7) == ".hidden")
+    {
+        newPicFilePath = QString(picFilePath).remove(picFilePath.length() - 7, 7);
+    }
+    return newPicFilePath;
+}
+
 QString SnapmaticPicture::getPictureFileName()
 {
     return picFileName;

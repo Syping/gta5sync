@@ -765,28 +765,20 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
 bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, bool warn)
 {
     QString picFileName = picture->getPictureFileName();
-    QString adjustedFileName = picFileName;
-    if (adjustedFileName.right(7) == ".hidden") // for the hidden file system
-    {
-        adjustedFileName.remove(adjustedFileName.length() - 7, 7);
-    }
-    if (adjustedFileName.right(4) == ".bak") // for the backup file system
-    {
-        adjustedFileName.remove(adjustedFileName.length() - 4, 4);
-    }
+    QString adjustedFileName = picture->getOriginalPictureFileName();
     if (picFileName.left(4) != "PGTA")
     {
         if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to import the Snapmatic picture, file not begin with PGTA or end with .g5e"));
         return false;
     }
-    else if (QFile::exists(profileFolder % QDir::separator() % adjustedFileName) || QFile::exists(profileFolder % QDir::separator() % adjustedFileName % ".hidden"))
+    else if (QFile::exists(profileFolder % "/" % adjustedFileName) || QFile::exists(profileFolder % "/" % adjustedFileName % ".hidden"))
     {
         if (warn) QMessageBox::warning(this, tr("Import"), tr("Failed to import the Snapmatic picture, the picture is already in the game"));
         return false;
     }
-    else if (picture->exportPicture(profileFolder % QDir::separator() % adjustedFileName, SnapmaticFormat::PGTA_Format))
+    else if (picture->exportPicture(profileFolder % "/" % adjustedFileName, SnapmaticFormat::PGTA_Format))
     {
-        picture->setPicFilePath(profileFolder % QDir::separator() % adjustedFileName);
+        picture->setPicFilePath(profileFolder % "/" % adjustedFileName);
         pictureLoaded(picture, true);
         return true;
     }
@@ -812,7 +804,7 @@ bool ProfileInterface::importSavegameData(SavegameData *savegame, QString sgdPat
         }
         sgdFileName = "SGTA500" % sgdNumber;
 
-        if (!QFile::exists(profileFolder % QDir::separator() % sgdFileName))
+        if (!QFile::exists(profileFolder % "/" % sgdFileName))
         {
             foundFree = true;
         }
@@ -821,10 +813,10 @@ bool ProfileInterface::importSavegameData(SavegameData *savegame, QString sgdPat
 
     if (foundFree)
     {
-        if (QFile::copy(sgdPath, profileFolder % QDir::separator() % sgdFileName))
+        if (QFile::copy(sgdPath, profileFolder % "/" % sgdFileName))
         {
-            savegame->setSavegameFileName(profileFolder % QDir::separator() % sgdFileName);
-            savegameLoaded(savegame, profileFolder % QDir::separator() % sgdFileName, true);
+            savegame->setSavegameFileName(profileFolder % "/" % sgdFileName);
+            savegameLoaded(savegame, profileFolder % "/" % sgdFileName, true);
             return true;
         }
         else
