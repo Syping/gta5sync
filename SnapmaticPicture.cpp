@@ -17,6 +17,7 @@
 *****************************************************************************/
 
 #include "SnapmaticPicture.h"
+#include "StandardPaths.h"
 #include "StringParser.h"
 #include <QStringBuilder>
 #include <QJsonDocument>
@@ -25,7 +26,6 @@
 #include <QVariantMap>
 #include <QJsonArray>
 #include <QFileInfo>
-#include <QSaveFile>
 #include <QPainter>
 #include <QString>
 #include <QBuffer>
@@ -33,6 +33,10 @@
 #include <QImage>
 #include <QSize>
 #include <QFile>
+
+#if QT_VERSION >= 0x050000
+#include <QSaveFile>
+#endif
 
 // PARSER ALLOCATIONS
 #define snapmaticHeaderLength 278
@@ -889,7 +893,12 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
     }
 
     bool saveSuccess = false;
+    bool writeFailure = false;
+#if QT_VERSION >= 0x050000
     QSaveFile *picFile = new QSaveFile(fileName);
+#else
+    QFile *picFile = new QFile(StandardPaths::tempLocation() % "/" % QFileInfo(fileName).fileName() % ".tmp");
+#endif
     if (picFile->open(QIODevice::WriteOnly))
     {
         if (format == SnapmaticFormat::G5E_Format)
@@ -915,16 +924,22 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
             g5eHeader += QByteArray("FIL"); // Before File Name
             g5eHeader += stockFileNameUTF8; // File Name
             g5eHeader += QByteArray("COM"); // Before Compressed
-            picFile->write(g5eHeader);
+            if (picFile->write(g5eHeader) == -1) { writeFailure = true; }
             if (!lowRamMode)
             {
-                picFile->write(qCompress(rawPicContent, 9)); // Compressed Snapmatic
+                if (picFile->write(qCompress(rawPicContent, 9)) == -1) { writeFailure = true; } // Compressed Snapmatic
             }
             else
             {
-                picFile->write(rawPicContent);
+                if (picFile->write(rawPicContent) == -1) { writeFailure = true; }
             }
-            saveSuccess = picFile->commit();
+#if QT_VERSION >= 0x050000
+            if (writeFailure) { picFile->cancelWriting(); }
+            else { saveSuccess = picFile->commit(); }
+#else
+            if (!writeFailure) { saveSuccess = true; }
+            picFile->close();
+#endif
             delete picFile;
         }
         else if (format == SnapmaticFormat::JPEG_Format)
@@ -939,9 +954,15 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
                 {
                     jpegRawContent = jpegRawContent.left(jpegRawContentSizeE);
                 }
-                picFile->write(jpegRawContent);
+                if (picFile->write(jpegRawContent) == -1) { writeFailure = true; }
+#if QT_VERSION >= 0x050000
+                if (writeFailure) { picFile->cancelWriting(); }
+                else { saveSuccess = picFile->commit(); }
+#else
+                if (!writeFailure) { saveSuccess = true; }
+                picFile->close();
+#endif
             }
-            saveSuccess = picFile->commit();
             delete picFile;
         }
         else
@@ -949,15 +970,43 @@ bool SnapmaticPicture::exportPicture(const QString &fileName, SnapmaticFormat fo
             // Classic straight export
             if (!lowRamMode)
             {
-                picFile->write(rawPicContent);
+                if (picFile->write(rawPicContent) == -1) { writeFailure = true; }
             }
             else
             {
-                picFile->write(qUncompress(rawPicContent));
+                if (picFile->write(qUncompress(rawPicContent)) == -1) { writeFailure = true; }
             }
-            saveSuccess = picFile->commit();
+#if QT_VERSION >= 0x050000
+            if (writeFailure) { picFile->cancelWriting(); }
+            else { saveSuccess = picFile->commit(); }
+#else
+            if (!writeFailure) { saveSuccess = true; }
+            picFile->close();
+#endif
             delete picFile;
         }
+#if QT_VERSION <= 0x050000
+        if (saveSuccess)
+        {
+            bool tempBakCreated = false;
+            if (QFile::exists(fileName))
+            {
+                if (!QFile::rename(fileName, fileName % ".tmp"))
+                {
+                    QFile::remove(StandardPaths::tempLocation() % "/" % QFileInfo(fileName).fileName() % ".tmp");
+                    return false;
+                }
+                tempBakCreated = true;
+            }
+            if (!QFile::rename(StandardPaths::tempLocation() % "/" % QFileInfo(fileName).fileName() % ".tmp", fileName))
+            {
+                QFile::remove(StandardPaths::tempLocation() % "/" % QFileInfo(fileName).fileName() % ".tmp");
+                if (tempBakCreated) { QFile::rename(fileName % ".tmp", fileName); }
+                return false;
+            }
+            if (tempBakCreated) { QFile::remove(fileName % ".tmp"); }
+        }
+#endif
         return saveSuccess;
     }
     else

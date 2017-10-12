@@ -26,10 +26,13 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QFileDialog>
-#include <QSaveFile>
 #include <QSettings>
 #include <QRegExp>
 #include <QDebug>
+
+#if QT_VERSION >= 0x050000
+#include <QSaveFile>
+#endif
 
 PictureExport::PictureExport()
 {
@@ -163,48 +166,33 @@ fileDialogPreSave: //Work?
 
             int errorId = 0;
             bool isSaved = false;
-            if (useCustomQuality)
+#if QT_VERSION >= 0x050000
+            QSaveFile *picFile = new QSaveFile(selectedFile);
+#else
+            QFile *picFile = new QFile(selectedFile);
+#endif
+            if (picFile->open(QIODevice::WriteOnly))
             {
-                QSaveFile *picFile = new QSaveFile(selectedFile);
-                if (picFile->open(QIODevice::WriteOnly))
+                if (useCustomQuality) { isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), customQuality); }
+                else { isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), 100); }
+#if QT_VERSION >= 0x050000
+                if (isSaved)
                 {
-                    isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), customQuality);
-                    if (isSaved)
-                    {
-                        isSaved = picFile->commit();
-                    }
-                    else
-                    {
-                        errorId = 1;
-                    }
+                    isSaved = picFile->commit();
                 }
                 else
                 {
-                    errorId = 2;
+                    errorId = 1;
                 }
-                delete picFile;
+#else
+                picFile->close();
+#endif
             }
             else
             {
-                QSaveFile *picFile = new QSaveFile(selectedFile);
-                if (picFile->open(QIODevice::WriteOnly))
-                {
-                    isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), 100);
-                    if (isSaved)
-                    {
-                        isSaved = picFile->commit();
-                    }
-                    else
-                    {
-                        errorId = 1;
-                    }
-                }
-                else
-                {
-                    errorId = 2;
-                }
-                delete picFile;
+                errorId = 2;
             }
+            delete picFile;
 
             if (!isSaved)
             {
