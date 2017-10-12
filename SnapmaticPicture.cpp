@@ -17,7 +17,6 @@
 *****************************************************************************/
 
 #include "SnapmaticPicture.h"
-#include "StandardPaths.h"
 #include "StringParser.h"
 #include <QStringBuilder>
 #include <QJsonDocument>
@@ -36,6 +35,8 @@
 
 #if QT_VERSION >= 0x050000
 #include <QSaveFile>
+#else
+#include "StandardPaths.h"
 #endif
 
 // PARSER ALLOCATIONS

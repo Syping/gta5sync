@@ -103,7 +103,7 @@ fileDialogPreSave: //Work?
 
     fileDialog.setSidebarUrls(sidebarUrls);
     fileDialog.setDirectory(settings.value("Directory", StandardPaths::picturesLocation()).toString());
-    fileDialog.restoreGeometry(settings.value(parent->objectName() % "+Geomtery", "").toByteArray());
+    fileDialog.restoreGeometry(settings.value(parent->objectName() % "+Geometry", "").toByteArray());
 
     QString newPictureFileName = getPictureFileName(picture) % defaultExportFormat;
     fileDialog.selectFile(newPictureFileName);

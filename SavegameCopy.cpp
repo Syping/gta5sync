@@ -18,8 +18,10 @@
 
 #include "SidebarGenerator.h"
 #include "SavegameWidget.h"
+#include "StandardPaths.h"
 #include "SavegameCopy.h"
 #include "config.h"
+#include <QStringBuilder>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QSettings>
@@ -32,7 +34,9 @@ SavegameCopy::SavegameCopy()
 void SavegameCopy::copySavegame(QWidget *parent, QString sgdPath)
 {
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
+
     settings.beginGroup("FileDialogs");
+    settings.beginGroup("SavegameCopy");
 
 fileDialogPreSave: //Work?
     QFileInfo sgdFileInfo(sgdPath);
@@ -55,7 +59,8 @@ fileDialogPreSave: //Work?
     QList<QUrl> sidebarUrls = SidebarGenerator::generateSidebarUrls(fileDialog.sidebarUrls());
 
     fileDialog.setSidebarUrls(sidebarUrls);
-    fileDialog.restoreState(settings.value("CopySavegame","").toByteArray());
+    fileDialog.setDirectory(settings.value("Directory", StandardPaths::picturesLocation()).toString());
+    fileDialog.restoreGeometry(settings.value(parent->objectName() % "+Geometry", "").toByteArray());
     fileDialog.selectFile(sgdFileInfo.fileName());
 
     if (fileDialog.exec())
@@ -95,6 +100,8 @@ fileDialogPreSave: //Work?
         }
     }
 
-    settings.setValue("CopySavegame", fileDialog.saveState());
+    settings.setValue(parent->objectName() % "+Geometry", fileDialog.saveGeometry());
+    settings.setValue("Directory", fileDialog.directory().absolutePath());
+    settings.endGroup();
     settings.endGroup();
 }
