@@ -26,6 +26,7 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QSaveFile>
 #include <QSettings>
 #include <QRegExp>
 #include <QDebug>
@@ -142,15 +143,7 @@ fileDialogPreSave: //Work?
 
             if (QFile::exists(selectedFile))
             {
-                if (QMessageBox::Yes == QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Overwrite %1 with current Snapmatic picture?").arg("\""+selectedFile+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
-                {
-                    if (!QFile::remove(selectedFile))
-                    {
-                        QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Failed to overwrite %1 with current Snapmatic picture").arg("\""+selectedFile+"\""));
-                        goto fileDialogPreSave; //Work?
-                    }
-                }
-                else
+                if (QMessageBox::No == QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Overwrite %1 with current Snapmatic picture?").arg("\""+selectedFile+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
                 {
                     goto fileDialogPreSave; //Work?
                 }
@@ -168,19 +161,67 @@ fileDialogPreSave: //Work?
                 exportPicture = exportPicture.scaled(cusExportSize, aspectRatio, Qt::SmoothTransformation);
             }
 
-            bool isSaved;
+            int errorId = 0;
+            bool isSaved = false;
             if (useCustomQuality)
             {
-                isSaved = exportPicture.save(selectedFile, saveFileFormat.toStdString().c_str(), customQuality);
+                QSaveFile *picFile = new QSaveFile(selectedFile);
+                if (picFile->open(QIODevice::WriteOnly))
+                {
+                    isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), customQuality);
+                    if (isSaved)
+                    {
+                        isSaved = picFile->commit();
+                    }
+                    else
+                    {
+                        errorId = 1;
+                    }
+                }
+                else
+                {
+                    errorId = 2;
+                }
+                delete picFile;
             }
             else
             {
-                isSaved = exportPicture.save(selectedFile, saveFileFormat.toStdString().c_str(), 100);
+                QSaveFile *picFile = new QSaveFile(selectedFile);
+                if (picFile->open(QIODevice::WriteOnly))
+                {
+                    isSaved = exportPicture.save(picFile, saveFileFormat.toStdString().c_str(), 100);
+                    if (isSaved)
+                    {
+                        isSaved = picFile->commit();
+                    }
+                    else
+                    {
+                        errorId = 1;
+                    }
+                }
+                else
+                {
+                    errorId = 2;
+                }
+                delete picFile;
             }
 
             if (!isSaved)
             {
-                QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Failed to export current Snapmatic picture"));
+                switch (errorId)
+                {
+                case 0:
+                    QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Failed to export the picture because the system occurred a write failure"));
+                    break;
+                case 1:
+                    QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Failed to export the picture because the format detection failures"));
+                    break;
+                case 2:
+                    QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Failed to export the picture because the file can't be written"));
+                    break;
+                default:
+                    QMessageBox::warning(parent, PictureDialog::tr("Export as Picture"), PictureDialog::tr("Failed to export the picture because of an unknown reason"));
+                }
                 goto fileDialogPreSave; //Work?
             }
         }
@@ -257,15 +298,7 @@ fileDialogPreSave: //Work?
 
             if (QFile::exists(selectedFile))
             {
-                if (QMessageBox::Yes == QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Overwrite %1 with current Snapmatic picture?").arg("\""+selectedFile+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
-                {
-                    if (!QFile::remove(selectedFile))
-                    {
-                        QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Failed to overwrite %1 with current Snapmatic picture").arg("\""+selectedFile+"\""));
-                        goto fileDialogPreSave; //Work?
-                    }
-                }
-                else
+                if (QMessageBox::No == QMessageBox::warning(parent, PictureDialog::tr("Export as Snapmatic"), PictureDialog::tr("Overwrite %1 with current Snapmatic picture?").arg("\""+selectedFile+"\""), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes))
                 {
                     goto fileDialogPreSave; //Work?
                 }
