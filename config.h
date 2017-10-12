@@ -18,7 +18,6 @@
 
 #ifndef CONFIG_H
 #define CONFIG_H
-#include <QtGlobal>
 #include <QString>
 
 #ifndef GTA5SYNC_APPVENDOR
