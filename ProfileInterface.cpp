@@ -414,6 +414,7 @@ void ProfileInterface::on_cmdImport_clicked()
 {
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
     settings.beginGroup("FileDialogs");
+    bool dontUseNativeDialog = settings.value("DontUseNativeDialog", false).toBool();
     settings.beginGroup("ImportCopy");
 
 fileDialogPreOpen: //Work?
@@ -421,7 +422,7 @@ fileDialogPreOpen: //Work?
     fileDialog.setFileMode(QFileDialog::ExistingFiles);
     fileDialog.setViewMode(QFileDialog::Detail);
     fileDialog.setAcceptMode(QFileDialog::AcceptOpen);
-    fileDialog.setOption(QFileDialog::DontUseNativeDialog, false);
+    fileDialog.setOption(QFileDialog::DontUseNativeDialog, dontUseNativeDialog);
     fileDialog.setWindowFlags(fileDialog.windowFlags()^Qt::WindowContextHelpButtonHint);
     fileDialog.setWindowTitle(tr("Import..."));
     fileDialog.setLabelText(QFileDialog::Accept, tr("Import"));
@@ -896,6 +897,7 @@ void ProfileInterface::exportSelected()
 
         QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
         settings.beginGroup("FileDialogs");
+        //bool dontUseNativeDialog = settings.value("DontUseNativeDialog", false).toBool();
         settings.beginGroup("ExportDirectory");
         QString exportDirectory = QFileDialog::getExistingDirectory(this, tr("Export selected"), settings.value(profileName, profileFolder).toString());
         if (exportDirectory != "")
@@ -1184,10 +1186,10 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
     {
         editMenu.addAction(SnapmaticWidget::tr("Hide &In-game"), picWidget, SLOT(makePictureHiddenSlot()));
     }
-    editMenu.addAction(SnapmaticWidget::tr("&Edit Properties..."), picWidget, SLOT(editSnapmaticProperties()));
+    editMenu.addAction(PictureDialog::tr("&Edit Properties..."), picWidget, SLOT(editSnapmaticProperties()));
     QMenu exportMenu(SnapmaticWidget::tr("&Export"), this);
-    exportMenu.addAction(SnapmaticWidget::tr("Export as &Picture..."), picWidget, SLOT(on_cmdExport_clicked()));
-    exportMenu.addAction(SnapmaticWidget::tr("Export as &Snapmatic..."), picWidget, SLOT(on_cmdCopy_clicked()));
+    exportMenu.addAction(PictureDialog::tr("Export as &Picture..."), picWidget, SLOT(on_cmdExport_clicked()));
+    exportMenu.addAction(PictureDialog::tr("Export as &Snapmatic..."), picWidget, SLOT(on_cmdCopy_clicked()));
     contextMenu.addAction(SnapmaticWidget::tr("&View"), picWidget, SLOT(on_cmdView_clicked()));
     contextMenu.addMenu(&editMenu);
     contextMenu.addMenu(&exportMenu);
