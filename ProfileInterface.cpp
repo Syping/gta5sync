@@ -1087,24 +1087,17 @@ void ProfileInterface::importFiles()
     on_cmdImport_clicked();
 }
 
-void ProfileInterface::settingsApplied(int _contentMode, QString _language)
+void ProfileInterface::settingsApplied(int _contentMode, bool languageChanged)
 {
-    bool translationUpdated = false;
-    if (language != _language)
-    {
-        retranslateUi();
-        language = _language;
-        translationUpdated = true;
-    }
+    if (languageChanged) retranslateUi();
     contentMode = _contentMode;
-
     if (contentMode == 2)
     {
         foreach(ProfileWidget *widget, widgets.keys())
         {
             widget->setSelectionMode(true);
             widget->setContentMode(contentMode);
-            if (translationUpdated) widget->retranslate();
+            if (languageChanged) widget->retranslate();
         }
     }
     else
@@ -1116,7 +1109,7 @@ void ProfileInterface::settingsApplied(int _contentMode, QString _language)
                 widget->setSelectionMode(false);
             }
             widget->setContentMode(contentMode);
-            if (translationUpdated) widget->retranslate();
+            if (languageChanged) widget->retranslate();
         }
     }
 }
