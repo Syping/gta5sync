@@ -1911,7 +1911,7 @@ Press 1 for Default View</source>
         <location filename="../UserInterface.cpp" line="60"/>
         <location filename="../UserInterface.cpp" line="541"/>
         <source>&amp;About %1</source>
-        <translation>&amp;О %1</translation>
+        <translation>&amp;О программе %1</translation>
     </message>
     <message>
         <location filename="../UserInterface.cpp" line="360"/>
