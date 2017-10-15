@@ -145,6 +145,13 @@ win32: RC_FILE += res/app.rc
 win32: LIBS += -luser32
 win32: CONFIG -= embed_manifest_exe
 
+# WINDOWS RT ONLY
+winrt: DEFINES -= GTA5SYNC_WIN
+winrt: DEFINES += GTA5SYNC_WINRT
+winrt: RC_FILE -= res/app.rc
+winrt: LIBS -= -luser32
+winrt: QT -= winextras
+
 # MAC OS X ONLY
 macx: ICON = res/5sync.icns
 

@@ -40,7 +40,6 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QFileInfo>
-#include <QProcess>
 #include <QDebug>
 #include <QFile>
 #include <QDir>
