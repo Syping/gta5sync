@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
     QString arg1;
     applicationArgs.removeAt(0);
 
-    foreach(QString currentArg, applicationArgs)
+    for (QString currentArg : applicationArgs)
     {
         QString reworkedArg;
         if (currentArg.left(9) == "-showpic=" && selectedAction == "")
