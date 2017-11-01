@@ -49,7 +49,7 @@ signals:
     void crewNameUpdated();
     void playerNameFound(int playerID, QString playerName);
     void playerNameUpdated();
-    void threadEndCommited();
+    void threadTerminated();
 };
 
 #endif // DATABASETHREAD_H

@@ -46,7 +46,7 @@ void DatabaseThread::run()
     QStringList crewListR;
 
     // Register thread loop end signal
-    QObject::connect(this, SIGNAL(threadEndCommited()), &threadLoop, SLOT(quit()));
+    QObject::connect(this, SIGNAL(threadTerminated()), &threadLoop, SLOT(quit()));
 
     // Setup crewList for Quick time scan
     crewList = crewDB->getCrews();
@@ -144,7 +144,7 @@ void DatabaseThread::scanCrewReference(const QStringList &crewList, const int &r
 
             QEventLoop *downloadLoop = new QEventLoop();
             QObject::connect(netReply, SIGNAL(finished()), downloadLoop, SLOT(quit()));
-            QObject::connect(this, SIGNAL(threadEndCommited()), downloadLoop, SLOT(quit()));
+            QObject::connect(this, SIGNAL(threadTerminated()), downloadLoop, SLOT(quit()));
             QTimer::singleShot(30000, downloadLoop, SLOT(quit()));
             downloadLoop->exec();
             delete downloadLoop;
@@ -170,7 +170,7 @@ void DatabaseThread::scanCrewReference(const QStringList &crewList, const int &r
 
             QEventLoop *waitingLoop = new QEventLoop();
             QTimer::singleShot(requestDelay, waitingLoop, SLOT(quit()));
-            QObject::connect(this, SIGNAL(threadEndCommited()), waitingLoop, SLOT(quit()));
+            QObject::connect(this, SIGNAL(threadTerminated()), waitingLoop, SLOT(quit()));
             waitingLoop->exec();
             delete waitingLoop;
 
@@ -207,7 +207,7 @@ void DatabaseThread::scanCrewMembersList(const QStringList &crewList, const int 
 
                 QEventLoop *downloadLoop = new QEventLoop();
                 QObject::connect(netReply, SIGNAL(finished()), downloadLoop, SLOT(quit()));
-                QObject::connect(this, SIGNAL(threadEndCommited()), downloadLoop, SLOT(quit()));
+                QObject::connect(this, SIGNAL(threadTerminated()), downloadLoop, SLOT(quit()));
                 QTimer::singleShot(30000, downloadLoop, SLOT(quit()));
                 downloadLoop->exec();
                 delete downloadLoop;
@@ -242,7 +242,7 @@ void DatabaseThread::scanCrewMembersList(const QStringList &crewList, const int 
 
                     QEventLoop *waitingLoop = new QEventLoop();
                     QTimer::singleShot(requestDelay, waitingLoop, SLOT(quit()));
-                    QObject::connect(this, SIGNAL(threadEndCommited()), waitingLoop, SLOT(quit()));
+                    QObject::connect(this, SIGNAL(threadTerminated()), waitingLoop, SLOT(quit()));
                     waitingLoop->exec();
                     delete waitingLoop;
 
@@ -283,5 +283,5 @@ QStringList DatabaseThread::deleteCompatibleCrews(const QStringList &crewList)
 void DatabaseThread::terminateThread()
 {
     threadRunning = false;
-    emit threadEndCommited();
+    emit threadTerminated();
 }
