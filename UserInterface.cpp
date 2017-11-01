@@ -189,12 +189,12 @@ void UserInterface::changeFolder_clicked()
 
 void UserInterface::on_cmdReload_clicked()
 {
-    foreach (QPushButton *profileBtn, profileBtns)
+    for (QPushButton *profileBtn : profileBtns)
     {
         ui->vlButtons->removeWidget(profileBtn);
-        profileBtns.removeAll(profileBtn);
         delete profileBtn;
     }
+    profileBtns.clear();
     setupDirEnv();
 }
 
@@ -241,10 +241,11 @@ void UserInterface::closeEvent(QCloseEvent *ev)
 
 UserInterface::~UserInterface()
 {
-    foreach (QPushButton *profileBtn, profileBtns)
+    for (QPushButton *profileBtn : profileBtns)
     {
         delete profileBtn;
     }
+    profileBtns.clear();
     delete ui;
 }
 
