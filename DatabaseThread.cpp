@@ -32,6 +32,7 @@
 #include <QUrl>
 
 #define crewMaxPages 83
+#define maxLoadFails 3
 
 DatabaseThread::DatabaseThread(CrewDatabase *crewDB, QObject *parent) : QThread(parent), crewDB(crewDB)
 {
@@ -251,7 +252,7 @@ void DatabaseThread::scanCrewMembersList(const QStringList &crewList, const int 
                 else
                 {
                     currentFail++;
-                    if (currentFail == 3)
+                    if (currentFail == maxLoadFails)
                     {
                         currentFail = 0;
                         currentPage++;
