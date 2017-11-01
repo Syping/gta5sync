@@ -30,7 +30,7 @@ public:
     explicit DatabaseThread(CrewDatabase *crewDB, QObject *parent = 0);
 
 public slots:
-    void doEndThread();
+    void terminateThread();
 
 private:
     CrewDatabase *crewDB;

@@ -280,7 +280,7 @@ QStringList DatabaseThread::deleteCompatibleCrews(const QStringList &crewList)
     return crewListR;
 }
 
-void DatabaseThread::doEndThread()
+void DatabaseThread::terminateThread()
 {
     threadRunning = false;
     emit threadEndCommited();

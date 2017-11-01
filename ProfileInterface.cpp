@@ -619,7 +619,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                     }
                     QString currentTime = QTime::currentTime().toString("HHmmss");
                     SnapmaticProperties spJson = picture->getSnapmaticProperties();
-                    spJson.uid = QString(currentTime +
+                    spJson.uid = QString(currentTime %
                                          QString::number(QDate::currentDate().dayOfYear())).toInt();
                     bool fExists = QFile::exists(profileFolder % "/PGTA5" % QString::number(spJson.uid));
                     bool fExistsHidden = QFile::exists(profileFolder % "/PGTA5" % QString::number(spJson.uid) % ".hidden");
@@ -627,7 +627,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                     while ((fExists || fExistsHidden) && cEnough < 5000)
                     {
                         currentTime = QString::number(currentTime.toInt() - 1);
-                        spJson.uid = QString(currentTime +
+                        spJson.uid = QString(currentTime %
                                              QString::number(QDate::currentDate().dayOfYear())).toInt();
                         fExists = QFile::exists(profileFolder % "/PGTA5" % QString::number(spJson.uid));
                         fExistsHidden = QFile::exists(profileFolder % "/PGTA5" % QString::number(spJson.uid) % ".hidden");
@@ -682,7 +682,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                             while ((fExists || fExistsHidden) && cEnough < 25)
                             {
                                 currentTime = QString::number(currentTime.toInt() - 1);
-                                spJson.uid = QString(currentTime +
+                                spJson.uid = QString(currentTime %
                                                      QString::number(QDate::currentDate().dayOfYear())).toInt();
                                 fExists = QFile::exists(profileFolder % "/PGTA5" % QString::number(spJson.uid));
                                 fExistsHidden = QFile::exists(profileFolder % "/PGTA5" % QString::number(spJson.uid) % ".hidden");

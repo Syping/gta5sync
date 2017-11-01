@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
         QObject::connect(&threadDB, SIGNAL(playerNameFound(int, QString)), &profileDB, SLOT(setPlayerName(int, QString)));
         QObject::connect(&threadDB, SIGNAL(playerNameUpdated()), &picDialog, SLOT(playerNameUpdated()));
         QObject::connect(&threadDB, SIGNAL(finished()), &a, SLOT(quit()));
-        QObject::connect(&picDialog, SIGNAL(endDatabaseThread()), &threadDB, SLOT(doEndThread()));
+        QObject::connect(&picDialog, SIGNAL(endDatabaseThread()), &threadDB, SLOT(terminateThread()));
         threadDB.start();
 
         picDialog.show();
