@@ -35,6 +35,7 @@
 
 DatabaseThread::DatabaseThread(CrewDatabase *crewDB, QObject *parent) : QThread(parent), crewDB(crewDB)
 {
+    continueLastCrew = true;
     threadRunning = true;
 }
 
@@ -130,7 +131,6 @@ void DatabaseThread::scanCrewReference(const QStringList &crewList, const int &r
         if (threadRunning && crewID != QLatin1String("0"))
         {
             QNetworkAccessManager *netManager = new QNetworkAccessManager();
-
             QNetworkRequest netRequest(AppEnv::getCrewFetchingUrl(crewID));
 #if QT_VERSION >= 0x050600
             netRequest.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
@@ -144,9 +144,10 @@ void DatabaseThread::scanCrewReference(const QStringList &crewList, const int &r
 
             QEventLoop *downloadLoop = new QEventLoop();
             QObject::connect(netReply, SIGNAL(finished()), downloadLoop, SLOT(quit()));
-            QObject::connect(this, SIGNAL(threadTerminated()), downloadLoop, SLOT(quit()));
+            if (!continueLastCrew) { QObject::connect(this, SIGNAL(threadTerminated()), downloadLoop, SLOT(quit())); }
             QTimer::singleShot(30000, downloadLoop, SLOT(quit()));
             downloadLoop->exec();
+            downloadLoop->disconnect();
             delete downloadLoop;
 
             if (netReply->isFinished())
@@ -168,11 +169,15 @@ void DatabaseThread::scanCrewReference(const QStringList &crewList, const int &r
                 }
             }
 
-            QEventLoop *waitingLoop = new QEventLoop();
-            QTimer::singleShot(requestDelay, waitingLoop, SLOT(quit()));
-            QObject::connect(this, SIGNAL(threadTerminated()), waitingLoop, SLOT(quit()));
-            waitingLoop->exec();
-            delete waitingLoop;
+            if (threadRunning)
+            {
+                QEventLoop *waitingLoop = new QEventLoop();
+                QTimer::singleShot(requestDelay, waitingLoop, SLOT(quit()));
+                if (!continueLastCrew) { QObject::connect(this, SIGNAL(threadTerminated()), waitingLoop, SLOT(quit())); }
+                waitingLoop->exec();
+                waitingLoop->disconnect();
+                delete waitingLoop;
+            }
 
             delete netReply;
             delete netManager;
@@ -186,14 +191,14 @@ void DatabaseThread::scanCrewMembersList(const QStringList &crewList, const int 
     {
         if (threadRunning && crewID != QLatin1String("0"))
         {
+            int currentFail = 0;
             int currentPage = 0;
             int foundPlayers = 0;
             int totalPlayers = 1000;
 
-            while(foundPlayers < totalPlayers && currentPage < maxPages)
+            while(foundPlayers < totalPlayers && currentPage < maxPages && (continueLastCrew ? true : threadRunning))
             {
                 QNetworkAccessManager *netManager = new QNetworkAccessManager();
-
                 QNetworkRequest netRequest(AppEnv::getPlayerFetchingUrl(crewID, currentPage));
 #if QT_VERSION >= 0x050600
                 netRequest.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
@@ -207,9 +212,10 @@ void DatabaseThread::scanCrewMembersList(const QStringList &crewList, const int 
 
                 QEventLoop *downloadLoop = new QEventLoop();
                 QObject::connect(netReply, SIGNAL(finished()), downloadLoop, SLOT(quit()));
-                QObject::connect(this, SIGNAL(threadTerminated()), downloadLoop, SLOT(quit()));
+                if (!continueLastCrew) { QObject::connect(this, SIGNAL(threadTerminated()), downloadLoop, SLOT(quit())); }
                 QTimer::singleShot(30000, downloadLoop, SLOT(quit()));
                 downloadLoop->exec();
+                downloadLoop->disconnect();
                 delete downloadLoop;
 
                 if (netReply->isFinished())
@@ -227,30 +233,43 @@ void DatabaseThread::scanCrewMembersList(const QStringList &crewList, const int 
                         for (QVariant memberVariant : memberList)
                         {
                             QMap<QString, QVariant> memberMap = memberVariant.toMap();
-                            foundPlayers++;
                             if (memberMap.contains("RockstarId") && memberMap.contains("Name"))
                             {
                                 int RockstarId = memberMap["RockstarId"].toInt();
                                 QString memberName = memberMap["Name"].toString();
                                 if (!memberName.isEmpty() && RockstarId != 0)
                                 {
+                                    foundPlayers++;
                                     emit playerNameFound(RockstarId, memberName);
                                 }
                             }
                         }
                     }
 
-                    QEventLoop *waitingLoop = new QEventLoop();
-                    QTimer::singleShot(requestDelay, waitingLoop, SLOT(quit()));
-                    QObject::connect(this, SIGNAL(threadTerminated()), waitingLoop, SLOT(quit()));
-                    waitingLoop->exec();
-                    delete waitingLoop;
-
                     currentPage++;
+                }
+                else
+                {
+                    currentFail++;
+                    if (currentFail == 3)
+                    {
+                        currentFail = 0;
+                        currentPage++;
+                    }
                 }
 
                 delete netReply;
                 delete netManager;
+
+                if (foundPlayers < totalPlayers && currentPage < maxPages && (continueLastCrew ? true : threadRunning))
+                {
+                    QEventLoop *waitingLoop = new QEventLoop();
+                    QTimer::singleShot(requestDelay, waitingLoop, SLOT(quit()));
+                    if (!continueLastCrew) { QObject::connect(this, SIGNAL(threadTerminated()), waitingLoop, SLOT(quit())); }
+                    waitingLoop->exec();
+                    waitingLoop->disconnect();
+                    delete waitingLoop;
+                }
             }
         }
     }
@@ -258,7 +277,7 @@ void DatabaseThread::scanCrewMembersList(const QStringList &crewList, const int 
 
 void DatabaseThread::deleteCompatibleCrews(QStringList *crewList)
 {
-    for (QString& crewNID : *crewList)
+    for (QString crewNID : *crewList)
     {
         if (crewDB->isCompatibleCrew(crewNID))
         {
@@ -270,7 +289,7 @@ void DatabaseThread::deleteCompatibleCrews(QStringList *crewList)
 QStringList DatabaseThread::deleteCompatibleCrews(const QStringList &crewList)
 {
     QStringList crewListR = crewList;
-    for (QString& crewNID : crewListR)
+    for (QString crewNID : crewListR)
     {
         if (crewDB->isCompatibleCrew(crewNID))
         {

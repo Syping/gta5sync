@@ -38,6 +38,7 @@ private:
     void scanCrewReference(const QStringList &crewList, const int &requestDelay);
     void deleteCompatibleCrews(QStringList *crewList);
     QStringList deleteCompatibleCrews(const QStringList &crewList);
+    bool continueLastCrew;
     bool threadRunning;
     int plyrPerReq;
 
