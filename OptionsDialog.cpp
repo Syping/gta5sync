@@ -133,10 +133,6 @@ void OptionsDialog::setupLanguageBox()
     QString cbAutoStr = tr("%1 (Closest to Interface)", "Next closest language compared to the Interface").arg(tr("Auto", "Automatic language choice."));
     ui->cbLanguage->addItem(cbSysStr, "System");
     ui->cbAreaLanguage->addItem(cbAutoStr, "Auto");
-    cbSysStr.clear();
-    cbSysStr.squeeze();
-    cbAutoStr.clear();
-    cbAutoStr.squeeze();
 
     QStringList availableLanguages;
     availableLanguages << QString("en_GB");
@@ -165,11 +161,10 @@ void OptionsDialog::setupLanguageBox()
         }
     }
 
-    QString aCurrentLanguage = TCInstance->getCurrentLanguage();
-    QLocale currentLocale(TCInstance->getCurrentLanguage());
+    QString aCurrentLanguage = QString("en_GB");
+    if (TCInstance->isLanguageLoaded()) { aCurrentLanguage = TCInstance->getCurrentLanguage(); }
+    QLocale currentLocale(aCurrentLanguage);
     ui->labCurrentLanguage->setText(tr("Current: %1").arg(currentLocale.nativeLanguageName() % " (" % currentLocale.nativeCountryName() % ") [" % aCurrentLanguage % "]"));
-    aCurrentLanguage.clear();
-    aCurrentLanguage.squeeze();
 
     availableLanguages.clear();
     availableLanguages << TranslationClass::listAreaTranslations();
