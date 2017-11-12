@@ -133,6 +133,10 @@ void OptionsDialog::setupLanguageBox()
     QString cbAutoStr = tr("%1 (Closest to Interface)", "Next closest language compared to the Interface").arg(tr("Auto", "Automatic language choice."));
     ui->cbLanguage->addItem(cbSysStr, "System");
     ui->cbAreaLanguage->addItem(cbAutoStr, "Auto");
+    cbSysStr.clear();
+    cbSysStr.squeeze();
+    cbAutoStr.clear();
+    cbAutoStr.squeeze();
 
     QStringList availableLanguages;
     availableLanguages << QString("en_GB");
@@ -160,6 +164,12 @@ void OptionsDialog::setupLanguageBox()
 #endif
         }
     }
+
+    QString aCurrentLanguage = TCInstance->getCurrentLanguage();
+    QLocale currentLocale(TCInstance->getCurrentLanguage());
+    ui->labCurrentLanguage->setText(tr("Current: %1").arg(currentLocale.nativeLanguageName() % " (" % currentLocale.nativeCountryName() % ") [" % aCurrentLanguage % "]"));
+    aCurrentLanguage.clear();
+    aCurrentLanguage.squeeze();
 
     availableLanguages.clear();
     availableLanguages << TranslationClass::listAreaTranslations();
@@ -195,6 +205,19 @@ void OptionsDialog::setupLanguageBox()
 #endif
         }
     }
+
+    QString aCurrentAreaLanguage = TCInstance->getCurrentAreaLanguage();
+    if (QFile::exists(":/global/global." % currentAreaLanguage % ".loc"))
+    {
+        QFile locFile(":/global/global." % currentAreaLanguage % ".loc");
+        if (locFile.open(QFile::ReadOnly))
+        {
+            aCurrentAreaLanguage = QString::fromUtf8(locFile.readLine()).trimmed();
+            locFile.close();
+        }
+    }
+    currentLocale = QLocale(aCurrentAreaLanguage);
+    ui->labCurrentAreaLanguage->setText(tr("Current: %1").arg(currentLocale.nativeLanguageName() % " (" % currentLocale.nativeCountryName() % ") [" % aCurrentAreaLanguage % "]"));
 }
 
 void OptionsDialog::setupRadioButtons()

@@ -529,38 +529,46 @@ When you want to use it as Avatar the image will be detached!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="405"/>
+        <location filename="../OptionsDialog.ui" line="402"/>
+        <location filename="../OptionsDialog.ui" line="421"/>
+        <location filename="../OptionsDialog.cpp" line="170"/>
+        <location filename="../OptionsDialog.cpp" line="220"/>
+        <source>Current: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.ui" line="412"/>
         <source>Areas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="431"/>
+        <location filename="../OptionsDialog.ui" line="445"/>
         <source>Sync</source>
         <translation>Synchronisation</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="437"/>
+        <location filename="../OptionsDialog.ui" line="451"/>
         <source>Sync is not implemented at current time</source>
         <translation>La synchronisation n&apos;est pas encore implémentée</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="475"/>
+        <location filename="../OptionsDialog.ui" line="489"/>
         <source>Apply changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="478"/>
+        <location filename="../OptionsDialog.ui" line="492"/>
         <source>&amp;OK</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="491"/>
+        <location filename="../OptionsDialog.ui" line="505"/>
         <source>Discard changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="494"/>
+        <location filename="../OptionsDialog.ui" line="508"/>
         <source>&amp;Cancel</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation>&amp;Annuler</translation>
@@ -600,13 +608,13 @@ When you want to use it as Avatar the image will be detached!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="317"/>
+        <location filename="../OptionsDialog.cpp" line="340"/>
         <source>%1</source>
         <comment>%1</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="317"/>
+        <location filename="../OptionsDialog.cpp" line="340"/>
         <source>The new Custom Folder will initialise after you restart %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -619,15 +627,15 @@ When you want to use it as Avatar the image will be detached!</source>
         <translation type="vanished">Le changement de langue sera actif au prochain lancement de %1.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="327"/>
+        <location filename="../OptionsDialog.cpp" line="350"/>
         <source>No Profile</source>
         <comment>No Profile, as default</comment>
         <translation>Aucun profil</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="335"/>
-        <location filename="../OptionsDialog.cpp" line="339"/>
-        <location filename="../OptionsDialog.cpp" line="341"/>
+        <location filename="../OptionsDialog.cpp" line="358"/>
+        <location filename="../OptionsDialog.cpp" line="362"/>
+        <location filename="../OptionsDialog.cpp" line="364"/>
         <source>Profile: %1</source>
         <translation>Profil : %1</translation>
     </message>
@@ -1851,7 +1859,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="312"/>
-        <location filename="../OptionsDialog.cpp" line="473"/>
+        <location filename="../OptionsDialog.cpp" line="496"/>
         <location filename="../UserInterface.cpp" line="103"/>
         <location filename="../UserInterface.cpp" line="523"/>
         <source>Select GTA V Folder...</source>

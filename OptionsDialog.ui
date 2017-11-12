@@ -396,6 +396,13 @@
           <item>
            <widget class="QComboBox" name="cbLanguage"/>
           </item>
+          <item>
+           <widget class="QLabel" name="labCurrentLanguage">
+            <property name="text">
+             <string>Current: %1</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -407,6 +414,13 @@
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <widget class="QComboBox" name="cbAreaLanguage"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="labCurrentAreaLanguage">
+            <property name="text">
+             <string>Current: %1</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
