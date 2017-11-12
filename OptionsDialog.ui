@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabProfile">
       <attribute name="title">
@@ -390,11 +390,23 @@
        <item>
         <widget class="QGroupBox" name="gbLanguage">
          <property name="title">
-          <string>Language</string>
+          <string>Interface</string>
          </property>
          <layout class="QVBoxLayout" name="vlLanguage">
           <item>
            <widget class="QComboBox" name="cbLanguage"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbAreas">
+         <property name="title">
+          <string>Areas</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QComboBox" name="cbAreaLanguage"/>
           </item>
          </layout>
         </widget>
