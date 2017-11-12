@@ -265,10 +265,42 @@ When you want to use it as Avatar the image will be detached!</source>
     </message>
 </context>
 <context>
-    <name>MapPreviewDialog</name>
+    <name>MapLocationDialog</name>
     <message>
-        <location filename="../MapPreviewDialog.ui" line="26"/>
+        <location filename="../MapLocationDialog.ui" line="26"/>
         <source>Snapmatic Map Viewer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="138"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="164"/>
+        <source>&amp;Apply</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="177"/>
+        <source>&amp;Revert</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="190"/>
+        <source>&amp;Set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="203"/>
+        <source>&amp;Done</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.cpp" line="89"/>
+        <source>X: %1
+Y: %2</source>
+        <comment>X and Y position</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1178,6 +1210,7 @@ Press 1 for Default View</source>
     <message>
         <location filename="../SnapmaticEditor.ui" line="14"/>
         <location filename="../SnapmaticEditor.ui" line="81"/>
+        <location filename="../PictureDialog.cpp" line="727"/>
         <location filename="../SnapmaticEditor.cpp" line="241"/>
         <source>Snapmatic Properties</source>
         <translation type="unfinished"></translation>
@@ -1285,6 +1318,7 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../PictureDialog.cpp" line="727"/>
         <location filename="../SnapmaticEditor.cpp" line="241"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation type="unfinished"></translation>

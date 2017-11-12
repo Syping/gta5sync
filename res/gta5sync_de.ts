@@ -455,7 +455,7 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
     </message>
 </context>
 <context>
-    <name>MapPreviewDialog</name>
+    <name>MapLocationDialog</name>
     <message>
         <source>Map Preview</source>
         <translation type="vanished">Map Vorschau</translation>
@@ -465,9 +465,49 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
         <translation type="vanished">Snapmatic Koordinatenansicht</translation>
     </message>
     <message>
-        <location filename="../MapPreviewDialog.ui" line="26"/>
+        <location filename="../MapLocationDialog.ui" line="26"/>
         <source>Snapmatic Map Viewer</source>
         <translation>Snapmatic Kartenansicht</translation>
+    </message>
+    <message>
+        <source>X: %1
+Y: %2</source>
+        <extracomment>X and Y position</extracomment>
+        <translation type="vanished">X: %1
+Y: %2</translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="138"/>
+        <source>&amp;Close</source>
+        <translation>S&amp;chließen</translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="164"/>
+        <source>&amp;Apply</source>
+        <translation>&amp;Übernehmen</translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="177"/>
+        <source>&amp;Revert</source>
+        <translation>&amp;Zurücksetzen</translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="190"/>
+        <source>&amp;Set</source>
+        <translation>&amp;Ändern</translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.ui" line="203"/>
+        <source>&amp;Done</source>
+        <translation>&amp;Fertig</translation>
+    </message>
+    <message>
+        <location filename="../MapLocationDialog.cpp" line="89"/>
+        <source>X: %1
+Y: %2</source>
+        <comment>X and Y position</comment>
+        <translation>X: %1
+Y: %2</translation>
     </message>
 </context>
 <context>
@@ -1825,6 +1865,7 @@ Exportieren als:</translation>
     <message>
         <location filename="../SnapmaticEditor.ui" line="14"/>
         <location filename="../SnapmaticEditor.ui" line="81"/>
+        <location filename="../PictureDialog.cpp" line="727"/>
         <location filename="../SnapmaticEditor.cpp" line="241"/>
         <source>Snapmatic Properties</source>
         <translation>Snapmatic Eigenschaften</translation>
@@ -1949,6 +1990,7 @@ Exportieren als:</translation>
         <translation>Nein</translation>
     </message>
     <message>
+        <location filename="../PictureDialog.cpp" line="727"/>
         <location filename="../SnapmaticEditor.cpp" line="241"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation>Patchen von Snapmatic Eigenschaften fehlgeschlagen wegen I/O Fehler</translation>
