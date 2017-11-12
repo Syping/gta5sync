@@ -385,7 +385,7 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     <message>
         <location filename="../ImportDialog.ui" line="98"/>
         <location filename="../ImportDialog.cpp" line="57"/>
-        <location filename="../ImportDialog.cpp" line="216"/>
+        <location filename="../ImportDialog.cpp" line="242"/>
         <source>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</source>
         <translation>Hintergrundfarbe: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</translation>
     </message>
@@ -425,19 +425,31 @@ When you plan to use it as Avatar the picture will be cut!</source>
 Wenn du planst es als Avatar zu verwenden das Bild wird abgetrennt!</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="173"/>
+        <location filename="../ImportDialog.cpp" line="105"/>
+        <source>Custom Avatar</source>
+        <comment>Custom Avatar Description in SC, don&apos;t use Special Character!</comment>
+        <translation>Eigener Avatar</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.cpp" line="131"/>
+        <source>Custom Picture</source>
+        <comment>Custom Picture Description in SC, don&apos;t use Special Character!</comment>
+        <translation>Eigenes Bild</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.cpp" line="199"/>
         <source>Are you sure to use a square image outside of the Avatar Zone?
 When you want to use it as Avatar the image will be detached!</source>
         <translation>Bist du sicher ein Quadrat Bild außerhalb der Avatar Zone zu verwenden?
 Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="173"/>
+        <location filename="../ImportDialog.cpp" line="199"/>
         <source>Snapmatic Avatar Zone</source>
         <translation>Snapmatic Avatar Zone</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="212"/>
+        <location filename="../ImportDialog.cpp" line="238"/>
         <source>Select Colour...</source>
         <translation>Farbe auswählen...</translation>
     </message>
@@ -632,8 +644,8 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
     <message>
         <location filename="../OptionsDialog.ui" line="402"/>
         <location filename="../OptionsDialog.ui" line="421"/>
-        <location filename="../OptionsDialog.cpp" line="170"/>
-        <location filename="../OptionsDialog.cpp" line="220"/>
+        <location filename="../OptionsDialog.cpp" line="167"/>
+        <location filename="../OptionsDialog.cpp" line="215"/>
         <source>Current: %1</source>
         <translation>Aktuell: %1</translation>
     </message>
@@ -690,7 +702,7 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
         <translation type="vanished">%1 (%2 wenn verfügbar)</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="340"/>
+        <location filename="../OptionsDialog.cpp" line="335"/>
         <source>%1</source>
         <comment>%1</comment>
         <translation>%1</translation>
@@ -728,7 +740,7 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
         <translation>Automatisch</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="340"/>
+        <location filename="../OptionsDialog.cpp" line="335"/>
         <source>The new Custom Folder will initialise after you restart %1.</source>
         <translation>Der eigene Ordner wird initialisiert sobald du %1 neugestartet hast.</translation>
     </message>
@@ -737,15 +749,15 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
         <translation type="vanished">Die Änderung der Sprache nimmt Effekt sobald du %1 neugestartet hast.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="350"/>
+        <location filename="../OptionsDialog.cpp" line="345"/>
         <source>No Profile</source>
         <comment>No Profile, as default</comment>
         <translation>Kein Profil</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="358"/>
-        <location filename="../OptionsDialog.cpp" line="362"/>
-        <location filename="../OptionsDialog.cpp" line="364"/>
+        <location filename="../OptionsDialog.cpp" line="353"/>
+        <location filename="../OptionsDialog.cpp" line="357"/>
+        <location filename="../OptionsDialog.cpp" line="359"/>
         <source>Profile: %1</source>
         <translation>Profil: %1</translation>
     </message>
@@ -2445,7 +2457,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="312"/>
-        <location filename="../OptionsDialog.cpp" line="496"/>
+        <location filename="../OptionsDialog.cpp" line="491"/>
         <location filename="../UserInterface.cpp" line="103"/>
         <location filename="../UserInterface.cpp" line="523"/>
         <source>Select GTA V Folder...</source>

@@ -652,11 +652,11 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                         delete picture;
                         return false;
                     }
-                    QImage snapmaticImage;
+                    QImage *importImage = new QImage();
                     QImageReader snapmaticImageReader;
                     snapmaticImageReader.setDecideFormatFromContent(true);
                     snapmaticImageReader.setDevice(&snapmaticFile);
-                    if (!snapmaticImageReader.read(&snapmaticImage))
+                    if (!snapmaticImageReader.read(importImage))
                     {
                         QMessageBox::warning(this, tr("Import"), tr("Can't import %1 because file can't be parsed properly").arg("\""+selectedFileName+"\""));
                         delete picture;
@@ -664,7 +664,7 @@ bool ProfileInterface::importFile(QString selectedFile, bool notMultiple)
                     }
                     ImportDialog *importDialog = new ImportDialog(this);
                     importDialog->setWindowFlags(importDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
-                    importDialog->setImage(snapmaticImage);
+                    importDialog->setImage(importImage);
                     importDialog->setModal(true);
                     importDialog->show();
                     importDialog->exec();

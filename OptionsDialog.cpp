@@ -163,7 +163,7 @@ void OptionsDialog::setupLanguageBox()
 
     QString aCurrentLanguage = QString("en_GB");
     if (TCInstance->isLanguageLoaded()) { aCurrentLanguage = TCInstance->getCurrentLanguage(); }
-    QLocale currentLocale(aCurrentLanguage);
+    QLocale currentLocale = QLocale(aCurrentLanguage);
     ui->labCurrentLanguage->setText(tr("Current: %1").arg(currentLocale.nativeLanguageName() % " (" % currentLocale.nativeCountryName() % ") [" % aCurrentLanguage % "]"));
 
     availableLanguages.clear();
