@@ -380,6 +380,7 @@ void OptionsDialog::applySettings()
     {
         settings->setValue("CustomStyle", false);
     }
+    settings->setValue("AlwaysUseMessageFont", ui->cbAlwaysUseMessageFont->isChecked()).toBool();
     settings->endGroup();
 
 #if QT_VERSION >= 0x050000
