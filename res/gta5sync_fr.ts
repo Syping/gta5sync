@@ -392,6 +392,25 @@ When you want to use it as Avatar the image will be detached!</source>
     </message>
 </context>
 <context>
+    <name>JsonEditorDialog</name>
+    <message>
+        <location filename="../JsonEditorDialog.ui" line="14"/>
+        <location filename="../SnapmaticWidget.cpp" line="321"/>
+        <source>Snapmatic JSON Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.ui" line="38"/>
+        <source>&amp;Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.ui" line="45"/>
+        <source>&amp;Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>MapLocationDialog</name>
     <message>
         <location filename="../MapLocationDialog.ui" line="26"/>
@@ -690,13 +709,13 @@ Y: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="407"/>
+        <location filename="../OptionsDialog.cpp" line="408"/>
         <source>%1</source>
         <comment>%1</comment>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="407"/>
+        <location filename="../OptionsDialog.cpp" line="408"/>
         <source>The new Custom Folder will initialise after you restart %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -709,15 +728,15 @@ Y: %2</source>
         <translation type="vanished">Le changement de langue sera actif au prochain lancement de %1.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="417"/>
+        <location filename="../OptionsDialog.cpp" line="418"/>
         <source>No Profile</source>
         <comment>No Profile, as default</comment>
         <translation>Aucun profil</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="425"/>
-        <location filename="../OptionsDialog.cpp" line="429"/>
-        <location filename="../OptionsDialog.cpp" line="431"/>
+        <location filename="../OptionsDialog.cpp" line="426"/>
+        <location filename="../OptionsDialog.cpp" line="430"/>
+        <location filename="../OptionsDialog.cpp" line="432"/>
         <source>Profile: %1</source>
         <translation>Profil : %1</translation>
     </message>
@@ -884,7 +903,7 @@ Y: %2</source>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="145"/>
-        <location filename="../ProfileInterface.cpp" line="1166"/>
+        <location filename="../ProfileInterface.cpp" line="1168"/>
         <source>Export as &amp;Picture...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -894,7 +913,7 @@ Y: %2</source>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="146"/>
-        <location filename="../ProfileInterface.cpp" line="1167"/>
+        <location filename="../ProfileInterface.cpp" line="1169"/>
         <source>Export as &amp;Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -998,6 +1017,11 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <location filename="../PictureExport.cpp" line="305"/>
         <source>Failed to export current Snapmatic picture</source>
         <translation>Échec de l&apos;export de la photo Snapmatic</translation>
+    </message>
+    <message>
+        <location filename="../ProfileInterface.cpp" line="1166"/>
+        <source>Open &amp;JSON Editor...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1378,7 +1402,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1203"/>
+        <location filename="../ProfileInterface.cpp" line="1205"/>
         <source>&amp;Export</source>
         <translation>&amp;Exporter</translation>
     </message>
@@ -1469,32 +1493,32 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Impossible de supprimer %1</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1202"/>
+        <location filename="../ProfileInterface.cpp" line="1204"/>
         <source>&amp;View</source>
         <translation>&amp;Voir</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1204"/>
+        <location filename="../ProfileInterface.cpp" line="1206"/>
         <source>&amp;Remove</source>
         <translation>&amp;Supprimer</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1206"/>
+        <location filename="../ProfileInterface.cpp" line="1208"/>
         <source>&amp;Select</source>
         <translation>&amp;Sélectionner</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1207"/>
+        <location filename="../ProfileInterface.cpp" line="1209"/>
         <source>&amp;Deselect</source>
         <translation>&amp;Déselectionner</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1210"/>
+        <location filename="../ProfileInterface.cpp" line="1212"/>
         <source>Select &amp;All</source>
         <translation>Sélectionner to&amp;ut</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1214"/>
+        <location filename="../ProfileInterface.cpp" line="1216"/>
         <source>&amp;Deselect All</source>
         <translation>&amp;Déselectionner tout</translation>
     </message>
@@ -1505,7 +1529,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <location filename="../SnapmaticEditor.ui" line="14"/>
         <location filename="../SnapmaticEditor.ui" line="81"/>
         <location filename="../PictureDialog.cpp" line="727"/>
-        <location filename="../SnapmaticEditor.cpp" line="241"/>
+        <location filename="../SnapmaticEditor.cpp" line="252"/>
         <source>Snapmatic Properties</source>
         <translation>Propriétés Snapmatic</translation>
     </message>
@@ -1549,7 +1573,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Meme</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="291"/>
+        <location filename="../SnapmaticEditor.cpp" line="302"/>
         <source>Snapmatic Title</source>
         <translation>Titre Snapmatic</translation>
     </message>
@@ -1560,20 +1584,20 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="113"/>
-        <location filename="../SnapmaticEditor.cpp" line="200"/>
+        <location filename="../SnapmaticEditor.cpp" line="211"/>
         <source>Crew: %1 (%2)</source>
         <translation>Crew : %1 (%2)</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="126"/>
-        <location filename="../SnapmaticEditor.cpp" line="185"/>
+        <location filename="../SnapmaticEditor.cpp" line="196"/>
         <source>Title: %1 (%2)</source>
         <translation>Titre : %1 (%2)</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.ui" line="136"/>
-        <location filename="../SnapmaticEditor.cpp" line="189"/>
-        <location filename="../SnapmaticEditor.cpp" line="193"/>
+        <location filename="../SnapmaticEditor.cpp" line="200"/>
+        <location filename="../SnapmaticEditor.cpp" line="204"/>
         <source>Appropriate: %1</source>
         <translation>Valide : %1</translation>
     </message>
@@ -1603,20 +1627,20 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>A&amp;nnuler</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="184"/>
-        <location filename="../SnapmaticEditor.cpp" line="199"/>
+        <location filename="../SnapmaticEditor.cpp" line="195"/>
+        <location filename="../SnapmaticEditor.cpp" line="210"/>
         <source>Edit</source>
         <translation>Éditer</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="189"/>
+        <location filename="../SnapmaticEditor.cpp" line="200"/>
         <source>Yes</source>
         <comment>Yes, should work fine</comment>
         <translatorcomment>Oui, devrait fonctionner</translatorcomment>
         <translation>Oui</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="193"/>
+        <location filename="../SnapmaticEditor.cpp" line="204"/>
         <source>No</source>
         <comment>No, could lead to issues</comment>
         <translatorcomment>Non, pourrait causer des erreurs</translatorcomment>
@@ -1624,22 +1648,23 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="727"/>
-        <location filename="../SnapmaticEditor.cpp" line="241"/>
+        <location filename="../SnapmaticEditor.cpp" line="252"/>
+        <location filename="../SnapmaticWidget.cpp" line="321"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation>La modification des propriétés Snapmatic a échoué : erreur d&apos;entrée/sortie</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="291"/>
+        <location filename="../SnapmaticEditor.cpp" line="302"/>
         <source>New Snapmatic title:</source>
         <translation>Nouveau titre Snapmatic :</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="320"/>
+        <location filename="../SnapmaticEditor.cpp" line="331"/>
         <source>Snapmatic Crew</source>
         <translation>Crew Snapmatic</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="320"/>
+        <location filename="../SnapmaticEditor.cpp" line="331"/>
         <source>New Snapmatic crew:</source>
         <translation>Nouveau crew Snapmatic :</translation>
     </message>
@@ -1696,8 +1721,8 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.ui" line="152"/>
-        <location filename="../SnapmaticWidget.cpp" line="144"/>
-        <location filename="../SnapmaticWidget.cpp" line="153"/>
+        <location filename="../SnapmaticWidget.cpp" line="150"/>
+        <location filename="../SnapmaticWidget.cpp" line="159"/>
         <source>Delete picture</source>
         <translation>Supprimer la photo</translation>
     </message>
@@ -1707,12 +1732,12 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="144"/>
+        <location filename="../SnapmaticWidget.cpp" line="150"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
         <translation>Supprimer %1 ?</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="153"/>
+        <location filename="../SnapmaticWidget.cpp" line="159"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation>Impossible de supprimer %1</translation>
     </message>
@@ -1736,7 +1761,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Modifier les &amp;propriétés...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1165"/>
+        <location filename="../ProfileInterface.cpp" line="1167"/>
         <source>&amp;Export</source>
         <translation>&amp;Exporter</translation>
     </message>
@@ -1749,32 +1774,32 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Exporter comme &amp;GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1168"/>
+        <location filename="../ProfileInterface.cpp" line="1170"/>
         <source>&amp;View</source>
         <translation>&amp;Voir</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1171"/>
+        <location filename="../ProfileInterface.cpp" line="1173"/>
         <source>&amp;Remove</source>
         <translation>S&amp;upprimer</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1173"/>
+        <location filename="../ProfileInterface.cpp" line="1175"/>
         <source>&amp;Select</source>
         <translation>&amp;Sélectionner</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1174"/>
+        <location filename="../ProfileInterface.cpp" line="1176"/>
         <source>&amp;Deselect</source>
         <translation>&amp;Déselectionner</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1177"/>
+        <location filename="../ProfileInterface.cpp" line="1179"/>
         <source>Select &amp;All</source>
         <translation>Sélectionner &amp;tout</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1181"/>
+        <location filename="../ProfileInterface.cpp" line="1183"/>
         <source>&amp;Deselect All</source>
         <translation>&amp;Déselectionner tout</translation>
     </message>
@@ -1948,7 +1973,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="312"/>
-        <location filename="../OptionsDialog.cpp" line="563"/>
+        <location filename="../OptionsDialog.cpp" line="564"/>
         <location filename="../UserInterface.cpp" line="103"/>
         <location filename="../UserInterface.cpp" line="523"/>
         <source>Select GTA V Folder...</source>

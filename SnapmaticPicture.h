@@ -96,7 +96,7 @@ public:
     QString getJsonStr();
     SnapmaticProperties getSnapmaticProperties();
     bool setSnapmaticProperties(SnapmaticProperties newSpJson);
-    bool setJsonStr(const QString &jsonStr);
+    bool setJsonStr(const QString &jsonStr, bool updateProperties = false);
 
     // VISIBILITY
     bool isHidden();

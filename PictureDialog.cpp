@@ -746,10 +746,10 @@ void PictureDialog::editSnapmaticProperties()
     {
         snapmaticEditor = new SnapmaticEditor(crewDB, this);
     }
-    snapmaticEditor->setWindowFlags(snapmaticEditor->windowFlags()^Qt::WindowContextHelpButtonHint);
     snapmaticEditor->setWindowIcon(windowIcon());
     snapmaticEditor->setSnapmaticPicture(smpic);
     snapmaticEditor->setModal(true);
+    snapmaticEditor->show();
     snapmaticEditor->exec();
     delete snapmaticEditor;
 }

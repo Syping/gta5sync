@@ -38,6 +38,7 @@ SOURCES += main.cpp \
     GlobalString.cpp \
     IconLoader.cpp \
     ImportDialog.cpp \
+    JsonEditorDialog.cpp \
     MapLocationDialog.cpp \
     OptionsDialog.cpp \
     PictureDialog.cpp \
@@ -72,6 +73,7 @@ HEADERS  += \
     GlobalString.h \
     IconLoader.h \
     ImportDialog.h \
+    JsonEditorDialog.h \
     MapLocationDialog.h \
     OptionsDialog.h \
     PictureDialog.h \
@@ -100,6 +102,7 @@ FORMS    += \
     AboutDialog.ui \
     ExportDialog.ui \
     ImportDialog.ui \
+    JsonEditorDialog.ui \
     MapLocationDialog.ui \
     OptionsDialog.ui \
     PictureDialog.ui \

@@ -862,7 +862,7 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
     return false;
 }
 
-bool SnapmaticPicture::setJsonStr(const QString &newJsonStr)
+bool SnapmaticPicture::setJsonStr(const QString &newJsonStr, bool updateProperties)
 {
     if (newJsonStr.length() < jsonStreamEditorLength)
     {
@@ -887,6 +887,7 @@ bool SnapmaticPicture::setJsonStr(const QString &newJsonStr)
             {
                 jsonStr = newJsonStr;
                 if (lowRamMode) { rawPicContent = qCompress(rawPicContent, 9); }
+                if (updateProperties) { parseJsonContent(); }
                 return true;
             }
             else

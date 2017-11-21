@@ -18,6 +18,7 @@
 
 #include "SnapmaticWidget.h"
 #include "ui_SnapmaticWidget.h"
+#include "JsonEditorDialog.h"
 #include "SnapmaticPicture.h"
 #include "SnapmaticEditor.h"
 #include "DatabaseThread.h"
@@ -81,6 +82,11 @@ void SnapmaticWidget::setSnapmaticPicture(SnapmaticPicture *picture)
 void SnapmaticWidget::snapmaticUpdated()
 {
     ui->labPicStr->setText(smpic->getPictureStr() % "\n" % smpic->getPictureTitl() % "");
+}
+
+void SnapmaticWidget::jsonUpdated(QString jsonCode)
+{
+    smpic->setJsonStr(jsonCode, true);
 }
 
 void SnapmaticWidget::retranslate()
@@ -283,11 +289,44 @@ void SnapmaticWidget::makePictureVisibleSlot()
 void SnapmaticWidget::editSnapmaticProperties()
 {
     SnapmaticEditor *snapmaticEditor = new SnapmaticEditor(crewDB, this);
-    snapmaticEditor->setWindowFlags(snapmaticEditor->windowFlags()^Qt::WindowContextHelpButtonHint);
     snapmaticEditor->setSnapmaticPicture(smpic);
     snapmaticEditor->setModal(true);
+    snapmaticEditor->show();
     snapmaticEditor->exec();
     delete snapmaticEditor;
+}
+
+void SnapmaticWidget::editSnapmaticRawJson()
+{
+    // remind: port most code inside the editor
+    QString oldJsonStr = smpic->getJsonStr();
+    JsonEditorDialog *jsonEditor = new JsonEditorDialog(oldJsonStr, this);
+    connect(jsonEditor, SIGNAL(codeUpdated(QString)), this, SLOT(jsonUpdated(QString)));
+    jsonEditor->setModal(true);
+    jsonEditor->show();
+    jsonEditor->exec();
+    disconnect(jsonEditor, SIGNAL(codeUpdated(QString)), this, SLOT(jsonUpdated(QString)));
+    QString newJsonStr = smpic->getJsonStr();
+    if (newJsonStr != oldJsonStr)
+    {
+        QString currentFilePath = smpic->getPictureFilePath();
+        QString originalFilePath = smpic->getOriginalPictureFilePath();
+        QString backupFileName = originalFilePath % ".bak";
+        if (!QFile::exists(backupFileName))
+        {
+            QFile::copy(currentFilePath, backupFileName);
+        }
+        if (!smpic->exportPicture(currentFilePath))
+        {
+            QMessageBox::warning(this, JsonEditorDialog::tr("Snapmatic JSON Editor"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of I/O Error"));
+            smpic->setJsonStr(oldJsonStr, true);
+        }
+        else
+        {
+            smpic->emitUpdate();
+        }
+    }
+    delete jsonEditor;
 }
 
 bool SnapmaticWidget::isSelected()

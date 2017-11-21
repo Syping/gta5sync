@@ -1162,6 +1162,8 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
         editMenu.addAction(SnapmaticWidget::tr("Hide &In-game"), picWidget, SLOT(makePictureHiddenSlot()));
     }
     editMenu.addAction(PictureDialog::tr("&Edit Properties..."), picWidget, SLOT(editSnapmaticProperties()));
+    editMenu.addSeparator();
+    editMenu.addAction(PictureDialog::tr("Open &JSON Editor..."), picWidget, SLOT(editSnapmaticRawJson()));
     QMenu exportMenu(SnapmaticWidget::tr("&Export"), this);
     exportMenu.addAction(PictureDialog::tr("Export as &Picture..."), picWidget, SLOT(on_cmdExport_clicked()));
     exportMenu.addAction(PictureDialog::tr("Export as &Snapmatic..."), picWidget, SLOT(on_cmdCopy_clicked()));
