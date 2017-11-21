@@ -110,6 +110,7 @@ int main(int argc, char *argv[])
         {
             ProfileDatabase profileDB;
             OptionsDialog optionsDialog(&profileDB);
+            optionsDialog.setWindowIcon(IconLoader::loadingAppIcon());
             optionsDialog.show();
             optionsDialog.exec();
         }
