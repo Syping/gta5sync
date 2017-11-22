@@ -84,11 +84,6 @@ void SnapmaticWidget::snapmaticUpdated()
     ui->labPicStr->setText(smpic->getPictureStr() % "\n" % smpic->getPictureTitl() % "");
 }
 
-void SnapmaticWidget::jsonUpdated(QString jsonCode)
-{
-    smpic->setJsonStr(jsonCode, true);
-}
-
 void SnapmaticWidget::retranslate()
 {
     smpic->updateStrings();
@@ -298,34 +293,10 @@ void SnapmaticWidget::editSnapmaticProperties()
 
 void SnapmaticWidget::editSnapmaticRawJson()
 {
-    // remind: port most code inside the editor
-    QString oldJsonStr = smpic->getJsonStr();
-    JsonEditorDialog *jsonEditor = new JsonEditorDialog(oldJsonStr, this);
-    connect(jsonEditor, SIGNAL(codeUpdated(QString)), this, SLOT(jsonUpdated(QString)));
+    JsonEditorDialog *jsonEditor = new JsonEditorDialog(smpic, this);
     jsonEditor->setModal(true);
     jsonEditor->show();
     jsonEditor->exec();
-    disconnect(jsonEditor, SIGNAL(codeUpdated(QString)), this, SLOT(jsonUpdated(QString)));
-    QString newJsonStr = smpic->getJsonStr();
-    if (newJsonStr != oldJsonStr)
-    {
-        QString currentFilePath = smpic->getPictureFilePath();
-        QString originalFilePath = smpic->getOriginalPictureFilePath();
-        QString backupFileName = originalFilePath % ".bak";
-        if (!QFile::exists(backupFileName))
-        {
-            QFile::copy(currentFilePath, backupFileName);
-        }
-        if (!smpic->exportPicture(currentFilePath))
-        {
-            QMessageBox::warning(this, JsonEditorDialog::tr("Snapmatic JSON Editor"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of I/O Error"));
-            smpic->setJsonStr(oldJsonStr, true);
-        }
-        else
-        {
-            smpic->emitUpdate();
-        }
-    }
     delete jsonEditor;
 }
 

@@ -18,11 +18,14 @@
 
 #include "JsonEditorDialog.h"
 #include "ui_JsonEditorDialog.h"
+#include "SnapmaticEditor.h"
 #include "AppEnv.h"
+#include <QStringBuilder>
 #include <QJsonDocument>
+#include <QMessageBox>
 
-JsonEditorDialog::JsonEditorDialog(QString jsonCode, QWidget *parent) :
-    QDialog(parent), jsonCode(jsonCode),
+JsonEditorDialog::JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent) :
+    QDialog(parent), smpic(picture),
     ui(new Ui::JsonEditorDialog)
 {
     // Set Window Flags
@@ -33,6 +36,7 @@ JsonEditorDialog::JsonEditorDialog(QString jsonCode, QWidget *parent) :
     {
         ui->cmdClose->setIcon(QIcon::fromTheme("dialog-close"));
     }
+    jsonCode = picture->getJsonStr();
     QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonCode.toUtf8());
     ui->txtJSON->setPlainText(QString::fromUtf8(jsonDocument.toJson(QJsonDocument::Indented)));
 
@@ -48,13 +52,16 @@ JsonEditorDialog::~JsonEditorDialog()
 
 void JsonEditorDialog::on_cmdClose_clicked()
 {
-    QJsonDocument jsonOriginal = QJsonDocument::fromJson(jsonCode.toUtf8());
     QJsonDocument jsonNew = QJsonDocument::fromJson(ui->txtJSON->toPlainText().toUtf8());
-    QString originalCode = jsonOriginal.toJson(QJsonDocument::Compact);
-    QString newCode = QString::fromUtf8(jsonNew.toJson(QJsonDocument::Compact));
-    if (newCode != originalCode)
+    if (!jsonNew.isEmpty())
     {
-        // ask for save
+        QJsonDocument jsonOriginal = QJsonDocument::fromJson(jsonCode.toUtf8());
+        QString originalCode = QString::fromUtf8(jsonOriginal.toJson(QJsonDocument::Compact));
+        QString newCode = QString::fromUtf8(jsonNew.toJson(QJsonDocument::Compact));
+        if (newCode != originalCode)
+        {
+            // ask for save
+        }
     }
     this->close();
 }
@@ -64,8 +71,33 @@ void JsonEditorDialog::on_cmdSave_clicked()
     QJsonDocument jsonNew = QJsonDocument::fromJson(ui->txtJSON->toPlainText().toUtf8());
     if (!jsonNew.isEmpty())
     {
+        QJsonDocument jsonOriginal = QJsonDocument::fromJson(jsonCode.toUtf8());
+        QString originalCode = QString::fromUtf8(jsonOriginal.toJson(QJsonDocument::Compact));
         QString newCode = QString::fromUtf8(jsonNew.toJson(QJsonDocument::Compact));
-        emit codeUpdated(newCode);
+        if (newCode != originalCode)
+        {
+            QString currentFilePath = smpic->getPictureFilePath();
+            QString originalFilePath = smpic->getOriginalPictureFilePath();
+            QString backupFileName = originalFilePath % ".bak";
+            if (!QFile::exists(backupFileName))
+            {
+                QFile::copy(currentFilePath, backupFileName);
+            }
+            smpic->setJsonStr(newCode, true);
+            if (!smpic->isJsonOk())
+            {
+                QMessageBox::warning(this, tr("Snapmatic JSON Editor"), tr("Patching of Snapmatic Properties failed because of JSON Error"));
+                smpic->setJsonStr(originalCode, true);
+                return;
+            }
+            if (!smpic->exportPicture(currentFilePath))
+            {
+                QMessageBox::warning(this, tr("Snapmatic JSON Editor"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of I/O Error"));
+                smpic->setJsonStr(originalCode, true);
+                return;
+            }
+            smpic->emitUpdate();
+        }
         this->close();
     }
     else

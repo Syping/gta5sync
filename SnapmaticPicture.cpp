@@ -776,6 +776,7 @@ void SnapmaticPicture::parseJsonContent()
     QJsonObject jsonObject = jsonDocument.object();
     QVariantMap jsonMap = jsonObject.toVariantMap(); // backward compatibility
 
+    bool jsonIncomplete = false;
     if (jsonObject.contains("loc"))
     {
         QJsonObject locObject = jsonObject["loc"].toObject();
@@ -783,18 +784,22 @@ void SnapmaticPicture::parseJsonContent()
         if (locObject.contains("y")) { localSpJson.location.y = locObject["y"].toDouble(); }
         if (locObject.contains("z")) { localSpJson.location.z = locObject["z"].toDouble(); }
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("uid"))
     {
         localSpJson.uid = jsonObject["uid"].toInt();
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("area"))
     {
         localSpJson.location.area = jsonObject["area"].toString();
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("crewid"))
     {
         localSpJson.crewID = jsonObject["crewid"].toInt();
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("creat"))
     {
         QDateTime createdTimestamp;
@@ -802,32 +807,46 @@ void SnapmaticPicture::parseJsonContent()
         createdTimestamp.setTime_t(localSpJson.createdTimestamp);
         localSpJson.createdDateTime = createdTimestamp;
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("plyrs"))
     {
         localSpJson.playersList = jsonMap["plyrs"].toStringList();
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("meme"))
     {
         localSpJson.isMeme = jsonObject["meme"].toBool();
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("mug"))
     {
         localSpJson.isMug = jsonObject["mug"].toBool();
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("slf"))
     {
         localSpJson.isSelfie = jsonObject["slf"].toBool();
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("drctr"))
     {
         localSpJson.isFromDirector = jsonObject["drctr"].toBool();
     }
+    else { jsonIncomplete = true; }
     if (jsonObject.contains("rsedtr"))
     {
         localSpJson.isFromRSEditor = jsonObject["rsedtr"].toBool();
     }
+    else { jsonIncomplete = true; }
 
-    jsonOk = true;
+    if (!jsonIncomplete)
+    {
+        jsonOk = true;
+    }
+    else
+    {
+        jsonOk = false;
+    }
 }
 
 bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)

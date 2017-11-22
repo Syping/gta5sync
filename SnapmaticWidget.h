@@ -70,7 +70,6 @@ private slots:
     void editSnapmaticProperties();
     void editSnapmaticRawJson();
     void snapmaticUpdated();
-    void jsonUpdated(QString jsonCode);
 
 protected:
     void mouseDoubleClickEvent(QMouseEvent *ev);

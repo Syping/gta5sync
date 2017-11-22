@@ -19,6 +19,7 @@
 #ifndef JSONEDITORDIALOG_H
 #define JSONEDITORDIALOG_H
 
+#include "SnapmaticPicture.h"
 #include <QDialog>
 
 namespace Ui {
@@ -30,7 +31,7 @@ class JsonEditorDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit JsonEditorDialog(QString jsonCode, QWidget *parent = 0);
+    explicit JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent = 0);
     ~JsonEditorDialog();
 
 private slots:
@@ -42,6 +43,7 @@ signals:
 
 private:
     QString jsonCode;
+    SnapmaticPicture *smpic;
     Ui::JsonEditorDialog *ui;
 };
 
