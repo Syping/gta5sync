@@ -460,7 +460,9 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
     <name>JsonEditorDialog</name>
     <message>
         <location filename="../JsonEditorDialog.ui" line="14"/>
-        <location filename="../SnapmaticWidget.cpp" line="321"/>
+        <location filename="../JsonEditorDialog.cpp" line="89"/>
+        <location filename="../JsonEditorDialog.cpp" line="95"/>
+        <location filename="../JsonEditorDialog.cpp" line="105"/>
         <source>Snapmatic JSON Editor</source>
         <translation>Snapmatic JSON Editor</translation>
     </message>
@@ -473,6 +475,12 @@ Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
         <location filename="../JsonEditorDialog.ui" line="45"/>
         <source>&amp;Close</source>
         <translation>S&amp;chließen</translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="89"/>
+        <location filename="../JsonEditorDialog.cpp" line="105"/>
+        <source>Patching of Snapmatic Properties failed because of JSON Error</source>
+        <translation>Patchen von Snapmatic Eigenschaften fehlgeschlagen wegen JSON Fehler</translation>
     </message>
 </context>
 <context>
@@ -2058,9 +2066,9 @@ Exportieren als:</translation>
         <translation>Nein</translation>
     </message>
     <message>
+        <location filename="../JsonEditorDialog.cpp" line="95"/>
         <location filename="../PictureDialog.cpp" line="727"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
-        <location filename="../SnapmaticWidget.cpp" line="321"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation>Patchen von Snapmatic Eigenschaften fehlgeschlagen wegen I/O Fehler</translation>
     </message>
@@ -2122,13 +2130,13 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.ui" line="152"/>
-        <location filename="../SnapmaticWidget.cpp" line="150"/>
-        <location filename="../SnapmaticWidget.cpp" line="159"/>
+        <location filename="../SnapmaticWidget.cpp" line="145"/>
+        <location filename="../SnapmaticWidget.cpp" line="154"/>
         <source>Delete picture</source>
         <translation>Bild löschen</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="150"/>
+        <location filename="../SnapmaticWidget.cpp" line="145"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
         <translation>Bist du sicher %1 von deine Snapmatic Bilder zu löschen?</translation>
     </message>
@@ -2270,7 +2278,7 @@ Exportieren als:</translation>
         <translation type="obsolete">Bist du sicher %1 von deinen Snapmatic Bilder zu löschen?</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="159"/>
+        <location filename="../SnapmaticWidget.cpp" line="154"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation>Fehlgeschlagen beim Löschen von %1 von deinen Snapmatic Bildern</translation>
     </message>

@@ -395,7 +395,9 @@ When you want to use it as Avatar the image will be detached!</source>
     <name>JsonEditorDialog</name>
     <message>
         <location filename="../JsonEditorDialog.ui" line="14"/>
-        <location filename="../SnapmaticWidget.cpp" line="321"/>
+        <location filename="../JsonEditorDialog.cpp" line="89"/>
+        <location filename="../JsonEditorDialog.cpp" line="95"/>
+        <location filename="../JsonEditorDialog.cpp" line="105"/>
         <source>Snapmatic JSON Editor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -407,6 +409,12 @@ When you want to use it as Avatar the image will be detached!</source>
     <message>
         <location filename="../JsonEditorDialog.ui" line="45"/>
         <source>&amp;Close</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="89"/>
+        <location filename="../JsonEditorDialog.cpp" line="105"/>
+        <source>Patching of Snapmatic Properties failed because of JSON Error</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1647,9 +1655,9 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Non</translation>
     </message>
     <message>
+        <location filename="../JsonEditorDialog.cpp" line="95"/>
         <location filename="../PictureDialog.cpp" line="727"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
-        <location filename="../SnapmaticWidget.cpp" line="321"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation>La modification des propriétés Snapmatic a échoué : erreur d&apos;entrée/sortie</translation>
     </message>
@@ -1721,8 +1729,8 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.ui" line="152"/>
-        <location filename="../SnapmaticWidget.cpp" line="150"/>
-        <location filename="../SnapmaticWidget.cpp" line="159"/>
+        <location filename="../SnapmaticWidget.cpp" line="145"/>
+        <location filename="../SnapmaticWidget.cpp" line="154"/>
         <source>Delete picture</source>
         <translation>Supprimer la photo</translation>
     </message>
@@ -1732,12 +1740,12 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="150"/>
+        <location filename="../SnapmaticWidget.cpp" line="145"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
         <translation>Supprimer %1 ?</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="159"/>
+        <location filename="../SnapmaticWidget.cpp" line="154"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation>Impossible de supprimer %1</translation>
     </message>

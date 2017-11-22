@@ -102,6 +102,7 @@ void JsonEditorDialog::on_cmdSave_clicked()
     }
     else
     {
-        // throw an error
+        QMessageBox::warning(this, tr("Snapmatic JSON Editor"), tr("Patching of Snapmatic Properties failed because of JSON Error"));
+        return;
     }
 }
