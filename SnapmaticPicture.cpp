@@ -780,25 +780,29 @@ void SnapmaticPicture::parseJsonContent()
     bool jsonError = false;
     if (jsonObject.contains("loc"))
     {
-        QJsonObject locObject = jsonObject["loc"].toObject();
-        if (locObject.contains("x"))
+        if (jsonObject["loc"].isObject())
         {
-            if (locObject["x"].isDouble()) { localSpJson.location.x = locObject["x"].toDouble(); }
-            else { jsonError = true; }
+            QJsonObject locObject = jsonObject["loc"].toObject();
+            if (locObject.contains("x"))
+            {
+                if (locObject["x"].isDouble()) { localSpJson.location.x = locObject["x"].toDouble(); }
+                else { jsonError = true; }
+            }
+            else { jsonIncomplete = true; }
+            if (locObject.contains("y"))
+            {
+                if (locObject["y"].isDouble()) { localSpJson.location.y = locObject["y"].toDouble(); }
+                else { jsonError = true; }
+            }
+            else { jsonIncomplete = true; }
+            if (locObject.contains("z"))
+            {
+                if (locObject["z"].isDouble()) { localSpJson.location.z = locObject["z"].toDouble(); }
+                else { jsonError = true; }
+            }
+            else { jsonIncomplete = true; }
         }
-        else { jsonIncomplete = true; }
-        if (locObject.contains("y"))
-        {
-            if (locObject["y"].isDouble()) { localSpJson.location.y = locObject["y"].toDouble(); }
-            else { jsonError = true; }
-        }
-        else { jsonIncomplete = true; }
-        if (locObject.contains("z"))
-        {
-            if (locObject["z"].isDouble()) { localSpJson.location.z = locObject["z"].toDouble(); }
-            else { jsonError = true; }
-        }
-        else { jsonIncomplete = true; }
+        else { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("uid"))
