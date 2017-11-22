@@ -136,7 +136,7 @@ DISTFILES += res/app.rc \
     lang/gta5sync_no.ts \
     lang/README.txt
 
-INCLUDEPATH += ./uimod
+INCLUDEPATH += ./anpro ./uimod
 
 # GTA5SYNC/GTA5VIEW ONLY
 

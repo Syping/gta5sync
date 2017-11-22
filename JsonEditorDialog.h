@@ -19,8 +19,8 @@
 #ifndef JSONEDITORDIALOG_H
 #define JSONEDITORDIALOG_H
 
-#include "anpro/JSHighlighter.h"
 #include "SnapmaticPicture.h"
+#include "JSHighlighter.h"
 #include <QDialog>
 
 namespace Ui {
