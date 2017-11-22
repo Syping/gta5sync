@@ -60,6 +60,7 @@ SOURCES += main.cpp \
     StringParser.cpp \
     TranslationClass.cpp \
     UserInterface.cpp \
+    anpro/JSHighlighter.cpp \
     uimod/UiModLabel.cpp \
     uimod/UiModWidget.cpp
 
@@ -95,6 +96,7 @@ HEADERS  += \
     StringParser.h \
     TranslationClass.h \
     UserInterface.h \
+    anpro/JSHighlighter.h \
     uimod/UiModLabel.h \
     uimod/UiModWidget.h
 

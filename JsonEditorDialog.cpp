@@ -24,12 +24,17 @@
 #include <QJsonDocument>
 #include <QMessageBox>
 
+#if QT_VERSION >= 0x050200
+#include <QFontDatabase>
+#include <QDebug>
+#endif
+
 JsonEditorDialog::JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent) :
     QDialog(parent), smpic(picture),
     ui(new Ui::JsonEditorDialog)
 {
     // Set Window Flags
-    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint);
+    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowMinMaxButtonsHint);
 
     ui->setupUi(this);
     if (QIcon::hasThemeIcon("dialog-close"))
@@ -37,22 +42,33 @@ JsonEditorDialog::JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent) :
         ui->cmdClose->setIcon(QIcon::fromTheme("dialog-close"));
     }
     jsonCode = picture->getJsonStr();
+
+#if QT_VERSION >= 0x050200
+    ui->txtJSON->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
+#endif
+    QFontMetrics fm(ui->txtJSON->font());
+    ui->txtJSON->setTabStopWidth(fm.width("    "));
+
     QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonCode.toUtf8());
-    ui->txtJSON->setPlainText(QString::fromUtf8(jsonDocument.toJson(QJsonDocument::Indented)));
+    ui->txtJSON->setStyleSheet("QPlainTextEdit{background-color: rgb(46, 47, 48); color: rgb(238, 231, 172);}");
+    ui->txtJSON->setPlainText(QString::fromUtf8(jsonDocument.toJson(QJsonDocument::Indented)).trimmed());
+    jsonHl = new JSHighlighter(ui->txtJSON->document());
 
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
-    resize(400 * screenRatio, 350 * screenRatio);
+    resize(450 * screenRatio, 425 * screenRatio);
 }
 
 JsonEditorDialog::~JsonEditorDialog()
 {
+    delete jsonHl;
     delete ui;
 }
 
 void JsonEditorDialog::closeEvent(QCloseEvent *ev)
 {
-    QJsonDocument jsonNew = QJsonDocument::fromJson(ui->txtJSON->toPlainText().toUtf8());
+    QString jsonPatched = QString(ui->txtJSON->toPlainText()).replace("\t", "    ");
+    QJsonDocument jsonNew = QJsonDocument::fromJson(jsonPatched.toUtf8());
     QJsonDocument jsonOriginal = QJsonDocument::fromJson(jsonCode.toUtf8());
     QString originalCode = QString::fromUtf8(jsonOriginal.toJson(QJsonDocument::Compact));
     QString newCode = QString::fromUtf8(jsonNew.toJson(QJsonDocument::Compact));
@@ -86,7 +102,8 @@ void JsonEditorDialog::closeEvent(QCloseEvent *ev)
 
 bool JsonEditorDialog::saveJsonContent()
 {
-    QJsonDocument jsonNew = QJsonDocument::fromJson(ui->txtJSON->toPlainText().toUtf8());
+    QString jsonPatched = QString(ui->txtJSON->toPlainText()).replace("\t", "    ");
+    QJsonDocument jsonNew = QJsonDocument::fromJson(jsonPatched.toUtf8());
     if (!jsonNew.isEmpty())
     {
         QJsonDocument jsonOriginal = QJsonDocument::fromJson(jsonCode.toUtf8());

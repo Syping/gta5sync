@@ -16,41 +16,41 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *****************************************************************************/
 
-#ifndef JSONEDITORDIALOG_H
-#define JSONEDITORDIALOG_H
+#ifndef JSHIGHLIGHTER_H
+#define JSHIGHLIGHTER_H
 
-#include "anpro/JSHighlighter.h"
-#include "SnapmaticPicture.h"
-#include <QDialog>
+#include <QSyntaxHighlighter>
+#include <QTextCharFormat>
+#include <QTextDocument>
+#include <QTextFormat>
+#include <QStringList>
+#include <QRegExp>
+#include <QVector>
+#include <QHash>
 
-namespace Ui {
-class JsonEditorDialog;
-}
+class QTextDocument;
 
-class JsonEditorDialog : public QDialog
+class JSHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
 
 public:
-    explicit JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent = 0);
-    bool saveJsonContent();
-    ~JsonEditorDialog();
+    struct HighlightingRule
+    {
+        QRegExp pattern;
+        QTextCharFormat format;
+    };
+    QVector<HighlightingRule> highlightingRules;
+
+    QTextCharFormat keywordFormat;
+    QTextCharFormat doubleFormat;
+    QTextCharFormat quotationFormat;
+    QTextCharFormat objectFormat;
+
+    JSHighlighter(QTextDocument *parent = 0);
 
 protected:
-    void closeEvent(QCloseEvent *ev);
-
-private slots:
-    void on_cmdClose_clicked();
-    void on_cmdSave_clicked();
-
-signals:
-    void codeUpdated(QString jsonCode);
-
-private:
-    QString jsonCode;
-    JSHighlighter *jsonHl;
-    SnapmaticPicture *smpic;
-    Ui::JsonEditorDialog *ui;
+    void highlightBlock(const QString &text) override;
 };
 
-#endif // JSONEDITORDIALOG_H
+#endif // JSHIGHLIGHTER_H
