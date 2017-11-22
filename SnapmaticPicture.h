@@ -37,6 +37,7 @@ struct SnapmaticProperties {
     };
     int uid;
     int crewID;
+    int streetID;
     QStringList playersList;
     uint createdTimestamp;
     QDateTime createdDateTime;

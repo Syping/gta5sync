@@ -50,23 +50,41 @@ JsonEditorDialog::~JsonEditorDialog()
     delete ui;
 }
 
-void JsonEditorDialog::on_cmdClose_clicked()
+void JsonEditorDialog::closeEvent(QCloseEvent *ev)
 {
     QJsonDocument jsonNew = QJsonDocument::fromJson(ui->txtJSON->toPlainText().toUtf8());
-    if (!jsonNew.isEmpty())
+    QJsonDocument jsonOriginal = QJsonDocument::fromJson(jsonCode.toUtf8());
+    QString originalCode = QString::fromUtf8(jsonOriginal.toJson(QJsonDocument::Compact));
+    QString newCode = QString::fromUtf8(jsonNew.toJson(QJsonDocument::Compact));
+    if (newCode != originalCode)
     {
-        QJsonDocument jsonOriginal = QJsonDocument::fromJson(jsonCode.toUtf8());
-        QString originalCode = QString::fromUtf8(jsonOriginal.toJson(QJsonDocument::Compact));
-        QString newCode = QString::fromUtf8(jsonNew.toJson(QJsonDocument::Compact));
-        if (newCode != originalCode)
+        QMessageBox::StandardButton button = QMessageBox::warning(this, SnapmaticEditor::tr("Snapmatic Properties"), SnapmaticEditor::tr("<h4>Unsaved changes detected</h4>You want to save the JSON content before you quit?"), QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Cancel);
+        if (button == QMessageBox::Yes)
         {
-            // ask for save
+            if (saveJsonContent())
+            {
+                ev->accept();
+            }
+            else
+            {
+                ev->ignore();
+            }
+            return;
+        }
+        else if (button == QMessageBox::No)
+        {
+            ev->accept();
+            return;
+        }
+        else
+        {
+            ev->ignore();
+            return;
         }
     }
-    this->close();
 }
 
-void JsonEditorDialog::on_cmdSave_clicked()
+bool JsonEditorDialog::saveJsonContent()
 {
     QJsonDocument jsonNew = QJsonDocument::fromJson(ui->txtJSON->toPlainText().toUtf8());
     if (!jsonNew.isEmpty())
@@ -86,23 +104,37 @@ void JsonEditorDialog::on_cmdSave_clicked()
             smpic->setJsonStr(newCode, true);
             if (!smpic->isJsonOk())
             {
-                QMessageBox::warning(this, tr("Snapmatic JSON Editor"), tr("Patching of Snapmatic Properties failed because of JSON Error"));
+                QMessageBox::warning(this, SnapmaticEditor::tr("Snapmatic Properties"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of JSON Error"));
                 smpic->setJsonStr(originalCode, true);
-                return;
+                return false;
             }
             if (!smpic->exportPicture(currentFilePath))
             {
-                QMessageBox::warning(this, tr("Snapmatic JSON Editor"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of I/O Error"));
+                QMessageBox::warning(this, SnapmaticEditor::tr("Snapmatic Properties"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of I/O Error"));
                 smpic->setJsonStr(originalCode, true);
-                return;
+                return false;
             }
             smpic->emitUpdate();
+            return true;
         }
-        this->close();
+        return true;
     }
     else
     {
-        QMessageBox::warning(this, tr("Snapmatic JSON Editor"), tr("Patching of Snapmatic Properties failed because of JSON Error"));
-        return;
+        QMessageBox::warning(this, SnapmaticEditor::tr("Snapmatic Properties"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of JSON Error"));
+        return false;
+    }
+}
+
+void JsonEditorDialog::on_cmdClose_clicked()
+{
+    this->close();
+}
+
+void JsonEditorDialog::on_cmdSave_clicked()
+{
+    if (saveJsonContent())
+    {
+        this->close();
     }
 }

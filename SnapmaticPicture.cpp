@@ -814,7 +814,8 @@ void SnapmaticPicture::parseJsonContent()
     else { jsonIncomplete = true; }
     if (jsonObject.contains("area"))
     {
-        localSpJson.location.area = jsonObject["area"].toString();
+        if (jsonObject["area"].isString()) { localSpJson.location.area = jsonObject["area"].toString(); }
+        else { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("crewid"))
@@ -822,6 +823,13 @@ void SnapmaticPicture::parseJsonContent()
         bool crewIDOk;
         localSpJson.crewID = jsonMap["crewid"].toInt(&crewIDOk);
         if (!crewIDOk) { jsonError = true; }
+    }
+    else { jsonIncomplete = true; }
+    if (jsonObject.contains("street"))
+    {
+        bool streetIDOk;
+        localSpJson.streetID = jsonMap["street"].toInt(&streetIDOk);
+        if (!streetIDOk) { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("creat"))
@@ -895,6 +903,7 @@ bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
     jsonObject["uid"] = newSpJson.uid;
     jsonObject["area"] = newSpJson.location.area;
     jsonObject["crewid"] = newSpJson.crewID;
+    jsonObject["street"] = newSpJson.streetID;
     jsonObject["creat"] = QJsonValue::fromVariant(newSpJson.createdTimestamp);
     jsonObject["plyrs"] = QJsonValue::fromVariant(newSpJson.playersList);
     jsonObject["meme"] = newSpJson.isMeme;

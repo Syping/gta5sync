@@ -358,9 +358,6 @@ When you want to use it as Avatar the image will be detached!</source>
     <name>JsonEditorDialog</name>
     <message>
         <location filename="../JsonEditorDialog.ui" line="14"/>
-        <location filename="../JsonEditorDialog.cpp" line="89"/>
-        <location filename="../JsonEditorDialog.cpp" line="95"/>
-        <location filename="../JsonEditorDialog.cpp" line="105"/>
         <source>Snapmatic JSON Editor</source>
         <translation type="unfinished"></translation>
     </message>
@@ -373,12 +370,6 @@ When you want to use it as Avatar the image will be detached!</source>
         <location filename="../JsonEditorDialog.ui" line="45"/>
         <source>&amp;Close</source>
         <translation type="unfinished">&amp;Закрыть</translation>
-    </message>
-    <message>
-        <location filename="../JsonEditorDialog.cpp" line="89"/>
-        <location filename="../JsonEditorDialog.cpp" line="105"/>
-        <source>Patching of Snapmatic Properties failed because of JSON Error</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1563,6 +1554,10 @@ Press 1 for Default View</source>
     <message>
         <location filename="../SnapmaticEditor.ui" line="14"/>
         <location filename="../SnapmaticEditor.ui" line="81"/>
+        <location filename="../JsonEditorDialog.cpp" line="61"/>
+        <location filename="../JsonEditorDialog.cpp" line="107"/>
+        <location filename="../JsonEditorDialog.cpp" line="113"/>
+        <location filename="../JsonEditorDialog.cpp" line="124"/>
         <location filename="../PictureDialog.cpp" line="727"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
         <source>Snapmatic Properties</source>
@@ -1676,7 +1671,18 @@ Press 1 for Default View</source>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../JsonEditorDialog.cpp" line="95"/>
+        <location filename="../JsonEditorDialog.cpp" line="61"/>
+        <source>&lt;h4&gt;Unsaved changes detected&lt;/h4&gt;You want to save the JSON content before you quit?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="107"/>
+        <location filename="../JsonEditorDialog.cpp" line="124"/>
+        <source>Patching of Snapmatic Properties failed because of JSON Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="113"/>
         <location filename="../PictureDialog.cpp" line="727"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>

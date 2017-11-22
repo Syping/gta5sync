@@ -32,7 +32,11 @@ class JsonEditorDialog : public QDialog
 
 public:
     explicit JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent = 0);
+    bool saveJsonContent();
     ~JsonEditorDialog();
+
+protected:
+    void closeEvent(QCloseEvent *ev);
 
 private slots:
     void on_cmdClose_clicked();
