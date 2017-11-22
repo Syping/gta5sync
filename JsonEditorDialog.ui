@@ -14,8 +14,77 @@
    <string>Snapmatic JSON Editor</string>
   </property>
   <layout class="QVBoxLayout" name="vlInterface">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
    <item>
-    <widget class="QPlainTextEdit" name="txtJSON"/>
+    <layout class="QVBoxLayout" name="vlJSON">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QPlainTextEdit" name="txtJSON">
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="lineJSON">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>1</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>1</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QFrame[frameShape=&quot;4&quot;]
+{
+    color: black;
+}</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="hlButtons">
