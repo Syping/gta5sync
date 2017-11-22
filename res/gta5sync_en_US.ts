@@ -114,6 +114,7 @@ Pictures and Savegames</source>
     <name>CrewDatabase</name>
     <message>
         <location filename="../CrewDatabase.cpp" line="102"/>
+        <location filename="../CrewDatabase.cpp" line="113"/>
         <source>No Crew</source>
         <translation></translation>
     </message>
@@ -622,66 +623,67 @@ Y: %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="145"/>
-        <location filename="../ProfileInterface.cpp" line="1168"/>
+        <location filename="../PictureDialog.cpp" line="148"/>
+        <location filename="../ProfileInterface.cpp" line="1169"/>
         <source>Export as &amp;Picture...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="146"/>
-        <location filename="../ProfileInterface.cpp" line="1169"/>
+        <location filename="../PictureDialog.cpp" line="149"/>
+        <location filename="../ProfileInterface.cpp" line="1170"/>
         <source>Export as &amp;Snapmatic...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
-        <source>Open &amp;Map View...</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../PictureDialog.cpp" line="150"/>
+        <location filename="../PictureDialog.cpp" line="151"/>
         <location filename="../ProfileInterface.cpp" line="1164"/>
         <source>&amp;Edit Properties...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="373"/>
+        <location filename="../PictureDialog.cpp" line="153"/>
+        <location filename="../ProfileInterface.cpp" line="1166"/>
+        <source>Open &amp;Map Viewer...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="380"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="476"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>Snapmatic Picture Viewer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="476"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>Failed at %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="475"/>
-        <location filename="../PictureDialog.cpp" line="614"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="618"/>
         <source>No Players</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="475"/>
-        <location filename="../PictureDialog.cpp" line="589"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="591"/>
         <source>No Crew</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
         <source>Unknown Location</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="560"/>
+        <location filename="../PictureDialog.cpp" line="557"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation></translation>
@@ -790,7 +792,8 @@ Press 1 for Default View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1166"/>
+        <location filename="../PictureDialog.cpp" line="155"/>
+        <location filename="../ProfileInterface.cpp" line="1167"/>
         <source>Open &amp;JSON Editor...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1141,37 +1144,37 @@ Press 1 for Default View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1204"/>
+        <location filename="../ProfileInterface.cpp" line="1205"/>
         <source>&amp;View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1205"/>
+        <location filename="../ProfileInterface.cpp" line="1206"/>
         <source>&amp;Export</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1206"/>
+        <location filename="../ProfileInterface.cpp" line="1207"/>
         <source>&amp;Remove</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1208"/>
+        <location filename="../ProfileInterface.cpp" line="1209"/>
         <source>&amp;Select</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1209"/>
+        <location filename="../ProfileInterface.cpp" line="1210"/>
         <source>&amp;Deselect</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1212"/>
+        <location filename="../ProfileInterface.cpp" line="1213"/>
         <source>Select &amp;All</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1216"/>
+        <location filename="../ProfileInterface.cpp" line="1217"/>
         <source>&amp;Deselect All</source>
         <translation></translation>
     </message>
@@ -1268,9 +1271,10 @@ Press 1 for Default View</source>
         <location filename="../JsonEditorDialog.cpp" line="61"/>
         <location filename="../JsonEditorDialog.cpp" line="107"/>
         <location filename="../JsonEditorDialog.cpp" line="113"/>
-        <location filename="../JsonEditorDialog.cpp" line="124"/>
-        <location filename="../PictureDialog.cpp" line="727"/>
+        <location filename="../JsonEditorDialog.cpp" line="125"/>
+        <location filename="../PictureDialog.cpp" line="732"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
+        <location filename="../SnapmaticWidget.cpp" line="332"/>
         <source>Snapmatic Properties</source>
         <translation></translation>
     </message>
@@ -1383,14 +1387,15 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../JsonEditorDialog.cpp" line="107"/>
-        <location filename="../JsonEditorDialog.cpp" line="124"/>
+        <location filename="../JsonEditorDialog.cpp" line="125"/>
         <source>Patching of Snapmatic Properties failed because of JSON Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../JsonEditorDialog.cpp" line="113"/>
-        <location filename="../PictureDialog.cpp" line="727"/>
+        <location filename="../PictureDialog.cpp" line="732"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
+        <location filename="../SnapmaticWidget.cpp" line="332"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation></translation>
     </message>
@@ -1467,8 +1472,8 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../SnapmaticWidget.ui" line="152"/>
-        <location filename="../SnapmaticWidget.cpp" line="145"/>
-        <location filename="../SnapmaticWidget.cpp" line="154"/>
+        <location filename="../SnapmaticWidget.cpp" line="146"/>
+        <location filename="../SnapmaticWidget.cpp" line="155"/>
         <source>Delete picture</source>
         <translation></translation>
     </message>
@@ -1493,47 +1498,47 @@ Press 1 for Default View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1167"/>
+        <location filename="../ProfileInterface.cpp" line="1168"/>
         <source>&amp;Export</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1170"/>
+        <location filename="../ProfileInterface.cpp" line="1171"/>
         <source>&amp;View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1173"/>
+        <location filename="../ProfileInterface.cpp" line="1174"/>
         <source>&amp;Remove</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1175"/>
+        <location filename="../ProfileInterface.cpp" line="1176"/>
         <source>&amp;Select</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1176"/>
+        <location filename="../ProfileInterface.cpp" line="1177"/>
         <source>&amp;Deselect</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1179"/>
+        <location filename="../ProfileInterface.cpp" line="1180"/>
         <source>Select &amp;All</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1183"/>
+        <location filename="../ProfileInterface.cpp" line="1184"/>
         <source>&amp;Deselect All</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="145"/>
+        <location filename="../SnapmaticWidget.cpp" line="146"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="154"/>
+        <location filename="../SnapmaticWidget.cpp" line="155"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation></translation>
     </message>

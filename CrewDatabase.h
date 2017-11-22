@@ -29,6 +29,7 @@ class CrewDatabase : public QObject
     Q_OBJECT
 public:
     explicit CrewDatabase(QObject *parent = 0);
+    QString getCrewName(QString crewID);
     QString getCrewName(int crewID);
     QStringList getCompatibleCrews();
     QStringList getCrews();

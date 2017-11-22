@@ -1163,6 +1163,7 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
     }
     editMenu.addAction(PictureDialog::tr("&Edit Properties..."), picWidget, SLOT(editSnapmaticProperties()));
     editMenu.addSeparator();
+    editMenu.addAction(PictureDialog::tr("Open &Map Viewer..."), picWidget, SLOT(openMapViewer()));
     editMenu.addAction(PictureDialog::tr("Open &JSON Editor..."), picWidget, SLOT(editSnapmaticRawJson()));
     QMenu exportMenu(SnapmaticWidget::tr("&Export"), this);
     exportMenu.addAction(PictureDialog::tr("Export as &Picture..."), picWidget, SLOT(on_cmdExport_clicked()));

@@ -184,6 +184,7 @@ Grand Theft Auto V Snapmatic картинок и сохранений</translati
     <name>CrewDatabase</name>
     <message>
         <location filename="../CrewDatabase.cpp" line="102"/>
+        <location filename="../CrewDatabase.cpp" line="113"/>
         <source>No Crew</source>
         <translation>Вне банды</translation>
     </message>
@@ -780,8 +781,8 @@ Y: %2</translation>
         <translation type="vanished">Эксп&amp;ортировать как картинку JPG...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="145"/>
-        <location filename="../ProfileInterface.cpp" line="1168"/>
+        <location filename="../PictureDialog.cpp" line="148"/>
+        <location filename="../ProfileInterface.cpp" line="1169"/>
         <source>Export as &amp;Picture...</source>
         <translation>Экспортировать как &amp;картинку...</translation>
     </message>
@@ -790,8 +791,8 @@ Y: %2</translation>
         <translation type="vanished">Экс&amp;портировать как GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="146"/>
-        <location filename="../ProfileInterface.cpp" line="1169"/>
+        <location filename="../PictureDialog.cpp" line="149"/>
+        <location filename="../ProfileInterface.cpp" line="1170"/>
         <source>Export as &amp;Snapmatic...</source>
         <translation>Экспортировать как &amp;Snapmatic...</translation>
     </message>
@@ -800,18 +801,23 @@ Y: %2</translation>
         <translation type="obsolete">&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="148"/>
         <source>Open &amp;Map View...</source>
-        <translation>Открыть &amp;карту...</translation>
+        <translation type="vanished">Открыть &amp;карту...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="150"/>
+        <location filename="../PictureDialog.cpp" line="151"/>
         <location filename="../ProfileInterface.cpp" line="1164"/>
         <source>&amp;Edit Properties...</source>
         <translation>&amp;Изменить свойства...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="373"/>
+        <location filename="../PictureDialog.cpp" line="153"/>
+        <location filename="../ProfileInterface.cpp" line="1166"/>
+        <source>Open &amp;Map Viewer...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="380"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -820,31 +826,31 @@ Arrow Keys - Navigate</source>
 Стрелки - Навигация</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="476"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Просмотрщик фотографий Snapmatic</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="433"/>
-        <location filename="../PictureDialog.cpp" line="476"/>
+        <location filename="../PictureDialog.cpp" line="439"/>
+        <location filename="../PictureDialog.cpp" line="473"/>
         <source>Failed at %1</source>
         <translation>Ошибка при %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="475"/>
-        <location filename="../PictureDialog.cpp" line="589"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="591"/>
         <source>No Crew</source>
         <translation>Вне банды</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="475"/>
-        <location filename="../PictureDialog.cpp" line="614"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
+        <location filename="../PictureDialog.cpp" line="618"/>
         <source>No Players</source>
         <translation>Игроков нет</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="560"/>
+        <location filename="../PictureDialog.cpp" line="557"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Режим просмотра аватарок
@@ -859,7 +865,7 @@ Press 1 for Default View</source>
         <translation type="vanished">Без группы</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="475"/>
+        <location filename="../PictureDialog.cpp" line="472"/>
         <source>Unknown Location</source>
         <translation>Неизвестное место</translation>
     </message>
@@ -997,7 +1003,8 @@ Press 1 for Default View</source>
         <translation type="vanished">Не удалось скопировать текущую картинку Snapmatic</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1166"/>
+        <location filename="../PictureDialog.cpp" line="155"/>
+        <location filename="../ProfileInterface.cpp" line="1167"/>
         <source>Open &amp;JSON Editor...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1459,32 +1466,32 @@ Press 1 for Default View</source>
         <translation>Не удалось удалить сохранение %1</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1204"/>
+        <location filename="../ProfileInterface.cpp" line="1205"/>
         <source>&amp;View</source>
         <translation>&amp;Просмотр</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1206"/>
+        <location filename="../ProfileInterface.cpp" line="1207"/>
         <source>&amp;Remove</source>
         <translation>&amp;Удалить</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1208"/>
+        <location filename="../ProfileInterface.cpp" line="1209"/>
         <source>&amp;Select</source>
         <translation>&amp;Выбрать</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1209"/>
+        <location filename="../ProfileInterface.cpp" line="1210"/>
         <source>&amp;Deselect</source>
         <translation>Сн&amp;ять выбор</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1212"/>
+        <location filename="../ProfileInterface.cpp" line="1213"/>
         <source>Select &amp;All</source>
         <translation>В&amp;ыбрать все</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1216"/>
+        <location filename="../ProfileInterface.cpp" line="1217"/>
         <source>&amp;Deselect All</source>
         <translation>Снять выбо&amp;р со всех</translation>
     </message>
@@ -1494,7 +1501,7 @@ Press 1 for Default View</source>
         <translation>Копировать сохранение</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1205"/>
+        <location filename="../ProfileInterface.cpp" line="1206"/>
         <source>&amp;Export</source>
         <translation>&amp;Экспортировать</translation>
     </message>
@@ -1557,9 +1564,10 @@ Press 1 for Default View</source>
         <location filename="../JsonEditorDialog.cpp" line="61"/>
         <location filename="../JsonEditorDialog.cpp" line="107"/>
         <location filename="../JsonEditorDialog.cpp" line="113"/>
-        <location filename="../JsonEditorDialog.cpp" line="124"/>
-        <location filename="../PictureDialog.cpp" line="727"/>
+        <location filename="../JsonEditorDialog.cpp" line="125"/>
+        <location filename="../PictureDialog.cpp" line="732"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
+        <location filename="../SnapmaticWidget.cpp" line="332"/>
         <source>Snapmatic Properties</source>
         <translation>Свойства Snapmatic</translation>
     </message>
@@ -1677,14 +1685,15 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../JsonEditorDialog.cpp" line="107"/>
-        <location filename="../JsonEditorDialog.cpp" line="124"/>
+        <location filename="../JsonEditorDialog.cpp" line="125"/>
         <source>Patching of Snapmatic Properties failed because of JSON Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../JsonEditorDialog.cpp" line="113"/>
-        <location filename="../PictureDialog.cpp" line="727"/>
+        <location filename="../PictureDialog.cpp" line="732"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
+        <location filename="../SnapmaticWidget.cpp" line="332"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation>Не удалось измененить свойства Snapmatic из-за проблемы ввода/вывода</translation>
     </message>
@@ -1751,18 +1760,18 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../SnapmaticWidget.ui" line="152"/>
-        <location filename="../SnapmaticWidget.cpp" line="145"/>
-        <location filename="../SnapmaticWidget.cpp" line="154"/>
+        <location filename="../SnapmaticWidget.cpp" line="146"/>
+        <location filename="../SnapmaticWidget.cpp" line="155"/>
         <source>Delete picture</source>
         <translation>Удалить картинку</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="145"/>
+        <location filename="../SnapmaticWidget.cpp" line="146"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
         <translation>Уверены, что хотите удалить %1 из коллекции картинок Snapmatic?</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="154"/>
+        <location filename="../SnapmaticWidget.cpp" line="155"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation>Не удалось удалить %1 из колелкции картинок Snapmatic </translation>
     </message>
@@ -1786,7 +1795,7 @@ Press 1 for Default View</source>
         <translation type="vanished">&amp;Изменить свойства...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1167"/>
+        <location filename="../ProfileInterface.cpp" line="1168"/>
         <source>&amp;Export</source>
         <translation>&amp;Экспорт</translation>
     </message>
@@ -1799,32 +1808,32 @@ Press 1 for Default View</source>
         <translation type="vanished">Экс&amp;портировать как GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1170"/>
+        <location filename="../ProfileInterface.cpp" line="1171"/>
         <source>&amp;View</source>
         <translation>По&amp;казать</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1173"/>
+        <location filename="../ProfileInterface.cpp" line="1174"/>
         <source>&amp;Remove</source>
         <translation>У&amp;далить</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1175"/>
+        <location filename="../ProfileInterface.cpp" line="1176"/>
         <source>&amp;Select</source>
         <translation>&amp;Выделить</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1176"/>
+        <location filename="../ProfileInterface.cpp" line="1177"/>
         <source>&amp;Deselect</source>
         <translation>Сн&amp;ять выделение</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1179"/>
+        <location filename="../ProfileInterface.cpp" line="1180"/>
         <source>Select &amp;All</source>
         <translation>В&amp;ыбрать все</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1183"/>
+        <location filename="../ProfileInterface.cpp" line="1184"/>
         <source>&amp;Deselect All</source>
         <translation>Снять выбо&amp;р со всех</translation>
     </message>

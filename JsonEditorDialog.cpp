@@ -114,6 +114,7 @@ bool JsonEditorDialog::saveJsonContent()
                 smpic->setJsonStr(originalCode, true);
                 return false;
             }
+            jsonCode = newCode;
             smpic->emitUpdate();
             return true;
         }
