@@ -111,6 +111,10 @@ public:
     bool isSnapmaticDefaultsEnforced();
     void setSnapmaticDefaultsEnforced(bool enforced);
 
+    // SNAPMATIC FORMAT
+    SnapmaticFormat getSnapmaticFormat();
+    void setSnapmaticFormat(SnapmaticFormat format);
+
     // VERIFY CONTENT
     static bool verifyTitle(const QString &title);
 

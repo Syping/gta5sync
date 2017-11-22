@@ -755,6 +755,7 @@ bool ProfileInterface::importFile(QString selectedFile, QDateTime importDateTime
 bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, bool warn)
 {
     QString picFileName = picture->getPictureFileName();
+    qDebug() << picFileName;
     QString adjustedFileName = picture->getOriginalPictureFileName();
     if (picFileName.left(4) != "PGTA")
     {
@@ -768,6 +769,7 @@ bool ProfileInterface::importSnapmaticPicture(SnapmaticPicture *picture, bool wa
     }
     else if (picture->exportPicture(profileFolder % "/" % adjustedFileName, SnapmaticFormat::PGTA_Format))
     {
+        picture->setSnapmaticFormat(SnapmaticFormat::PGTA_Format);
         picture->setPicFilePath(profileFolder % "/" % adjustedFileName);
         pictureLoaded(picture, true);
         return true;

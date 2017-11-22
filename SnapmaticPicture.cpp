@@ -1191,6 +1191,32 @@ void SnapmaticPicture::setSnapmaticDefaultsEnforced(bool enforced)
     careSnapDefault = enforced;
 }
 
+// SNAPMATIC FORMAT
+
+SnapmaticFormat SnapmaticPicture::getSnapmaticFormat()
+{
+    if (isCustomFormat)
+    {
+        return SnapmaticFormat::G5E_Format;
+    }
+    return SnapmaticFormat::PGTA_Format;
+}
+
+void SnapmaticPicture::setSnapmaticFormat(SnapmaticFormat format)
+{
+    if (format == SnapmaticFormat::G5E_Format)
+    {
+        isCustomFormat = true;
+        return;
+    }
+    else if (format == SnapmaticFormat::PGTA_Format)
+    {
+        isCustomFormat = false;
+        return;
+    }
+    qDebug() << "setSnapmaticFormat: Invalid SnapmaticFormat defined, valid SnapmaticFormats are G5E_Format and PGTA_Format";
+}
+
 // VERIFY CONTENT
 
 bool SnapmaticPicture::verifyTitle(const QString &title)
