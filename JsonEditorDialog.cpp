@@ -62,7 +62,7 @@ JsonEditorDialog::JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent) :
         ui->lineJSON->setMinimumHeight(qRound(1 * screenRatio));
         ui->lineJSON->setMaximumHeight(qRound(1 * screenRatio));
     }
-    resize(450 * screenRatio, 425 * screenRatio);
+    resize(450 * screenRatio, 550 * screenRatio);
 }
 
 JsonEditorDialog::~JsonEditorDialog()
