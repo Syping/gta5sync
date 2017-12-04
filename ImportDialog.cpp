@@ -59,14 +59,26 @@ ImportDialog::ImportDialog(QWidget *parent) :
     ui->cbIgnore->setChecked(false);
     ui->labColour->setText(tr("Background Colour: <span style=\"color: %1\">%1</span>").arg(selectedColour.name()));
 
+    // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
     snapmaticResolutionLW = 430 * screenRatio;
     snapmaticResolutionLH = 240 * screenRatio;
+    ui->vlButtom->setSpacing(6 * screenRatio);
+#ifndef Q_OS_MAC
+    ui->vlButtom->setContentsMargins(9 * screenRatio, 6 * screenRatio, 9 * screenRatio, 9 * screenRatio);
+#else
+    if (QApplication::style()->objectName() == "macintosh")
+    {
+        ui->vlButtom->setContentsMargins(9 * screenRatio, 9 * screenRatio, 9 * screenRatio, 9 * screenRatio);
+    }
+    else
+    {
+        ui->vlButtom->setContentsMargins(9 * screenRatio, 6 * screenRatio, 9 * screenRatio, 9 * screenRatio);
+    }
+#endif
     setMinimumSize(430 * screenRatio, 380 * screenRatio);
     setMaximumSize(430 * screenRatio, 380 * screenRatio);
     setFixedSize(430 * screenRatio, 380 * screenRatio);
-    ui->vlButtom->setSpacing(6 * screenRatio);
-    ui->vlButtom->setContentsMargins(9 * screenRatio, 6 * screenRatio, 9 * screenRatio, 9 * screenRatio);
 }
 
 ImportDialog::~ImportDialog()
