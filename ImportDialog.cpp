@@ -38,6 +38,9 @@ ImportDialog::ImportDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ImportDialog)
 {
+    // Set Window Flags
+    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowMinMaxButtonsHint);
+
     ui->setupUi(this);
     importAgreed = false;
     insideAvatarZone = false;

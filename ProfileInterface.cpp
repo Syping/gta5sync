@@ -689,7 +689,6 @@ bool ProfileInterface::importFile(QString selectedFile, QDateTime importDateTime
                         return false;
                     }
                     ImportDialog *importDialog = new ImportDialog(this);
-                    importDialog->setWindowFlags(importDialog->windowFlags()^Qt::WindowContextHelpButtonHint);
                     importDialog->setImage(importImage);
                     importDialog->setModal(true);
                     importDialog->show();
