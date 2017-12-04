@@ -673,39 +673,39 @@ QString SnapmaticPicture::getLastStep(bool readable)
                 QString readableError = actionError;
                 if (actionError == "NOHEADER")
                 {
-                    readableError = tr("header not exists error");
+                    readableError = tr("header not exists");
                 }
                 else if (actionError == "MALFORMEDHEADER")
                 {
-                    readableError = tr("header is malformed error");
+                    readableError = tr("header is malformed");
                 }
                 else if (actionError == "NOJPEG" || actionError == "NOPIC")
                 {
-                    readableError = tr("picture not exists error (%1)").arg(actionError);
+                    readableError = tr("picture not exists (%1)").arg(actionError);
                 }
                 else if (actionError == "NOJSON" || actionError == "CTJSON")
                 {
-                    readableError = tr("JSON not exists error (%1)").arg(actionError);
+                    readableError = tr("JSON not exists (%1)").arg(actionError);
                 }
                 else if (actionError == "NOTITL" || actionError == "CTTITL")
                 {
-                    readableError = tr("title not exists error (%1)").arg(actionError);
+                    readableError = tr("title not exists (%1)").arg(actionError);
                 }
                 else if (actionError == "NODESC" || actionError == "CTDESC")
                 {
-                    readableError = tr("description not exists error (%1)").arg(actionError);
+                    readableError = tr("description not exists (%1)").arg(actionError);
                 }
                 else if (actionError == "JSONINCOMPLETE" && actionError2 == "JSONERROR")
                 {
-                    readableError = tr("JSON is incomplete and malformed error");
+                    readableError = tr("JSON is incomplete and malformed");
                 }
                 else if (actionError == "JSONINCOMPLETE")
                 {
-                    readableError = tr("JSON is incomplete error");
+                    readableError = tr("JSON is incomplete");
                 }
                 else if (actionError == "JSONERROR")
                 {
-                    readableError = tr("JSON is malformed error");
+                    readableError = tr("JSON is malformed");
                 }
                 return tr("reading file %1 because of %2", "Example for %2: JSON is malformed error").arg(actionFile, readableError);
             }

@@ -135,7 +135,25 @@ bool JsonEditorDialog::saveJsonContent()
             smpic->setJsonStr(newCode, true);
             if (!smpic->isJsonOk())
             {
-                QMessageBox::warning(this, SnapmaticEditor::tr("Snapmatic Properties"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of JSON Error"));
+                QString lastStep = smpic->getLastStep(false);
+                QString readableError;
+                if (lastStep.contains("JSONINCOMPLETE") && lastStep.contains("JSONERROR"))
+                {
+                    readableError = SnapmaticPicture::tr("JSON is incomplete and malformed");
+                }
+                else if (lastStep.contains("JSONINCOMPLETE"))
+                {
+                    readableError = SnapmaticPicture::tr("JSON is incomplete");
+                }
+                else if (lastStep.contains("JSONERROR"))
+                {
+                    readableError = SnapmaticPicture::tr("JSON is malformed");
+                }
+                else
+                {
+                    readableError = tr("JSON Error");
+                }
+                QMessageBox::warning(this, SnapmaticEditor::tr("Snapmatic Properties"), SnapmaticEditor::tr("Patching of Snapmatic Properties failed because of %1").arg(readableError));
                 smpic->setJsonStr(originalCode, true);
                 return false;
             }

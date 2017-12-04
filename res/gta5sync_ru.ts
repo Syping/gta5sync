@@ -372,6 +372,11 @@ When you want to use it as Avatar the image will be detached!</source>
         <source>&amp;Close</source>
         <translation type="unfinished">&amp;Закрыть</translation>
     </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="154"/>
+        <source>JSON Error</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MapLocationDialog</name>
@@ -1572,9 +1577,9 @@ Press 1 for Default View</source>
         <location filename="../SnapmaticEditor.ui" line="14"/>
         <location filename="../SnapmaticEditor.ui" line="81"/>
         <location filename="../JsonEditorDialog.cpp" line="91"/>
-        <location filename="../JsonEditorDialog.cpp" line="138"/>
-        <location filename="../JsonEditorDialog.cpp" line="144"/>
         <location filename="../JsonEditorDialog.cpp" line="156"/>
+        <location filename="../JsonEditorDialog.cpp" line="162"/>
+        <location filename="../JsonEditorDialog.cpp" line="174"/>
         <location filename="../PictureDialog.cpp" line="732"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
         <location filename="../SnapmaticWidget.cpp" line="332"/>
@@ -1694,13 +1699,17 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../JsonEditorDialog.cpp" line="138"/>
         <location filename="../JsonEditorDialog.cpp" line="156"/>
+        <source>Patching of Snapmatic Properties failed because of %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="174"/>
         <source>Patching of Snapmatic Properties failed because of JSON Error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../JsonEditorDialog.cpp" line="144"/>
+        <location filename="../JsonEditorDialog.cpp" line="162"/>
         <location filename="../PictureDialog.cpp" line="732"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
         <location filename="../SnapmaticWidget.cpp" line="332"/>
@@ -1737,53 +1746,56 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../SnapmaticPicture.cpp" line="676"/>
-        <source>header not exists error</source>
+        <source>header not exists</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SnapmaticPicture.cpp" line="680"/>
-        <source>header is malformed error</source>
+        <source>header is malformed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SnapmaticPicture.cpp" line="684"/>
-        <source>picture not exists error (%1)</source>
+        <source>picture not exists (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SnapmaticPicture.cpp" line="688"/>
-        <source>JSON not exists error (%1)</source>
+        <source>JSON not exists (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SnapmaticPicture.cpp" line="692"/>
-        <source>title not exists error (%1)</source>
+        <source>title not exists (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SnapmaticPicture.cpp" line="696"/>
-        <source>description not exists error (%1)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SnapmaticPicture.cpp" line="700"/>
-        <source>JSON is incomplete and malformed error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SnapmaticPicture.cpp" line="704"/>
-        <source>JSON is incomplete error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../SnapmaticPicture.cpp" line="708"/>
-        <source>JSON is malformed error</source>
+        <source>description not exists (%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../SnapmaticPicture.cpp" line="710"/>
         <source>reading file %1 because of %2</source>
         <comment>Example for %2: JSON is malformed error</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="142"/>
+        <location filename="../SnapmaticPicture.cpp" line="700"/>
+        <source>JSON is incomplete and malformed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="146"/>
+        <location filename="../SnapmaticPicture.cpp" line="704"/>
+        <source>JSON is incomplete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../JsonEditorDialog.cpp" line="150"/>
+        <location filename="../SnapmaticPicture.cpp" line="708"/>
+        <source>JSON is malformed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
