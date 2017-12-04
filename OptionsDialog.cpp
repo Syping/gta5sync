@@ -374,7 +374,7 @@ void OptionsDialog::applySettings()
         QString newStyle = ui->cbStyleList->currentText();
         settings->setValue("CustomStyle", true);
         settings->setValue("AppStyle", newStyle);
-        qApp->setStyle(QStyleFactory::create(newStyle));
+        QApplication::setStyle(QStyleFactory::create(newStyle));
     }
     else
     {

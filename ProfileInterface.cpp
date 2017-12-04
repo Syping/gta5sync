@@ -1124,6 +1124,18 @@ void ProfileInterface::settingsApplied(int _contentMode, bool languageChanged)
             if (languageChanged) widget->retranslate();
         }
     }
+#ifdef Q_OS_MAC
+    if (QApplication::style()->objectName() == "macintosh")
+    {
+        ui->hlButtons->setSpacing(6 * screenRatio);
+        ui->hlButtons->setContentsMargins(9 * screenRatio, 15 * screenRatio, 15 * screenRatio, 17 * screenRatio);
+    }
+    else
+    {
+        ui->hlButtons->setSpacing(6 * screenRatio);
+        ui->hlButtons->setContentsMargins(9 * screenRatio, 9 * screenRatio, 9 * screenRatio, 9 * screenRatio);
+    }
+#endif
 }
 
 void ProfileInterface::enableSelected()
