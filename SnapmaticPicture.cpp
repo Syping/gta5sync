@@ -108,7 +108,7 @@ void SnapmaticPicture::reset()
 #endif
 
     // SNAPMATIC PROPERTIES
-    localSpJson = {};
+    localProperties = {};
 }
 
 bool SnapmaticPicture::preloadFile()
@@ -437,9 +437,9 @@ void SnapmaticPicture::updateStrings()
     cmpPicTitl.remove('*');
     cmpPicTitl.remove('?');
     cmpPicTitl.remove('.');
-    pictureStr = tr("PHOTO - %1").arg(localSpJson.createdDateTime.toString("MM/dd/yy HH:mm:ss"));
-    sortStr = localSpJson.createdDateTime.toString("yyMMddHHmmss") % QString::number(localSpJson.uid);
-    QString exportStr = localSpJson.createdDateTime.toString("yyyyMMdd") % "-" % QString::number(localSpJson.uid);
+    pictureStr = tr("PHOTO - %1").arg(localProperties.createdDateTime.toString("MM/dd/yy HH:mm:ss"));
+    sortStr = localProperties.createdDateTime.toString("yyMMddHHmmss") % QString::number(localProperties.uid);
+    QString exportStr = localProperties.createdDateTime.toString("yyyyMMdd") % "-" % QString::number(localProperties.uid);
     picExportFileName = exportStr % "_" % cmpPicTitl;
 }
 
@@ -496,12 +496,12 @@ bool SnapmaticPicture::setImage(const QImage &picture)
     return false;
 }
 
-bool SnapmaticPicture::setPictureStream(const QByteArray &picByteArray_) // clean method
+bool SnapmaticPicture::setPictureStream(const QByteArray &streamArray) // clean method
 {
     if (writeEnabled)
     {
         bool customEOI = false;
-        QByteArray picByteArray = picByteArray_;
+        QByteArray picByteArray = streamArray;
         if (lowRamMode) { rawPicContent = qUncompress(rawPicContent); }
         QBuffer snapmaticStream(&rawPicContent);
         snapmaticStream.open(QIODevice::ReadWrite);
@@ -790,7 +790,7 @@ QString SnapmaticPicture::getJsonStr()
 
 SnapmaticProperties SnapmaticPicture::getSnapmaticProperties()
 {
-    return localSpJson;
+    return localProperties;
 }
 
 void SnapmaticPicture::parseJsonContent()
@@ -808,19 +808,19 @@ void SnapmaticPicture::parseJsonContent()
             QJsonObject locObject = jsonObject["loc"].toObject();
             if (locObject.contains("x"))
             {
-                if (locObject["x"].isDouble()) { localSpJson.location.x = locObject["x"].toDouble(); }
+                if (locObject["x"].isDouble()) { localProperties.location.x = locObject["x"].toDouble(); }
                 else { jsonError = true; }
             }
             else { jsonIncomplete = true; }
             if (locObject.contains("y"))
             {
-                if (locObject["y"].isDouble()) { localSpJson.location.y = locObject["y"].toDouble(); }
+                if (locObject["y"].isDouble()) { localProperties.location.y = locObject["y"].toDouble(); }
                 else { jsonError = true; }
             }
             else { jsonIncomplete = true; }
             if (locObject.contains("z"))
             {
-                if (locObject["z"].isDouble()) { localSpJson.location.z = locObject["z"].toDouble(); }
+                if (locObject["z"].isDouble()) { localProperties.location.z = locObject["z"].toDouble(); }
                 else { jsonError = true; }
             }
             else { jsonIncomplete = true; }
@@ -831,27 +831,27 @@ void SnapmaticPicture::parseJsonContent()
     if (jsonObject.contains("uid"))
     {
         bool uidOk;
-        localSpJson.uid = jsonMap["uid"].toInt(&uidOk);
+        localProperties.uid = jsonMap["uid"].toInt(&uidOk);
         if (!uidOk) { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("area"))
     {
-        if (jsonObject["area"].isString()) { localSpJson.location.area = jsonObject["area"].toString(); }
+        if (jsonObject["area"].isString()) { localProperties.location.area = jsonObject["area"].toString(); }
         else { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("crewid"))
     {
         bool crewIDOk;
-        localSpJson.crewID = jsonMap["crewid"].toInt(&crewIDOk);
+        localProperties.crewID = jsonMap["crewid"].toInt(&crewIDOk);
         if (!crewIDOk) { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("street"))
     {
         bool streetIDOk;
-        localSpJson.streetID = jsonMap["street"].toInt(&streetIDOk);
+        localProperties.streetID = jsonMap["street"].toInt(&streetIDOk);
         if (!streetIDOk) { jsonError = true; }
     }
     else { jsonIncomplete = true; }
@@ -859,45 +859,45 @@ void SnapmaticPicture::parseJsonContent()
     {
         bool timestampOk;
         QDateTime createdTimestamp;
-        localSpJson.createdTimestamp = jsonMap["creat"].toUInt(&timestampOk);
-        createdTimestamp.setTime_t(localSpJson.createdTimestamp);
-        localSpJson.createdDateTime = createdTimestamp;
+        localProperties.createdTimestamp = jsonMap["creat"].toUInt(&timestampOk);
+        createdTimestamp.setTime_t(localProperties.createdTimestamp);
+        localProperties.createdDateTime = createdTimestamp;
         if (!timestampOk) { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("plyrs"))
     {
-        if (jsonObject["plyrs"].isArray()) { localSpJson.playersList = jsonMap["plyrs"].toStringList(); }
+        if (jsonObject["plyrs"].isArray()) { localProperties.playersList = jsonMap["plyrs"].toStringList(); }
         else { jsonError = true; }
     }
     // else { jsonIncomplete = true; } // 2016 Snapmatic pictures left out plyrs when none are captured, so don't force exists on that one
     if (jsonObject.contains("meme"))
     {
-        if (jsonObject["meme"].isBool()) { localSpJson.isMeme = jsonObject["meme"].toBool(); }
+        if (jsonObject["meme"].isBool()) { localProperties.isMeme = jsonObject["meme"].toBool(); }
         else { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("mug"))
     {
-        if (jsonObject["mug"].isBool()) { localSpJson.isMug = jsonObject["mug"].toBool(); }
+        if (jsonObject["mug"].isBool()) { localProperties.isMug = jsonObject["mug"].toBool(); }
         else { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("slf"))
     {
-        if (jsonObject["slf"].isBool()) { localSpJson.isSelfie = jsonObject["slf"].toBool(); }
+        if (jsonObject["slf"].isBool()) { localProperties.isSelfie = jsonObject["slf"].toBool(); }
         else { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("drctr"))
     {
-        if (jsonObject["drctr"].isBool()) { localSpJson.isFromDirector = jsonObject["drctr"].toBool(); }
+        if (jsonObject["drctr"].isBool()) { localProperties.isFromDirector = jsonObject["drctr"].toBool(); }
         else { jsonError = true; }
     }
     else { jsonIncomplete = true; }
     if (jsonObject.contains("rsedtr"))
     {
-        if (jsonObject["rsedtr"].isBool()) { localSpJson.isFromRSEditor = jsonObject["rsedtr"].toBool(); }
+        if (jsonObject["rsedtr"].isBool()) { localProperties.isFromRSEditor = jsonObject["rsedtr"].toBool(); }
         else { jsonError = true; }
     }
     else { jsonIncomplete = true; }
@@ -924,34 +924,34 @@ void SnapmaticPicture::parseJsonContent()
     }
 }
 
-bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties newSpJson)
+bool SnapmaticPicture::setSnapmaticProperties(SnapmaticProperties properties)
 {
     QJsonDocument jsonDocument = QJsonDocument::fromJson(jsonStr.toUtf8());
     QJsonObject jsonObject = jsonDocument.object();
 
     QJsonObject locObject;
-    locObject["x"] = newSpJson.location.x;
-    locObject["y"] = newSpJson.location.y;
-    locObject["z"] = newSpJson.location.z;
+    locObject["x"] = properties.location.x;
+    locObject["y"] = properties.location.y;
+    locObject["z"] = properties.location.z;
 
     jsonObject["loc"] = locObject;
-    jsonObject["uid"] = newSpJson.uid;
-    jsonObject["area"] = newSpJson.location.area;
-    jsonObject["crewid"] = newSpJson.crewID;
-    jsonObject["street"] = newSpJson.streetID;
-    jsonObject["creat"] = QJsonValue::fromVariant(newSpJson.createdTimestamp);
-    jsonObject["plyrs"] = QJsonValue::fromVariant(newSpJson.playersList);
-    jsonObject["meme"] = newSpJson.isMeme;
-    jsonObject["mug"] = newSpJson.isMug;
-    jsonObject["slf"] = newSpJson.isSelfie;
-    jsonObject["drctr"] = newSpJson.isFromDirector;
-    jsonObject["rsedtr"] = newSpJson.isFromRSEditor;
+    jsonObject["uid"] = properties.uid;
+    jsonObject["area"] = properties.location.area;
+    jsonObject["crewid"] = properties.crewID;
+    jsonObject["street"] = properties.streetID;
+    jsonObject["creat"] = QJsonValue::fromVariant(properties.createdTimestamp);
+    jsonObject["plyrs"] = QJsonValue::fromVariant(properties.playersList);
+    jsonObject["meme"] = properties.isMeme;
+    jsonObject["mug"] = properties.isMug;
+    jsonObject["slf"] = properties.isSelfie;
+    jsonObject["drctr"] = properties.isFromDirector;
+    jsonObject["rsedtr"] = properties.isFromRSEditor;
 
     jsonDocument.setObject(jsonObject);
 
     if (setJsonStr(QString::fromUtf8(jsonDocument.toJson(QJsonDocument::Compact))))
     {
-        localSpJson = newSpJson;
+        localProperties = properties;
         return true;
     }
     return false;
@@ -1167,6 +1167,15 @@ bool SnapmaticPicture::isHidden()
         return true;
     }
     return false;
+}
+
+bool SnapmaticPicture::isVisible()
+{
+    if (picFilePath.right(7) == QLatin1String(".hidden"))
+    {
+        return false;
+    }
+    return true;
 }
 
 bool SnapmaticPicture::setPictureHidden()
