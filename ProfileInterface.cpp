@@ -1125,6 +1125,8 @@ void ProfileInterface::settingsApplied(int _contentMode, bool languageChanged)
         }
     }
 #ifdef Q_OS_MAC
+    // DPI calculation
+    qreal screenRatio = AppEnv::screenRatio();
     if (QApplication::style()->objectName() == "macintosh")
     {
         ui->hlButtons->setSpacing(6 * screenRatio);
