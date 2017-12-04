@@ -870,7 +870,7 @@ void SnapmaticPicture::parseJsonContent()
         if (jsonObject["plyrs"].isArray()) { localSpJson.playersList = jsonMap["plyrs"].toStringList(); }
         else { jsonError = true; }
     }
-    else { jsonIncomplete = true; }
+    // else { jsonIncomplete = true; } // 2016 Snapmatic pictures left out plyrs when none are captured, so don't force exists on that one
     if (jsonObject.contains("meme"))
     {
         if (jsonObject["meme"].isBool()) { localSpJson.isMeme = jsonObject["meme"].toBool(); }
@@ -908,6 +908,18 @@ void SnapmaticPicture::parseJsonContent()
     }
     else
     {
+        if (jsonIncomplete && jsonError)
+        {
+            lastStep = "2;/4,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",3,JSONINCOMPLETE,JSONERROR";
+        }
+        else if (jsonIncomplete)
+        {
+            lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",3,JSONINCOMPLETE";
+        }
+        else if (jsonError)
+        {
+            lastStep = "2;/3,ReadingFile," % StringParser::convertDrawStringForLog(picFilePath) % ",3,JSONERROR";
+        }
         jsonOk = false;
     }
 }
