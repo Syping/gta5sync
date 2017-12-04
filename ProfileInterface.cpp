@@ -89,8 +89,16 @@ ProfileInterface::ProfileInterface(ProfileDatabase *profileDB, CrewDatabase *cre
     ui->hlButtons->setSpacing(6 * screenRatio);
     ui->hlButtons->setContentsMargins(9 * screenRatio, 9 * screenRatio, 9 * screenRatio, 9 * screenRatio);
 #else
-    ui->hlButtons->setSpacing(6 * screenRatio);
-    ui->hlButtons->setContentsMargins(9 * screenRatio, 15 * screenRatio, 15 * screenRatio, 17 * screenRatio);
+    if (QApplication::style()->objectName() == "macintosh")
+    {
+        ui->hlButtons->setSpacing(6 * screenRatio);
+        ui->hlButtons->setContentsMargins(9 * screenRatio, 15 * screenRatio, 15 * screenRatio, 17 * screenRatio);
+    }
+    else
+    {
+        ui->hlButtons->setSpacing(6 * screenRatio);
+        ui->hlButtons->setContentsMargins(9 * screenRatio, 9 * screenRatio, 9 * screenRatio, 9 * screenRatio);
+    }
 #endif
 
     setMouseTracking(true);

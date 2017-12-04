@@ -256,7 +256,7 @@ void OptionsDialog::setupInterfaceSettings()
     ui->gbFont->setVisible(false);
     ui->cbAlwaysUseMessageFont->setVisible(false);
 #endif
-    QString currentStyle = qApp->style()->objectName();
+    QString currentStyle = QApplication::style()->objectName();
     QString appStyle = settings->value("AppStyle", currentStyle).toString();
     bool customStyle = settings->value("CustomStyle", false).toBool();
     const QStringList availableStyles = QStyleFactory::keys();
