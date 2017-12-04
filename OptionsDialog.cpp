@@ -48,7 +48,7 @@ OptionsDialog::OptionsDialog(ProfileDatabase *profileDB, QWidget *parent) :
     ui->tabWidget->setCurrentIndex(0);
     ui->labPicCustomRes->setVisible(false);
 
-    QRect desktopResolution = qApp->desktop()->screenGeometry(parent);
+    QRect desktopResolution = QApplication::desktop()->screenGeometry(this);
     int desktopSizeWidth = desktopResolution.width();
     int desktopSizeHeight = desktopResolution.height();
     aspectRatio = Qt::KeepAspectRatio;
