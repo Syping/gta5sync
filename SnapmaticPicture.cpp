@@ -670,7 +670,7 @@ QString SnapmaticPicture::getLastStep(bool readable)
             if (argsCount == 4) { actionError2 = descStepList.at(5); }
             if (currentAction == "ReadingFile")
             {
-                QString readableError;
+                QString readableError = actionError;
                 if (actionError == "NOHEADER")
                 {
                     readableError = tr("header not exists error");
