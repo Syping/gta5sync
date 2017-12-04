@@ -56,8 +56,15 @@ JsonEditorDialog::JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent) :
 
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
+#ifndef Q_OS_MAC
     ui->hlButtons->setSpacing(6 * screenRatio);
     ui->hlButtons->setContentsMargins(9 * screenRatio, 0, 9 * screenRatio, 0);
+    ui->vlInterface->setContentsMargins(0, 0, 0, 9 * screenRatio);
+#else
+    ui->hlButtons->setSpacing(6 * screenRatio);
+    ui->hlButtons->setContentsMargins(9 * screenRatio, 0, 9 * screenRatio, 0);
+    ui->vlInterface->setContentsMargins(0, 0, 0, 9 * screenRatio);
+#endif
     if (screenRatio > 1)
     {
         ui->lineJSON->setMinimumHeight(qRound(1 * screenRatio));
