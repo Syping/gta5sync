@@ -638,9 +638,89 @@ QString SnapmaticPicture::getPictureStr()
     return pictureStr;
 }
 
-QString SnapmaticPicture::getLastStep()
+QString SnapmaticPicture::getLastStep(bool readable)
 {
+    if (readable)
+    {
+        QStringList lastStepList = lastStep.split(";/");
+        if (lastStepList.length() < 2) { return lastStep; }
+        bool intOk;
+        //int stepNumber = lastStepList.at(0).toInt(&intOk);
+        //if (!intOk) { return lastStep; }
+        QStringList descStepList = lastStepList.at(1).split(",");
+        if (descStepList.length() < 1) { return lastStep; }
+        int argsCount = descStepList.at(0).toInt(&intOk);
+        if (!intOk) { return lastStep; }
+        if (argsCount == 1)
+        {
+            QString currentAction = descStepList.at(1);
+            QString actionFile = descStepList.at(2);
+            if (currentAction == "OpenFile")
+            {
+                return tr("open file %1").arg(actionFile);
+            }
+        }
+        else if (argsCount == 3 || argsCount == 4)
+        {
+            QString currentAction = descStepList.at(1);
+            QString actionFile = descStepList.at(2);
+            //QString actionStep = descStepList.at(3);
+            QString actionError = descStepList.at(4);
+            QString actionError2;
+            if (argsCount == 4) { actionError2 = descStepList.at(5); }
+            if (currentAction == "ReadingFile")
+            {
+                QString readableError;
+                if (actionError == "NOHEADER")
+                {
+                    readableError = tr("header not exists error");
+                }
+                else if (actionError == "MALFORMEDHEADER")
+                {
+                    readableError = tr("header is malformed error");
+                }
+                else if (actionError == "NOJPEG" || actionError == "NOPIC")
+                {
+                    readableError = tr("picture not exists error (%1)").arg(actionError);
+                }
+                else if (actionError == "NOJSON" || actionError == "CTJSON")
+                {
+                    readableError = tr("JSON not exists error (%1)").arg(actionError);
+                }
+                else if (actionError == "NOTITL" || actionError == "CTTITL")
+                {
+                    readableError = tr("title not exists error (%1)").arg(actionError);
+                }
+                else if (actionError == "NODESC" || actionError == "CTDESC")
+                {
+                    readableError = tr("description not exists error (%1)").arg(actionError);
+                }
+                else if (actionError == "JSONINCOMPLETE" && actionError2 == "JSONERROR")
+                {
+                    readableError = tr("JSON is incomplete and malformed error");
+                }
+                else if (actionError == "JSONINCOMPLETE")
+                {
+                    readableError = tr("JSON is incomplete error");
+                }
+                else if (actionError == "JSONERROR")
+                {
+                    readableError = tr("JSON is malformed error");
+                }
+                return tr("reading file %1 because of %2", "Example for %2: JSON is malformed error").arg(actionFile, readableError);
+            }
+            else
+            {
+                return lastStep;
+            }
+        }
+        else
+        {
+            return lastStep;
+        }
+    }
     return lastStep;
+
 }
 
 QImage SnapmaticPicture::getImage(bool fastLoad)
