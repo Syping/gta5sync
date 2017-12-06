@@ -23,6 +23,7 @@
 #include "ProfileDatabase.h"
 #include "CrewDatabase.h"
 #include <QMouseEvent>
+#include <QToolBar>
 #include <QDialog>
 #include <QEvent>
 #include <QMenu>
@@ -97,13 +98,6 @@ private:
     QMap<QString, QString> globalMap;
     SnapmaticPicture *smpic;
     QWidget *fullscreenWidget;
-    QAction *jpegExportAction;
-    QAction *pgtaExportAction;
-    QAction *propEditorAction;
-    QAction *openViewerAction;
-    QAction *jsonEditorAction;
-    QAction *manageMenuSep1;
-    QAction *manageMenuSep2;
     QImage avatarAreaPicture;
     QImage snapmaticPicture;
     QImage overlayTempImage;
@@ -122,6 +116,13 @@ private:
     int avatarLocY;
     int avatarSize;
     QMenu *manageMenu;
+
+#ifdef GTA5SYNC_WIN
+#if QT_VERSION >= 0x050200
+    QPoint dragPosition;
+    bool dragStart;
+#endif
+#endif
 };
 
 #endif // PICTUREDIALOG_H

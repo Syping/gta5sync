@@ -150,14 +150,14 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
 
     // Manage menu
     manageMenu = new QMenu(this);
-    jpegExportAction = manageMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
-    pgtaExportAction = manageMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
-    manageMenuSep1 = manageMenu->addSeparator();
-    propEditorAction = manageMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
-    manageMenuSep2 = manageMenu->addSeparator();
-    openViewerAction = manageMenu->addAction(tr("Open &Map Viewer..."), this, SLOT(openPreviewMap()));
+    manageMenu->addAction(tr("Export as &Picture..."), this, SLOT(exportSnapmaticPicture()));
+    manageMenu->addAction(tr("Export as &Snapmatic..."), this, SLOT(copySnapmaticPicture()));
+    manageMenu->addSeparator();
+    manageMenu->addAction(tr("&Edit Properties..."), this, SLOT(editSnapmaticProperties()));
+    manageMenu->addSeparator();
+    QAction *openViewerAction = manageMenu->addAction(tr("Open &Map Viewer..."), this, SLOT(openPreviewMap()));
     openViewerAction->setShortcut(Qt::Key_M);
-    jsonEditorAction = manageMenu->addAction(tr("Open &JSON Editor..."), this, SLOT(editSnapmaticRawJson()));
+    manageMenu->addAction(tr("Open &JSON Editor..."), this, SLOT(editSnapmaticRawJson()));
     ui->cmdManage->setMenu(manageMenu);
 
     // Global map
@@ -184,13 +184,22 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
 
 PictureDialog::~PictureDialog()
 {
-    delete propEditorAction;
-    delete openViewerAction;
-    delete jsonEditorAction;
-    delete jpegExportAction;
-    delete pgtaExportAction;
-    delete manageMenuSep1;
-    delete manageMenuSep2;
+#ifdef GTA5SYNC_WIN
+#if QT_VERSION >= 0x050200
+    if (naviEnabled)
+    {
+        for (QObject *obj : layout()->menuBar()->children())
+        {
+            delete obj;
+        }
+        delete layout()->menuBar();
+    }
+#endif
+#endif
+    for (QObject *obj : manageMenu->children())
+    {
+        delete obj;
+    }
     delete manageMenu;
     delete ui;
 }
@@ -211,9 +220,10 @@ void PictureDialog::addPreviousNextButtons()
 #if QT_VERSION >= 0x050200
     QPalette palette;
     QToolBar *uiToolbar = new QToolBar("Picture Toolbar", this);
-    layout()->setMenuBar(uiToolbar);
+    uiToolbar->setObjectName("uiToolbar");
     uiToolbar->addAction(QIcon(":/img/back.png"), "", this, SLOT(previousPictureRequestedSlot()));
     uiToolbar->addAction(QIcon(":/img/next.png"), "", this, SLOT(nextPictureRequestedSlot()));
+    layout()->setMenuBar(uiToolbar);
     ui->jsonFrame->setStyleSheet(QString("QFrame { background: %1; }").arg(palette.window().color().name()));
     naviEnabled = true;
 #endif
@@ -285,7 +295,7 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
     {
         if (ev->type() == QEvent::KeyPress)
         {
-            QKeyEvent *keyEvent = (QKeyEvent*)ev;
+            QKeyEvent *keyEvent = dynamic_cast<QKeyEvent*>(ev);
             switch (keyEvent->key()){
             case Qt::Key_Left:
                 emit previousPictureRequested();
@@ -339,6 +349,47 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                 break;
             }
         }
+#ifdef GTA5SYNC_WIN
+#if QT_VERSION >= 0x050200
+        if (obj != ui->labPicture && naviEnabled)
+        {
+            if (ev->type() == QEvent::MouseButtonPress)
+            {
+                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+                {
+                    if (mouseEvent->button() == Qt::LeftButton)
+                    {
+                        dragPosition = mouseEvent->globalPos() - frameGeometry().topLeft();
+                        dragStart = true;
+                    }
+                }
+            }
+            if (ev->type() == QEvent::MouseButtonRelease)
+            {
+                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+                {
+                    if (mouseEvent->button() == Qt::LeftButton)
+                    {
+                        dragStart = false;
+                    }
+                }
+            }
+            if (ev->type() == QEvent::MouseMove && dragStart)
+            {
+                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+                {
+                    if (mouseEvent->buttons() & Qt::LeftButton)
+                    {
+                        move(mouseEvent->globalPos() - dragPosition);
+                    }
+                }
+            }
+        }
+#endif
+#endif
     }
     return returnValue;
 }
