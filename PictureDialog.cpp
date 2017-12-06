@@ -43,6 +43,7 @@
 #include <QJsonDocument>
 #include <QApplication>
 #include <QFontMetrics>
+#include <QSizePolicy>
 #include <QStaticText>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -108,7 +109,7 @@ PictureDialog::PictureDialog(bool primaryWindow, QWidget *parent) :
 void PictureDialog::setupPictureDialog(bool withDatabase_)
 {
     // Set Window Flags
-    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint);
+    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint^Qt::CustomizeWindowHint);
 #ifdef Q_OS_LINUX
     // for stupid Window Manager (GNOME 3 should feel triggered)
     setWindowFlags(windowFlags()^Qt::Dialog^Qt::Window);
@@ -218,17 +219,61 @@ void PictureDialog::addPreviousNextButtons()
     // Windows Vista additions
 #ifdef GTA5SYNC_WIN
 #if QT_VERSION >= 0x050200
-    QPalette palette;
     QToolBar *uiToolbar = new QToolBar("Picture Toolbar", this);
+    uiToolbar->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     uiToolbar->setObjectName("uiToolbar");
     uiToolbar->addAction(QIcon(":/img/back.png"), "", this, SLOT(previousPictureRequestedSlot()));
     uiToolbar->addAction(QIcon(":/img/next.png"), "", this, SLOT(nextPictureRequestedSlot()));
+
     layout()->setMenuBar(uiToolbar);
-    ui->jsonFrame->setStyleSheet(QString("QFrame { background: %1; }").arg(palette.window().color().name()));
+
+    HWND hwnd = (HWND)winId();
+
+    RECT rcClient;
+    GetWindowRect(hwnd, &rcClient);
+
+    SetWindowPos(hwnd,
+                 NULL,
+                 rcClient.left, rcClient.top,
+                 rcClient.right - rcClient.left,
+                 rcClient.bottom - rcClient.top,
+                 SWP_FRAMECHANGED);
+
     naviEnabled = true;
 #endif
 #endif
 }
+
+#ifdef GTA5SYNC_WIN
+#if QT_VERSION >= 0x050200
+bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long *result)
+{
+    *result = 0;
+    MSG *msg = static_cast<MSG*>(message);
+    if (naviEnabled)
+    {
+        if (msg->message == WM_NCCALCSIZE && msg->wParam == TRUE)
+        {
+            NCCALCSIZE_PARAMS *pncsp = reinterpret_cast<NCCALCSIZE_PARAMS*>(msg->lParam);
+
+            pncsp->rgrc[0].left   = pncsp->rgrc[0].left   + 0;
+            pncsp->rgrc[0].top    = pncsp->rgrc[0].top    + 0;
+            pncsp->rgrc[0].right  = pncsp->rgrc[0].right  - 0;
+            pncsp->rgrc[0].bottom = pncsp->rgrc[0].bottom - 0;
+        }
+        else
+        {
+            return QWidget::nativeEvent(eventType, message, result);
+        }
+    }
+    else
+    {
+        return QWidget::nativeEvent(eventType, message, result);
+    }
+    return true;
+}
+#endif
+#endif
 
 void PictureDialog::adaptNewDialogSize(QSize newLabelSize)
 {
@@ -250,12 +295,16 @@ void PictureDialog::stylizeDialog()
 #if QT_VERSION >= 0x050200
     if (QtWin::isCompositionEnabled())
     {
-        QtWin::extendFrameIntoClientArea(this, 0, this->layout()->menuBar()->height(), 0, 0);;
+        QPalette palette;
+        QtWin::extendFrameIntoClientArea(this, 0, this->layout()->menuBar()->height(), 0, 0);
+        ui->jsonFrame->setStyleSheet(QString("QFrame { background: %1; }").arg(palette.window().color().name()));
         setStyleSheet("PictureDialog { background: transparent; }");
     }
     else
     {
+        QPalette palette;
         QtWin::resetExtendedFrame(this);
+        ui->jsonFrame->setStyleSheet(QString("QFrame { background: %1; }").arg(palette.window().color().name()));
         setStyleSheet(QString("PictureDialog { background: %1; }").arg(QtWin::realColorizationColor().name()));
     }
 #endif

@@ -87,6 +87,11 @@ protected:
     bool eventFilter(QObject *obj, QEvent *ev);
     void mousePressEvent(QMouseEvent *ev);
     bool event(QEvent *event);
+#ifdef GTA5SYNC_WIN
+#if QT_VERSION >= 0x050200
+    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
+#endif
+#endif
 
 private:
     QString generateCrewString();
@@ -116,7 +121,6 @@ private:
     int avatarLocY;
     int avatarSize;
     QMenu *manageMenu;
-
 #ifdef GTA5SYNC_WIN
 #if QT_VERSION >= 0x050200
     QPoint dragPosition;
