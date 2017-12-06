@@ -227,18 +227,6 @@ void PictureDialog::addPreviousNextButtons()
 
     layout()->setMenuBar(uiToolbar);
 
-    HWND hwnd = (HWND)winId();
-
-    RECT rcClient;
-    GetWindowRect(hwnd, &rcClient);
-
-    SetWindowPos(hwnd,
-                 NULL,
-                 rcClient.left, rcClient.top,
-                 rcClient.right - rcClient.left,
-                 rcClient.bottom - rcClient.top,
-                 SWP_FRAMECHANGED);
-
     naviEnabled = true;
 #endif
 #endif
@@ -250,16 +238,25 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
 {
     *result = 0;
     MSG *msg = static_cast<MSG*>(message);
+    LRESULT lRet = 0;
+
     if (naviEnabled)
     {
         if (msg->message == WM_NCCALCSIZE && msg->wParam == TRUE)
         {
             NCCALCSIZE_PARAMS *pncsp = reinterpret_cast<NCCALCSIZE_PARAMS*>(msg->lParam);
 
-            pncsp->rgrc[0].left   = pncsp->rgrc[0].left   + 0;
+            pncsp->rgrc[0].left   = pncsp->rgrc[0].left   + 8;
             pncsp->rgrc[0].top    = pncsp->rgrc[0].top    + 0;
-            pncsp->rgrc[0].right  = pncsp->rgrc[0].right  - 0;
-            pncsp->rgrc[0].bottom = pncsp->rgrc[0].bottom - 0;
+            pncsp->rgrc[0].right  = pncsp->rgrc[0].right  - 8;
+            pncsp->rgrc[0].bottom = pncsp->rgrc[0].bottom - 8;
+        }
+        else if (msg->message == WM_NCHITTEST)
+        {
+            HWND hWnd = (HWND)winId();
+            lRet = HitTestNCA(hWnd, msg->lParam);
+            DwmDefWindowProc(hWnd, msg->message, msg->wParam, msg->lParam, &lRet);
+            return QWidget::nativeEvent(eventType, message, result);
         }
         else
         {
@@ -271,6 +268,54 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
         return QWidget::nativeEvent(eventType, message, result);
     }
     return true;
+}
+
+LRESULT PictureDialog::HitTestNCA(HWND hWnd, LPARAM lParam)
+{
+    int LEFTEXTENDWIDTH = 8;
+    int RIGHTEXTENDWIDTH = 8;
+    int BOTTOMEXTENDWIDTH = 8;
+    int TOPEXTENDWIDTH = layout()->menuBar()->height();
+
+    POINT ptMouse = {(int)(short)LOWORD(lParam), (int)(short)HIWORD(lParam)};
+
+    RECT rcWindow;
+    GetWindowRect(hWnd, &rcWindow);
+
+    RECT rcFrame = { 0 };
+    AdjustWindowRectEx(&rcFrame, WS_OVERLAPPEDWINDOW & ~WS_CAPTION, FALSE, NULL);
+
+    USHORT uRow = 1;
+    USHORT uCol = 1;
+    bool fOnResizeBorder = false;
+
+    if (ptMouse.y >= rcWindow.top && ptMouse.y < rcWindow.top + TOPEXTENDWIDTH)
+    {
+        fOnResizeBorder = (ptMouse.y < (rcWindow.top - rcFrame.top));
+        uRow = 0;
+    }
+    else if (ptMouse.y < rcWindow.bottom && ptMouse.y >= rcWindow.bottom - BOTTOMEXTENDWIDTH)
+    {
+        uRow = 2;
+    }
+
+    if (ptMouse.x >= rcWindow.left && ptMouse.x < rcWindow.left + LEFTEXTENDWIDTH)
+    {
+        uCol = 0;
+    }
+    else if (ptMouse.x < rcWindow.right && ptMouse.x >= rcWindow.right - RIGHTEXTENDWIDTH)
+    {
+        uCol = 2;
+    }
+
+    LRESULT hitTests[3][3] =
+    {
+        { HTTOPLEFT,    fOnResizeBorder ? HTTOP : HTCAPTION,    HTTOPRIGHT },
+        { HTLEFT,       HTNOWHERE,     HTRIGHT },
+        { HTBOTTOMLEFT, HTBOTTOM, HTBOTTOMRIGHT },
+    };
+
+    return hitTests[uRow][uCol];
 }
 #endif
 #endif
@@ -400,43 +445,43 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
         }
 #ifdef GTA5SYNC_WIN
 #if QT_VERSION >= 0x050200
-        if (obj != ui->labPicture && naviEnabled)
-        {
-            if (ev->type() == QEvent::MouseButtonPress)
-            {
-                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
-                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
-                {
-                    if (mouseEvent->button() == Qt::LeftButton)
-                    {
-                        dragPosition = mouseEvent->globalPos() - frameGeometry().topLeft();
-                        dragStart = true;
-                    }
-                }
-            }
-            if (ev->type() == QEvent::MouseButtonRelease)
-            {
-                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
-                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
-                {
-                    if (mouseEvent->button() == Qt::LeftButton)
-                    {
-                        dragStart = false;
-                    }
-                }
-            }
-            if (ev->type() == QEvent::MouseMove && dragStart)
-            {
-                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
-                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
-                {
-                    if (mouseEvent->buttons() & Qt::LeftButton)
-                    {
-                        move(mouseEvent->globalPos() - dragPosition);
-                    }
-                }
-            }
-        }
+        //        if (obj != ui->labPicture && naviEnabled)
+        //        {
+        //            if (ev->type() == QEvent::MouseButtonPress)
+        //            {
+        //                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+        //                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+        //                {
+        //                    if (mouseEvent->button() == Qt::LeftButton)
+        //                    {
+        //                        dragPosition = mouseEvent->globalPos() - frameGeometry().topLeft();
+        //                        dragStart = true;
+        //                    }
+        //                }
+        //            }
+        //            if (ev->type() == QEvent::MouseButtonRelease)
+        //            {
+        //                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+        //                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+        //                {
+        //                    if (mouseEvent->button() == Qt::LeftButton)
+        //                    {
+        //                        dragStart = false;
+        //                    }
+        //                }
+        //            }
+        //            if (ev->type() == QEvent::MouseMove && dragStart)
+        //            {
+        //                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+        //                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+        //                {
+        //                    if (mouseEvent->buttons() & Qt::LeftButton)
+        //                    {
+        //                        move(mouseEvent->globalPos() - dragPosition);
+        //                    }
+        //                }
+        //            }
+        //        }
 #endif
 #endif
     }

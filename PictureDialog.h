@@ -28,6 +28,12 @@
 #include <QEvent>
 #include <QMenu>
 
+#ifdef GTA5SYNC_WIN
+#if QT_VERSION >= 0x050200
+#include <dwmapi.h>
+#endif
+#endif
+
 namespace Ui {
 class PictureDialog;
 }
@@ -90,6 +96,7 @@ protected:
 #ifdef GTA5SYNC_WIN
 #if QT_VERSION >= 0x050200
     bool nativeEvent(const QByteArray &eventType, void *message, long *result);
+    LRESULT HitTestNCA(HWND hWnd, LPARAM lParam);
 #endif
 #endif
 
