@@ -235,15 +235,12 @@ void PictureDialog::stylizeDialog()
 #if QT_VERSION >= 0x050200
     if (QtWin::isCompositionEnabled())
     {
-        QtWin::extendFrameIntoClientArea(this, 0, this->layout()->menuBar()->height(), 0, 0);
-        setAttribute(Qt::WA_TranslucentBackground, true);
-        setAttribute(Qt::WA_NoSystemBackground, false);
+        QtWin::extendFrameIntoClientArea(this, 0, this->layout()->menuBar()->height(), 0, 0);;
         setStyleSheet("PictureDialog { background: transparent; }");
     }
     else
     {
         QtWin::resetExtendedFrame(this);
-        setAttribute(Qt::WA_TranslucentBackground, false);
         setStyleSheet(QString("PictureDialog { background: %1; }").arg(QtWin::realColorizationColor().name()));
     }
 #endif
