@@ -40,6 +40,10 @@ ImportDialog::ImportDialog(QWidget *parent) :
 {
     // Set Window Flags
     setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowMinMaxButtonsHint);
+#ifdef Q_OS_LINUX
+    // for stupid Window Manager (GNOME 3 should feel triggered)
+    setWindowFlags(windowFlags()^Qt::Dialog^Qt::Window);
+#endif
 
     ui->setupUi(this);
     importAgreed = false;
