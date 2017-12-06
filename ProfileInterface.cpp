@@ -520,6 +520,7 @@ void ProfileInterface::importFilesProgress(QStringList selectedFiles)
     pbBar.at(0)->setTextVisible(false);
     pbDialog.show();
 
+    // THREADING HERE PLEASE
     QDateTime importDateTime = QDateTime::currentDateTime();
     int currentTime = importDateTime.time().toString(importTimeFormat).toInt();
     for (QString selectedFile : selectedFiles)
@@ -533,6 +534,7 @@ void ProfileInterface::importFilesProgress(QStringList selectedFiles)
         }
         overallId++;
     }
+
     pbDialog.close();
     for (QString curErrorStr : failedFiles)
     {
