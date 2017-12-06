@@ -42,6 +42,7 @@
 #include <QDesktopWidget>
 #include <QJsonDocument>
 #include <QApplication>
+#include <QFontMetrics>
 #include <QStaticText>
 #include <QFileDialog>
 #include <QMessageBox>
@@ -379,15 +380,11 @@ void PictureDialog::renderOverlayPicture()
     qreal screenRatio = AppEnv::screenRatio();
     QRect preferedRect = QRect(0, 0, 200 * screenRatio, 160 * screenRatio);
     QString overlayText = tr("Key 1 - Avatar Preview Mode\nKey 2 - Toggle Overlay\nArrow Keys - Navigate");
-    QImage overlayImage(1, 1, QImage::Format_ARGB32_Premultiplied);
-    overlayImage.fill(Qt::transparent);
 
-    QPainter overlayPainter(&overlayImage);
     QFont overlayPainterFont;
     overlayPainterFont.setPixelSize(12 * screenRatio);
-    overlayPainter.setFont(overlayPainterFont);
-    QRect overlaySpace = overlayPainter.boundingRect(preferedRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap, overlayText);
-    overlayPainter.end();
+    QFontMetrics fontMetrics(overlayPainterFont);
+    QRect overlaySpace = fontMetrics.boundingRect(preferedRect, Qt::AlignLeft | Qt::AlignTop | Qt::TextDontClip | Qt::TextWordWrap, overlayText);
 
     int hOverlay = Qt::AlignTop;
     if (overlaySpace.height() < 74 * screenRatio)
@@ -401,8 +398,10 @@ void PictureDialog::renderOverlayPicture()
         overlaySpace.setHeight(overlaySpace.height() + 6 * screenRatio);
     }
 
-    overlayImage = overlayImage.scaled(overlaySpace.size());
-    overlayPainter.begin(&overlayImage);
+    QImage overlayImage(overlaySpace.size(), QImage::Format_ARGB32_Premultiplied);
+    overlayImage.fill(Qt::transparent);
+
+    QPainter overlayPainter(&overlayImage);
     overlayPainter.setPen(QColor::fromRgb(255, 255, 255, 255));
     overlayPainter.setFont(overlayPainterFont);
     overlayPainter.drawText(preferedRect, Qt::AlignLeft | hOverlay | Qt::TextDontClip | Qt::TextWordWrap, overlayText);
