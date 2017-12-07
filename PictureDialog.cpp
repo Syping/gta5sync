@@ -257,7 +257,6 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
             lRet = HitTestNCA(hWnd, msg->lParam);
             DwmDefWindowProc(hWnd, msg->message, msg->wParam, msg->lParam, &lRet);
             *result = lRet;
-            return true;
             return QWidget::nativeEvent(eventType, message, result);
         }
         else
