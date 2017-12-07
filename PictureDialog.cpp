@@ -283,7 +283,7 @@ LRESULT PictureDialog::HitTestNCA(HWND hWnd, LPARAM lParam)
     RECT rcWindow;
     GetWindowRect(hWnd, &rcWindow);
 
-    RECT rcFrame = { 0 };
+    RECT rcFrame = {};
     AdjustWindowRectEx(&rcFrame, WS_OVERLAPPEDWINDOW & ~WS_CAPTION, FALSE, NULL);
 
     USHORT uRow = 1;
