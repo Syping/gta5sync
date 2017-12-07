@@ -480,7 +480,7 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
                     {
                         QPoint diff = mouseEvent->pos() - dragPosition;
                         move(QPoint(pos() + diff));
-                        adjustSize();
+                        updateGeometry();
                     }
                 }
             }
