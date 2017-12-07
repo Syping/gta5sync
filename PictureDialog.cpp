@@ -257,6 +257,7 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
             lRet = HitTestNCA(hWnd, msg->lParam);
             DwmDefWindowProc(hWnd, msg->message, msg->wParam, msg->lParam, &lRet);
             *result = lRet;
+            return true;
             return QWidget::nativeEvent(eventType, message, result);
         }
         else
@@ -273,9 +274,9 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
 
 LRESULT PictureDialog::HitTestNCA(HWND hWnd, LPARAM lParam)
 {
-    int LEFTEXTENDWIDTH = 8;
-    int RIGHTEXTENDWIDTH = 8;
-    int BOTTOMEXTENDWIDTH = 8;
+    int LEFTEXTENDWIDTH = 0;
+    int RIGHTEXTENDWIDTH = 0;
+    int BOTTOMEXTENDWIDTH = 0;
     int TOPEXTENDWIDTH = layout()->menuBar()->height();
 
     POINT ptMouse = {(int)(short)LOWORD(lParam), (int)(short)HIWORD(lParam)};
