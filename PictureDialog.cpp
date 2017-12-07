@@ -446,43 +446,45 @@ bool PictureDialog::eventFilter(QObject *obj, QEvent *ev)
         }
 #ifdef GTA5SYNC_WIN
 #if QT_VERSION >= 0x050200
-        //        if (obj != ui->labPicture && naviEnabled)
-        //        {
-        //            if (ev->type() == QEvent::MouseButtonPress)
-        //            {
-        //                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
-        //                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
-        //                {
-        //                    if (mouseEvent->button() == Qt::LeftButton)
-        //                    {
-        //                        dragPosition = mouseEvent->globalPos() - frameGeometry().topLeft();
-        //                        dragStart = true;
-        //                    }
-        //                }
-        //            }
-        //            if (ev->type() == QEvent::MouseButtonRelease)
-        //            {
-        //                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
-        //                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
-        //                {
-        //                    if (mouseEvent->button() == Qt::LeftButton)
-        //                    {
-        //                        dragStart = false;
-        //                    }
-        //                }
-        //            }
-        //            if (ev->type() == QEvent::MouseMove && dragStart)
-        //            {
-        //                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
-        //                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
-        //                {
-        //                    if (mouseEvent->buttons() & Qt::LeftButton)
-        //                    {
-        //                        move(mouseEvent->globalPos() - dragPosition);
-        //                    }
-        //                }
-        //            }
-        //        }
+        if (obj != ui->labPicture && naviEnabled)
+        {
+            if (ev->type() == QEvent::MouseButtonPress)
+            {
+                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+                {
+                    if (mouseEvent->button() == Qt::LeftButton)
+                    {
+                        dragPosition = mouseEvent->pos();
+                        dragStart = true;
+                    }
+                }
+            }
+            if (ev->type() == QEvent::MouseButtonRelease)
+            {
+                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+                {
+                    if (mouseEvent->button() == Qt::LeftButton)
+                    {
+                        dragStart = false;
+                    }
+                }
+            }
+            if (ev->type() == QEvent::MouseMove && dragStart)
+            {
+                QMouseEvent *mouseEvent = dynamic_cast<QMouseEvent*>(ev);
+                if (mouseEvent->pos().y() <= layout()->menuBar()->height())
+                {
+                    if (mouseEvent->buttons() & Qt::LeftButton)
+                    {
+                        QPoint diff = mouseEvent->pos() - dragPosition;
+                        move(QPoint(pos() + diff));
+                        adjustSize();
+                    }
+                }
+            }
+        }
 #endif
 #endif
     }
