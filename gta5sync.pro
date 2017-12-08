@@ -149,7 +149,7 @@ win32: DEFINES += GTA5SYNC_WIN
 win32: RC_FILE += res/app.rc
 win32: LIBS += -luser32
 win32: CONFIG -= embed_manifest_exe
-greaterThan(QT_MAJOR_VERSION, 4): greaterThan(QT_MINOR_VERSION, 1): win32: LIBS += -ldwmapi
+contains(DEFINES, GTA5SYNC_APV): greaterThan(QT_MAJOR_VERSION, 4): greaterThan(QT_MINOR_VERSION, 1): win32: LIBS += -ldwmapi
 
 # WINDOWS RT ONLY
 winrt: DEFINES -= GTA5SYNC_WIN

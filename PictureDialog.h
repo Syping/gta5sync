@@ -30,7 +30,9 @@
 
 #ifdef GTA5SYNC_WIN
 #if QT_VERSION >= 0x050200
+#ifdef GTA5SYNC_APV
 #include <dwmapi.h>
+#endif
 #endif
 #endif
 
@@ -95,8 +97,10 @@ protected:
     bool event(QEvent *event);
 #ifdef GTA5SYNC_WIN
 #if QT_VERSION >= 0x050200
+#ifdef GTA5SYNC_APV
     bool nativeEvent(const QByteArray &eventType, void *message, long *result);
     LRESULT HitTestNCA(HWND hWnd, LPARAM lParam);
+#endif
 #endif
 #endif
 

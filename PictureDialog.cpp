@@ -224,7 +224,6 @@ void PictureDialog::addPreviousNextButtons()
     uiToolbar->setObjectName("uiToolbar");
     uiToolbar->addAction(QIcon(":/img/back.png"), "", this, SLOT(previousPictureRequestedSlot()));
     uiToolbar->addAction(QIcon(":/img/next.png"), "", this, SLOT(nextPictureRequestedSlot()));
-
     layout()->setMenuBar(uiToolbar);
 
     naviEnabled = true;
@@ -234,6 +233,7 @@ void PictureDialog::addPreviousNextButtons()
 
 #ifdef GTA5SYNC_WIN
 #if QT_VERSION >= 0x050200
+#ifdef GTA5SYNC_APV
 bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long *result)
 {
     *result = 0;
@@ -318,6 +318,7 @@ LRESULT PictureDialog::HitTestNCA(HWND hWnd, LPARAM lParam)
 
     return hitTests[uRow][uCol];
 }
+#endif
 #endif
 #endif
 
