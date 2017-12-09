@@ -18,7 +18,6 @@
 
 #ifndef CONFIG_H
 #define CONFIG_H
-#include <QString>
 
 #ifndef GTA5SYNC_APPVENDOR
 #define GTA5SYNC_APPVENDOR "Syping"
