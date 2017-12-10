@@ -240,7 +240,7 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
     MSG *msg = static_cast<MSG*>(message);
     LRESULT lRet = 0;
 
-    if (naviEnabled)
+    if (naviEnabled && QtWin::isCompositionEnabled())
     {
         if (msg->message == WM_NCCALCSIZE && msg->wParam == TRUE)
         {
@@ -248,17 +248,17 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
 
             int sideBorderSize = ((frameSize().width() - size().width()) / 2);
             int buttomBorderSize = (frameSize().height() - size().height());
-            pncsp->rgrc[0].left   = pncsp->rgrc[0].left   + sideBorderSize;
-            pncsp->rgrc[0].top    = pncsp->rgrc[0].top    + 0;
-            pncsp->rgrc[0].right  = pncsp->rgrc[0].right  - sideBorderSize;
-            pncsp->rgrc[0].bottom = pncsp->rgrc[0].bottom - buttomBorderSize;
+            pncsp->rgrc[0].left += sideBorderSize;
+            pncsp->rgrc[0].right -= sideBorderSize;
+            pncsp->rgrc[0].bottom -= buttomBorderSize;
         }
         else if (msg->message == WM_NCHITTEST)
         {
+            int CLOSE_BUTTON_ID = 20;
             lRet = HitTestNCA(msg->hwnd, msg->lParam);
             DwmDefWindowProc(msg->hwnd, msg->message, msg->wParam, msg->lParam, &lRet);
             *result = lRet;
-            if ((int)lRet != 20) { return QWidget::nativeEvent(eventType, message, result); }
+            if (lRet != CLOSE_BUTTON_ID) { return QWidget::nativeEvent(eventType, message, result); }
         }
         else
         {
