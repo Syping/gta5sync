@@ -246,18 +246,19 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
         {
             NCCALCSIZE_PARAMS *pncsp = reinterpret_cast<NCCALCSIZE_PARAMS*>(msg->lParam);
 
-            pncsp->rgrc[0].left   = pncsp->rgrc[0].left   + 8;
+            int sideBorderSize = ((frameSize().width() - size().width()) / 2);
+            int buttomBorderSize = (frameSize().height() - size().height());
+            pncsp->rgrc[0].left   = pncsp->rgrc[0].left   + sideBorderSize;
             pncsp->rgrc[0].top    = pncsp->rgrc[0].top    + 0;
-            pncsp->rgrc[0].right  = pncsp->rgrc[0].right  - 8;
-            pncsp->rgrc[0].bottom = pncsp->rgrc[0].bottom - 8;
+            pncsp->rgrc[0].right  = pncsp->rgrc[0].right  - sideBorderSize;
+            pncsp->rgrc[0].bottom = pncsp->rgrc[0].bottom - buttomBorderSize;
         }
         else if (msg->message == WM_NCHITTEST)
         {
-            HWND hWnd = (HWND)winId();
-            lRet = HitTestNCA(hWnd, msg->lParam);
-            DwmDefWindowProc(hWnd, msg->message, msg->wParam, msg->lParam, &lRet);
+            lRet = HitTestNCA(msg->hwnd, msg->lParam);
+            DwmDefWindowProc(msg->hwnd, msg->message, msg->wParam, msg->lParam, &lRet);
             *result = lRet;
-            return QWidget::nativeEvent(eventType, message, result);
+            if ((int)lRet != 20) { return QWidget::nativeEvent(eventType, message, result); }
         }
         else
         {
@@ -328,8 +329,8 @@ void PictureDialog::adaptNewDialogSize(QSize newLabelSize)
     int newDialogHeight = ui->labPicture->pixmap()->height();
     newDialogHeight = newDialogHeight + ui->jsonFrame->height();
     if (naviEnabled) newDialogHeight = newDialogHeight + layout()->menuBar()->height();
-    setMinimumSize(width(), newDialogHeight);
     setMaximumSize(width(), newDialogHeight);
+    setMinimumSize(width(), newDialogHeight);
     setFixedHeight(newDialogHeight);
     ui->labPicture->updateGeometry();
     ui->jsonFrame->updateGeometry();
