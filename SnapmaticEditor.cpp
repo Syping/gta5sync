@@ -225,6 +225,9 @@ void SnapmaticEditor::setSnapmaticPlayers(const QStringList &players)
     {
         ui->labPlayers->setText(playersStr.arg(QApplication::translate("PictureDialog", "No Players"), editStr));
     }
+    ui->gbValues->resize(ui->gbValues->sizeHint());
+    ui->frameWidget->resize(ui->frameWidget->sizeHint());
+    resize(width(), heightForWidth(width()));
 }
 
 void SnapmaticEditor::setSnapmaticTitle(const QString &title)
