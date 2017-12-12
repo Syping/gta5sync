@@ -22,6 +22,7 @@
 #include "SnapmaticPicture.h"
 #include "ProfileDatabase.h"
 #include "CrewDatabase.h"
+#include <QResizeEvent>
 #include <QMouseEvent>
 #include <QToolBar>
 #include <QDialog>
@@ -45,10 +46,8 @@ class PictureDialog : public QDialog
     Q_OBJECT
 public:
     explicit PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, QWidget *parent = 0);
-    explicit PictureDialog(QWidget *parent = 0);
     explicit PictureDialog(bool primaryWindow, ProfileDatabase *profileDB, CrewDatabase *crewDB, QWidget *parent = 0);
-    explicit PictureDialog(bool primaryWindow, QWidget *parent = 0);
-    void setupPictureDialog(bool withDatabase);
+    void setupPictureDialog();
     void setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, bool indexed, int index);
     void setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, int index);
     void setSnapmaticPicture(SnapmaticPicture *picture, bool readOk);
@@ -100,6 +99,7 @@ protected:
 #ifdef GTA5SYNC_APV
     bool nativeEvent(const QByteArray &eventType, void *message, long *result);
     LRESULT HitTestNCA(HWND hWnd, LPARAM lParam);
+    void resizeEvent(QResizeEvent *event);
 #endif
 #endif
 #endif
@@ -122,7 +122,6 @@ private:
     QString picAreaStr;
     QString crewStr;
     bool overlayEnabled;
-    bool withDatabase;
     bool rqFullscreen;
     bool naviEnabled;
     bool previewMode;

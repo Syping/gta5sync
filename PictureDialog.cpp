@@ -81,32 +81,17 @@ PictureDialog::PictureDialog(ProfileDatabase *profileDB, CrewDatabase *crewDB, Q
     ui(new Ui::PictureDialog)
 {
     primaryWindow = false;
-    setupPictureDialog(true);
-}
-
-PictureDialog::PictureDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::PictureDialog)
-{
-    primaryWindow = false;
-    setupPictureDialog(false);
+    setupPictureDialog();
 }
 
 PictureDialog::PictureDialog(bool primaryWindow, ProfileDatabase *profileDB, CrewDatabase *crewDB, QWidget *parent) :
     QDialog(parent), primaryWindow(primaryWindow), profileDB(profileDB), crewDB(crewDB),
     ui(new Ui::PictureDialog)
 {
-    setupPictureDialog(true);
+    setupPictureDialog();
 }
 
-PictureDialog::PictureDialog(bool primaryWindow, QWidget *parent) :
-    QDialog(parent), primaryWindow(primaryWindow),
-    ui(new Ui::PictureDialog)
-{
-    setupPictureDialog(false);
-}
-
-void PictureDialog::setupPictureDialog(bool withDatabase_)
+void PictureDialog::setupPictureDialog()
 {
     // Set Window Flags
     setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint^Qt::CustomizeWindowHint);
@@ -127,9 +112,6 @@ void PictureDialog::setupPictureDialog(bool withDatabase_)
     indexed = false;
     smpic = nullptr;
     crewStr = "";
-
-    // With datebase
-    withDatabase = withDatabase_;
 
     // Avatar area
     qreal screenRatio = AppEnv::screenRatio();
@@ -208,7 +190,7 @@ PictureDialog::~PictureDialog()
 void PictureDialog::closeEvent(QCloseEvent *ev)
 {
     Q_UNUSED(ev)
-    if (primaryWindow && withDatabase)
+    if (primaryWindow)
     {
         emit endDatabaseThread();
     }
@@ -247,7 +229,11 @@ bool PictureDialog::nativeEvent(const QByteArray &eventType, void *message, long
             NCCALCSIZE_PARAMS *pncsp = reinterpret_cast<NCCALCSIZE_PARAMS*>(msg->lParam);
 
             int sideBorderSize = ((frameSize().width() - size().width()) / 2);
+#ifdef GTA5SYNC_APV_SIDE
+            int buttomBorderSize = sideBorderSize;
+#else
             int buttomBorderSize = (frameSize().height() - size().height());
+#endif
             pncsp->rgrc[0].left += sideBorderSize;
             pncsp->rgrc[0].right -= sideBorderSize;
             pncsp->rgrc[0].bottom -= buttomBorderSize;
@@ -318,6 +304,24 @@ LRESULT PictureDialog::HitTestNCA(HWND hWnd, LPARAM lParam)
     };
 
     return hitTests[uRow][uCol];
+}
+
+void PictureDialog::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event)
+    //    int newDialogHeight = ui->labPicture->pixmap()->height();
+    //    newDialogHeight = newDialogHeight + ui->jsonFrame->height();
+    //    if (naviEnabled) newDialogHeight = newDialogHeight + layout()->menuBar()->height();
+    //    int buttomBorderSize = (frameSize().height() - size().height());
+    //    int sideBorderSize = ((frameSize().width() - size().width()) / 2);
+    //    int brokenDialogHeight = newDialogHeight + (buttomBorderSize - sideBorderSize);
+    //    if (event->size().height() == brokenDialogHeight)
+    //    {
+    //        qDebug() << "BROKEN 1";
+    //        setGeometry(geometry().x(), geometry().y(), width(), newDialogHeight);
+    //        qDebug() << "BROKEN 2";
+    //        event->ignore();
+    //    }
 }
 #endif
 #endif
@@ -597,14 +601,7 @@ void PictureDialog::setSnapmaticPicture(SnapmaticPicture *picture, bool readOk, 
     }
     if (picture->isJsonOk())
     {
-        if (withDatabase)
-        {
-            crewStr = crewDB->getCrewName(crewID);
-        }
-        else
-        {
-            crewStr = crewID;
-        }
+        crewStr = crewDB->getCrewName(crewID);
         if (globalMap.contains(picArea))
         {
             picAreaStr = globalMap[picArea];
@@ -714,7 +711,7 @@ void PictureDialog::crewNameUpdated()
 {
     SnapmaticPicture *picture = smpic; // used by macro
     QString crewIDStr = crewID;
-    if (withDatabase && crewIDStr == crewStr)
+    if (crewIDStr == crewStr)
     {
         crewStr = crewDB->getCrewName(crewIDStr);
         ui->labJSON->setText(jsonDrawString.arg(locX, locY, locZ, generatePlayersString(), generateCrewString(), picTitl, picAreaStr, created));
@@ -751,17 +748,10 @@ QString PictureDialog::generatePlayersString()
         for (QString player : playersList)
         {
             QString playerName;
-            if (withDatabase)
-            {
-                playerName = profileDB->getPlayerName(player.toInt());
-            }
-            else
-            {
-                playerName = player;
-            }
+            playerName = profileDB->getPlayerName(player);
             plyrsStr += ", <a href=\"https://socialclub.rockstargames.com/member/" % playerName % "/" % player % "\">" % playerName % "</a>";
         }
-        plyrsStr.remove(0,2);
+        plyrsStr.remove(0, 2);
     }
     else
     {
@@ -896,11 +886,11 @@ void PictureDialog::editSnapmaticProperties()
     SnapmaticEditor *snapmaticEditor;
     if (rqFullscreen && fullscreenWidget != nullptr)
     {
-        snapmaticEditor = new SnapmaticEditor(crewDB, fullscreenWidget);
+        snapmaticEditor = new SnapmaticEditor(crewDB, profileDB, fullscreenWidget);
     }
     else
     {
-        snapmaticEditor = new SnapmaticEditor(crewDB, this);
+        snapmaticEditor = new SnapmaticEditor(crewDB, profileDB, this);
     }
     snapmaticEditor->setWindowIcon(windowIcon());
     snapmaticEditor->setSnapmaticPicture(picture);
@@ -932,14 +922,7 @@ void PictureDialog::editSnapmaticRawJson()
 void PictureDialog::updated()
 {
     SnapmaticPicture *picture = smpic; // used by macro
-    if (withDatabase)
-    {
-        crewStr = crewDB->getCrewName(crewID);
-    }
-    else
-    {
-        crewStr = crewID;
-    }
+    crewStr = crewDB->getCrewName(crewID);
     if (globalMap.contains(picArea))
     {
         picAreaStr = globalMap[picArea];

@@ -41,6 +41,7 @@ JsonEditorDialog::JsonEditorDialog(SnapmaticPicture *picture, QWidget *parent) :
 #endif
 
     ui->setupUi(this);
+    ui->cmdClose->setDefault(true);
     if (QIcon::hasThemeIcon("dialog-close"))
     {
         ui->cmdClose->setIcon(QIcon::fromTheme("dialog-close"));
