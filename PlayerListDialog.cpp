@@ -202,8 +202,9 @@ void PlayerListDialog::on_cmdMakeAd_clicked()
     int playerID = QInputDialog::getInt(this, tr("Add Player..."), tr("Enter Social Club Player ID"), 1, 1, 214783647, 1, &playerOk, windowFlags());
     if (playerOk)
     {
-        for (QListWidgetItem *item : ui->listAvPlayers->selectedItems())
+        for (int i = 0; i < ui->listAvPlayers->count(); ++i)
         {
+            QListWidgetItem *item = ui->listAvPlayers->item(i);
             QString playerItemText = item->text();
             if (playerItemText.split(" ").at(0) == QString::number(playerID))
             {
@@ -212,16 +213,14 @@ void PlayerListDialog::on_cmdMakeAd_clicked()
                 return;
             }
         }
-        for (QListWidgetItem *item : ui->listSePlayers->selectedItems())
+        for (int i = 0; i < ui->listSePlayers->count(); ++i)
         {
+            QListWidgetItem *item = ui->listSePlayers->item(i);
             QString playerItemText = item->text();
             if (playerItemText.split(" ").at(0) == QString::number(playerID))
             {
-#ifdef GTA5SYNC_VERBOSE
                 QMessageBox::warning(this, tr("Add Player..."), tr("Failed to add Player %1 because Player %1 is already added!").arg(QString::number(playerID)));
-#else
-                ui->listSePlayers->setCurrentItem(item);
-#endif
+                //ui->listSePlayers->setCurrentItem(item);
                 return;
             }
         }

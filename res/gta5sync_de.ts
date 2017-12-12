@@ -1321,7 +1321,7 @@ Drücke A für Standardansicht</translation>
     </message>
     <message>
         <location filename="../PlayerListDialog.cpp" line="202"/>
-        <location filename="../PlayerListDialog.cpp" line="221"/>
+        <location filename="../PlayerListDialog.cpp" line="222"/>
         <source>Add Player...</source>
         <translation>Spieler hinzufügen...</translation>
     </message>
@@ -1331,7 +1331,7 @@ Drücke A für Standardansicht</translation>
         <translation>Social Club Spieler ID eingeben</translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.cpp" line="221"/>
+        <location filename="../PlayerListDialog.cpp" line="222"/>
         <source>Failed to add Player %1 because Player %1 is already added!</source>
         <translation>Fehlgeschlagen beim Hinzufügen vom Spieler %1 weil Spieler %1 bereits hinzugefügt wurde!</translation>
     </message>
@@ -2022,7 +2022,7 @@ Exportieren als:</translation>
         <location filename="../JsonEditorDialog.cpp" line="167"/>
         <location filename="../JsonEditorDialog.cpp" line="179"/>
         <location filename="../PictureDialog.cpp" line="872"/>
-        <location filename="../SnapmaticEditor.cpp" line="304"/>
+        <location filename="../SnapmaticEditor.cpp" line="307"/>
         <location filename="../SnapmaticWidget.cpp" line="332"/>
         <source>Snapmatic Properties</source>
         <translation>Snapmatic Eigenschaften</translation>
@@ -2067,7 +2067,7 @@ Exportieren als:</translation>
         <translation>Meme</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="366"/>
+        <location filename="../SnapmaticEditor.cpp" line="369"/>
         <source>Snapmatic Title</source>
         <translation>Snapmatic Titel</translation>
     </message>
@@ -2077,12 +2077,12 @@ Exportieren als:</translation>
         <translation>Snapmatic Werte</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="259"/>
+        <location filename="../SnapmaticEditor.cpp" line="262"/>
         <source>Crew: %1 (%2)</source>
         <translation>Crew: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="241"/>
+        <location filename="../SnapmaticEditor.cpp" line="244"/>
         <source>Title: %1 (%2)</source>
         <translation>Titel: %1 (%2)</translation>
     </message>
@@ -2099,8 +2099,8 @@ Exportieren als:</translation>
         <translation>Spieler: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="245"/>
-        <location filename="../SnapmaticEditor.cpp" line="249"/>
+        <location filename="../SnapmaticEditor.cpp" line="248"/>
+        <location filename="../SnapmaticEditor.cpp" line="252"/>
         <source>Appropriate: %1</source>
         <translation>Angemessen: %1</translation>
     </message>
@@ -2139,8 +2139,8 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../SnapmaticEditor.cpp" line="210"/>
-        <location filename="../SnapmaticEditor.cpp" line="240"/>
-        <location filename="../SnapmaticEditor.cpp" line="258"/>
+        <location filename="../SnapmaticEditor.cpp" line="243"/>
+        <location filename="../SnapmaticEditor.cpp" line="261"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
@@ -2155,13 +2155,13 @@ Exportieren als:</translation>
         <translation type="vanished">Spieler: (%1) (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="245"/>
+        <location filename="../SnapmaticEditor.cpp" line="248"/>
         <source>Yes</source>
         <comment>Yes, should work fine</comment>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="249"/>
+        <location filename="../SnapmaticEditor.cpp" line="252"/>
         <source>No</source>
         <comment>No, could lead to issues</comment>
         <translation>Nein</translation>
@@ -2184,23 +2184,23 @@ Exportieren als:</translation>
     <message>
         <location filename="../JsonEditorDialog.cpp" line="167"/>
         <location filename="../PictureDialog.cpp" line="872"/>
-        <location filename="../SnapmaticEditor.cpp" line="304"/>
+        <location filename="../SnapmaticEditor.cpp" line="307"/>
         <location filename="../SnapmaticWidget.cpp" line="332"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation>Patchen von Snapmatic Eigenschaften fehlgeschlagen wegen I/O Fehler</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="366"/>
+        <location filename="../SnapmaticEditor.cpp" line="369"/>
         <source>New Snapmatic title:</source>
         <translation>Neuer Snapmatic Titel:</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="395"/>
+        <location filename="../SnapmaticEditor.cpp" line="398"/>
         <source>Snapmatic Crew</source>
         <translation>Snapmatic Crew</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="395"/>
+        <location filename="../SnapmaticEditor.cpp" line="398"/>
         <source>New Snapmatic crew:</source>
         <translation>Neue Snapmatic Crew:</translation>
     </message>
