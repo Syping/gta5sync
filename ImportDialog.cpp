@@ -39,7 +39,7 @@ ImportDialog::ImportDialog(QWidget *parent) :
     ui(new Ui::ImportDialog)
 {
     // Set Window Flags
-    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowMinMaxButtonsHint);
+    setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint);
 #ifdef Q_OS_LINUX
     // for stupid Window Manager (GNOME 3 should feel triggered)
     setWindowFlags(windowFlags()^Qt::Dialog^Qt::Window);
@@ -65,8 +65,10 @@ ImportDialog::ImportDialog(QWidget *parent) :
 
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
-    snapmaticResolutionLW = 430 * screenRatio;
-    snapmaticResolutionLH = 240 * screenRatio;
+    snapmaticResolutionLW = 516 * screenRatio; // 430
+    snapmaticResolutionLH = 288 * screenRatio; // 240
+    ui->labPicture->setMinimumSize(snapmaticResolutionLW, snapmaticResolutionLH);
+
     ui->vlButtom->setSpacing(6 * screenRatio);
 #ifndef Q_OS_MAC
     ui->vlButtom->setContentsMargins(9 * screenRatio, 6 * screenRatio, 9 * screenRatio, 9 * screenRatio);
@@ -80,9 +82,10 @@ ImportDialog::ImportDialog(QWidget *parent) :
         ui->vlButtom->setContentsMargins(9 * screenRatio, 6 * screenRatio, 9 * screenRatio, 9 * screenRatio);
     }
 #endif
-    setMinimumSize(430 * screenRatio, 380 * screenRatio);
-    setMaximumSize(430 * screenRatio, 380 * screenRatio);
-    setFixedSize(430 * screenRatio, 380 * screenRatio);
+
+    setMaximumSize(sizeHint());
+    setMinimumSize(sizeHint());
+    setFixedSize(sizeHint());
 }
 
 ImportDialog::~ImportDialog()

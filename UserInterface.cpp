@@ -82,7 +82,9 @@ UserInterface::UserInterface(ProfileDatabase *profileDB, CrewDatabase *crewDB, D
 
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
+#ifndef Q_QS_ANDROID
     resize(625 * screenRatio, 500 * screenRatio);
+#endif
     ui->vlUserInterface->setSpacing(6 * screenRatio);
     ui->vlUserInterface->setContentsMargins(9 * screenRatio, 9 * screenRatio, 9 * screenRatio, 9 * screenRatio);
 }

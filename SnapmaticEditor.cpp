@@ -64,9 +64,11 @@ SnapmaticEditor::SnapmaticEditor(CrewDatabase *crewDB, ProfileDatabase *profileD
     snapmaticTitle = QString();
     smpic = 0;
 
+#ifndef Q_OS_ANDROID
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
     resize(400 * screenRatio, 360 * screenRatio);
+#endif
 }
 
 SnapmaticEditor::~SnapmaticEditor()
@@ -225,9 +227,11 @@ void SnapmaticEditor::setSnapmaticPlayers(const QStringList &players)
     {
         ui->labPlayers->setText(playersStr.arg(QApplication::translate("PictureDialog", "No Players"), editStr));
     }
+#ifndef Q_OS_ANDROID
     ui->gbValues->resize(ui->gbValues->sizeHint());
     ui->frameWidget->resize(ui->frameWidget->sizeHint());
     resize(width(), heightForWidth(width()));
+#endif
 }
 
 void SnapmaticEditor::setSnapmaticTitle(const QString &title)
@@ -251,9 +255,11 @@ void SnapmaticEditor::setSnapmaticTitle(const QString &title)
     {
         ui->labAppropriate->setText(tr("Appropriate: %1").arg(QString("<span style=\"color: red\">%1</a>").arg(tr("No", "No, could lead to issues"))));
     }
+#ifndef Q_OS_ANDROID
     ui->gbValues->resize(ui->gbValues->sizeHint());
     ui->frameWidget->resize(ui->frameWidget->sizeHint());
     resize(width(), heightForWidth(width()));
+#endif
 }
 
 void SnapmaticEditor::setSnapmaticCrew(const QString &crew)
@@ -261,9 +267,11 @@ void SnapmaticEditor::setSnapmaticCrew(const QString &crew)
     QString editStr = QString("<a href=\"g5e://editcrew\" style=\"text-decoration: none;\">%1</a>").arg(tr("Edit"));
     QString crewStr = tr("Crew: %1 (%2)").arg(StringParser::escapeString(crew), editStr);
     ui->labCrew->setText(crewStr);
+#ifndef Q_OS_ANDROID
     ui->gbValues->resize(ui->gbValues->sizeHint());
     ui->frameWidget->resize(ui->frameWidget->sizeHint());
     resize(width(), heightForWidth(width()));
+#endif
 }
 
 QString SnapmaticEditor::returnCrewName(int crewID_)
@@ -355,6 +363,7 @@ void SnapmaticEditor::on_labPlayers_linkActivated(const QString &link)
     {
         PlayerListDialog *playerListDialog = new PlayerListDialog(playersList, profileDB, this);
         connect(playerListDialog, SIGNAL(playerListUpdated(QStringList)), this, SLOT(playerListUpdated(QStringList)));
+        playerListDialog->setModal(true);
         playerListDialog->show();
         playerListDialog->exec();
         delete playerListDialog;

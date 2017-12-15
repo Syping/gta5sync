@@ -86,9 +86,11 @@ OptionsDialog::OptionsDialog(ProfileDatabase *profileDB, QWidget *parent) :
     setupInterfaceSettings();
     setupSnapmaticPictureViewer();
 
+#ifndef Q_QS_ANDROID
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
     resize(435 * screenRatio, 405 * screenRatio);
+#endif
 
 #ifdef GTA5SYNC_DISABLED
     ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabSync));
