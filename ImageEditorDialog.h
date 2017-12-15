@@ -19,6 +19,7 @@
 #ifndef IMAGEEDITORDIALOG_H
 #define IMAGEEDITORDIALOG_H
 
+#include "SnapmaticPicture.h"
 #include <QDialog>
 
 namespace Ui {
@@ -30,13 +31,23 @@ class ImageEditorDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit ImageEditorDialog(QWidget *parent = 0);
+    explicit ImageEditorDialog(SnapmaticPicture *picture, QString profileName, QWidget *parent = 0);
     ~ImageEditorDialog();
 
+private slots:
+    void on_cmdClose_clicked();
+    void on_cmdReplace_clicked();
+    void on_cmdSave_clicked();
+    void on_cmdQuestion_clicked();
+
 private:
+    SnapmaticPicture *smpic;
     Ui::ImageEditorDialog *ui;
     int snapmaticResolutionLW;
     int snapmaticResolutionLH;
+    bool imageIsChanged;
+    QImage pictureCache;
+    QString profileName;
 };
 
 #endif // IMAGEEDITORDIALOG_H

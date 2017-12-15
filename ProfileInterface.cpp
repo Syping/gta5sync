@@ -187,7 +187,7 @@ void ProfileInterface::pictureFixed_event(SnapmaticPicture *picture)
 
 void ProfileInterface::pictureLoaded(SnapmaticPicture *picture, bool inserted)
 {
-    SnapmaticWidget *picWidget = new SnapmaticWidget(profileDB, crewDB, threadDB, this);
+    SnapmaticWidget *picWidget = new SnapmaticWidget(profileDB, crewDB, threadDB, profileName, this);
     picWidget->setSnapmaticPicture(picture);
     picWidget->setContentMode(contentMode);
     picWidget->setMouseTracking(true);
@@ -685,6 +685,7 @@ bool ProfileInterface::importFile(QString selectedFile, QDateTime importDateTime
                     QFile snapmaticFile(selectedFile);
                     if (!snapmaticFile.open(QFile::ReadOnly))
                     {
+                        QMessageBox::warning(this, tr("Import"), tr("Can't import %1 because file can't be open").arg("\""+selectedFileName+"\""));
                         delete picture;
                         return false;
                     }
@@ -695,6 +696,7 @@ bool ProfileInterface::importFile(QString selectedFile, QDateTime importDateTime
                     if (!snapmaticImageReader.read(importImage))
                     {
                         QMessageBox::warning(this, tr("Import"), tr("Can't import %1 because file can't be parsed properly").arg("\""+selectedFileName+"\""));
+                        delete importImage;
                         delete picture;
                         return false;
                     }
@@ -1208,6 +1210,7 @@ void ProfileInterface::contextMenuTriggeredPIC(QContextMenuEvent *ev)
         editMenu.addAction(SnapmaticWidget::tr("Hide &In-game"), picWidget, SLOT(makePictureHiddenSlot()));
     }
     editMenu.addAction(PictureDialog::tr("&Edit Properties..."), picWidget, SLOT(editSnapmaticProperties()));
+    editMenu.addAction(PictureDialog::tr("&Overwrite Image..."), picWidget, SLOT(editSnapmaticImage()));
     editMenu.addSeparator();
     editMenu.addAction(PictureDialog::tr("Open &Map Viewer..."), picWidget, SLOT(openMapViewer()));
     editMenu.addAction(PictureDialog::tr("Open &JSON Editor..."), picWidget, SLOT(editSnapmaticRawJson()));

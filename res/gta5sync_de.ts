@@ -342,14 +342,82 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
     </message>
 </context>
 <context>
+    <name>ImageEditorDialog</name>
+    <message>
+        <location filename="../ImageEditorDialog.cpp" line="175"/>
+        <location filename="../ImageEditorDialog.cpp" line="182"/>
+        <location filename="../ImageEditorDialog.cpp" line="191"/>
+        <source>Snapmatic Image Editor</source>
+        <translation>Snapmatic Bild Editor</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.ui" line="14"/>
+        <source>Overwrite Image...</source>
+        <translation>Bild überschreiben...</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.ui" line="59"/>
+        <location filename="../ImageEditorDialog.cpp" line="52"/>
+        <source>Capacity: %1</source>
+        <translation>Kapazität: %1</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.ui" line="66"/>
+        <source>?</source>
+        <translation>?</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.ui" line="90"/>
+        <source>&amp;Import...</source>
+        <translation>&amp;Importieren...</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.ui" line="110"/>
+        <source>&amp;Overwrite</source>
+        <translation>&amp;Überschreiben</translation>
+    </message>
+    <message>
+        <source>&amp;Import</source>
+        <translation type="vanished">&amp;Importieren</translation>
+    </message>
+    <message>
+        <source>&amp;Save</source>
+        <translation type="vanished">&amp;Speichern</translation>
+    </message>
+    <message>
+        <source>&amp;Replace</source>
+        <translation type="vanished">&amp;Ersetzen</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.ui" line="117"/>
+        <source>&amp;Close</source>
+        <translation>S&amp;chließen</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.cpp" line="175"/>
+        <source>Patching of Snapmatic Image failed because of I/O Error</source>
+        <translation>Patchen von Snapmatic Bild fehlgeschlagen wegen I/O Fehler</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.cpp" line="182"/>
+        <source>Patching of Snapmatic Image failed because of Image Error</source>
+        <translation>Patchen von Snapmatic Bild fehlgeschlagen wegen Bild Fehler</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.cpp" line="191"/>
+        <source>Every taken Snapmatic have a different Capacity, a Snapmatic with higher Capacity can store a picture with better quality.</source>
+        <translation>Jedes geschossene Snapmatic hat seine eigene Kapazität, ein Snapmatic mit besserer Kapazität kann ein Bild mit besserer Qualität beinhalten.</translation>
+    </message>
+</context>
+<context>
     <name>ImportDialog</name>
     <message>
-        <location filename="../ImportDialog.ui" line="26"/>
+        <location filename="../ImportDialog.ui" line="20"/>
         <source>Import...</source>
         <translation>Importieren...</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="90"/>
+        <location filename="../ImportDialog.ui" line="84"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
@@ -370,12 +438,12 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Seitenverhältnis behalten</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="148"/>
+        <location filename="../ImportDialog.ui" line="142"/>
         <source>Ignore Aspect Ratio</source>
         <translation>Seitenverhältnis ignorieren</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="135"/>
+        <location filename="../ImportDialog.ui" line="129"/>
         <source>Avatar</source>
         <translation>Avatar</translation>
     </message>
@@ -384,34 +452,34 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Hintergrundfarbe: &lt;span style=&quot;color:rgb(%1,%2,%3)&quot;&gt;%4&lt;/span&gt;</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="98"/>
+        <location filename="../ImportDialog.ui" line="92"/>
         <location filename="../ImportDialog.cpp" line="64"/>
-        <location filename="../ImportDialog.cpp" line="261"/>
+        <location filename="../ImportDialog.cpp" line="264"/>
         <source>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</source>
         <translation>Hintergrundfarbe: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="105"/>
+        <location filename="../ImportDialog.ui" line="99"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="194"/>
+        <location filename="../ImportDialog.ui" line="188"/>
         <source>Import picture</source>
         <translation>Bild importieren</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="197"/>
+        <location filename="../ImportDialog.ui" line="191"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="210"/>
+        <location filename="../ImportDialog.ui" line="204"/>
         <source>Discard picture</source>
         <translation>Bild verwerfen</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="213"/>
+        <location filename="../ImportDialog.ui" line="207"/>
         <source>&amp;Cancel</source>
         <translation>Abbre&amp;chen</translation>
     </message>
@@ -426,35 +494,47 @@ When you plan to use it as Avatar the picture will be cut!</source>
 Wenn du planst es als Avatar zu verwenden das Bild wird abgetrennt!</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="124"/>
+        <location filename="../ImportDialog.cpp" line="127"/>
         <location filename="../ProfileInterface.cpp" line="630"/>
         <source>Custom Avatar</source>
         <comment>Custom Avatar Description in SC, don&apos;t use Special Character!</comment>
         <translation>Eigener Avatar</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="150"/>
+        <location filename="../ImportDialog.cpp" line="153"/>
         <location filename="../ProfileInterface.cpp" line="649"/>
         <source>Custom Picture</source>
         <comment>Custom Picture Description in SC, don&apos;t use Special Character!</comment>
         <translation>Eigenes Bild</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="218"/>
+        <location filename="../ImportDialog.cpp" line="221"/>
         <source>Are you sure to use a square image outside of the Avatar Zone?
 When you want to use it as Avatar the image will be detached!</source>
         <translation>Bist du sicher ein Quadrat Bild außerhalb der Avatar Zone zu verwenden?
 Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="218"/>
+        <location filename="../ImportDialog.cpp" line="221"/>
         <source>Snapmatic Avatar Zone</source>
         <translation>Snapmatic Avatar Zone</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="257"/>
+        <location filename="../ImportDialog.cpp" line="260"/>
         <source>Select Colour...</source>
         <translation>Farbe auswählen...</translation>
+    </message>
+    <message>
+        <source>Import</source>
+        <translation type="vanished">Importieren</translation>
+    </message>
+    <message>
+        <source>Can&apos;t import %1 because file can&apos;t be open</source>
+        <translation type="obsolete">Kann %1 nicht importieren weil die Datei nicht geöffnet werden kann</translation>
+    </message>
+    <message>
+        <source>Can&apos;t import %1 because file can&apos;t be parsed properly</source>
+        <translation type="obsolete">Kann %1 nicht importieren weil die Datei nicht richtig gelesen werden kann</translation>
     </message>
 </context>
 <context>
@@ -752,8 +832,8 @@ Y: %2</translation>
     <message>
         <location filename="../OptionsDialog.ui" line="402"/>
         <location filename="../OptionsDialog.ui" line="421"/>
-        <location filename="../OptionsDialog.cpp" line="173"/>
-        <location filename="../OptionsDialog.cpp" line="221"/>
+        <location filename="../OptionsDialog.cpp" line="175"/>
+        <location filename="../OptionsDialog.cpp" line="223"/>
         <source>Current: %1</source>
         <translation>Aktuell: %1</translation>
     </message>
@@ -809,7 +889,7 @@ Y: %2</translation>
         <translation type="vanished">%1 (%2 wenn verfügbar)</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="412"/>
+        <location filename="../OptionsDialog.cpp" line="414"/>
         <source>%1</source>
         <comment>%1</comment>
         <translation>%1</translation>
@@ -823,31 +903,31 @@ Y: %2</translation>
         <translation type="vanished">Der eigene Ordner initialisiert sobald du %1 neugestartet hast.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="137"/>
+        <location filename="../OptionsDialog.cpp" line="139"/>
         <source>%1 (Next Closest Language)</source>
         <comment>First language a person can talk with a different person/application. &quot;Native&quot; or &quot;Not Native&quot;.</comment>
         <translation>%1 (Erste näheste Sprache)</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="137"/>
+        <location filename="../OptionsDialog.cpp" line="139"/>
         <source>System</source>
         <comment>System in context of System default</comment>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="139"/>
+        <location filename="../OptionsDialog.cpp" line="141"/>
         <source>%1 (Closest to Interface)</source>
         <comment>Next closest language compared to the Interface</comment>
         <translation>%1 (Näheste zur Oberfläche)</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="139"/>
+        <location filename="../OptionsDialog.cpp" line="141"/>
         <source>Auto</source>
         <comment>Automatic language choice.</comment>
         <translation>Automatisch</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="412"/>
+        <location filename="../OptionsDialog.cpp" line="414"/>
         <source>The new Custom Folder will initialise after you restart %1.</source>
         <translation>Der eigene Ordner wird initialisiert sobald du %1 neugestartet hast.</translation>
     </message>
@@ -856,15 +936,15 @@ Y: %2</translation>
         <translation type="vanished">Die Änderung der Sprache nimmt Effekt sobald du %1 neugestartet hast.</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="422"/>
+        <location filename="../OptionsDialog.cpp" line="424"/>
         <source>No Profile</source>
         <comment>No Profile, as default</comment>
         <translation>Kein Profil</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="430"/>
-        <location filename="../OptionsDialog.cpp" line="434"/>
+        <location filename="../OptionsDialog.cpp" line="432"/>
         <location filename="../OptionsDialog.cpp" line="436"/>
+        <location filename="../OptionsDialog.cpp" line="438"/>
         <source>Profile: %1</source>
         <translation>Profil: %1</translation>
     </message>
@@ -978,8 +1058,8 @@ Y: %2</translation>
         <translation type="vanished">Exportiere als &amp;JPG Bild...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="136"/>
-        <location filename="../ProfileInterface.cpp" line="1215"/>
+        <location filename="../PictureDialog.cpp" line="152"/>
+        <location filename="../ProfileInterface.cpp" line="1218"/>
         <source>Export as &amp;Picture...</source>
         <translation>Als &amp;Bild exportieren...</translation>
     </message>
@@ -988,8 +1068,8 @@ Y: %2</translation>
         <translation type="vanished">Exportiere als &amp;GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="137"/>
-        <location filename="../ProfileInterface.cpp" line="1216"/>
+        <location filename="../PictureDialog.cpp" line="153"/>
+        <location filename="../ProfileInterface.cpp" line="1219"/>
         <source>Export as &amp;Snapmatic...</source>
         <translation>Als &amp;Snapmatic exportieren...</translation>
     </message>
@@ -1002,8 +1082,8 @@ Y: %2</translation>
         <translation type="vanished">&amp;Kartenansicht öffnen...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="139"/>
-        <location filename="../ProfileInterface.cpp" line="1210"/>
+        <location filename="../PictureDialog.cpp" line="155"/>
+        <location filename="../ProfileInterface.cpp" line="1212"/>
         <source>&amp;Edit Properties...</source>
         <translation>Eigenschaften bearb&amp;eiten...</translation>
     </message>
@@ -1017,13 +1097,19 @@ Y: %2</translation>
         <translation type="vanished">Erweitert (&amp;A)</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="141"/>
-        <location filename="../ProfileInterface.cpp" line="1212"/>
+        <location filename="../PictureDialog.cpp" line="156"/>
+        <location filename="../ProfileInterface.cpp" line="1213"/>
+        <source>&amp;Overwrite Image...</source>
+        <translation>Bild &amp;überschreiben...</translation>
+    </message>
+    <message>
+        <location filename="../PictureDialog.cpp" line="158"/>
+        <location filename="../ProfileInterface.cpp" line="1215"/>
         <source>Open &amp;Map Viewer...</source>
         <translation>&amp;Kartenansicht öffnen...</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="536"/>
+        <location filename="../PictureDialog.cpp" line="553"/>
         <source>Key 1 - Avatar Preview Mode
 Key 2 - Toggle Overlay
 Arrow Keys - Navigate</source>
@@ -1032,32 +1118,32 @@ Taste 2 - Overlay umschalten
 Pfeiltasten - Navigieren</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="593"/>
-        <location filename="../PictureDialog.cpp" line="620"/>
+        <location filename="../PictureDialog.cpp" line="610"/>
+        <location filename="../PictureDialog.cpp" line="637"/>
         <source>Snapmatic Picture Viewer</source>
         <translation>Snapmatic Bildansicht</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="593"/>
-        <location filename="../PictureDialog.cpp" line="620"/>
+        <location filename="../PictureDialog.cpp" line="610"/>
+        <location filename="../PictureDialog.cpp" line="637"/>
         <source>Failed at %1</source>
         <translation>Fehlgeschlagen beim %1</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="619"/>
-        <location filename="../PictureDialog.cpp" line="738"/>
+        <location filename="../PictureDialog.cpp" line="636"/>
+        <location filename="../PictureDialog.cpp" line="756"/>
         <source>No Crew</source>
         <translation>Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="619"/>
-        <location filename="../PictureDialog.cpp" line="758"/>
-        <location filename="../SnapmaticEditor.cpp" line="226"/>
+        <location filename="../PictureDialog.cpp" line="636"/>
+        <location filename="../PictureDialog.cpp" line="776"/>
+        <location filename="../SnapmaticEditor.cpp" line="228"/>
         <source>No Players</source>
         <translation>Keine Spieler</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="704"/>
+        <location filename="../PictureDialog.cpp" line="722"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation>Avatar Vorschaumodus
@@ -1102,7 +1188,7 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Keine Crew</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="619"/>
+        <location filename="../PictureDialog.cpp" line="636"/>
         <source>Unknown Location</source>
         <translation>Unbekannter Standort</translation>
     </message>
@@ -1272,10 +1358,14 @@ Drücke A für Standardansicht</translation>
         <translation>Keine gültige Datei wurde ausgewählt</translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="143"/>
-        <location filename="../ProfileInterface.cpp" line="1213"/>
+        <location filename="../PictureDialog.cpp" line="160"/>
+        <location filename="../ProfileInterface.cpp" line="1216"/>
         <source>Open &amp;JSON Editor...</source>
         <translation>&amp;JSON Editor öffnen...</translation>
+    </message>
+    <message>
+        <source>&amp;Edit Image...</source>
+        <translation type="vanished">Bild bearb&amp;eiten...</translation>
     </message>
 </context>
 <context>
@@ -1410,25 +1500,30 @@ Drücke A für Standardansicht</translation>
         <translation>&lt;h4&gt;Folgende Snapmatic Bilder wurden repariert&lt;/h4&gt;%1</translation>
     </message>
     <message>
+        <location filename="../ImageEditorDialog.cpp" line="87"/>
         <location filename="../ProfileInterface.cpp" line="445"/>
         <location filename="../ProfileInterface.cpp" line="512"/>
         <source>Import...</source>
         <translation>Importieren...</translation>
     </message>
     <message>
+        <location filename="../ImageEditorDialog.cpp" line="88"/>
+        <location filename="../ImageEditorDialog.cpp" line="128"/>
+        <location filename="../ImageEditorDialog.cpp" line="137"/>
         <location filename="../ProfileInterface.cpp" line="446"/>
         <location filename="../ProfileInterface.cpp" line="491"/>
         <location filename="../ProfileInterface.cpp" line="546"/>
         <location filename="../ProfileInterface.cpp" line="566"/>
         <location filename="../ProfileInterface.cpp" line="582"/>
-        <location filename="../ProfileInterface.cpp" line="697"/>
-        <location filename="../ProfileInterface.cpp" line="776"/>
-        <location filename="../ProfileInterface.cpp" line="781"/>
-        <location filename="../ProfileInterface.cpp" line="792"/>
-        <location filename="../ProfileInterface.cpp" line="797"/>
-        <location filename="../ProfileInterface.cpp" line="809"/>
-        <location filename="../ProfileInterface.cpp" line="846"/>
-        <location filename="../ProfileInterface.cpp" line="852"/>
+        <location filename="../ProfileInterface.cpp" line="688"/>
+        <location filename="../ProfileInterface.cpp" line="698"/>
+        <location filename="../ProfileInterface.cpp" line="778"/>
+        <location filename="../ProfileInterface.cpp" line="783"/>
+        <location filename="../ProfileInterface.cpp" line="794"/>
+        <location filename="../ProfileInterface.cpp" line="799"/>
+        <location filename="../ProfileInterface.cpp" line="811"/>
+        <location filename="../ProfileInterface.cpp" line="848"/>
+        <location filename="../ProfileInterface.cpp" line="854"/>
         <source>Import</source>
         <translation>Importieren</translation>
     </message>
@@ -1441,14 +1536,16 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Importfähige Dateien (*.g5e *.jpg *.png SGTA* PGTA*)</translation>
     </message>
     <message>
+        <location filename="../ImageEditorDialog.cpp" line="105"/>
         <location filename="../ProfileInterface.cpp" line="463"/>
-        <location filename="../UserInterface.cpp" line="376"/>
+        <location filename="../UserInterface.cpp" line="378"/>
         <source>Savegames files (SGTA*)</source>
         <translation>Spielstanddateien (SGTA*)</translation>
     </message>
     <message>
+        <location filename="../ImageEditorDialog.cpp" line="106"/>
         <location filename="../ProfileInterface.cpp" line="464"/>
-        <location filename="../UserInterface.cpp" line="377"/>
+        <location filename="../UserInterface.cpp" line="379"/>
         <source>Snapmatic pictures (PGTA*)</source>
         <translation>Snapmatic Bilder (PGTA*)</translation>
     </message>
@@ -1457,18 +1554,21 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Alle Bilddateien (*.jpg *.png)</translation>
     </message>
     <message>
+        <location filename="../ImageEditorDialog.cpp" line="103"/>
         <location filename="../ProfileInterface.cpp" line="461"/>
         <source>Importable files (%1)</source>
         <translation>Importfähige Dateien (%1)</translation>
     </message>
     <message>
+        <location filename="../ImageEditorDialog.cpp" line="107"/>
         <location filename="../ProfileInterface.cpp" line="465"/>
         <source>All image files (%1)</source>
         <translation>Alle Bilddateien (%1)</translation>
     </message>
     <message>
+        <location filename="../ImageEditorDialog.cpp" line="108"/>
         <location filename="../ProfileInterface.cpp" line="466"/>
-        <location filename="../UserInterface.cpp" line="378"/>
+        <location filename="../UserInterface.cpp" line="380"/>
         <source>All files (**)</source>
         <translation>Alle Dateien (**)</translation>
     </message>
@@ -1489,28 +1589,35 @@ Drücke A für Standardansicht</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="566"/>
-        <location filename="../UserInterface.cpp" line="418"/>
+        <location filename="../UserInterface.cpp" line="420"/>
         <source>Failed to read Snapmatic picture</source>
         <translation>Fehler beim Lesen vom Snapmatic Bild</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="582"/>
-        <location filename="../UserInterface.cpp" line="434"/>
+        <location filename="../UserInterface.cpp" line="436"/>
         <source>Failed to read Savegame file</source>
         <translation>Fehler beim Lesen von Spielstanddatei</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="697"/>
+        <location filename="../ImageEditorDialog.cpp" line="128"/>
+        <location filename="../ProfileInterface.cpp" line="688"/>
+        <source>Can&apos;t import %1 because file can&apos;t be open</source>
+        <translation>Kann %1 nicht importieren weil die Datei nicht geöffnet werden kann</translation>
+    </message>
+    <message>
+        <location filename="../ImageEditorDialog.cpp" line="137"/>
+        <location filename="../ProfileInterface.cpp" line="698"/>
         <source>Can&apos;t import %1 because file can&apos;t be parsed properly</source>
         <translation>Kann %1 nicht importieren weil die Datei nicht richtig gelesen werden kann</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="776"/>
+        <location filename="../ProfileInterface.cpp" line="778"/>
         <source>Can&apos;t import %1 because file format can&apos;t be detected</source>
         <translation>Kann %1 nicht importieren weil das Dateiformat nicht erkannt werden kann</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1000"/>
+        <location filename="../ProfileInterface.cpp" line="1002"/>
         <source>Initialising export...</source>
         <translation>Initialisiere Export...</translation>
     </message>
@@ -1519,24 +1626,24 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Kann %1 nicht importieren weil das Dateiformat nicht gültig ist</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="792"/>
+        <location filename="../ProfileInterface.cpp" line="794"/>
         <source>Failed to import the Snapmatic picture, file not begin with PGTA or end with .g5e</source>
         <translation>Fehlgeschlagen beim Importieren vom Snapmatic Bild, Datei beginnt nicht mit PGTA oder endet mit .g5e</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="797"/>
+        <location filename="../ProfileInterface.cpp" line="799"/>
         <source>Failed to import the Snapmatic picture, the picture is already in the game</source>
         <translation>Fehlgeschlagen beim Importieren vom Snapmatic Bild, dieses Bild ist bereits im Spiel</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="954"/>
+        <location filename="../ProfileInterface.cpp" line="956"/>
         <source>%1Export Snapmatic pictures%2&lt;br&gt;&lt;br&gt;JPG pictures make it possible to open the picture with a Image Viewer&lt;br&gt;GTA Snapmatic make it possible to import the picture into the game&lt;br&gt;&lt;br&gt;Export as:</source>
         <translation>%1Exportiere Snapmatic Bilder%2&lt;br&gt;&lt;br&gt;JPG Bilder machen es möglich sie mit ein Bildansicht Programm zu öffnen&lt;br&gt;Das GTA Snapmatic Format macht es möglich sie wieder ins Game zu importieren&lt;br&gt;&lt;br&gt;Exportieren als:</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="491"/>
-        <location filename="../ProfileInterface.cpp" line="781"/>
-        <location filename="../UserInterface.cpp" line="466"/>
+        <location filename="../ProfileInterface.cpp" line="783"/>
+        <location filename="../UserInterface.cpp" line="468"/>
         <source>No valid file is selected</source>
         <translation>Keine gültige Datei wurde ausgewählt</translation>
     </message>
@@ -1550,35 +1657,35 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Fehlgeschlagen beim Importieren vom Snapmatic Bild, Datei beginnt nicht mit PGTA</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="809"/>
+        <location filename="../ProfileInterface.cpp" line="811"/>
         <source>Failed to import the Snapmatic picture, can&apos;t copy the file into profile</source>
         <translation>Fehlgeschlagen beim Importieren vom Snapmatic Bild, kann Snapmatic Bild nicht ins Profil kopieren</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="846"/>
+        <location filename="../ProfileInterface.cpp" line="848"/>
         <source>Failed to import the Savegame, can&apos;t copy the file into profile</source>
         <translation>Fehlgeschlagen beim Importieren vom Spielstand, kann Spielstanddatei nicht ins Profil kopieren</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="852"/>
+        <location filename="../ProfileInterface.cpp" line="854"/>
         <source>Failed to import the Savegame, no Savegame slot is left</source>
         <translation>Fehlgeschlagen beim Importieren vom Spielstand, kein Spielstandslot mehr frei</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="939"/>
-        <location filename="../ProfileInterface.cpp" line="957"/>
+        <location filename="../ProfileInterface.cpp" line="941"/>
+        <location filename="../ProfileInterface.cpp" line="959"/>
         <source>JPG pictures and GTA Snapmatic</source>
         <translation>JPG Bilder und GTA Snapmatic</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="940"/>
-        <location filename="../ProfileInterface.cpp" line="962"/>
+        <location filename="../ProfileInterface.cpp" line="942"/>
+        <location filename="../ProfileInterface.cpp" line="964"/>
         <source>JPG pictures only</source>
         <translation>Nur JPG Bilder</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="941"/>
-        <location filename="../ProfileInterface.cpp" line="966"/>
+        <location filename="../ProfileInterface.cpp" line="943"/>
+        <location filename="../ProfileInterface.cpp" line="968"/>
         <source>GTA Snapmatic only</source>
         <translation>Nur GTA Snapmatic</translation>
     </message>
@@ -1597,25 +1704,25 @@ Das GTA Snapmatic Format macht es möglich sie wieder ins Game zu importieren
 Exportieren als:</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1053"/>
-        <location filename="../ProfileInterface.cpp" line="1095"/>
+        <location filename="../ProfileInterface.cpp" line="1055"/>
+        <location filename="../ProfileInterface.cpp" line="1097"/>
         <source>No Snapmatic pictures or Savegames files are selected</source>
         <translation>Keine Snapmatic Bilder oder Spielstände ausgewählt</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1061"/>
-        <location filename="../ProfileInterface.cpp" line="1089"/>
-        <location filename="../ProfileInterface.cpp" line="1095"/>
+        <location filename="../ProfileInterface.cpp" line="1063"/>
+        <location filename="../ProfileInterface.cpp" line="1091"/>
+        <location filename="../ProfileInterface.cpp" line="1097"/>
         <source>Remove selected</source>
         <translation>Auswahl löschen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1061"/>
+        <location filename="../ProfileInterface.cpp" line="1063"/>
         <source>You really want remove the selected Snapmatic picutres and Savegame files?</source>
         <translation>Möchtest du wirklich die ausgewählten Snapmatic Bilder und Spielstanddateien löschen?</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1089"/>
+        <location filename="../ProfileInterface.cpp" line="1091"/>
         <source>Failed at remove the complete selected Snapmatic pictures and/or Savegame files</source>
         <translation>Fehlgeschlagen beim kompletten entfernen der ausgewählten Snapmatic Bilder und/oder der Spielstanddateien</translation>
     </message>
@@ -1636,10 +1743,10 @@ Exportieren als:</translation>
         <translation type="obsolete">Fehlgeschlagenen beim Import vom Spielstand weil kein Spielstandslot mehr übrig ist</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="916"/>
-        <location filename="../ProfileInterface.cpp" line="954"/>
-        <location filename="../ProfileInterface.cpp" line="1033"/>
-        <location filename="../ProfileInterface.cpp" line="1053"/>
+        <location filename="../ProfileInterface.cpp" line="918"/>
+        <location filename="../ProfileInterface.cpp" line="956"/>
+        <location filename="../ProfileInterface.cpp" line="1035"/>
+        <location filename="../ProfileInterface.cpp" line="1055"/>
         <source>Export selected</source>
         <translation>Auswahl exportieren</translation>
     </message>
@@ -1660,7 +1767,7 @@ Exportieren als:</translation>
         <translation type="obsolete">Wie sollen wir mit den Snapmatic Bilder umgehen?</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="999"/>
+        <location filename="../ProfileInterface.cpp" line="1001"/>
         <source>Export selected...</source>
         <translation>Auswahl exportieren...</translation>
     </message>
@@ -1673,7 +1780,7 @@ Exportieren als:</translation>
         <translation type="obsolete">Initialisierung...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1033"/>
+        <location filename="../ProfileInterface.cpp" line="1035"/>
         <source>Export failed with...
 
 %1</source>
@@ -1703,13 +1810,14 @@ Exportieren als:</translation>
         <translation>Exportiere Datei %1 von %2 Dateien</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="374"/>
+        <location filename="../UserInterface.cpp" line="376"/>
         <source>All profile files (*.g5e SGTA* PGTA*)</source>
         <translation>Alle Profildateien (*.g5e SGTA* PGTA*)</translation>
     </message>
     <message>
+        <location filename="../ImageEditorDialog.cpp" line="104"/>
         <location filename="../ProfileInterface.cpp" line="462"/>
-        <location filename="../UserInterface.cpp" line="375"/>
+        <location filename="../UserInterface.cpp" line="377"/>
         <source>GTA V Export (*.g5e)</source>
         <translation>GTA V Export (*.g5e)</translation>
     </message>
@@ -1877,32 +1985,32 @@ Exportieren als:</translation>
         <translation>Fehlgeschlagen beim Löschen %1 von deinen Spielständen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1251"/>
+        <location filename="../ProfileInterface.cpp" line="1254"/>
         <source>&amp;View</source>
         <translation>A&amp;nsehen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1253"/>
+        <location filename="../ProfileInterface.cpp" line="1256"/>
         <source>&amp;Remove</source>
         <translation>Entfe&amp;rnen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1255"/>
+        <location filename="../ProfileInterface.cpp" line="1258"/>
         <source>&amp;Select</source>
         <translation>Au&amp;swählen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1256"/>
+        <location filename="../ProfileInterface.cpp" line="1259"/>
         <source>&amp;Deselect</source>
         <translation>A&amp;bwählen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1259"/>
+        <location filename="../ProfileInterface.cpp" line="1262"/>
         <source>Select &amp;All</source>
         <translation>&amp;Alles auswählen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1263"/>
+        <location filename="../ProfileInterface.cpp" line="1266"/>
         <source>&amp;Deselect All</source>
         <translation>Alles a&amp;bwählen</translation>
     </message>
@@ -1941,7 +2049,7 @@ Exportieren als:</translation>
         <translation>Spielstand kopieren</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1252"/>
+        <location filename="../ProfileInterface.cpp" line="1255"/>
         <source>&amp;Export</source>
         <translation>&amp;Exportieren</translation>
     </message>
@@ -2021,9 +2129,9 @@ Exportieren als:</translation>
         <location filename="../JsonEditorDialog.cpp" line="161"/>
         <location filename="../JsonEditorDialog.cpp" line="167"/>
         <location filename="../JsonEditorDialog.cpp" line="179"/>
-        <location filename="../PictureDialog.cpp" line="872"/>
-        <location filename="../SnapmaticEditor.cpp" line="307"/>
-        <location filename="../SnapmaticWidget.cpp" line="332"/>
+        <location filename="../PictureDialog.cpp" line="899"/>
+        <location filename="../SnapmaticEditor.cpp" line="315"/>
+        <location filename="../SnapmaticWidget.cpp" line="351"/>
         <source>Snapmatic Properties</source>
         <translation>Snapmatic Eigenschaften</translation>
     </message>
@@ -2067,7 +2175,7 @@ Exportieren als:</translation>
         <translation>Meme</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="369"/>
+        <location filename="../SnapmaticEditor.cpp" line="378"/>
         <source>Snapmatic Title</source>
         <translation>Snapmatic Titel</translation>
     </message>
@@ -2077,30 +2185,30 @@ Exportieren als:</translation>
         <translation>Snapmatic Werte</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="262"/>
+        <location filename="../SnapmaticEditor.cpp" line="268"/>
         <source>Crew: %1 (%2)</source>
         <translation>Crew: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="244"/>
+        <location filename="../SnapmaticEditor.cpp" line="248"/>
         <source>Title: %1 (%2)</source>
         <translation>Titel: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="214"/>
+        <location filename="../SnapmaticEditor.cpp" line="216"/>
         <source>Players: %1 (%2)</source>
         <comment>Multiple Player are inserted here</comment>
         <translation>Spieler: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="218"/>
+        <location filename="../SnapmaticEditor.cpp" line="220"/>
         <source>Player: %1 (%2)</source>
         <comment>One Player is inserted here</comment>
         <translation>Spieler: %1 (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="248"/>
         <location filename="../SnapmaticEditor.cpp" line="252"/>
+        <location filename="../SnapmaticEditor.cpp" line="256"/>
         <source>Appropriate: %1</source>
         <translation>Angemessen: %1</translation>
     </message>
@@ -2138,9 +2246,9 @@ Exportieren als:</translation>
         <translation type="vanished">Cancel</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="210"/>
-        <location filename="../SnapmaticEditor.cpp" line="243"/>
-        <location filename="../SnapmaticEditor.cpp" line="261"/>
+        <location filename="../SnapmaticEditor.cpp" line="212"/>
+        <location filename="../SnapmaticEditor.cpp" line="247"/>
+        <location filename="../SnapmaticEditor.cpp" line="267"/>
         <source>Edit</source>
         <translation>Bearbeiten</translation>
     </message>
@@ -2155,13 +2263,13 @@ Exportieren als:</translation>
         <translation type="vanished">Spieler: (%1) (%2)</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="248"/>
+        <location filename="../SnapmaticEditor.cpp" line="252"/>
         <source>Yes</source>
         <comment>Yes, should work fine</comment>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="252"/>
+        <location filename="../SnapmaticEditor.cpp" line="256"/>
         <source>No</source>
         <comment>No, could lead to issues</comment>
         <translation>Nein</translation>
@@ -2183,24 +2291,24 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../JsonEditorDialog.cpp" line="167"/>
-        <location filename="../PictureDialog.cpp" line="872"/>
-        <location filename="../SnapmaticEditor.cpp" line="307"/>
-        <location filename="../SnapmaticWidget.cpp" line="332"/>
+        <location filename="../PictureDialog.cpp" line="899"/>
+        <location filename="../SnapmaticEditor.cpp" line="315"/>
+        <location filename="../SnapmaticWidget.cpp" line="351"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
         <translation>Patchen von Snapmatic Eigenschaften fehlgeschlagen wegen I/O Fehler</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="369"/>
+        <location filename="../SnapmaticEditor.cpp" line="378"/>
         <source>New Snapmatic title:</source>
         <translation>Neuer Snapmatic Titel:</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="398"/>
+        <location filename="../SnapmaticEditor.cpp" line="407"/>
         <source>Snapmatic Crew</source>
         <translation>Snapmatic Crew</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.cpp" line="398"/>
+        <location filename="../SnapmaticEditor.cpp" line="407"/>
         <source>New Snapmatic crew:</source>
         <translation>Neue Snapmatic Crew:</translation>
     </message>
@@ -2342,18 +2450,18 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../SnapmaticWidget.ui" line="152"/>
-        <location filename="../SnapmaticWidget.cpp" line="146"/>
-        <location filename="../SnapmaticWidget.cpp" line="155"/>
+        <location filename="../SnapmaticWidget.cpp" line="157"/>
+        <location filename="../SnapmaticWidget.cpp" line="166"/>
         <source>Delete picture</source>
         <translation>Bild löschen</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="146"/>
+        <location filename="../SnapmaticWidget.cpp" line="157"/>
         <source>Are you sure to delete %1 from your Snapmatic pictures?</source>
         <translation>Bist du sicher %1 von deine Snapmatic Bilder zu löschen?</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1201"/>
+        <location filename="../ProfileInterface.cpp" line="1203"/>
         <source>Edi&amp;t</source>
         <translation>Bearbei&amp;ten</translation>
     </message>
@@ -2366,7 +2474,7 @@ Exportieren als:</translation>
         <translation type="vanished">&amp;Im Spiel deaktivieren</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1214"/>
+        <location filename="../ProfileInterface.cpp" line="1217"/>
         <source>&amp;Export</source>
         <translation>&amp;Exportieren</translation>
     </message>
@@ -2379,12 +2487,12 @@ Exportieren als:</translation>
         <translation type="obsolete">Exportiere als &amp;GTA Snapmatic</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1204"/>
+        <location filename="../ProfileInterface.cpp" line="1206"/>
         <source>Show &amp;In-game</source>
         <translation>&amp;Im Spiel anzeigen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1208"/>
+        <location filename="../ProfileInterface.cpp" line="1210"/>
         <source>Hide &amp;In-game</source>
         <translation>&amp;Im Spiel ausblenden</translation>
     </message>
@@ -2417,32 +2525,32 @@ Exportieren als:</translation>
         <translation type="vanished">Exportiere als &amp;Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1217"/>
+        <location filename="../ProfileInterface.cpp" line="1220"/>
         <source>&amp;View</source>
         <translation>A&amp;nsehen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1220"/>
+        <location filename="../ProfileInterface.cpp" line="1223"/>
         <source>&amp;Remove</source>
         <translation>Entfe&amp;rnen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1222"/>
+        <location filename="../ProfileInterface.cpp" line="1225"/>
         <source>&amp;Select</source>
         <translation>Au&amp;swählen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1223"/>
+        <location filename="../ProfileInterface.cpp" line="1226"/>
         <source>&amp;Deselect</source>
         <translation>A&amp;bwählen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1226"/>
+        <location filename="../ProfileInterface.cpp" line="1229"/>
         <source>Select &amp;All</source>
         <translation>Alles &amp;auswählen</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1230"/>
+        <location filename="../ProfileInterface.cpp" line="1233"/>
         <source>&amp;Deselect All</source>
         <translation>Alles a&amp;bwählen</translation>
     </message>
@@ -2490,7 +2598,7 @@ Exportieren als:</translation>
         <translation type="obsolete">Bist du sicher %1 von deinen Snapmatic Bilder zu löschen?</translation>
     </message>
     <message>
-        <location filename="../SnapmaticWidget.cpp" line="155"/>
+        <location filename="../SnapmaticWidget.cpp" line="166"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation>Fehlgeschlagen beim Löschen von %1 von deinen Snapmatic Bildern</translation>
     </message>
@@ -2677,7 +2785,7 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="309"/>
-        <location filename="../UserInterface.cpp" line="162"/>
+        <location filename="../UserInterface.cpp" line="164"/>
         <source>Select &amp;GTA V Folder...</source>
         <translation>Wähle &amp;GTA V Ordner...</translation>
     </message>
@@ -2781,16 +2889,16 @@ Exportieren als:</translation>
     </message>
     <message>
         <location filename="../UserInterface.cpp" line="63"/>
-        <location filename="../UserInterface.cpp" line="228"/>
-        <location filename="../UserInterface.cpp" line="560"/>
+        <location filename="../UserInterface.cpp" line="230"/>
+        <location filename="../UserInterface.cpp" line="562"/>
         <source>Select Profile</source>
         <translation>Profil auswählen</translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="312"/>
-        <location filename="../OptionsDialog.cpp" line="568"/>
-        <location filename="../UserInterface.cpp" line="103"/>
-        <location filename="../UserInterface.cpp" line="523"/>
+        <location filename="../OptionsDialog.cpp" line="570"/>
+        <location filename="../UserInterface.cpp" line="105"/>
+        <location filename="../UserInterface.cpp" line="525"/>
         <source>Select GTA V Folder...</source>
         <translation>Wähle GTA V Ordner...</translation>
     </message>
@@ -2799,7 +2907,7 @@ Exportieren als:</translation>
         <translation type="vanished">Wähle GTA V &amp;Ordner...</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="371"/>
+        <location filename="../UserInterface.cpp" line="373"/>
         <source>Open File...</source>
         <translation>Datei öffnen...</translation>
     </message>
@@ -2816,20 +2924,20 @@ Exportieren als:</translation>
     <message>
         <location filename="../UserInterface.ui" line="226"/>
         <location filename="../UserInterface.cpp" line="59"/>
-        <location filename="../UserInterface.cpp" line="552"/>
+        <location filename="../UserInterface.cpp" line="554"/>
         <source>&amp;About %1</source>
         <translation>&amp;Über %1</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="418"/>
-        <location filename="../UserInterface.cpp" line="434"/>
-        <location filename="../UserInterface.cpp" line="461"/>
-        <location filename="../UserInterface.cpp" line="466"/>
+        <location filename="../UserInterface.cpp" line="420"/>
+        <location filename="../UserInterface.cpp" line="436"/>
+        <location filename="../UserInterface.cpp" line="463"/>
+        <location filename="../UserInterface.cpp" line="468"/>
         <source>Open File</source>
         <translation>Datei öffnen</translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="461"/>
+        <location filename="../UserInterface.cpp" line="463"/>
         <source>Can&apos;t open %1 because of not valid file format</source>
         <translation>Kann nicht %1 öffnen weil Dateiformat nicht gültig ist</translation>
     </message>
