@@ -1583,7 +1583,7 @@ void ProfileInterface::massTool(MassTool tool)
         pbDialog.close();
         if (!fails.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Qualify", "%1 failed with..."), fails.join("\n")));
+            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Qualify", "%1 failed with..."), fails.join(", ")));
         }
     }
         break;
@@ -1676,7 +1676,7 @@ void ProfileInterface::massTool(MassTool tool)
         pbDialog.close();
         if (!fails.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Players", "%1 failed with..."), fails.join("\n")));
+            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Players", "%1 failed with..."), fails.join(", ")));
         }
     }
         break;
@@ -1794,7 +1794,7 @@ preSelectionCrewID:
         pbDialog.close();
         if (!fails.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Crew", "%1 failed with..."), fails.join("\n")));
+            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Crew", "%1 failed with..."), fails.join(", ")));
         }
     }
         break;
@@ -1893,7 +1893,7 @@ preSelectionTitle:
         pbDialog.close();
         if (!fails.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Title", "%1 failed with..."), fails.join("\n")));
+            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Title", "%1 failed with..."), fails.join(", ")));
         }
     }
         break;
