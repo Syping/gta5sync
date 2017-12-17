@@ -344,9 +344,9 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
 <context>
     <name>ImageEditorDialog</name>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="175"/>
-        <location filename="../ImageEditorDialog.cpp" line="182"/>
-        <location filename="../ImageEditorDialog.cpp" line="191"/>
+        <location filename="../ImageEditorDialog.cpp" line="171"/>
+        <location filename="../ImageEditorDialog.cpp" line="178"/>
+        <location filename="../ImageEditorDialog.cpp" line="187"/>
         <source>Snapmatic Image Editor</source>
         <translation>Snapmatic Bild Editor</translation>
     </message>
@@ -394,17 +394,17 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation>S&amp;chließen</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="175"/>
+        <location filename="../ImageEditorDialog.cpp" line="171"/>
         <source>Patching of Snapmatic Image failed because of I/O Error</source>
         <translation>Patchen von Snapmatic Bild fehlgeschlagen wegen I/O Fehler</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="182"/>
+        <location filename="../ImageEditorDialog.cpp" line="178"/>
         <source>Patching of Snapmatic Image failed because of Image Error</source>
         <translation>Patchen von Snapmatic Bild fehlgeschlagen wegen Bild Fehler</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="191"/>
+        <location filename="../ImageEditorDialog.cpp" line="187"/>
         <source>Every taken Snapmatic have a different Capacity, a Snapmatic with higher Capacity can store a picture with better quality.</source>
         <translation>Jedes geschossene Snapmatic hat seine eigene Kapazität, ein Snapmatic mit besserer Kapazität kann ein Bild mit besserer Qualität beinhalten.</translation>
     </message>
@@ -417,9 +417,8 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation>Importieren...</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="84"/>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation type="vanished">Einstellungen</translation>
     </message>
     <message>
         <source>&amp;Keep Aspect Ratio</source>
@@ -438,12 +437,13 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Seitenverhältnis behalten</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="142"/>
+        <location filename="../ImportDialog.ui" line="111"/>
+        <location filename="../ImportDialog.ui" line="252"/>
         <source>Ignore Aspect Ratio</source>
         <translation>Seitenverhältnis ignorieren</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="129"/>
+        <location filename="../ImportDialog.ui" line="98"/>
         <source>Avatar</source>
         <translation>Avatar</translation>
     </message>
@@ -452,34 +452,60 @@ Grand Theft Auto V Snapmatic Bilder und Spielständen</translation>
         <translation type="vanished">Hintergrundfarbe: &lt;span style=&quot;color:rgb(%1,%2,%3)&quot;&gt;%4&lt;/span&gt;</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="92"/>
-        <location filename="../ImportDialog.cpp" line="64"/>
-        <location filename="../ImportDialog.cpp" line="264"/>
+        <location filename="../ImportDialog.ui" line="84"/>
+        <source>Picture</source>
+        <translation>Bild</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="123"/>
+        <source>Background</source>
+        <translation>Hintergrund</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="133"/>
+        <location filename="../ImportDialog.cpp" line="72"/>
+        <location filename="../ImportDialog.cpp" line="301"/>
         <source>Background Colour: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</source>
         <translation>Hintergrundfarbe: &lt;span style=&quot;color: %1&quot;&gt;%1&lt;/span&gt;</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="99"/>
+        <location filename="../ImportDialog.ui" line="157"/>
+        <location filename="../ImportDialog.ui" line="207"/>
         <source>...</source>
         <translation>...</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="188"/>
+        <location filename="../ImportDialog.cpp" line="366"/>
+        <source>Background Image: %1</source>
+        <translation>Hintergrundbild: %1</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="214"/>
+        <source>X</source>
+        <translation>X</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="242"/>
+        <source>Force Colour in Avatar Zone</source>
+        <translation>Erzwinge Farbe in Avatar Zone</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="298"/>
         <source>Import picture</source>
         <translation>Bild importieren</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="191"/>
+        <location filename="../ImportDialog.ui" line="301"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="204"/>
+        <location filename="../ImportDialog.ui" line="314"/>
         <source>Discard picture</source>
         <translation>Bild verwerfen</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.ui" line="207"/>
+        <location filename="../ImportDialog.ui" line="317"/>
         <source>&amp;Cancel</source>
         <translation>Abbre&amp;chen</translation>
     </message>
@@ -494,35 +520,54 @@ When you plan to use it as Avatar the picture will be cut!</source>
 Wenn du planst es als Avatar zu verwenden das Bild wird abgetrennt!</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="127"/>
+        <source>None</source>
+        <comment>Background Image: None</comment>
+        <translatorcomment>Hintergrundbild: Keins</translatorcomment>
+        <translation type="vanished">Keins</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.ui" line="183"/>
+        <location filename="../ImportDialog.cpp" line="73"/>
+        <location filename="../ImportDialog.cpp" line="381"/>
+        <source>Background Image:</source>
+        <translation>Hintergrundbild:</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.cpp" line="164"/>
         <location filename="../ProfileInterface.cpp" line="630"/>
         <source>Custom Avatar</source>
         <comment>Custom Avatar Description in SC, don&apos;t use Special Character!</comment>
         <translation>Eigener Avatar</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="153"/>
+        <location filename="../ImportDialog.cpp" line="190"/>
         <location filename="../ProfileInterface.cpp" line="649"/>
         <source>Custom Picture</source>
         <comment>Custom Picture Description in SC, don&apos;t use Special Character!</comment>
         <translation>Eigenes Bild</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="221"/>
+        <location filename="../ImportDialog.cpp" line="258"/>
         <source>Are you sure to use a square image outside of the Avatar Zone?
 When you want to use it as Avatar the image will be detached!</source>
         <translation>Bist du sicher ein Quadrat Bild außerhalb der Avatar Zone zu verwenden?
 Wenn du es als Avatar verwenden möchtest wird es abgetrennt!</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="221"/>
+        <location filename="../ImportDialog.cpp" line="258"/>
         <source>Snapmatic Avatar Zone</source>
         <translation>Snapmatic Avatar Zone</translation>
     </message>
     <message>
-        <location filename="../ImportDialog.cpp" line="260"/>
+        <location filename="../ImportDialog.cpp" line="297"/>
         <source>Select Colour...</source>
         <translation>Farbe auswählen...</translation>
+    </message>
+    <message>
+        <location filename="../ImportDialog.cpp" line="366"/>
+        <source>File</source>
+        <comment>Background Image: File</comment>
+        <translation>Datei</translation>
     </message>
     <message>
         <source>Import</source>
@@ -1501,6 +1546,7 @@ Drücke A für Standardansicht</translation>
     </message>
     <message>
         <location filename="../ImageEditorDialog.cpp" line="87"/>
+        <location filename="../ImportDialog.cpp" line="320"/>
         <location filename="../ProfileInterface.cpp" line="445"/>
         <location filename="../ProfileInterface.cpp" line="512"/>
         <source>Import...</source>
@@ -1508,8 +1554,11 @@ Drücke A für Standardansicht</translation>
     </message>
     <message>
         <location filename="../ImageEditorDialog.cpp" line="88"/>
+        <location filename="../ImageEditorDialog.cpp" line="119"/>
         <location filename="../ImageEditorDialog.cpp" line="128"/>
-        <location filename="../ImageEditorDialog.cpp" line="137"/>
+        <location filename="../ImportDialog.cpp" line="321"/>
+        <location filename="../ImportDialog.cpp" line="352"/>
+        <location filename="../ImportDialog.cpp" line="361"/>
         <location filename="../ProfileInterface.cpp" line="446"/>
         <location filename="../ProfileInterface.cpp" line="491"/>
         <location filename="../ProfileInterface.cpp" line="546"/>
@@ -1536,14 +1585,12 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Importfähige Dateien (*.g5e *.jpg *.png SGTA* PGTA*)</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="105"/>
         <location filename="../ProfileInterface.cpp" line="463"/>
         <location filename="../UserInterface.cpp" line="378"/>
         <source>Savegames files (SGTA*)</source>
         <translation>Spielstanddateien (SGTA*)</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="106"/>
         <location filename="../ProfileInterface.cpp" line="464"/>
         <location filename="../UserInterface.cpp" line="379"/>
         <source>Snapmatic pictures (PGTA*)</source>
@@ -1554,19 +1601,20 @@ Drücke A für Standardansicht</translation>
         <translation type="vanished">Alle Bilddateien (*.jpg *.png)</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="103"/>
         <location filename="../ProfileInterface.cpp" line="461"/>
         <source>Importable files (%1)</source>
         <translation>Importfähige Dateien (%1)</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="107"/>
+        <location filename="../ImageEditorDialog.cpp" line="98"/>
+        <location filename="../ImportDialog.cpp" line="331"/>
         <location filename="../ProfileInterface.cpp" line="465"/>
         <source>All image files (%1)</source>
         <translation>Alle Bilddateien (%1)</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="108"/>
+        <location filename="../ImageEditorDialog.cpp" line="99"/>
+        <location filename="../ImportDialog.cpp" line="332"/>
         <location filename="../ProfileInterface.cpp" line="466"/>
         <location filename="../UserInterface.cpp" line="380"/>
         <source>All files (**)</source>
@@ -1600,13 +1648,15 @@ Drücke A für Standardansicht</translation>
         <translation>Fehler beim Lesen von Spielstanddatei</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="128"/>
+        <location filename="../ImageEditorDialog.cpp" line="119"/>
+        <location filename="../ImportDialog.cpp" line="352"/>
         <location filename="../ProfileInterface.cpp" line="688"/>
         <source>Can&apos;t import %1 because file can&apos;t be open</source>
         <translation>Kann %1 nicht importieren weil die Datei nicht geöffnet werden kann</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="137"/>
+        <location filename="../ImageEditorDialog.cpp" line="128"/>
+        <location filename="../ImportDialog.cpp" line="361"/>
         <location filename="../ProfileInterface.cpp" line="698"/>
         <source>Can&apos;t import %1 because file can&apos;t be parsed properly</source>
         <translation>Kann %1 nicht importieren weil die Datei nicht richtig gelesen werden kann</translation>
@@ -1815,7 +1865,6 @@ Exportieren als:</translation>
         <translation>Alle Profildateien (*.g5e SGTA* PGTA*)</translation>
     </message>
     <message>
-        <location filename="../ImageEditorDialog.cpp" line="104"/>
         <location filename="../ProfileInterface.cpp" line="462"/>
         <location filename="../UserInterface.cpp" line="377"/>
         <source>GTA V Export (*.g5e)</source>

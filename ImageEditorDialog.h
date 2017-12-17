@@ -42,12 +42,12 @@ private slots:
 
 private:
     SnapmaticPicture *smpic;
+    QString profileName;
     Ui::ImageEditorDialog *ui;
     int snapmaticResolutionLW;
     int snapmaticResolutionLH;
     bool imageIsChanged;
     QImage pictureCache;
-    QString profileName;
 };
 
 #endif // IMAGEEDITORDIALOG_H

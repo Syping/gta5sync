@@ -18,13 +18,21 @@
 
 #include "ImportDialog.h"
 #include "ui_ImportDialog.h"
+#include "SidebarGenerator.h"
+#include "StandardPaths.h"
 #include "AppEnv.h"
+#include "config.h"
+#include <QStringBuilder>
+#include <QImageReader>
 #include <QColorDialog>
+#include <QFileDialog>
 #include <QMessageBox>
+#include <QSettings>
 #include <QPainter>
 #include <QPixmap>
 #include <QImage>
 #include <QDebug>
+#include <QFile>
 #include <QRgb>
 
 // IMAGES VALUES
@@ -62,6 +70,8 @@ ImportDialog::ImportDialog(QWidget *parent) :
 
     ui->cbIgnore->setChecked(false);
     ui->labColour->setText(tr("Background Colour: <span style=\"color: %1\">%1</span>").arg(selectedColour.name()));
+    ui->labBackgroundImage->setText(tr("Background Image:"));
+    ui->cmdBackgroundWipe->setVisible(false);
 
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
@@ -100,6 +110,33 @@ void ImportDialog::processImage()
     QPixmap snapmaticPixmap(snapmaticResolutionW, snapmaticResolutionH);
     snapmaticPixmap.fill(selectedColour);
     QPainter snapmaticPainter(&snapmaticPixmap);
+    if (!backImage.isNull())
+    {
+        if (!ui->cbStretch->isChecked())
+        {
+            int diffWidth = 0;
+            int diffHeight = 0;
+            if (backImage.width() != snapmaticResolutionW)
+            {
+                diffWidth = snapmaticResolutionW - backImage.width();
+                diffWidth = diffWidth / 2;
+            }
+            else if (backImage.height() != snapmaticResolutionH)
+            {
+                diffHeight = snapmaticResolutionH - backImage.height();
+                diffHeight = diffHeight / 2;
+            }
+            snapmaticPainter.drawImage(0 + diffWidth, 0 + diffHeight, backImage);
+        }
+        else
+        {
+            snapmaticPainter.drawImage(0, 0, QImage(backImage).scaled(snapmaticResolutionW, snapmaticResolutionH, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
+        }
+        if (ui->cbAvatar->isChecked() && ui->cbForceAvatarColour->isChecked())
+        {
+            snapmaticPainter.fillRect(snapmaticAvatarPlacementW, snapmaticAvatarPlacementH, snapmaticAvatarResolution, snapmaticAvatarResolution, selectedColour);
+        }
+    }
     if (insideAvatarZone)
     {
         // Avatar mode
@@ -264,4 +301,96 @@ void ImportDialog::on_cmdColourChange_clicked()
         ui->labColour->setText(tr("Background Colour: <span style=\"color: %1\">%1</span>").arg(selectedColour.name()));
         processImage();
     }
+}
+
+void ImportDialog::on_cmdBackgroundChange_clicked()
+{
+    QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
+    settings.beginGroup("FileDialogs");
+    bool dontUseNativeDialog = settings.value("DontUseNativeDialog", false).toBool();
+    settings.beginGroup("ImportBackground");
+
+fileDialogPreOpen:
+    QFileDialog fileDialog(this);
+    fileDialog.setFileMode(QFileDialog::ExistingFiles);
+    fileDialog.setViewMode(QFileDialog::Detail);
+    fileDialog.setAcceptMode(QFileDialog::AcceptOpen);
+    fileDialog.setOption(QFileDialog::DontUseNativeDialog, dontUseNativeDialog);
+    fileDialog.setWindowFlags(fileDialog.windowFlags()^Qt::WindowContextHelpButtonHint);
+    fileDialog.setWindowTitle(QApplication::translate("ProfileInterface", "Import..."));
+    fileDialog.setLabelText(QFileDialog::Accept, QApplication::translate("ProfileInterface", "Import"));
+
+    // Getting readable Image formats
+    QString imageFormatsStr = " ";
+    for (QByteArray imageFormat : QImageReader::supportedImageFormats())
+    {
+        imageFormatsStr += QString("*.") % QString::fromUtf8(imageFormat).toLower() % " ";
+    }
+
+    QStringList filters;
+    filters << QApplication::translate("ProfileInterface", "All image files (%1)").arg(imageFormatsStr.trimmed());
+    filters << QApplication::translate("ProfileInterface", "All files (**)");
+    fileDialog.setNameFilters(filters);
+
+    QList<QUrl> sidebarUrls = SidebarGenerator::generateSidebarUrls(fileDialog.sidebarUrls());
+
+    fileDialog.setSidebarUrls(sidebarUrls);
+    fileDialog.setDirectory(settings.value("Directory", StandardPaths::documentsLocation()).toString());
+    fileDialog.restoreGeometry(settings.value("Geometry", "").toByteArray());
+
+    if (fileDialog.exec())
+    {
+        QStringList selectedFiles = fileDialog.selectedFiles();
+        if (selectedFiles.length() == 1)
+        {
+            QString selectedFile = selectedFiles.at(0);
+            QString selectedFileName = QFileInfo(selectedFile).fileName();
+
+            QFile snapmaticFile(selectedFile);
+            if (!snapmaticFile.open(QFile::ReadOnly))
+            {
+                QMessageBox::warning(this, QApplication::translate("ProfileInterface", "Import"), QApplication::translate("ProfileInterface", "Can't import %1 because file can't be open").arg("\""+selectedFileName+"\""));
+                goto fileDialogPreOpen;
+            }
+            QImage importImage;
+            QImageReader snapmaticImageReader;
+            snapmaticImageReader.setDecideFormatFromContent(true);
+            snapmaticImageReader.setDevice(&snapmaticFile);
+            if (!snapmaticImageReader.read(&importImage))
+            {
+                QMessageBox::warning(this, QApplication::translate("ProfileInterface", "Import"), QApplication::translate("ProfileInterface", "Can't import %1 because file can't be parsed properly").arg("\""+selectedFileName+"\""));
+                goto fileDialogPreOpen;
+            }
+            backImage = importImage.scaled(snapmaticResolutionW, snapmaticResolutionH, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            backgroundPath = selectedFile;
+            ui->labBackgroundImage->setText(tr("Background Image: %1").arg(tr("File", "Background Image: File")));
+            ui->cmdBackgroundWipe->setVisible(true);
+            processImage();
+        }
+    }
+
+    settings.setValue("Geometry", fileDialog.saveGeometry());
+    settings.setValue("Directory", fileDialog.directory().absolutePath());
+    settings.endGroup();
+    settings.endGroup();
+}
+
+void ImportDialog::on_cmdBackgroundWipe_clicked()
+{
+    backImage = QImage();
+    ui->labBackgroundImage->setText(tr("Background Image:"));
+    ui->cmdBackgroundWipe->setVisible(false);
+    processImage();
+}
+
+void ImportDialog::on_cbStretch_toggled(bool checked)
+{
+    Q_UNUSED(checked)
+    processImage();
+}
+
+void ImportDialog::on_cbForceAvatarColour_toggled(bool checked)
+{
+    Q_UNUSED(checked)
+    processImage();
 }

@@ -75,7 +75,7 @@ void ImageEditorDialog::on_cmdReplace_clicked()
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
     settings.beginGroup("FileDialogs");
     bool dontUseNativeDialog = settings.value("DontUseNativeDialog", false).toBool();
-    settings.beginGroup("ImportCopy");
+    settings.beginGroup("ImportReplace");
 
 fileDialogPreOpen: //Work?
     QFileDialog fileDialog(this);
@@ -93,17 +93,8 @@ fileDialogPreOpen: //Work?
     {
         imageFormatsStr += QString("*.") % QString::fromUtf8(imageFormat).toLower() % " ";
     }
-    QString importableFormatsStr = QString("*.g5e SGTA* PGTA*");
-    if (!imageFormatsStr.trimmed().isEmpty())
-    {
-        importableFormatsStr = QString("*.g5e%1SGTA* PGTA*").arg(imageFormatsStr);
-    }
 
     QStringList filters;
-    filters << ProfileInterface::tr("Importable files (%1)").arg(importableFormatsStr);
-    filters << ProfileInterface::tr("GTA V Export (*.g5e)");
-    filters << ProfileInterface::tr("Savegames files (SGTA*)");
-    filters << ProfileInterface::tr("Snapmatic pictures (PGTA*)");
     filters << ProfileInterface::tr("All image files (%1)").arg(imageFormatsStr.trimmed());
     filters << ProfileInterface::tr("All files (**)");
     fileDialog.setNameFilters(filters);
@@ -152,6 +143,11 @@ fileDialogPreOpen: //Work?
             delete importDialog;
         }
     }
+
+    settings.setValue(profileName % "+Geometry", fileDialog.saveGeometry());
+    settings.setValue(profileName % "+Directory", fileDialog.directory().absolutePath());
+    settings.endGroup();
+    settings.endGroup();
 }
 
 void ImageEditorDialog::on_cmdSave_clicked()
