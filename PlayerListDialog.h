@@ -32,6 +32,8 @@ class PlayerListDialog : public QDialog
 
 public:
     explicit PlayerListDialog(QStringList players, ProfileDatabase *profileDB, QWidget *parent = 0);
+    QStringList getPlayerList() const;
+    bool isListUpdated();
     ~PlayerListDialog();
 
 private slots:
@@ -45,6 +47,7 @@ private:
     QStringList players;
     ProfileDatabase *profileDB;
     Ui::PlayerListDialog *ui;
+    bool listUpdated;
     void drawSwitchButtons();
     void buildInterface();
 

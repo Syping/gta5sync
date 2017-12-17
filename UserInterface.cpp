@@ -562,3 +562,23 @@ void UserInterface::retranslateUi()
         this->setWindowTitle(defaultWindowTitle.arg(tr("Select Profile")));
     }
 }
+
+void UserInterface::on_actionQualify_as_Avatar_triggered()
+{
+    profileUI->massTool(MassTool::Qualify);
+}
+
+void UserInterface::on_actionChange_Players_triggered()
+{
+    profileUI->massTool(MassTool::Players);
+}
+
+void UserInterface::on_actionSet_Crew_triggered()
+{
+    profileUI->massTool(MassTool::Crew);
+}
+
+void UserInterface::on_actionSet_Title_triggered()
+{
+    profileUI->massTool(MassTool::Title);
+}
