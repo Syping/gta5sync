@@ -1802,7 +1802,7 @@ Drücke A für Standardansicht</translation>
         <location filename="../ProfileInterface.cpp" line="1586"/>
         <source>Qualify</source>
         <comment>%1 failed with...</comment>
-        <translation>Qualifiziere</translation>
+        <translation>Qualifizieren</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1679"/>
