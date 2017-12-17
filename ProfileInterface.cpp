@@ -1731,6 +1731,10 @@ preSelectionCrewID:
                 }
                 crewID = newCrew.toInt();
             }
+            else
+            {
+                return;
+            }
         }
 
         // Prepare Progress
@@ -1828,6 +1832,10 @@ preSelectionTitle:
                     goto preSelectionTitle;
                 }
                 snapmaticTitle = newTitle;
+            }
+            else
+            {
+                return;
             }
         }
 
