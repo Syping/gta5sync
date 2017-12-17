@@ -503,15 +503,15 @@ fileDialogPreOpen: //Work?
 void ProfileInterface::importFilesProgress(QStringList selectedFiles)
 {
     int maximumId = selectedFiles.length();
-    int overallId = 1;
+    int overallId = 0;
     QString errorStr;
-    QStringList failedFiles;
+    QStringList failed;
 
     // Progress dialog
     QProgressDialog pbDialog(this);
     pbDialog.setWindowFlags(pbDialog.windowFlags()^Qt::WindowContextHelpButtonHint^Qt::WindowCloseButtonHint);
     pbDialog.setWindowTitle(tr("Import..."));
-    pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(overallId), QString::number(maximumId)));
+    pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(1), QString::number(maximumId)));
     pbDialog.setRange(1, maximumId);
     pbDialog.setValue(1);
     pbDialog.setModal(true);
@@ -527,18 +527,18 @@ void ProfileInterface::importFilesProgress(QStringList selectedFiles)
     int currentTime = importDateTime.time().toString(importTimeFormat).toInt();
     for (QString selectedFile : selectedFiles)
     {
+        overallId++;
         pbDialog.setValue(overallId);
         pbDialog.setLabelText(tr("Import file %1 of %2 files").arg(QString::number(overallId), QString::number(maximumId)));
         importDateTime = QDateTime::currentDateTime();
         if (!importFile(selectedFile, importDateTime, &currentTime, false))
         {
-            failedFiles << QFileInfo(selectedFile).fileName();
+            failed << QFileInfo(selectedFile).fileName();
         }
-        overallId++;
     }
 
     pbDialog.close();
-    for (QString curErrorStr : failedFiles)
+    for (QString curErrorStr : failed)
     {
         errorStr += ", " % curErrorStr;
     }
