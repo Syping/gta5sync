@@ -21,7 +21,6 @@
 #include "ProfileDatabase.h"
 #include "DatabaseThread.h"
 #include "SavegameDialog.h"
-#include "TelemetryClass.h"
 #include "OptionsDialog.h"
 #include "PictureDialog.h"
 #include "UserInterface.h"
@@ -48,6 +47,10 @@
 #ifdef GTA5SYNC_WIN
 #include "windows.h"
 #include <iostream>
+#endif
+
+#ifdef GTA5SYNC_TELEMETRY
+#include "TelemetryClass.h"
 #endif
 
 int main(int argc, char *argv[])
