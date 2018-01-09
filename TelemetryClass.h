@@ -43,7 +43,7 @@ public:
     void setDisabled(bool disabled);
     void push(TelemetryCategory category);
     void push(TelemetryCategory category, const QJsonDocument json);
-    QString registerClient() const;
+    void registerClient();
 
 private:
     static TelemetryClass telemetryClassInstance;
@@ -56,8 +56,16 @@ private:
     QJsonDocument getApplicationSpec();
     QJsonDocument getSystemLocaleList();
 
+public slots:
+    void pushStartupSet();
+
 private slots:
     void pushFinished(QNetworkReply *reply);
+    void registerFinished(QNetworkReply *reply);
+
+signals:
+    void pushed();
+    void registered();
 };
 
 extern TelemetryClass telemetryClass;

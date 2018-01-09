@@ -313,6 +313,23 @@ QString TelemetryClass::categoryToString(TelemetryCategory category)
     }
 }
 
+void TelemetryClass::registerClient()
+{
+    QNetworkAccessManager *netManager = new QNetworkAccessManager();
+    QNetworkRequest netRequest(TelemetryClassAuthenticator::getTrackingRegURL());
+    netManager->get(netRequest);
+
+    connect(netManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(registerFinished(QNetworkReply*)));
+}
+
+void TelemetryClass::pushStartupSet()
+{
+    push(TelemetryCategory::ApplicationSpec);
+    push(TelemetryCategory::UserLocaleData);
+    push(TelemetryCategory::OperatingSystemSpec);
+    push(TelemetryCategory::HardwareSpec);
+}
+
 void TelemetryClass::pushFinished(QNetworkReply *reply)
 {
 #ifdef GTA5SYNC_DEBUG
@@ -320,4 +337,40 @@ void TelemetryClass::pushFinished(QNetworkReply *reply)
 #endif
     reply->deleteLater();
     sender()->deleteLater();
+    emit pushed();
+}
+
+void TelemetryClass::registerFinished(QNetworkReply *reply)
+{
+    if (reply->canReadLine())
+    {
+        QByteArray readData = reply->readLine();
+        if (QString::fromUtf8(readData).trimmed() == QString("Registration success!") && reply->canReadLine())
+        {
+            readData = reply->readLine();
+            telemetryClientID = QString::fromUtf8(readData).trimmed();
+            QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
+            settings.beginGroup("Telemetry");
+            settings.setValue("ClientID", telemetryClientID);
+            settings.endGroup();
+#ifdef GTA5SYNC_DEBUG
+            qDebug() << "Telemetry" << QString("Registration success!");
+#endif
+        }
+        else
+        {
+#ifdef GTA5SYNC_DEBUG
+            qDebug() << "Telemetry" << QString("Registration failed!");
+#endif
+        }
+    }
+    else
+    {
+#ifdef GTA5SYNC_DEBUG
+        qDebug() << "Telemetry" << QString("Registration failed!");
+#endif
+    }
+    reply->deleteLater();
+    sender()->deleteLater();
+    emit registered();
 }

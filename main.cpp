@@ -134,15 +134,17 @@ int main(int argc, char *argv[])
 #ifdef GTA5SYNC_TELEMETRY
     if (!applicationArgs.contains("--disable-telemetry"))
     {
+        QObject::connect(Telemetry, SIGNAL(registered()), Telemetry, SLOT(pushStartupSet()));
         if (!applicationArgs.contains("--skip-telemetryinit"))
         {
             Telemetry->init();
             if (Telemetry->canPush())
             {
-                Telemetry->push(TelemetryCategory::ApplicationSpec);
-                Telemetry->push(TelemetryCategory::UserLocaleData);
-                Telemetry->push(TelemetryCategory::OperatingSystemSpec);
-                Telemetry->push(TelemetryCategory::HardwareSpec);
+                Telemetry->pushStartupSet();
+            }
+            else if (Telemetry->canRegister())
+            {
+                Telemetry->registerClient();
             }
         }
     }
