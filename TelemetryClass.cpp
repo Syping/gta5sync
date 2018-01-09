@@ -157,8 +157,11 @@ QJsonDocument TelemetryClass::getOperatingSystem()
 {
     QJsonDocument jsonDocument;
     QJsonObject jsonObject;
+#if QT_VERSION >= 0x050400
     jsonObject["OSName"] = QSysInfo::prettyProductName();
     jsonObject["OSArch"] = QSysInfo::currentCpuArchitecture();
+#endif
+    jsonObject["QtVersion"] = qVersion();
     jsonDocument.setObject(jsonObject);
     return jsonDocument;
 }
