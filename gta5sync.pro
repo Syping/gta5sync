@@ -60,9 +60,11 @@ SOURCES += main.cpp \
     SnapmaticWidget.cpp \
     StandardPaths.cpp \
     StringParser.cpp \
+    TelemetryClass.cpp \
     TranslationClass.cpp \
     UserInterface.cpp \
     anpro/JSHighlighter.cpp \
+    tmext/TelemetryClassAuthenticator.cpp \
     uimod/UiModLabel.cpp \
     uimod/UiModWidget.cpp
 
@@ -98,9 +100,11 @@ HEADERS  += \
     SnapmaticWidget.h \
     StandardPaths.h \
     StringParser.h \
+    TelemetryClass.h \
     TranslationClass.h \
     UserInterface.h \
     anpro/JSHighlighter.h \
+    tmext/TelemetryClassAuthenticator.h \
     uimod/UiModLabel.h \
     uimod/UiModWidget.h
 
@@ -142,7 +146,7 @@ DISTFILES += res/app.rc \
     lang/gta5sync_no.ts \
     lang/README.txt
 
-INCLUDEPATH += ./anpro ./uimod
+INCLUDEPATH += ./anpro ./tmext ./uimod
 
 # GTA5SYNC/GTA5VIEW ONLY
 
@@ -214,4 +218,13 @@ contains(DEFINES, GTA5SYNC_QCONF){
         langfiles.files = $$PWD/res/gta5sync_en_US.qm $$PWD/res/gta5sync_de.qm $$PWD/res/gta5sync_fr.qm $$PWD/res/gta5sync_ru.qm $$PWD/res/qtbase_en_GB.qm
         INSTALLS += langfiles
     }
+}
+
+# TELEMETRY BASED STUFF
+
+!contains(DEFINES, GTA5SYNC_TELEMETRY){
+    SOURCES -= TelemetryClass.cpp \
+        tmext/TelemetryClassAuthenticator.cpp
+    HEADERS -= TelemetryClass.h \
+        tmext/TelemetryClassAuthenticator.h
 }

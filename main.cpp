@@ -21,6 +21,7 @@
 #include "ProfileDatabase.h"
 #include "DatabaseThread.h"
 #include "SavegameDialog.h"
+#include "TelemetryClass.h"
 #include "OptionsDialog.h"
 #include "PictureDialog.h"
 #include "UserInterface.h"
@@ -118,6 +119,15 @@ int main(int argc, char *argv[])
     }
 
     settings.endGroup();
+
+#ifdef GTA5SYNC_TELEMETRY
+    Telemetry->init();
+    if (Telemetry->canPush())
+    {
+        Telemetry->push(TelemetryCategory::OperatingSystemSpec);
+        Telemetry->push(TelemetryCategory::HardwareSpec);
+    }
+#endif
 
     QStringList applicationArgs = a.arguments();
     QString selectedAction;
