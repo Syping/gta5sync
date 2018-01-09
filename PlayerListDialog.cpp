@@ -71,7 +71,17 @@ PlayerListDialog::PlayerListDialog(QStringList players, ProfileDatabase *profile
         ui->cmdCancel->setIcon(QIcon::fromTheme("gtk-cancel"));
     }
 
-    drawSwitchButtons();
+    // Set Icon for Manage Buttons
+    if (QIcon::hasThemeIcon("go-previous") && QIcon::hasThemeIcon("go-next") && QIcon::hasThemeIcon("list-add"))
+    {
+        ui->cmdMakeAv->setIcon(QIcon::fromTheme("go-previous"));
+        ui->cmdMakeSe->setIcon(QIcon::fromTheme("go-next"));
+        ui->cmdMakeAd->setIcon(QIcon::fromTheme("list-add"));
+    }
+    else
+    {
+        drawSwitchButtons();
+    }
     buildInterface();
 
     // DPI calculation
