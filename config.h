@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016-2017 Syping
+* Copyright (C) 2016-2018 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@
 #endif
 
 #ifndef GTA5SYNC_COPYRIGHT
-#define GTA5SYNC_COPYRIGHT "2016-2017"
+#define GTA5SYNC_COPYRIGHT "2016-2018"
 #endif
 
 #ifndef GTA5SYNC_APPVER

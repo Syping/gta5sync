@@ -102,9 +102,14 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui->labAbout->setText(aboutStr.arg(GTA5SYNC_APPSTR, projectDes, appVersion % " (" % buildType % ")", projectBuild, buildStr, qVersion(), copyrightDesA));
     this->setWindowTitle(titleStr.arg(GTA5SYNC_APPSTR));
 
+    // Set Icon for Close Button
     if (QIcon::hasThemeIcon("dialog-close"))
     {
         ui->cmdClose->setIcon(QIcon::fromTheme("dialog-close"));
+    }
+    else if (QIcon::hasThemeIcon("gtk-close"))
+    {
+        ui->cmdClose->setIcon(QIcon::fromTheme("gtk-close"));
     }
 
     // DPI calculation
