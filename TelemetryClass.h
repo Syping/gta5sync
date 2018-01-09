@@ -24,7 +24,7 @@
 #include <QObject>
 #include <QString>
 
-enum class TelemetryCategory : int { OperatingSystemSpec = 0, HardwareSpec = 1, UserLocaleData = 2, AppConfiguration = 3, UserFeedback = 4, CustomEmitted = 99};
+enum class TelemetryCategory : int { OperatingSystemSpec = 0, HardwareSpec = 1, UserLocaleData = 2, ApplicationConfiguration = 3, UserFeedback = 4, ApplicationSpec = 5, CustomEmitted = 99};
 
 class TelemetryClass : public QObject
 {
@@ -35,9 +35,12 @@ public:
     bool canPush();
     bool canRegister();
     bool isEnabled();
+    bool isStateForced();
     bool isRegistered();
     void init();
     void refresh();
+    void setEnabled(bool enabled);
+    void setDisabled(bool disabled);
     void push(TelemetryCategory category);
     void push(TelemetryCategory category, const QJsonDocument json);
     QString registerClient() const;
@@ -46,9 +49,12 @@ private:
     static TelemetryClass telemetryClassInstance;
     QString telemetryClientID;
     bool telemetryEnabled;
+    bool telemetryStateForced;
 
     QJsonDocument getOperatingSystem();
     QJsonDocument getSystemHardware();
+    QJsonDocument getApplicationSpec();
+    QJsonDocument getSystemLocaleList();
 
 private slots:
     void pushFinished(QNetworkReply *reply);

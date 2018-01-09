@@ -30,6 +30,7 @@
 #include <QJsonArray>
 #include <QSettings>
 #include <QSysInfo>
+#include <QLocale>
 #include <QBuffer>
 #include <QDebug>
 #include <QFile>
@@ -46,7 +47,11 @@ void TelemetryClass::init()
 {
     QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
     settings.beginGroup("Telemetry");
+#ifndef GTA5SYNC_BUILDTYPE_DEV
     telemetryEnabled = settings.value("IsEnabled", false).toBool();
+#else
+    telemetryEnabled = true; // Always enable Telemetry for Developer Versions
+#endif
     telemetryClientID = settings.value("ClientID", QString()).toString();
     settings.endGroup();
 }
@@ -73,9 +78,26 @@ bool TelemetryClass::isEnabled()
     return telemetryEnabled;
 }
 
+bool TelemetryClass::isStateForced()
+{
+    return telemetryStateForced;
+}
+
 bool TelemetryClass::isRegistered()
 {
     return !telemetryClientID.isEmpty();
+}
+
+void TelemetryClass::setEnabled(bool enabled)
+{
+    telemetryEnabled = enabled;
+    telemetryStateForced = true;
+}
+
+void TelemetryClass::setDisabled(bool disabled)
+{
+    telemetryEnabled = !disabled;
+    telemetryStateForced = true;
 }
 
 void TelemetryClass::push(TelemetryCategory category)
@@ -90,8 +112,12 @@ void TelemetryClass::push(TelemetryCategory category)
         push(category, getSystemHardware());
         break;
     case TelemetryCategory::UserLocaleData:
+        push(category, getSystemLocaleList());
         break;
-    case TelemetryCategory::AppConfiguration:
+    case TelemetryCategory::ApplicationConfiguration:
+        break;
+    case TelemetryCategory::ApplicationSpec:
+        push(category, getApplicationSpec());
         break;
     }
 }
@@ -155,7 +181,7 @@ QJsonDocument TelemetryClass::getSystemHardware()
             else if (i == 0x80000003) { memcpy(CPUBrandString + 16, CPUInfo, sizeof(CPUInfo)); }
             else if (i == 0x80000004) { memcpy(CPUBrandString + 32, CPUInfo, sizeof(CPUInfo)); }
         }
-        jsonObject["CPUName"] = QString(CPUBrandString);
+        jsonObject["CPUName"] = QString(CPUBrandString).trimmed();
         SYSTEM_INFO sysInfo;
         GetSystemInfo(&sysInfo);
         jsonObject["CPUThreads"] = QString::number(sysInfo.dwNumberOfProcessors);
@@ -228,6 +254,34 @@ QJsonDocument TelemetryClass::getSystemHardware()
     return jsonDocument;
 }
 
+QJsonDocument TelemetryClass::getApplicationSpec()
+{
+    QJsonDocument jsonDocument;
+    QJsonObject jsonObject;
+    jsonObject["Version"] = GTA5SYNC_APPVER;
+    jsonObject["BuildType"] = GTA5SYNC_BUILDTYPE;
+    jsonDocument.setObject(jsonObject);
+    return jsonDocument;
+}
+
+QJsonDocument TelemetryClass::getSystemLocaleList()
+{
+    QJsonDocument jsonDocument;
+    QJsonObject jsonObject;
+    QStringList languagesList = QLocale::system().uiLanguages();
+    if (languagesList.length() >= 1)
+    {
+        jsonObject["PrimaryLanguage"] = languagesList.at(0);
+    }
+    if (languagesList.length() >= 2)
+    {
+        languagesList.removeAt(0);
+        jsonObject["SecondaryLanguages"] = QJsonValue::fromVariant(languagesList);
+    }
+    jsonDocument.setObject(jsonObject);
+    return jsonDocument;
+}
+
 QString TelemetryClass::categoryToString(TelemetryCategory category)
 {
     switch (category)
@@ -241,11 +295,14 @@ QString TelemetryClass::categoryToString(TelemetryCategory category)
     case TelemetryCategory::UserLocaleData:
         return QString("UserLocaleData");
         break;
-    case TelemetryCategory::AppConfiguration:
-        return QString("AppConfiguration");
+    case TelemetryCategory::ApplicationConfiguration:
+        return QString("ApplicationConfiguration");
         break;
     case TelemetryCategory::UserFeedback:
         return QString("UserFeedback");
+        break;
+    case TelemetryCategory::ApplicationSpec:
+        return QString("ApplicationSpec");
         break;
     case TelemetryCategory::CustomEmitted:
         return QString("CustomEmitted");
@@ -258,7 +315,9 @@ QString TelemetryClass::categoryToString(TelemetryCategory category)
 
 void TelemetryClass::pushFinished(QNetworkReply *reply)
 {
-    qDebug() << reply->readAll();
+#ifdef GTA5SYNC_DEBUG
+    qDebug() << "Telemetry" << reply->readAll().trimmed();
+#endif
     reply->deleteLater();
     sender()->deleteLater();
 }
