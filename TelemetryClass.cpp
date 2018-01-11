@@ -261,6 +261,9 @@ QJsonDocument TelemetryClass::getApplicationSpec()
 {
     QJsonDocument jsonDocument;
     QJsonObject jsonObject;
+#if QT_VERSION >= 0x050400
+    jsonObject["AppArch"] = QSysInfo::buildCpuArchitecture();
+#endif
     jsonObject["Name"] = GTA5SYNC_APPSTR;
     jsonObject["Version"] = GTA5SYNC_APPVER;
     jsonObject["BuildType"] = GTA5SYNC_BUILDTYPE;
