@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016-2017 Syping
+* Copyright (C) 2016-2018 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -26,6 +26,9 @@ class AppEnv
 {
 public:
     AppEnv();
+
+    // Build Stuff
+    static QString getBuildDateTime();
 
     // Folder Stuff
     static QString getGameFolder(bool *ok = 0);

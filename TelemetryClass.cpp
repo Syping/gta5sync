@@ -161,7 +161,6 @@ QJsonDocument TelemetryClass::getOperatingSystem()
     jsonObject["OSName"] = QSysInfo::prettyProductName();
     jsonObject["OSArch"] = QSysInfo::currentCpuArchitecture();
 #endif
-    jsonObject["QtVersion"] = qVersion();
     jsonDocument.setObject(jsonObject);
     return jsonDocument;
 }
@@ -262,11 +261,13 @@ QJsonDocument TelemetryClass::getApplicationSpec()
     QJsonDocument jsonDocument;
     QJsonObject jsonObject;
 #if QT_VERSION >= 0x050400
-    jsonObject["AppArch"] = QSysInfo::buildCpuArchitecture();
+    jsonObject["Arch"] = QSysInfo::buildCpuArchitecture();
 #endif
     jsonObject["Name"] = GTA5SYNC_APPSTR;
     jsonObject["Version"] = GTA5SYNC_APPVER;
+    jsonObject["BuildDateTime"] = AppEnv::getBuildDateTime();
     jsonObject["BuildType"] = GTA5SYNC_BUILDTYPE;
+    jsonObject["QtVersion"] = qVersion();
     jsonDocument.setObject(jsonObject);
     return jsonDocument;
 }

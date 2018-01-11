@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016-2017 Syping
+* Copyright (C) 2016-2018 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     QString appVersion = qApp->applicationVersion();
     QString buildType = tr(GTA5SYNC_BUILDTYPE);
     buildType.replace("_", " ");
-    QString projectBuild = GTA5SYNC_BUILDDATETIME;
+    QString projectBuild = AppEnv::getBuildDateTime();
     QString buildStr = GTA5SYNC_BUILDSTRING;
 
     // Translator Comments
