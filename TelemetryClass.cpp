@@ -191,7 +191,7 @@ QJsonDocument TelemetryClass::getSystemHardware()
         MEMORYSTATUSEX statex;
         statex.dwLength = sizeof(statex);
         GlobalMemoryStatusEx(&statex);
-        jsonObject["SystemRAM"] = QString(QString::number((statex.ullTotalPhys / 1024) / 1024) % " MB");
+        jsonObject["SystemRAM"] = QString(QString::number((statex.ullTotalPhys / 1024) / 1024) % "MB");
     }
 #else
     QDir procDir("/proc");
@@ -244,7 +244,7 @@ QJsonDocument TelemetryClass::getSystemHardware()
                     {
                         QByteArray memDataVal = memData.mid(toFind.length()).trimmed();
                         int totalMemoryInKB = memDataVal.left(memDataVal.length() - 3).toInt();
-                        jsonObject["SystemRAM"] = QString(QString::number(totalMemoryInKB / 1024) % " MB");
+                        jsonObject["SystemRAM"] = QString(QString::number(totalMemoryInKB / 1024) % "MB");
                         break;
                     }
                 }
