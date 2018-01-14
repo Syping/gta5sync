@@ -109,8 +109,8 @@ int main(int argc, char *argv[])
     QString arg1;
     applicationArgs.removeAt(0);
 
-    TCInstance->initUserLanguage();
-    TCInstance->loadTranslation(&a);
+    Translator->initUserLanguage();
+    Translator->loadTranslation(&a);
 
     if (!applicationArgs.contains("--skip-firststart"))
     {
@@ -134,18 +134,10 @@ int main(int argc, char *argv[])
 #ifdef GTA5SYNC_TELEMETRY
     if (!applicationArgs.contains("--disable-telemetry"))
     {
-        QObject::connect(Telemetry, SIGNAL(registered()), Telemetry, SLOT(pushStartupSet()));
         if (!applicationArgs.contains("--skip-telemetryinit"))
         {
             Telemetry->init();
-            if (Telemetry->canPush())
-            {
-                Telemetry->pushStartupSet();
-            }
-            else if (Telemetry->canRegister())
-            {
-                Telemetry->registerClient();
-            }
+            Telemetry->work();
         }
     }
     else

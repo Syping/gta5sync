@@ -382,6 +382,141 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tabStats">
+      <attribute name="title">
+       <string>Feedback</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="vlStats">
+       <item>
+        <widget class="QGroupBox" name="gbUserStats">
+         <property name="title">
+          <string>User Statistics</string>
+         </property>
+         <layout class="QVBoxLayout" name="vlUserStats">
+          <item>
+           <widget class="QCheckBox" name="cbParticipateStats">
+            <property name="text">
+             <string>Participate in %1 User Statistics</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="labUserStats">
+            <property name="text">
+             <string notr="true">&lt;a href=&quot;%2&quot;&gt;%1&lt;/a&gt;</string>
+            </property>
+            <property name="openExternalLinks">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbCategorys">
+         <property name="title">
+          <string>Categorys</string>
+         </property>
+         <layout class="QVBoxLayout" name="vlCategorys">
+          <item>
+           <widget class="QCheckBox" name="cbGeneralStats">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Hardware, Application and OS Specification</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbOSLangStats">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>OS Language Configuration</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="cbAppConfigStats">
+            <property name="text">
+             <string>Application Configuration</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbUserFeedback">
+         <property name="title">
+          <string>User Feedback</string>
+         </property>
+         <layout class="QVBoxLayout" name="vlUserFeedback">
+          <item>
+           <widget class="QPlainTextEdit" name="txtUserFeedback">
+            <property name="placeholderText">
+             <string>Message for the Developers</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="hlUserFeedbackButtons">
+            <item>
+             <widget class="QLabel" name="labUserFeedback">
+              <property name="text">
+               <string>Limit: 1 message/day</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="hsUserFeedbackButtons">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="cmdUserFeedbackSend">
+              <property name="text">
+               <string>Send</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="vsUserStats">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tabInterface">
       <attribute name="title">
        <string>Interface</string>
@@ -401,6 +536,9 @@
             <property name="text">
              <string>Current: %1</string>
             </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
          </layout>
@@ -419,6 +557,9 @@
            <widget class="QLabel" name="labCurrentAreaLanguage">
             <property name="text">
              <string>Current: %1</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
             </property>
            </widget>
           </item>

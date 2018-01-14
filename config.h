@@ -48,11 +48,7 @@
 #endif
 
 #ifndef GTA5SYNC_APPVER
-#ifndef GTA5SYNC_DAILYB
 #define GTA5SYNC_APPVER "1.0.0"
-#else
-#define GTA5SYNC_APPVER GTA5SYNC_DAILYB
-#endif
 #endif
 
 #ifdef GTA5SYNC_BUILDTYPE_REL
@@ -88,12 +84,6 @@
 #ifdef GTA5SYNC_BUILDTYPE_ALPHA
 #ifndef GTA5SYNC_BUILDTYPE
 #define GTA5SYNC_BUILDTYPE QT_TRANSLATE_NOOP("AboutDialog", "Alpha")
-#endif
-#endif
-
-#ifdef GTA5SYNC_DAILYB
-#ifndef GTA5SYNC_BUILDTYPE
-#define GTA5SYNC_BUILDTYPE QT_TRANSLATE_NOOP("AboutDialog", "Daily Build")
 #endif
 #endif
 

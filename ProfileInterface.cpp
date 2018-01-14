@@ -1046,7 +1046,7 @@ void ProfileInterface::exportSelected()
             if (errorStr != "")
             {
                 errorStr.remove(0, 2);
-                QMessageBox::warning(this, tr("Export selected"), tr("Export failed with...\n\n%1").arg(errorStr));
+                QMessageBox::warning(this, tr("Export selected..."), tr("Export failed with...\n\n%1").arg(errorStr));
             }
 
             if (exportThread->isFinished())
@@ -1066,7 +1066,7 @@ void ProfileInterface::exportSelected()
     }
     else
     {
-        QMessageBox::information(this, tr("Export selected"), tr("No Snapmatic pictures or Savegames files are selected"));
+        QMessageBox::information(this, tr("Export selected..."), tr("No Snapmatic pictures or Savegames files are selected"));
     }
 }
 
@@ -1529,7 +1529,7 @@ void ProfileInterface::massTool(MassTool tool)
 
         if (snapmaticWidgets.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("You don't have any Snapmatics selected!"));
+            QMessageBox::information(this, tr("Qualify as Avatar"), tr("No Snapmatic pictures are selected"));
             return;
         }
 
@@ -1594,7 +1594,7 @@ void ProfileInterface::massTool(MassTool tool)
         pbDialog.close();
         if (!fails.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Qualify", "%1 failed with..."), fails.join(", ")));
+            QMessageBox::warning(this, tr("Qualify as Avatar"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Qualify", "%1 failed with..."), fails.join(", ")));
         }
     }
         break;
@@ -1615,7 +1615,7 @@ void ProfileInterface::massTool(MassTool tool)
 
         if (snapmaticWidgets.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("You don't have any Snapmatics selected!"));
+            QMessageBox::information(this, tr("Change Players..."), tr("No Snapmatic pictures are selected"));
             return;
         }
 
@@ -1687,7 +1687,7 @@ void ProfileInterface::massTool(MassTool tool)
         pbDialog.close();
         if (!fails.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Players", "%1 failed with..."), fails.join(", ")));
+            QMessageBox::warning(this, tr("Change Players..."), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Players", "%1 failed with..."), fails.join(", ")));
         }
     }
         break;
@@ -1708,7 +1708,7 @@ void ProfileInterface::massTool(MassTool tool)
 
         if (snapmaticWidgets.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("You don't have any Snapmatics selected!"));
+            QMessageBox::information(this, tr("Change Crew..."), tr("No Snapmatic pictures are selected"));
             return;
         }
 
@@ -1736,7 +1736,7 @@ preSelectionCrewID:
                 {
                     if (!crewChar.isNumber())
                     {
-                        QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("Failed to enter a valid Snapmatic Crew ID"));
+                        QMessageBox::warning(this, tr("Change Crew..."), tr("Failed to enter a valid Snapmatic Crew ID"));
                         goto preSelectionCrewID;
                     }
                 }
@@ -1805,7 +1805,7 @@ preSelectionCrewID:
         pbDialog.close();
         if (!fails.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Crew", "%1 failed with..."), fails.join(", ")));
+            QMessageBox::warning(this, tr("Change Crew..."), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Crew", "%1 failed with..."), fails.join(", ")));
         }
     }
         break;
@@ -1826,7 +1826,7 @@ preSelectionCrewID:
 
         if (snapmaticWidgets.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("You don't have any Snapmatics selected!"));
+            QMessageBox::information(this, tr("Change Title..."), tr("No Snapmatic pictures are selected"));
             return;
         }
 
@@ -1839,7 +1839,7 @@ preSelectionTitle:
             {
                 if (!SnapmaticPicture::verifyTitle(newTitle))
                 {
-                    QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("Failed to enter a valid Snapmatic title"));
+                    QMessageBox::warning(this, tr("Change Title..."), tr("Failed to enter a valid Snapmatic title"));
                     goto preSelectionTitle;
                 }
                 snapmaticTitle = newTitle;
@@ -1904,7 +1904,7 @@ preSelectionTitle:
         pbDialog.close();
         if (!fails.isEmpty())
         {
-            QMessageBox::warning(this, tr("Snapmatic Mass Tool"), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Title", "%1 failed with..."), fails.join(", ")));
+            QMessageBox::warning(this, tr("Change Title..."), tr("%1 failed with...\n\n%2", "Action failed with...").arg(tr("Change Title", "%1 failed with..."), fails.join(", ")));
         }
     }
         break;
