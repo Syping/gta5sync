@@ -721,7 +721,7 @@ Y: %2</source>
     </message>
     <message>
         <location filename="../OptionsDialog.ui" line="441"/>
-        <source>OS Language Configuration</source>
+        <source>System Language Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1073,7 +1073,7 @@ Y: %2</source>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="152"/>
-        <location filename="../ProfileInterface.cpp" line="1232"/>
+        <location filename="../ProfileInterface.cpp" line="1262"/>
         <source>Export as &amp;Picture...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1083,7 +1083,7 @@ Y: %2</source>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="153"/>
-        <location filename="../ProfileInterface.cpp" line="1233"/>
+        <location filename="../ProfileInterface.cpp" line="1263"/>
         <source>Export as &amp;Snapmatic...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1093,19 +1093,19 @@ Y: %2</source>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="156"/>
-        <location filename="../ProfileInterface.cpp" line="1227"/>
+        <location filename="../ProfileInterface.cpp" line="1257"/>
         <source>&amp;Overwrite Image...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="155"/>
-        <location filename="../ProfileInterface.cpp" line="1226"/>
+        <location filename="../ProfileInterface.cpp" line="1256"/>
         <source>&amp;Edit Properties...</source>
         <translation>Modifier les &amp;propriétés...</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="158"/>
-        <location filename="../ProfileInterface.cpp" line="1229"/>
+        <location filename="../ProfileInterface.cpp" line="1259"/>
         <source>Open &amp;Map Viewer...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1198,7 +1198,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="160"/>
-        <location filename="../ProfileInterface.cpp" line="1230"/>
+        <location filename="../ProfileInterface.cpp" line="1260"/>
         <source>Open &amp;JSON Editor...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1529,44 +1529,48 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1532"/>
-        <location filename="../ProfileInterface.cpp" line="1597"/>
+        <location filename="../ProfileInterface.cpp" line="1562"/>
+        <location filename="../ProfileInterface.cpp" line="1627"/>
         <source>Qualify as Avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1532"/>
-        <location filename="../ProfileInterface.cpp" line="1618"/>
-        <location filename="../ProfileInterface.cpp" line="1711"/>
-        <location filename="../ProfileInterface.cpp" line="1829"/>
+        <location filename="../ProfileInterface.cpp" line="1177"/>
+        <location filename="../ProfileInterface.cpp" line="1211"/>
+        <location filename="../ProfileInterface.cpp" line="1562"/>
+        <location filename="../ProfileInterface.cpp" line="1648"/>
+        <location filename="../ProfileInterface.cpp" line="1741"/>
+        <location filename="../ProfileInterface.cpp" line="1859"/>
         <source>No Snapmatic pictures are selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1543"/>
-        <location filename="../ProfileInterface.cpp" line="1640"/>
-        <location filename="../ProfileInterface.cpp" line="1758"/>
-        <location filename="../ProfileInterface.cpp" line="1860"/>
+        <location filename="../ProfileInterface.cpp" line="1573"/>
+        <location filename="../ProfileInterface.cpp" line="1670"/>
+        <location filename="../ProfileInterface.cpp" line="1788"/>
+        <location filename="../ProfileInterface.cpp" line="1890"/>
         <source>Patch selected...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1544"/>
-        <location filename="../ProfileInterface.cpp" line="1563"/>
-        <location filename="../ProfileInterface.cpp" line="1641"/>
-        <location filename="../ProfileInterface.cpp" line="1660"/>
-        <location filename="../ProfileInterface.cpp" line="1759"/>
-        <location filename="../ProfileInterface.cpp" line="1778"/>
-        <location filename="../ProfileInterface.cpp" line="1861"/>
-        <location filename="../ProfileInterface.cpp" line="1880"/>
+        <location filename="../ProfileInterface.cpp" line="1574"/>
+        <location filename="../ProfileInterface.cpp" line="1593"/>
+        <location filename="../ProfileInterface.cpp" line="1671"/>
+        <location filename="../ProfileInterface.cpp" line="1690"/>
+        <location filename="../ProfileInterface.cpp" line="1789"/>
+        <location filename="../ProfileInterface.cpp" line="1808"/>
+        <location filename="../ProfileInterface.cpp" line="1891"/>
+        <location filename="../ProfileInterface.cpp" line="1910"/>
         <source>Patch file %1 of %2 files</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1597"/>
-        <location filename="../ProfileInterface.cpp" line="1690"/>
-        <location filename="../ProfileInterface.cpp" line="1808"/>
-        <location filename="../ProfileInterface.cpp" line="1907"/>
+        <location filename="../ProfileInterface.cpp" line="1191"/>
+        <location filename="../ProfileInterface.cpp" line="1225"/>
+        <location filename="../ProfileInterface.cpp" line="1627"/>
+        <location filename="../ProfileInterface.cpp" line="1720"/>
+        <location filename="../ProfileInterface.cpp" line="1838"/>
+        <location filename="../ProfileInterface.cpp" line="1937"/>
         <source>%1 failed with...
 
 %2</source>
@@ -1574,55 +1578,55 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1597"/>
+        <location filename="../ProfileInterface.cpp" line="1627"/>
         <source>Qualify</source>
         <comment>%1 failed with...</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1618"/>
-        <location filename="../ProfileInterface.cpp" line="1690"/>
+        <location filename="../ProfileInterface.cpp" line="1648"/>
+        <location filename="../ProfileInterface.cpp" line="1720"/>
         <source>Change Players...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1690"/>
+        <location filename="../ProfileInterface.cpp" line="1720"/>
         <source>Change Players</source>
         <comment>%1 failed with...</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1711"/>
-        <location filename="../ProfileInterface.cpp" line="1739"/>
-        <location filename="../ProfileInterface.cpp" line="1808"/>
+        <location filename="../ProfileInterface.cpp" line="1741"/>
+        <location filename="../ProfileInterface.cpp" line="1769"/>
+        <location filename="../ProfileInterface.cpp" line="1838"/>
         <source>Change Crew...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1739"/>
+        <location filename="../ProfileInterface.cpp" line="1769"/>
         <source>Failed to enter a valid Snapmatic Crew ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1808"/>
+        <location filename="../ProfileInterface.cpp" line="1838"/>
         <source>Change Crew</source>
         <comment>%1 failed with...</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1829"/>
-        <location filename="../ProfileInterface.cpp" line="1842"/>
-        <location filename="../ProfileInterface.cpp" line="1907"/>
+        <location filename="../ProfileInterface.cpp" line="1859"/>
+        <location filename="../ProfileInterface.cpp" line="1872"/>
+        <location filename="../ProfileInterface.cpp" line="1937"/>
         <source>Change Title...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1842"/>
+        <location filename="../ProfileInterface.cpp" line="1872"/>
         <source>Failed to enter a valid Snapmatic title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1907"/>
+        <location filename="../ProfileInterface.cpp" line="1937"/>
         <source>Change Title</source>
         <comment>%1 failed with...</comment>
         <translation type="unfinished"></translation>
@@ -1766,7 +1770,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Supprimer</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1269"/>
+        <location filename="../ProfileInterface.cpp" line="1299"/>
         <source>&amp;Export</source>
         <translation>&amp;Exporter</translation>
     </message>
@@ -1857,32 +1861,32 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Impossible de supprimer %1</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1268"/>
+        <location filename="../ProfileInterface.cpp" line="1298"/>
         <source>&amp;View</source>
         <translation>&amp;Voir</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1270"/>
+        <location filename="../ProfileInterface.cpp" line="1300"/>
         <source>&amp;Remove</source>
         <translation>&amp;Supprimer</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1272"/>
+        <location filename="../ProfileInterface.cpp" line="1302"/>
         <source>&amp;Select</source>
         <translation>&amp;Sélectionner</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1273"/>
+        <location filename="../ProfileInterface.cpp" line="1303"/>
         <source>&amp;Deselect</source>
         <translation>&amp;Déselectionner</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1276"/>
+        <location filename="../ProfileInterface.cpp" line="1306"/>
         <source>Select &amp;All</source>
         <translation>Sélectionner to&amp;ut</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1280"/>
+        <location filename="../ProfileInterface.cpp" line="1310"/>
         <source>&amp;Deselect All</source>
         <translation>&amp;Déselectionner tout</translation>
     </message>
@@ -1942,7 +1946,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Meme</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1837"/>
+        <location filename="../ProfileInterface.cpp" line="1867"/>
         <location filename="../SnapmaticEditor.cpp" line="390"/>
         <source>Snapmatic Title</source>
         <translation>Titre Snapmatic</translation>
@@ -2050,19 +2054,19 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>La modification des propriétés Snapmatic a échoué : erreur d&apos;entrée/sortie</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1837"/>
+        <location filename="../ProfileInterface.cpp" line="1867"/>
         <location filename="../SnapmaticEditor.cpp" line="390"/>
         <source>New Snapmatic title:</source>
         <translation>Nouveau titre Snapmatic :</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1730"/>
+        <location filename="../ProfileInterface.cpp" line="1760"/>
         <location filename="../SnapmaticEditor.cpp" line="419"/>
         <source>Snapmatic Crew</source>
         <translation>Crew Snapmatic</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1730"/>
+        <location filename="../ProfileInterface.cpp" line="1760"/>
         <location filename="../SnapmaticEditor.cpp" line="419"/>
         <source>New Snapmatic crew:</source>
         <translation>Nouveau crew Snapmatic :</translation>
@@ -2200,17 +2204,17 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation>Impossible de supprimer %1</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1217"/>
+        <location filename="../ProfileInterface.cpp" line="1247"/>
         <source>Edi&amp;t</source>
         <translation>Édi&amp;ter</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1220"/>
+        <location filename="../ProfileInterface.cpp" line="1250"/>
         <source>Show &amp;In-game</source>
         <translation>&amp;Visible en jeu</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1224"/>
+        <location filename="../ProfileInterface.cpp" line="1254"/>
         <source>Hide &amp;In-game</source>
         <translation>&amp;Invisible en jeu</translation>
     </message>
@@ -2219,7 +2223,7 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Modifier les &amp;propriétés...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1231"/>
+        <location filename="../ProfileInterface.cpp" line="1261"/>
         <source>&amp;Export</source>
         <translation>&amp;Exporter</translation>
     </message>
@@ -2232,32 +2236,32 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <translation type="vanished">Exporter comme &amp;GTA Snapmatic...</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1234"/>
+        <location filename="../ProfileInterface.cpp" line="1264"/>
         <source>&amp;View</source>
         <translation>&amp;Voir</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1237"/>
+        <location filename="../ProfileInterface.cpp" line="1267"/>
         <source>&amp;Remove</source>
         <translation>S&amp;upprimer</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1239"/>
+        <location filename="../ProfileInterface.cpp" line="1269"/>
         <source>&amp;Select</source>
         <translation>&amp;Sélectionner</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1240"/>
+        <location filename="../ProfileInterface.cpp" line="1270"/>
         <source>&amp;Deselect</source>
         <translation>&amp;Déselectionner</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1243"/>
+        <location filename="../ProfileInterface.cpp" line="1273"/>
         <source>Select &amp;All</source>
         <translation>Sélectionner &amp;tout</translation>
     </message>
     <message>
-        <location filename="../ProfileInterface.cpp" line="1247"/>
+        <location filename="../ProfileInterface.cpp" line="1277"/>
         <source>&amp;Deselect All</source>
         <translation>&amp;Déselectionner tout</translation>
     </message>
@@ -2516,6 +2520,18 @@ Appuyer sur 1 pour le mode par défaut</translation>
         <location filename="../UserInterface.cpp" line="488"/>
         <source>Can&apos;t open %1 because of not valid file format</source>
         <translation>Impossible d&apos;ouvrir %1, format invalide</translation>
+    </message>
+    <message>
+        <location filename="../ProfileInterface.cpp" line="1177"/>
+        <location filename="../ProfileInterface.cpp" line="1191"/>
+        <source>Show In-game</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../ProfileInterface.cpp" line="1211"/>
+        <location filename="../ProfileInterface.cpp" line="1225"/>
+        <source>Hide In-game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

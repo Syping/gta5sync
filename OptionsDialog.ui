@@ -438,7 +438,7 @@
              <bool>false</bool>
             </property>
             <property name="text">
-             <string>OS Language Configuration</string>
+             <string>System Language Configuration</string>
             </property>
             <property name="checked">
              <bool>true</bool>

@@ -1160,7 +1160,7 @@ void ProfileInterface::settingsApplied(int _contentMode, bool languageChanged)
 
 void ProfileInterface::enableSelected()
 {
-    int fails = 0;
+    QList<SnapmaticWidget*> snapmaticWidgets;
     for (ProfileWidget *widget : widgets.keys())
     {
         if (widget->isSelected())
@@ -1168,18 +1168,33 @@ void ProfileInterface::enableSelected()
             if (widget->getWidgetType() == "SnapmaticWidget")
             {
                 SnapmaticWidget *snapmaticWidget = qobject_cast<SnapmaticWidget*>(widget);
-                if (!snapmaticWidget->makePictureVisible())
-                {
-                    fails++;
-                }
+                snapmaticWidgets += snapmaticWidget;
             }
         }
+    }
+    if (snapmaticWidgets.isEmpty())
+    {
+        QMessageBox::information(this, QApplication::translate("UserInterface", "Show In-game"), QApplication::translate("ProfileInterface", "No Snapmatic pictures are selected"));
+        return;
+    }
+    QStringList fails;
+    for (SnapmaticWidget *widget : snapmaticWidgets)
+    {
+        SnapmaticPicture *picture = widget->getPicture();
+        if (!widget->makePictureVisible())
+        {
+            fails << QString("%1 [%2]").arg(picture->getPictureTitle(), picture->getPictureString());
+        }
+    }
+    if (!fails.isEmpty())
+    {
+        QMessageBox::warning(this, QApplication::translate("UserInterface", "Show In-game"), QApplication::translate("ProfileInterface", "%1 failed with...\n\n%2", "Action failed with...").arg(QApplication::translate("UserInterface", "Show In-game"), fails.join(", ")));
     }
 }
 
 void ProfileInterface::disableSelected()
 {
-    int fails = 0;
+    QList<SnapmaticWidget*> snapmaticWidgets;
     for (ProfileWidget *widget : widgets.keys())
     {
         if (widget->isSelected())
@@ -1187,12 +1202,27 @@ void ProfileInterface::disableSelected()
             if (widget->getWidgetType() == "SnapmaticWidget")
             {
                 SnapmaticWidget *snapmaticWidget = qobject_cast<SnapmaticWidget*>(widget);
-                if (!snapmaticWidget->makePictureHidden())
-                {
-                    fails++;
-                }
+                snapmaticWidgets += snapmaticWidget;
             }
         }
+    }
+    if (snapmaticWidgets.isEmpty())
+    {
+        QMessageBox::information(this, QApplication::translate("UserInterface", "Hide In-game"), QApplication::translate("ProfileInterface", "No Snapmatic pictures are selected"));
+        return;
+    }
+    QStringList fails;
+    for (SnapmaticWidget *widget : snapmaticWidgets)
+    {
+        SnapmaticPicture *picture = widget->getPicture();
+        if (!widget->makePictureHidden())
+        {
+            fails << QString("%1 [%2]").arg(picture->getPictureTitle(), picture->getPictureString());
+        }
+    }
+    if (!fails.isEmpty())
+    {
+        QMessageBox::warning(this, QApplication::translate("UserInterface", "Hide In-game"), QApplication::translate("ProfileInterface", "%1 failed with...\n\n%2", "Action failed with...").arg(QApplication::translate("UserInterface", "Hide In-game"), fails.join(", ")));
     }
 }
 

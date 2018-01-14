@@ -286,6 +286,50 @@ QJsonDocument TelemetryClass::getApplicationConf()
 {
     QJsonDocument jsonDocument;
     QJsonObject jsonObject;
+    QSettings settings(GTA5SYNC_APPVENDOR, GTA5SYNC_APPSTR);
+
+    settings.beginGroup("Interface");
+    QJsonObject interfaceObject;
+    interfaceObject["AreaLanguage"] = settings.value("AreaLanguage", "Auto").toString();
+    interfaceObject["Language"] = settings.value("Language", "System").toString();
+    interfaceObject["NavigationBar"] = settings.value("NavigationBar", false).toBool();
+    jsonObject["Interface"] = interfaceObject;
+    settings.endGroup();
+
+    settings.beginGroup("Pictures");
+    QJsonObject picturesObject;
+    picturesObject["AspectRatio"] = ((Qt::AspectRatioMode)settings.value("AspectRatio").toInt() == Qt::IgnoreAspectRatio) ? "IgnoreAspectRatio" : "KeepAspectRatio";
+    picturesObject["CustomQuality"] = settings.value("CustomQuality", 100).toInt();
+    picturesObject["CustomQualityEnabled"] = settings.value("CustomQualityEnabled", false).toBool();
+    picturesObject["ExportSizeMode"] = settings.value("ExportSizeMode", "Default").toString();
+    jsonObject["Pictures"] = picturesObject;
+    settings.endGroup();
+
+    settings.beginGroup("Profile");
+    QJsonObject profileObject;
+    int contentMode = settings.value("ContentMode", 0).toInt();
+    switch (contentMode)
+    {
+    case 0:
+        profileObject["ContentMode"] = "OpenWithSingleClick";
+        break;
+    case 1:
+        profileObject["ContentMode"] = "OpenWithDoubleClick";
+        break;
+    case 2:
+        profileObject["ContentMode"] = "SelectWithSingleClick";
+        break;
+    }
+    jsonObject["Profile"] = profileObject;
+    settings.endGroup();
+
+    settings.beginGroup("Startup");
+    QJsonObject startupObject;
+    startupObject["AppStyle"] = settings.value("AppStyle", "System").toString();
+    startupObject["CustomStyle"] = settings.value("CustomStyle", false).toBool();
+    jsonObject["Startup"] = startupObject;
+    settings.endGroup();
+
     jsonDocument.setObject(jsonObject);
     return jsonDocument;
 }
