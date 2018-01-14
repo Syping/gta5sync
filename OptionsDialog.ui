@@ -390,7 +390,7 @@
        <item>
         <widget class="QGroupBox" name="gbUserStats">
          <property name="title">
-          <string>User Statistics</string>
+          <string>Participation</string>
          </property>
          <layout class="QVBoxLayout" name="vlUserStats">
           <item>
@@ -449,6 +449,22 @@
            <widget class="QCheckBox" name="cbAppConfigStats">
             <property name="text">
              <string>Application Configuration</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="gbOther">
+         <property name="title">
+          <string>Other</string>
+         </property>
+         <layout class="QVBoxLayout" name="vlOtherStats">
+          <item>
+           <widget class="QLabel" name="labParticipationID">
+            <property name="text">
+             <string>Participation ID: %1</string>
             </property>
            </widget>
           </item>

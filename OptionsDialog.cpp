@@ -561,13 +561,22 @@ void OptionsDialog::setupStatisticsSettings()
     // settings->endGroup();
 
     settings->beginGroup("Telemetry");
-    ui->cbParticipateStats->setChecked(settings->value("IsEnabled", false).toBool());
+    ui->cbParticipateStats->setChecked(Telemetry->isEnabled());
     ui->cbAppConfigStats->setChecked(settings->value("PushAppConf", false).toBool());
     settings->endGroup();
 
     if (Telemetry->isStateForced())
     {
         ui->cbParticipateStats->setEnabled(false);
+    }
+
+    if (Telemetry->isRegistered())
+    {
+        ui->labParticipationID->setText(tr("Participation ID: %1").arg(Telemetry->getRegisteredID()));
+    }
+    else
+    {
+        ui->labParticipationID->setText(tr("Participation ID: %1").arg(tr("Not registered")));
     }
 #else
     ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabStats));

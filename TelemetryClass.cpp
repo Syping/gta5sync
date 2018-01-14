@@ -55,6 +55,7 @@ void TelemetryClass::init()
     telemetryEnabled = settings.value("IsEnabled", false).toBool();
 #else
     telemetryEnabled = true; // Always enable Telemetry for Developer Versions
+    telemetryStateForced = true;
 #endif
     telemetryClientID = settings.value("ClientID", QString()).toString();
     telemetryPushAppConf = settings.value("PushAppConf", false).toBool();
@@ -91,6 +92,11 @@ bool TelemetryClass::isStateForced()
 bool TelemetryClass::isRegistered()
 {
     return !telemetryClientID.isEmpty();
+}
+
+QString TelemetryClass::getRegisteredID()
+{
+    return telemetryClientID;
 }
 
 void TelemetryClass::setEnabled(bool enabled)

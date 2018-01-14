@@ -47,6 +47,7 @@ public:
     void push(TelemetryCategory category);
     void push(TelemetryCategory category, const QJsonDocument json);
     void registerClient();
+    QString getRegisteredID();
 
 private:
     static TelemetryClass telemetryClassInstance;

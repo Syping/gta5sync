@@ -668,7 +668,7 @@ Y: %2</translation>
     </message>
     <message>
         <location filename="../OptionsDialog.ui" line="393"/>
-        <source>User Statistics</source>
+        <source>Participation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -699,42 +699,54 @@ Y: %2</translation>
     </message>
     <message>
         <location filename="../OptionsDialog.ui" line="461"/>
-        <location filename="../OptionsDialog.cpp" line="650"/>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.ui" line="467"/>
+        <location filename="../OptionsDialog.cpp" line="575"/>
+        <location filename="../OptionsDialog.cpp" line="579"/>
+        <source>Participation ID: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.ui" line="477"/>
+        <location filename="../OptionsDialog.cpp" line="659"/>
         <source>User Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="472"/>
+        <location filename="../OptionsDialog.ui" line="488"/>
         <source>Limit: 1 message/day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="492"/>
+        <location filename="../OptionsDialog.ui" line="508"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="546"/>
+        <location filename="../OptionsDialog.ui" line="562"/>
         <source>Language for Areas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="568"/>
+        <location filename="../OptionsDialog.ui" line="584"/>
         <source>Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="586"/>
+        <location filename="../OptionsDialog.ui" line="602"/>
         <source>Style:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="611"/>
+        <location filename="../OptionsDialog.ui" line="627"/>
         <source>Font</source>
         <translation type="unfinished">Шрифт</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="617"/>
+        <location filename="../OptionsDialog.ui" line="633"/>
         <source>Always use Message Font (Windows 2003 and earlier)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -743,56 +755,56 @@ Y: %2</translation>
         <translation type="vanished">Язык</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="518"/>
+        <location filename="../OptionsDialog.ui" line="534"/>
         <source>Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="524"/>
+        <location filename="../OptionsDialog.ui" line="540"/>
         <source>Language for Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="533"/>
-        <location filename="../OptionsDialog.ui" line="555"/>
+        <location filename="../OptionsDialog.ui" line="549"/>
+        <location filename="../OptionsDialog.ui" line="571"/>
         <location filename="../OptionsDialog.cpp" line="192"/>
         <location filename="../OptionsDialog.cpp" line="240"/>
         <source>Current: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="574"/>
+        <location filename="../OptionsDialog.ui" line="590"/>
         <source>Use Default Style (Restart)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="641"/>
+        <location filename="../OptionsDialog.ui" line="657"/>
         <source>Sync</source>
         <translation>Sync</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="647"/>
+        <location filename="../OptionsDialog.ui" line="663"/>
         <source>Sync is not implemented at current time</source>
         <translation>Синхронизация пока ещё не реализована</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="685"/>
+        <location filename="../OptionsDialog.ui" line="701"/>
         <source>Apply changes</source>
         <translation>Применить изменения</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="688"/>
+        <location filename="../OptionsDialog.ui" line="704"/>
         <source>&amp;OK</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation>&amp;ОК</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="701"/>
+        <location filename="../OptionsDialog.ui" line="717"/>
         <source>Discard changes</source>
         <translation>Отвергнуть изменения</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="704"/>
+        <location filename="../OptionsDialog.ui" line="720"/>
         <source>&amp;Cancel</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation>От&amp;мена</translation>
@@ -849,7 +861,12 @@ Y: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.cpp" line="650"/>
+        <location filename="../OptionsDialog.cpp" line="579"/>
+        <source>Not registered</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../OptionsDialog.cpp" line="659"/>
         <source>A feedback message have to between 3-1024 characters long</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1213,28 +1230,28 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.cpp" line="212"/>
+        <location filename="../PlayerListDialog.cpp" line="223"/>
         <source>Add Players...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.cpp" line="212"/>
+        <location filename="../PlayerListDialog.cpp" line="223"/>
         <source>Failed to add more Players because the limit of Players are %1!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.cpp" line="226"/>
-        <location filename="../PlayerListDialog.cpp" line="246"/>
+        <location filename="../PlayerListDialog.cpp" line="240"/>
+        <location filename="../PlayerListDialog.cpp" line="263"/>
         <source>Add Player...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.cpp" line="226"/>
+        <location filename="../PlayerListDialog.cpp" line="240"/>
         <source>Enter Social Club Player ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.cpp" line="246"/>
+        <location filename="../PlayerListDialog.cpp" line="263"/>
         <source>Failed to add Player %1 because Player %1 is already added!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2515,7 +2532,7 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="322"/>
-        <location filename="../OptionsDialog.cpp" line="624"/>
+        <location filename="../OptionsDialog.cpp" line="633"/>
         <location filename="../UserInterface.cpp" line="130"/>
         <location filename="../UserInterface.cpp" line="550"/>
         <source>Select GTA V Folder...</source>
