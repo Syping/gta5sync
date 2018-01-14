@@ -591,47 +591,42 @@ Y: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="467"/>
-        <source>Message for the Developers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../OptionsDialog.ui" line="476"/>
+        <location filename="../OptionsDialog.ui" line="472"/>
         <source>Limit: 1 message/day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="496"/>
+        <location filename="../OptionsDialog.ui" line="492"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="550"/>
+        <location filename="../OptionsDialog.ui" line="546"/>
         <source>Language for Areas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="572"/>
+        <location filename="../OptionsDialog.ui" line="568"/>
         <source>Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="590"/>
+        <location filename="../OptionsDialog.ui" line="586"/>
         <source>Style:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="615"/>
+        <location filename="../OptionsDialog.ui" line="611"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="621"/>
+        <location filename="../OptionsDialog.ui" line="617"/>
         <source>Always use Message Font (Windows 2003 and earlier)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="522"/>
+        <location filename="../OptionsDialog.ui" line="518"/>
         <source>Interface</source>
         <translation type="unfinished"></translation>
     </message>
@@ -641,51 +636,51 @@ Y: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="528"/>
+        <location filename="../OptionsDialog.ui" line="524"/>
         <source>Language for Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="537"/>
-        <location filename="../OptionsDialog.ui" line="559"/>
+        <location filename="../OptionsDialog.ui" line="533"/>
+        <location filename="../OptionsDialog.ui" line="555"/>
         <location filename="../OptionsDialog.cpp" line="192"/>
         <location filename="../OptionsDialog.cpp" line="240"/>
         <source>Current: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="578"/>
+        <location filename="../OptionsDialog.ui" line="574"/>
         <source>Use Default Style (Restart)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="645"/>
+        <location filename="../OptionsDialog.ui" line="641"/>
         <source>Sync</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="651"/>
+        <location filename="../OptionsDialog.ui" line="647"/>
         <source>Sync is not implemented at current time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="689"/>
+        <location filename="../OptionsDialog.ui" line="685"/>
         <source>Apply changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="692"/>
+        <location filename="../OptionsDialog.ui" line="688"/>
         <source>&amp;OK</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="705"/>
+        <location filename="../OptionsDialog.ui" line="701"/>
         <source>Discard changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="708"/>
+        <location filename="../OptionsDialog.ui" line="704"/>
         <source>&amp;Cancel</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation type="unfinished"></translation>

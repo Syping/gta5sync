@@ -462,11 +462,7 @@
          </property>
          <layout class="QVBoxLayout" name="vlUserFeedback">
           <item>
-           <widget class="QPlainTextEdit" name="txtUserFeedback">
-            <property name="placeholderText">
-             <string>Message for the Developers</string>
-            </property>
-           </widget>
+           <widget class="QPlainTextEdit" name="txtUserFeedback"/>
           </item>
           <item>
            <layout class="QHBoxLayout" name="hlUserFeedbackButtons">
