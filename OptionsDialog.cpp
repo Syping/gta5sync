@@ -32,6 +32,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QStringList>
+#include <QClipboard>
 #include <QLocale>
 #include <QString>
 #include <QTimer>
@@ -577,6 +578,7 @@ void OptionsDialog::setupStatisticsSettings()
     else
     {
         ui->labParticipationID->setText(tr("Participation ID: %1").arg(tr("Not registered")));
+        ui->cmdCopyStatsID->setVisible(false);
     }
 #else
     ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabStats));
@@ -659,4 +661,9 @@ void OptionsDialog::on_cmdUserFeedbackSend_clicked()
         QMessageBox::information(this, tr("User Feedback"), tr("A feedback message have to between 3-1024 characters long"));
     }
 #endif
+}
+
+void OptionsDialog::on_cmdCopyStatsID_clicked()
+{
+    QApplication::clipboard()->setText(Telemetry->getRegisteredID());
 }

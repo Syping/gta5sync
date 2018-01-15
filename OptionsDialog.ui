@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabProfile">
       <attribute name="title">
@@ -466,9 +466,15 @@
          <property name="title">
           <string>Other</string>
          </property>
-         <layout class="QVBoxLayout" name="vlOtherStats">
+         <layout class="QHBoxLayout" name="hlOtherStats">
           <item>
            <widget class="QLabel" name="labParticipationID">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>Participation ID: %1</string>
             </property>
@@ -477,6 +483,16 @@
             </property>
             <property name="textInteractionFlags">
              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="cmdCopyStatsID">
+            <property name="text">
+             <string>&amp;Copy</string>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -517,7 +533,10 @@
             <item>
              <widget class="QPushButton" name="cmdUserFeedbackSend">
               <property name="text">
-               <string>Send</string>
+               <string>&amp;Send</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
