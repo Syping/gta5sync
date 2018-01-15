@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>435</width>
-    <height>405</height>
+    <height>464</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -405,8 +405,14 @@
             <property name="text">
              <string notr="true">&lt;a href=&quot;%2&quot;&gt;%1&lt;/a&gt;</string>
             </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
             <property name="openExternalLinks">
              <bool>true</bool>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse</set>
             </property>
            </widget>
           </item>
@@ -465,6 +471,12 @@
            <widget class="QLabel" name="labParticipationID">
             <property name="text">
              <string>Participation ID: %1</string>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
             </property>
            </widget>
           </item>
