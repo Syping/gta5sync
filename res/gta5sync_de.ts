@@ -1525,12 +1525,12 @@ Drücke A für Standardansicht</translation>
         <translation>Ausgewählte Spieler:</translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.ui" line="135"/>
+        <location filename="../PlayerListDialog.ui" line="138"/>
         <source>&amp;Apply</source>
         <translation>&amp;Übernehmen</translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.ui" line="142"/>
+        <location filename="../PlayerListDialog.ui" line="145"/>
         <source>&amp;Cancel</source>
         <translation>Abbre&amp;chen</translation>
     </message>
@@ -2095,22 +2095,6 @@ Exportieren als:</translation>
         <source>&lt;h4&gt;Welcome to %1!&lt;/h4&gt;You want to configure %1 before you start using it?</source>
         <translation>&lt;h4&gt;Willkommen zu %1!&lt;/h4&gt;Möchtest du %1 einstellen bevor du es nutzt?</translation>
     </message>
-    <message>
-        <source>No Snapmatic pictures are selected</source>
-        <translation type="obsolete">Keine Snapmatic Bilder sind ausgewählt</translation>
-    </message>
-    <message>
-        <source>%1 failed with...
-
-%2</source>
-        <comment>Action failed with...</comment>
-        <translation type="obsolete">%1 fehlgeschlagen mit...
-
-%2</translation>
-    </message>
-</context>
-<context>
-    <name>QApplication::ProfileInterface</name>
     <message>
         <source>No Snapmatic pictures are selected</source>
         <translation type="obsolete">Keine Snapmatic Bilder sind ausgewählt</translation>
@@ -2895,14 +2879,18 @@ Exportieren als:</translation>
 <context>
     <name>TelemetryDialog</name>
     <message>
-        <location filename="../main.cpp" line="164"/>
         <source>You want help to improve %1 in the future with the collection of data?</source>
-        <translation>Möchtest du helfen %1 in der Zukunft zu verbessern mit der Sammlung von Daten?</translation>
+        <translation type="vanished">Möchtest du helfen %1 in der Zukunft zu verbessern mit der Sammlung von Daten?</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="164"/>
         <source>%1 User Statistics</source>
         <translation>%1 Benutzerstatistik</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="164"/>
+        <source>You want help to improve %1 in the future by collection of data?</source>
+        <translation>Möchtest du helfen %1 in der Zukunft zu verbessern durch Sammlung von Daten?</translation>
     </message>
     <message>
         <location filename="../main.cpp" line="168"/>

@@ -997,12 +997,12 @@ Press 1 for Default View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.ui" line="135"/>
+        <location filename="../PlayerListDialog.ui" line="138"/>
         <source>&amp;Apply</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../PlayerListDialog.ui" line="142"/>
+        <location filename="../PlayerListDialog.ui" line="145"/>
         <source>&amp;Cancel</source>
         <translation></translation>
     </message>
@@ -1990,12 +1990,12 @@ Press 1 for Default View</source>
     <name>TelemetryDialog</name>
     <message>
         <location filename="../main.cpp" line="164"/>
-        <source>You want help to improve %1 in the future with the collection of data?</source>
+        <source>%1 User Statistics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../main.cpp" line="164"/>
-        <source>%1 User Statistics</source>
+        <source>You want help to improve %1 in the future by collection of data?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

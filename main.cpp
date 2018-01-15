@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
         telemetryDialog.setLayout(&telemetryLayout);
         UiModLabel telemetryLabel(&telemetryDialog);
         telemetryLabel.setObjectName(QStringLiteral("TelemetryLabel"));
-        telemetryLabel.setText(QString("<h4>%2</h4>%1").arg(QApplication::translate("TelemetryDialog", "You want help to improve %1 in the future with the collection of data?").arg(GTA5SYNC_APPSTR), QApplication::translate("TelemetryDialog", "%1 User Statistics").arg(GTA5SYNC_APPSTR)));
+        telemetryLabel.setText(QString("<h4>%2</h4>%1").arg(QApplication::translate("TelemetryDialog", "You want help to improve %1 in the future by collection of data?").arg(GTA5SYNC_APPSTR), QApplication::translate("TelemetryDialog", "%1 User Statistics").arg(GTA5SYNC_APPSTR)));
         telemetryLayout.addWidget(&telemetryLabel);
         QCheckBox telemetryCheckBox(&telemetryDialog);
         telemetryCheckBox.setObjectName(QStringLiteral("TelemetryCheckBox"));
