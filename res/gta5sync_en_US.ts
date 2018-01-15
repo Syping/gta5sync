@@ -23,7 +23,7 @@ Running with Qt %6&lt;br/&gt;
         <translation></translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="75"/>
+        <location filename="../AboutDialog.ui" line="78"/>
         <source>&amp;Close</source>
         <translation></translation>
     </message>
@@ -565,75 +565,75 @@ Y: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="419"/>
+        <location filename="../OptionsDialog.ui" line="425"/>
         <source>Categorys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="428"/>
+        <location filename="../OptionsDialog.ui" line="434"/>
         <source>Hardware, Application and OS Specification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="451"/>
+        <location filename="../OptionsDialog.ui" line="457"/>
         <source>Application Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="461"/>
+        <location filename="../OptionsDialog.ui" line="467"/>
         <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="467"/>
+        <location filename="../OptionsDialog.ui" line="473"/>
         <location filename="../OptionsDialog.cpp" line="575"/>
         <location filename="../OptionsDialog.cpp" line="579"/>
         <source>Participation ID: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="477"/>
+        <location filename="../OptionsDialog.ui" line="489"/>
         <location filename="../OptionsDialog.cpp" line="659"/>
         <source>User Feedback</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="488"/>
+        <location filename="../OptionsDialog.ui" line="500"/>
         <source>Limit: 1 message/day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="508"/>
+        <location filename="../OptionsDialog.ui" line="520"/>
         <source>Send</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="562"/>
+        <location filename="../OptionsDialog.ui" line="574"/>
         <source>Language for Areas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="584"/>
+        <location filename="../OptionsDialog.ui" line="596"/>
         <source>Style</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="602"/>
+        <location filename="../OptionsDialog.ui" line="614"/>
         <source>Style:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="627"/>
+        <location filename="../OptionsDialog.ui" line="639"/>
         <source>Font</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="633"/>
+        <location filename="../OptionsDialog.ui" line="645"/>
         <source>Always use Message Font (Windows 2003 and earlier)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="534"/>
+        <location filename="../OptionsDialog.ui" line="546"/>
         <source>Interface</source>
         <translation></translation>
     </message>
@@ -643,56 +643,56 @@ Y: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="441"/>
+        <location filename="../OptionsDialog.ui" line="447"/>
         <source>System Language Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="540"/>
+        <location filename="../OptionsDialog.ui" line="552"/>
         <source>Language for Interface</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="549"/>
-        <location filename="../OptionsDialog.ui" line="571"/>
+        <location filename="../OptionsDialog.ui" line="561"/>
+        <location filename="../OptionsDialog.ui" line="583"/>
         <location filename="../OptionsDialog.cpp" line="192"/>
         <location filename="../OptionsDialog.cpp" line="240"/>
         <source>Current: %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="590"/>
+        <location filename="../OptionsDialog.ui" line="602"/>
         <source>Use Default Style (Restart)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="657"/>
+        <location filename="../OptionsDialog.ui" line="669"/>
         <source>Sync</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="663"/>
+        <location filename="../OptionsDialog.ui" line="675"/>
         <source>Sync is not implemented at current time</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="701"/>
+        <location filename="../OptionsDialog.ui" line="713"/>
         <source>Apply changes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="704"/>
+        <location filename="../OptionsDialog.ui" line="716"/>
         <source>&amp;OK</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="717"/>
+        <location filename="../OptionsDialog.ui" line="729"/>
         <source>Discard changes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="720"/>
+        <location filename="../OptionsDialog.ui" line="732"/>
         <source>&amp;Cancel</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation></translation>
@@ -1422,17 +1422,17 @@ Press 1 for Default View</source>
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="91"/>
+        <location filename="../main.cpp" line="100"/>
         <source>Font</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="91"/>
+        <location filename="../main.cpp" line="100"/>
         <source>Selected Font: %1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="119"/>
+        <location filename="../main.cpp" line="137"/>
         <source>&lt;h4&gt;Welcome to %1!&lt;/h4&gt;You want to configure %1 before you start using it?</source>
         <translation></translation>
     </message>
@@ -1713,27 +1713,27 @@ Press 1 for Default View</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="162"/>
+        <location filename="../SnapmaticEditor.ui" line="171"/>
         <source>Extras</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="168"/>
+        <location filename="../SnapmaticEditor.ui" line="177"/>
         <source>Qualify as Avatar automatically at apply</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="181"/>
+        <location filename="../SnapmaticEditor.ui" line="190"/>
         <source>Qualify as Avatar allows you to use this Snapmatic as a Social Club profile picture</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="231"/>
+        <location filename="../SnapmaticEditor.ui" line="240"/>
         <source>&amp;Apply</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="244"/>
+        <location filename="../SnapmaticEditor.ui" line="253"/>
         <source>&amp;Cancel</source>
         <translation></translation>
     </message>
@@ -1984,6 +1984,29 @@ Press 1 for Default View</source>
         <location filename="../SnapmaticWidget.cpp" line="166"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>TelemetryDialog</name>
+    <message>
+        <location filename="../main.cpp" line="164"/>
+        <source>You want help to improve %1 in the future with the collection of data?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="164"/>
+        <source>%1 User Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="168"/>
+        <source>Yes, I would like to take part.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="178"/>
+        <source>&amp;OK</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

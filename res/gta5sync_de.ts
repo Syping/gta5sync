@@ -126,7 +126,7 @@ Läuft auf Qt %3&lt;br/&gt;
 Copyright &amp;copy; &lt;a href=&quot;%5&quot;&gt;%6&lt;/a&gt; %7&lt;br/&gt;%8 ist lizenziert unter &lt;a href=&quot;https://www.gnu.org/licenses/gpl-3.0.html#content&quot;&gt;GNU GPLv3&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../AboutDialog.ui" line="75"/>
+        <location filename="../AboutDialog.ui" line="78"/>
         <source>&amp;Close</source>
         <translation>S&amp;chließen</translation>
     </message>
@@ -846,17 +846,17 @@ Y: %2</translation>
         <translation>An %1 Benutzerstatistik teilnehmen</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="419"/>
+        <location filename="../OptionsDialog.ui" line="425"/>
         <source>Categorys</source>
         <translation>Kategorien</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="428"/>
+        <location filename="../OptionsDialog.ui" line="434"/>
         <source>Hardware, Application and OS Specification</source>
         <translation>Hardware, Anwendung und OS Spezifikation</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="441"/>
+        <location filename="../OptionsDialog.ui" line="447"/>
         <source>System Language Configuration</source>
         <translation>Spracheinstellungen des System</translation>
     </message>
@@ -865,24 +865,24 @@ Y: %2</translation>
         <translation type="vanished">Spracheinstellungen des OS</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="451"/>
+        <location filename="../OptionsDialog.ui" line="457"/>
         <source>Application Configuration</source>
         <translation>Anwendungseinstellungen</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="461"/>
+        <location filename="../OptionsDialog.ui" line="467"/>
         <source>Other</source>
         <translation>Sonstiges</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="467"/>
+        <location filename="../OptionsDialog.ui" line="473"/>
         <location filename="../OptionsDialog.cpp" line="575"/>
         <location filename="../OptionsDialog.cpp" line="579"/>
         <source>Participation ID: %1</source>
         <translation>Teilnahme ID: %1</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="477"/>
+        <location filename="../OptionsDialog.ui" line="489"/>
         <location filename="../OptionsDialog.cpp" line="659"/>
         <source>User Feedback</source>
         <translation>Benutzer Feedback</translation>
@@ -892,27 +892,27 @@ Y: %2</translation>
         <translation type="vanished">Nachricht an den Entwickler</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="488"/>
+        <location filename="../OptionsDialog.ui" line="500"/>
         <source>Limit: 1 message/day</source>
         <translation>Limit: 1 Nachricht/Tag</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="508"/>
+        <location filename="../OptionsDialog.ui" line="520"/>
         <source>Send</source>
         <translation>Senden</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="562"/>
+        <location filename="../OptionsDialog.ui" line="574"/>
         <source>Language for Areas</source>
         <translation>Sprache für Standorte</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="584"/>
+        <location filename="../OptionsDialog.ui" line="596"/>
         <source>Style</source>
         <translation>Stil</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="590"/>
+        <location filename="../OptionsDialog.ui" line="602"/>
         <source>Use Default Style (Restart)</source>
         <translation>Benutze Standard Stil (Neustart)</translation>
     </message>
@@ -921,17 +921,17 @@ Y: %2</translation>
         <translation type="vanished">Benutze Standard Stil</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="602"/>
+        <location filename="../OptionsDialog.ui" line="614"/>
         <source>Style:</source>
         <translation>Stil:</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="627"/>
+        <location filename="../OptionsDialog.ui" line="639"/>
         <source>Font</source>
         <translation>Schrift</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="633"/>
+        <location filename="../OptionsDialog.ui" line="645"/>
         <source>Always use Message Font (Windows 2003 and earlier)</source>
         <translation>Immer Nachrichtenschrift nutzen (Windows 2003 und früher)</translation>
     </message>
@@ -940,18 +940,18 @@ Y: %2</translation>
         <translation type="vanished">Sprache</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="534"/>
+        <location filename="../OptionsDialog.ui" line="546"/>
         <source>Interface</source>
         <translation>Oberfläche</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="540"/>
+        <location filename="../OptionsDialog.ui" line="552"/>
         <source>Language for Interface</source>
         <translation>Sprache für Oberfläche</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="549"/>
-        <location filename="../OptionsDialog.ui" line="571"/>
+        <location filename="../OptionsDialog.ui" line="561"/>
+        <location filename="../OptionsDialog.ui" line="583"/>
         <location filename="../OptionsDialog.cpp" line="192"/>
         <location filename="../OptionsDialog.cpp" line="240"/>
         <source>Current: %1</source>
@@ -962,33 +962,33 @@ Y: %2</translation>
         <translation type="vanished">Standorte</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="657"/>
+        <location filename="../OptionsDialog.ui" line="669"/>
         <source>Sync</source>
         <translation>Sync</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="663"/>
+        <location filename="../OptionsDialog.ui" line="675"/>
         <source>Sync is not implemented at current time</source>
         <translation>Sync wurde bisher nicht implementiert</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="701"/>
+        <location filename="../OptionsDialog.ui" line="713"/>
         <source>Apply changes</source>
         <translation>Änderungen übernehmen</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="704"/>
+        <location filename="../OptionsDialog.ui" line="716"/>
         <source>&amp;OK</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="717"/>
+        <location filename="../OptionsDialog.ui" line="729"/>
         <source>Discard changes</source>
         <translation>Änderungen verwerfen</translation>
     </message>
     <message>
-        <location filename="../OptionsDialog.ui" line="720"/>
+        <location filename="../OptionsDialog.ui" line="732"/>
         <source>&amp;Cancel</source>
         <extracomment>OK, Cancel, Apply</extracomment>
         <translation>Abbre&amp;chen</translation>
@@ -2081,17 +2081,17 @@ Exportieren als:</translation>
 <context>
     <name>QApplication</name>
     <message>
-        <location filename="../main.cpp" line="91"/>
+        <location filename="../main.cpp" line="100"/>
         <source>Font</source>
         <translation>Schrift</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="91"/>
+        <location filename="../main.cpp" line="100"/>
         <source>Selected Font: %1</source>
         <translation>Ausgewähle Schrift: %1</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="119"/>
+        <location filename="../main.cpp" line="137"/>
         <source>&lt;h4&gt;Welcome to %1!&lt;/h4&gt;You want to configure %1 before you start using it?</source>
         <translation>&lt;h4&gt;Willkommen zu %1!&lt;/h4&gt;Möchtest du %1 einstellen bevor du es nutzt?</translation>
     </message>
@@ -2499,27 +2499,27 @@ Exportieren als:</translation>
         <translation>Angemessen: %1</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="162"/>
+        <location filename="../SnapmaticEditor.ui" line="171"/>
         <source>Extras</source>
         <translation>Extras</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="168"/>
+        <location filename="../SnapmaticEditor.ui" line="177"/>
         <source>Qualify as Avatar automatically at apply</source>
         <translation>Beim Übernehmen als Avatar qualifizieren</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="181"/>
+        <location filename="../SnapmaticEditor.ui" line="190"/>
         <source>Qualify as Avatar allows you to use this Snapmatic as a Social Club profile picture</source>
         <translation>Das Qualifizieren als Avatar erlaubt dir dieses Snapmatic als Social Club Profilbild zu nutzen</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="231"/>
+        <location filename="../SnapmaticEditor.ui" line="240"/>
         <source>&amp;Apply</source>
         <translation>&amp;Übernehmen</translation>
     </message>
     <message>
-        <location filename="../SnapmaticEditor.ui" line="244"/>
+        <location filename="../SnapmaticEditor.ui" line="253"/>
         <source>&amp;Cancel</source>
         <translation>Abbre&amp;chen</translation>
     </message>
@@ -2890,6 +2890,29 @@ Exportieren als:</translation>
         <location filename="../SnapmaticWidget.cpp" line="166"/>
         <source>Failed at deleting %1 from your Snapmatic pictures</source>
         <translation>Fehlgeschlagen beim Löschen von %1 von deinen Snapmatic Bildern</translation>
+    </message>
+</context>
+<context>
+    <name>TelemetryDialog</name>
+    <message>
+        <location filename="../main.cpp" line="164"/>
+        <source>You want help to improve %1 in the future with the collection of data?</source>
+        <translation>Möchtest du helfen %1 in der Zukunft zu verbessern mit der Sammlung von Daten?</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="164"/>
+        <source>%1 User Statistics</source>
+        <translation>%1 Benutzerstatistik</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="168"/>
+        <source>Yes, I would like to take part.</source>
+        <translation>Ja, ich möchte teilnehmen.</translation>
+    </message>
+    <message>
+        <location filename="../main.cpp" line="178"/>
+        <source>&amp;OK</source>
+        <translation>&amp;OK</translation>
     </message>
 </context>
 <context>
