@@ -243,12 +243,12 @@ void PlayerListDialog::on_cmdMakeAd_clicked()
         for (int i = 0; i < ui->listAvPlayers->count(); ++i)
         {
             QListWidgetItem *item = ui->listAvPlayers->item(i);
+            QString itemPlayerName = item->text();
             int itemPlayerID = item->data(Qt::UserRole).toInt();
             if (itemPlayerID == playerID)
             {
                 delete item;
-                QString playerName = item->text();
-                QListWidgetItem *playerItem = new QListWidgetItem(playerName);
+                QListWidgetItem *playerItem = new QListWidgetItem(itemPlayerName);
                 playerItem->setData(Qt::UserRole, playerID);
                 ui->listSePlayers->addItem(playerItem);
                 return;
