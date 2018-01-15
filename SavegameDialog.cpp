@@ -14,6 +14,7 @@ SavegameDialog::SavegameDialog(QWidget *parent) :
 
     // Setup User Interface
     ui->setupUi(this);
+    ui->cmdClose->setFocus();
     savegameLabStr = ui->labSavegameText->text();
 
     if (QIcon::hasThemeIcon("dialog-close"))

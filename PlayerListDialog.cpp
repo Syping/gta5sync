@@ -1,6 +1,6 @@
 /*****************************************************************************
 * gta5sync GRAND THEFT AUTO V SYNC
-* Copyright (C) 2016-2017 Syping
+* Copyright (C) 2016-2018 Syping
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -34,9 +34,7 @@ PlayerListDialog::PlayerListDialog(QStringList players, ProfileDatabase *profile
     setWindowFlags(windowFlags()^Qt::WindowContextHelpButtonHint);
 
     listUpdated = false;
-
     ui->setupUi(this);
-    ui->cmdCancel->setDefault(true);
     ui->cmdCancel->setFocus();
 
     // Set Icon for Apply Button

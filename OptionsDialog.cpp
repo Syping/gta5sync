@@ -55,7 +55,6 @@ OptionsDialog::OptionsDialog(ProfileDatabase *profileDB, QWidget *parent) :
     ui->setupUi(this);
     ui->tabWidget->setCurrentIndex(0);
     ui->labPicCustomRes->setVisible(false);
-    ui->cmdCancel->setDefault(true);
     ui->cmdCancel->setFocus();
 
     QRect desktopResolution = QApplication::desktop()->screenGeometry(this);
