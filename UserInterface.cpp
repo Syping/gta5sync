@@ -83,6 +83,40 @@ UserInterface::UserInterface(ProfileDatabase *profileDB, CrewDatabase *crewDB, D
         ui->cmdReload->setIcon(QIcon::fromTheme("reload"));
     }
 
+    // Set Icon for Choose GTA V Folder Menu Item
+    if (QIcon::hasThemeIcon("document-open-folder"))
+    {
+        ui->actionSelect_GTA_Folder->setIcon(QIcon::fromTheme("document-open-folder"));
+    }
+    else if (QIcon::hasThemeIcon("gtk-directory"))
+    {
+        ui->actionSelect_GTA_Folder->setIcon(QIcon::fromTheme("gtk-directory"));
+    }
+
+    // Set Icon for Open File Menu Item
+    if (QIcon::hasThemeIcon("document-open"))
+    {
+        ui->actionOpen_File->setIcon(QIcon::fromTheme("document-open"));
+    }
+
+    // Set Icon for Close Profile Menu Item
+    if (QIcon::hasThemeIcon("dialog-close"))
+    {
+        ui->actionSelect_profile->setIcon(QIcon::fromTheme("dialog-close"));
+    }
+    else if (QIcon::hasThemeIcon("gtk-close"))
+    {
+        ui->actionSelect_profile->setIcon(QIcon::fromTheme("gtk-close"));
+    }
+
+    // Set Icon for Exit Menu Item
+    if (QIcon::hasThemeIcon("application-exit"))
+    {
+#ifndef Q_OS_MACOS // Setting icon for exit/quit lead to a crash in Mac OS X
+        ui->actionExit->setIcon(QIcon::fromTheme("application-exit"));
+#endif
+    }
+
     // Set Icon for Preferences Menu Item
     if (QIcon::hasThemeIcon("preferences-system"))
     {
@@ -94,14 +128,6 @@ UserInterface::UserInterface(ProfileDatabase *profileDB, CrewDatabase *crewDB, D
     {
 #ifndef Q_OS_MACOS // Setting icon for preferences/settings/options lead to a crash in Mac OS X
         ui->actionOptions->setIcon(QIcon::fromTheme("configure"));
-#endif
-    }
-
-    // Set Icon for Exit Menu Item
-    if (QIcon::hasThemeIcon("application-exit"))
-    {
-#ifndef Q_OS_MACOS // Setting icon for exit/quit lead to a crash in Mac OS X
-        ui->actionExit->setIcon(QIcon::fromTheme("application-exit"));
 #endif
     }
 
