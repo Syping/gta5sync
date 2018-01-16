@@ -131,6 +131,24 @@ UserInterface::UserInterface(ProfileDatabase *profileDB, CrewDatabase *crewDB, D
 #endif
     }
 
+    // Set Icon for Profile Import Menu Item
+    if (QIcon::hasThemeIcon("document-import"))
+    {
+        ui->action_Import->setIcon(QIcon::fromTheme("document-import"));
+    }
+
+    // Set Icon for Profile Export Menu Item
+    if (QIcon::hasThemeIcon("document-export"))
+    {
+        ui->actionExport_selected->setIcon(QIcon::fromTheme("document-export"));
+    }
+
+    // Set Icon for Profile Remove Menu Item
+    if (QIcon::hasThemeIcon("remove"))
+    {
+        ui->actionDelete_selected->setIcon(QIcon::fromTheme("remove"));
+    }
+
     // DPI calculation
     qreal screenRatio = AppEnv::screenRatio();
 #ifndef Q_QS_ANDROID

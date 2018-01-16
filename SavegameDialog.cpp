@@ -46,9 +46,9 @@ SavegameDialog::SavegameDialog(QWidget *parent) :
     }
 
     // Set Icon for Export Button
-    if (QIcon::hasThemeIcon("document-save"))
+    if (QIcon::hasThemeIcon("document-export"))
     {
-        ui->cmdCopy->setIcon(QIcon::fromTheme("document-save"));
+        ui->cmdCopy->setIcon(QIcon::fromTheme("document-export"));
     }
 
     refreshWindowSize();

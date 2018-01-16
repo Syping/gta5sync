@@ -90,9 +90,9 @@ ProfileInterface::ProfileInterface(ProfileDatabase *profileDB, CrewDatabase *cre
     }
 
     // Set Icon for Import Button
-    if (QIcon::hasThemeIcon("document-open"))
+    if (QIcon::hasThemeIcon("document-import"))
     {
-        ui->cmdImport->setIcon(QIcon::fromTheme("document-open"));
+        ui->cmdImport->setIcon(QIcon::fromTheme("document-import"));
     }
 
     // DPI calculation
