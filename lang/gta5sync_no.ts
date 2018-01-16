@@ -1114,19 +1114,19 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="474"/>
-        <location filename="../UserInterface.cpp" line="428"/>
+        <location filename="../UserInterface.cpp" line="446"/>
         <source>GTA V Export (*.g5e)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="475"/>
-        <location filename="../UserInterface.cpp" line="429"/>
+        <location filename="../UserInterface.cpp" line="447"/>
         <source>Savegames files (SGTA*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="476"/>
-        <location filename="../UserInterface.cpp" line="430"/>
+        <location filename="../UserInterface.cpp" line="448"/>
         <source>Snapmatic pictures (PGTA*)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1156,14 +1156,14 @@ Press 1 for Default View</source>
         <location filename="../ImageEditorDialog.cpp" line="121"/>
         <location filename="../ImportDialog.cpp" line="339"/>
         <location filename="../ProfileInterface.cpp" line="478"/>
-        <location filename="../UserInterface.cpp" line="431"/>
+        <location filename="../UserInterface.cpp" line="449"/>
         <source>All files (**)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="503"/>
         <location filename="../ProfileInterface.cpp" line="796"/>
-        <location filename="../UserInterface.cpp" line="519"/>
+        <location filename="../UserInterface.cpp" line="537"/>
         <source>No valid file is selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1182,13 +1182,13 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="579"/>
-        <location filename="../UserInterface.cpp" line="471"/>
+        <location filename="../UserInterface.cpp" line="489"/>
         <source>Failed to read Snapmatic picture</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="595"/>
-        <location filename="../UserInterface.cpp" line="487"/>
+        <location filename="../UserInterface.cpp" line="505"/>
         <source>Failed to read Savegame file</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1407,7 +1407,7 @@ Press 1 for Default View</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="427"/>
+        <location filename="../UserInterface.cpp" line="445"/>
         <source>All profile files (*.g5e SGTA* PGTA*)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2079,7 +2079,7 @@ Press 1 for Default View</source>
     <message>
         <location filename="../UserInterface.ui" line="236"/>
         <location filename="../UserInterface.cpp" line="59"/>
-        <location filename="../UserInterface.cpp" line="605"/>
+        <location filename="../UserInterface.cpp" line="623"/>
         <source>&amp;About %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2135,15 +2135,15 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="319"/>
-        <location filename="../UserInterface.cpp" line="215"/>
+        <location filename="../UserInterface.cpp" line="233"/>
         <source>Select &amp;GTA V Folder...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../UserInterface.ui" line="322"/>
         <location filename="../OptionsDialog.cpp" line="634"/>
-        <location filename="../UserInterface.cpp" line="156"/>
-        <location filename="../UserInterface.cpp" line="576"/>
+        <location filename="../UserInterface.cpp" line="174"/>
+        <location filename="../UserInterface.cpp" line="594"/>
         <source>Select GTA V Folder...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2184,26 +2184,26 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../UserInterface.cpp" line="63"/>
-        <location filename="../UserInterface.cpp" line="281"/>
-        <location filename="../UserInterface.cpp" line="613"/>
+        <location filename="../UserInterface.cpp" line="299"/>
+        <location filename="../UserInterface.cpp" line="631"/>
         <source>Select Profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="424"/>
+        <location filename="../UserInterface.cpp" line="442"/>
         <source>Open File...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="471"/>
-        <location filename="../UserInterface.cpp" line="487"/>
-        <location filename="../UserInterface.cpp" line="514"/>
-        <location filename="../UserInterface.cpp" line="519"/>
+        <location filename="../UserInterface.cpp" line="489"/>
+        <location filename="../UserInterface.cpp" line="505"/>
+        <location filename="../UserInterface.cpp" line="532"/>
+        <location filename="../UserInterface.cpp" line="537"/>
         <source>Open File</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../UserInterface.cpp" line="514"/>
+        <location filename="../UserInterface.cpp" line="532"/>
         <source>Can&apos;t open %1 because of not valid file format</source>
         <translation type="unfinished"></translation>
     </message>
