@@ -683,8 +683,12 @@ Y: %2</translation>
     </message>
     <message>
         <location filename="../OptionsDialog.ui" line="425"/>
-        <source>Categorys</source>
+        <source>Categories</source>
         <translation>Категории</translation>
+    </message>
+    <message>
+        <source>Categorys</source>
+        <translation type="vanished">Категории</translation>
     </message>
     <message>
         <location filename="../OptionsDialog.ui" line="434"/>
@@ -1637,7 +1641,7 @@ Press 1 for Default View</source>
         <location filename="../ProfileInterface.cpp" line="1872"/>
         <location filename="../ProfileInterface.cpp" line="1937"/>
         <source>Change Title...</source>
-        <translation>Изменить заголовок</translation>
+        <translation>Изменить заголовок...</translation>
     </message>
     <message>
         <location filename="../ProfileInterface.cpp" line="1872"/>
