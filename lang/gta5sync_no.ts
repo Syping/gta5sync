@@ -758,7 +758,7 @@ Y: %2</source>
     <name>PictureDialog</name>
     <message>
         <location filename="../PictureDialog.ui" line="14"/>
-        <source>%1 - Snapmatic Picture Viewer</source>
+        <source>Snapmatic Picture Viewer - %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -828,36 +828,36 @@ Arrow Keys - Navigate</source>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="614"/>
-        <location filename="../PictureDialog.cpp" line="641"/>
+        <location filename="../PictureDialog.cpp" line="640"/>
         <source>Snapmatic Picture Viewer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../PictureDialog.cpp" line="614"/>
-        <location filename="../PictureDialog.cpp" line="641"/>
+        <location filename="../PictureDialog.cpp" line="640"/>
         <source>Failed at %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="640"/>
-        <location filename="../PictureDialog.cpp" line="760"/>
+        <location filename="../PictureDialog.cpp" line="639"/>
+        <location filename="../PictureDialog.cpp" line="759"/>
         <source>No Crew</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="640"/>
+        <location filename="../PictureDialog.cpp" line="639"/>
         <source>Unknown Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="640"/>
-        <location filename="../PictureDialog.cpp" line="780"/>
+        <location filename="../PictureDialog.cpp" line="639"/>
+        <location filename="../PictureDialog.cpp" line="779"/>
         <location filename="../SnapmaticEditor.cpp" line="239"/>
         <source>No Players</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../PictureDialog.cpp" line="726"/>
+        <location filename="../PictureDialog.cpp" line="725"/>
         <source>Avatar Preview Mode
 Press 1 for Default View</source>
         <translation type="unfinished"></translation>
@@ -1631,7 +1631,7 @@ Press 1 for Default View</source>
         <location filename="../JsonEditorDialog.cpp" line="174"/>
         <location filename="../JsonEditorDialog.cpp" line="180"/>
         <location filename="../JsonEditorDialog.cpp" line="192"/>
-        <location filename="../PictureDialog.cpp" line="903"/>
+        <location filename="../PictureDialog.cpp" line="902"/>
         <location filename="../SnapmaticEditor.cpp" line="326"/>
         <location filename="../SnapmaticWidget.cpp" line="357"/>
         <source>Snapmatic Properties</source>
@@ -1766,7 +1766,7 @@ Press 1 for Default View</source>
     </message>
     <message>
         <location filename="../JsonEditorDialog.cpp" line="180"/>
-        <location filename="../PictureDialog.cpp" line="903"/>
+        <location filename="../PictureDialog.cpp" line="902"/>
         <location filename="../SnapmaticEditor.cpp" line="326"/>
         <location filename="../SnapmaticWidget.cpp" line="357"/>
         <source>Patching of Snapmatic Properties failed because of I/O Error</source>
